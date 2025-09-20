@@ -3,3 +3,5 @@
 *.json
 .env
 __pycache__
+conf.py
+clients.py

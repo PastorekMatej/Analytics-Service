@@ -89,7 +89,7 @@ if __name__ == "__main__":
 
     Error_Analyser.load_filter_file("analysis_results.json")
     print("\n\n")
-    
+
     for i, conversation in enumerate(Error_Analyser.filedata["conversations"]):
         message_id = conversation["message_id"]
         if "erreurs_grammaire" not in conversation:
@@ -101,6 +101,6 @@ if __name__ == "__main__":
 
         vectore_database.create_index("dominika", message_id, conversation["erreurs_grammaire"],"erreurs_grammaire","erreurs_grammaire")
         vectore_database.create_index("dominika", message_id, conversation["erreurs_style"],"erreurs_style","erreurs_style")
-
+                            
     query = "Montre moi les erreurs de grammaire"
     vectore_database.query(Error_Analyser.student_id,query,"erreurs_grammaire")
