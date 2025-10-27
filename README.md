@@ -8,15 +8,10 @@
 **Next Milestone:** Complete UI/UX redesign and React migration
 
 ### Recent Commits:
-> ⚠️ Travaux en cours - pas encore commités. En attente d'approbation humaine.
-
-**À commiter :**
-- `docs:` Roadmap Phase 1-6 créée
-- `feat:` Structure React 18.3.1 + Vite 4.5.0 initialisée
-- `feat:` Composants principaux créés (8 pages + Layout)
-- `feat:` Services API mockés (authService, studentService)
-- `style:` Design system palette française implémenté
-- `docs:` README simplifié et sécurisé
+- `f0dd5db` docs: create comprehensive roadmap and secure documentation
+- `0955b00` feat: initialize React 18.3.1 + Vite 4.5.0 frontend structure
+- `de7f590` feat: create main React components, pages and services
+- `a3e36b5` refactor: clean up legacy files and update backend structure
 
 ### 🎯 Project Overview
 **French Learning Analytics Lab** est une plateforme d'analyse avancée spécialisée dans l'évaluation des textes d'étudiants FLE (Français Langue Étrangère). La plateforme utilise l'IA pour analyser les erreurs linguistiques et fournir des retours personnalisés aux apprenants et enseignants.
@@ -46,13 +41,11 @@ Accessible sur `http://localhost:5173`
 
 ### Phase 1: Redesign de l'interface 🎨
 **Status:** 🚧 IN PROGRESS | **Durée:** 3-4 semaines  
-**Travaux effectués (pas encore commités):**
-- Roadmap création et spécification React/Vite
-- Structure React 18.3.1 + Vite 4.5.0 initialisée
-- Composants principaux créés (Layout, Pages, Services)
-- Services API mockés (authService, studentService)
-
-> ⚠️ **Note:** Ces changements doivent être commités. Les hash de commits seront ajoutés après approbation et commit.
+**Commits:**
+- `f0dd5db` docs: roadmap and secure documentation
+- `0955b00` feat: React 18.3.1 + Vite 4.5.0 structure
+- `de7f590` feat: components, pages and services
+- `a3e36b5` refactor: clean up legacy files
 
 **Objectifs principaux:**
 - ✅ Migration Streamlit → React 18.3.1 + Vite 4.5.0 (structure créée)
