@@ -1,7 +1,15 @@
 import openai
 from pinecone import Pinecone
 from typing import Tuple
-from conf import OPENAI_API_KEY, PROVIDER, PINECONE_API_KEY
+from conf import OPENAI_API_KEY, PROVIDER, ADMIN_EMAIL,ADMIN_PASSWORD, PINECONE_API_KEY
+import os
+
+def get_admin_credentials():
+    """Get built-in admin credentials"""
+    return {
+        "email": ADMIN_EMAIL,
+        "password": ADMIN_PASSWORD
+    }
 
 def client_gpt_4o() -> Tuple[openai.AzureOpenAI, str]:
     if  PROVIDER == 'OPENAI':
