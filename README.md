@@ -93,8 +93,8 @@ Interface accessible sur `http://localhost:5173`
 - ✅ Service de gestion JSON pour base de données
 - ✅ Configuration centralisée avec variables d'environnement
 - ✅ Restauration du système d'analyse OpenAI_Error_LLM_method.py
+- ✅ Endpoints API pour soumission et récupération d'analyses
 - 🚧 Intégration des routes d'analyse avec le frontend
-- 🚧 Endpoints API pour soumission et récupération d'analyses
 - 🔜 Tests unitaires et d'intégration
 
 **Livrables:** ✅ Architecture React | ✅ Configuration Vite | ✅ Auth System | ✅ Backend FastAPI | 🔜 Intégration API | 🔜 Tests
@@ -106,7 +106,7 @@ Interface accessible sur `http://localhost:5173`
 - Max-width: 1200px, grid 4 cols desktop
 
 **Prochaines étapes Phase 1:**
-1. Créer les endpoints API pour l'analyse de textes
+1. ✅ Créer les endpoints API pour l'analyse de textes
 2. Connecter le frontend aux routes backend (auth, analysis, dashboard)
 3. Implémenter la soumission de textes depuis WrittenAnalysis.jsx
 4. Afficher les résultats d'analyse dans l'interface
@@ -224,6 +224,13 @@ Interface accessible sur `http://localhost:5173`
 #### Teacher Endpoints
 - `GET /api/teacher/{teacher_email}/students` - Get all students assigned to a teacher
 - `GET /api/teacher/{teacher_email}/dashboard` - Get dashboard statistics for a teacher
+
+#### Analysis Endpoints
+- `POST /api/analysis/submit` - Submit a text for analysis (student)
+- `GET /api/analysis/student/{student_email}` - Get all analyses for a student (with pagination)
+- `GET /api/analysis/analysis/{analysis_id}` - Get a specific analysis by ID
+- `DELETE /api/analysis/analysis/{analysis_id}` - Delete a specific analysis
+- `POST /api/analysis/mark-as-read` - Mark analyses as read by teacher
 
 #### Health Check
 - `GET /api/health` - Health check endpoint
