@@ -14,7 +14,8 @@
 - `a3e36b5` refactor: clean up legacy files and update backend structure
 - `299007c` style: implement elegant minimalist design inspired by Crextio
 - `b553fb8` feat: add teacher-student account system and role management
-- `14292cf` docs: update README with Phase 1 completion and design specs
+- `67488b2` docs: update README with Phase 1 completion and design specs
+- `17401f7` feat: implement complete FastAPI backend architecture
 
 ### 🎯 Project Overview
 **Matej Language Lab** est une plateforme d'analyse avancée spécialisée dans l'évaluation des textes d'étudiants FLE (Français Langue Étrangère). La plateforme utilise l'IA pour analyser les erreurs linguistiques et fournir des retours personnalisés aux apprenants et enseignants.
@@ -70,6 +71,10 @@ Interface accessible sur `http://localhost:5173`
 - `0955b00` feat: React 18.3.1 + Vite 4.5.0 structure
 - `de7f590` feat: components, pages and services
 - `a3e36b5` refactor: clean up legacy files
+- `299007c` style: elegant minimalist design
+- `b553fb8` feat: teacher-student account system
+- `67488b2` docs: Phase 1 completion and design specs
+- `17401f7` feat: complete FastAPI backend architecture
 
 **Objectifs principaux:**
 
