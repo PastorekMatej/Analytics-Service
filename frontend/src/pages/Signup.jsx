@@ -92,9 +92,14 @@ const Signup = () => {
           navigate('/login');
         }, 2000);
       } else {
-        setError(response.message || 'Erreur lors de la création du compte');
+        // Ensure error message is always a string
+        const errorMsg = typeof response.message === 'string' 
+          ? response.message 
+          : 'Erreur lors de la création du compte';
+        setError(errorMsg);
       }
     } catch (err) {
+      console.error('Signup error:', err);
       setError('Erreur lors de la création du compte. Veuillez réessayer.');
     } finally {
       setLoading(false);
