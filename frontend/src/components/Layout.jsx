@@ -12,7 +12,6 @@ const Layout = ({ children, isAuthenticated, userEmail, userRole, onLogout }) =>
                 <span className="logo-icon">✨</span>
                 <span className="logo-text">Matej Language Lab</span>
               </Link>
-              <span className="beta-badge">Beta - Gratuit</span>
             </div>
             
             <nav className="nav">
