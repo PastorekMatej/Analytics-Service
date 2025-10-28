@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Login from './pages/Login';
@@ -16,16 +16,36 @@ const App = () => {
   const [userEmail, setUserEmail] = useState(null);
   const [userRole, setUserRole] = useState('student');
 
+  // Load user from localStorage on mount
+  useEffect(() => {
+    const savedUser = localStorage.getItem('user');
+    if (savedUser) {
+      try {
+        const user = JSON.parse(savedUser);
+        setIsAuthenticated(true);
+        setUserEmail(user.email);
+        setUserRole(user.role);
+      } catch (error) {
+        console.error('Error loading user from localStorage:', error);
+        localStorage.removeItem('user');
+      }
+    }
+  }, []);
+
   const handleLogin = (email, role) => {
     setIsAuthenticated(true);
     setUserEmail(email);
     setUserRole(role);
+    // Save to localStorage
+    localStorage.setItem('user', JSON.stringify({ email, role }));
   };
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     setUserEmail(null);
     setUserRole('student');
+    // Clear localStorage
+    localStorage.removeItem('user');
   };
 
   return (
@@ -56,7 +76,7 @@ const App = () => {
               />
               <Route
                 path="/progress"
-                element={<Progress userEmail={userEmail} />}
+                element={<Dashboard userRole={userRole} userEmail={userEmail} />}
               />
               <Route
                 path="/profile"

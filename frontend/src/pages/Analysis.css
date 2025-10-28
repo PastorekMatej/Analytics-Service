@@ -21,15 +21,9 @@
   margin: 0 auto;
 }
 
-.analysis-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: var(--spacing-xl);
-}
-
 .analysis-section {
-  display: flex;
-  flex-direction: column;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 /* Form Textarea */
@@ -268,16 +262,17 @@ textarea.form-control {
 
 /* Responsive */
 @media (max-width: 768px) {
-  .analysis-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .page-title {
     font-size: 1.75rem;
   }
   
   .page-description {
     font-size: var(--font-size-base);
+  }
+  
+  .analysis-section {
+    max-width: 100%;
+    padding: 0 var(--spacing-md);
   }
 }
 

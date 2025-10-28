@@ -2,7 +2,7 @@
 Analysis routes for Matej Language Lab
 Handles text analysis submissions and retrieval
 """
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Body
 from typing import Dict, List, Optional
 from datetime import datetime
 import uuid
@@ -17,9 +17,9 @@ router = APIRouter(prefix="/api/analysis", tags=["analysis"])
 
 @router.post("/submit")
 async def submit_text_for_analysis(
-    student_email: str,
-    text_content: str,
-    text_type: str = "written"
+    student_email: str = Body(..., embed=True),
+    text_content: str = Body(..., embed=True),
+    text_type: str = Body("written", embed=True)
 ) -> Dict:
     """
     Submit a text for analysis
