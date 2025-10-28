@@ -2,10 +2,10 @@
 
 ## 📊 Current Status
 
-**Status:** ✅ PHASE 1 COMPLETE - Authentication working  
+**Status:** ✅ PHASE 1 COMPLETE - Full Stack Integration  
 **Last Updated:** October 28, 2025  
-**Current Phase:** Frontend-Backend integration (Auth ✅, Analysis in progress)  
-**Next Milestone:** Text analysis submission and display
+**Current Phase:** Frontend-Backend integration (Auth ✅, Analysis ✅)  
+**Next Milestone:** Dashboard data display and teacher features
 
 ### Recent Commits:
 - `f0dd5db` docs: create comprehensive roadmap and secure documentation
@@ -18,6 +18,8 @@
 - `17401f7` feat: implement complete FastAPI backend architecture
 - `6770162` fix: handle validation errors and prevent white screen
 - `afffc89` fix: resolve CORS issues, validation errors, and signup bug
+- `c20b0b3` docs: update README with auth integration status and bug fixes
+- `914a8b9` feat: connect WrittenAnalysis to backend API with enhanced display
 
 ### 🎯 Project Overview
 **Matej Language Lab** est une plateforme d'analyse avancée spécialisée dans l'évaluation des textes d'étudiants FLE (Français Langue Étrangère). La plateforme utilise l'IA pour analyser les erreurs linguistiques et fournir des retours personnalisés aux apprenants et enseignants.
@@ -49,8 +51,15 @@ La plateforme propose deux types de comptes distincts :
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
+
+# Créer le fichier .env avec votre clé OpenAI
+echo "OPENAI_API_KEY=votre_cle_openai_ici" > .env
+echo "PROVIDER=openai" >> .env
+
 python run_backend.py
 ```
+⚠️ **Important:** Vous devez créer un fichier `.env` à la racine avec votre clé OpenAI pour que les analyses fonctionnent.
+
 API accessible sur `http://localhost:8000`  
 Documentation interactive: `http://localhost:8000/docs`
 
@@ -124,10 +133,17 @@ Interface accessible sur `http://localhost:5173`
 - ✅ Signup bug : gestion correcte teacher_email vide → null
 - ✅ Page blanche après signup : affichage erreurs Pydantic corrigé
 
+**Fonctionnalités complétées (commit `914a8b9`):**
+- ✅ WrittenAnalysis.jsx connecté à l'API backend
+- ✅ Soumission de textes pour analyse
+- ✅ Affichage enrichi des résultats (formatage Markdown)
+- ✅ Gestion des erreurs et états de chargement
+- ✅ Interface utilisateur responsive et élégante
+
 **Prochaines étapes Phase 1:**
-- [ ] Connecter WrittenAnalysis.jsx à l'API d'analyse
-- [ ] Afficher les résultats d'analyse dans le dashboard
-- [ ] Tester le flux complet soumission → analyse → affichage
+- [ ] Afficher l'historique des analyses dans le dashboard
+- [ ] Implémenter les fonctionnalités enseignant (voir tous les étudiants)
+- [ ] Tests end-to-end du flux complet
 
 ---
 
