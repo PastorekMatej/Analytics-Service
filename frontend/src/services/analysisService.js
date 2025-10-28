@@ -171,3 +171,15 @@ B1 - Utilisateur indépendant
   texts_count: 5,
 };
 
+// Default export
+const analysisService = {
+  submitTextForAnalysis,
+  getStudentAnalyses,
+  getAnalysisById,
+  deleteAnalysis,
+  markAnalysesAsRead,
+  mockAnalysis,
+};
+
+export default analysisService;
+

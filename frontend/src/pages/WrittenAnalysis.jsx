@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import studentService from '../services/studentService';
+import analysisService from '../services/analysisService';
 import './Analysis.css';
 
 const WrittenAnalysis = ({ userEmail }) => {
-  const [lessonId, setLessonId] = useState('');
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -16,39 +15,33 @@ const WrittenAnalysis = ({ userEmail }) => {
     setSuccess(false);
     setAnalysisResult(null);
 
-    if (!lessonId.trim() || !message.trim()) {
-      setError('Veuillez remplir tous les champs');
+    if (!message.trim()) {
+      setError('Veuillez entrer un texte à analyser');
       return;
     }
 
     setLoading(true);
 
     try {
-      // Save the conversation
-      const saveResponse = await studentService.addConversation(userEmail, {
-        message_id: lessonId.trim(),
-        message: message.trim(),
-        type: 'production_écrite'
-      });
+      // Submit text for analysis
+      const response = await analysisService.submitTextForAnalysis(
+        userEmail,
+        message.trim(),
+        'written'
+      );
 
-      if (saveResponse.success) {
+      if (response.success) {
         setSuccess(true);
-        
-        // Run analysis
-        const analysisResponse = await studentService.runAnalysis(userEmail);
-        
-        if (analysisResponse.success) {
-          setAnalysisResult(analysisResponse.result);
-        }
+        setAnalysisResult(response.analysis);
         
         // Reset form
-        setLessonId('');
         setMessage('');
       } else {
-        setError(saveResponse.message || 'Erreur lors de l\'enregistrement');
+        setError(response.message || 'Erreur lors de l\'analyse');
       }
     } catch (err) {
-      setError('Erreur lors de l\'analyse. Veuillez réessayer.');
+      console.error('Analysis error:', err);
+      setError(err.message || 'Erreur lors de l\'analyse. Veuillez réessayer.');
     } finally {
       setLoading(false);
     }
@@ -85,35 +78,23 @@ const WrittenAnalysis = ({ userEmail }) => {
 
               <form onSubmit={handleSubmit}>
                 <div className="form-group">
-                  <label htmlFor="lessonId" className="form-label">
-                    Identifiant de la leçon
-                  </label>
-                  <input
-                    type="text"
-                    id="lessonId"
-                    className="form-control"
-                    placeholder="ex: leçon_1, exercice_5"
-                    value={lessonId}
-                    onChange={(e) => setLessonId(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="form-group">
                   <label htmlFor="message" className="form-label">
                     Votre texte en français
                   </label>
                   <textarea
                     id="message"
                     className="form-control"
-                    rows="10"
-                    placeholder="Écrivez votre texte en français ici..."
+                    rows="12"
+                    placeholder="Écrivez votre texte en français ici...
+
+Exemple:
+Hier, je suis allé au marché avec ma famille. Nous avons acheté des légumes frais et des fruits. J'aime beaucoup faire les courses parce que je peux voir beaucoup de choses intéressantes..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     required
                   />
                   <p className="form-help">
-                    Écrivez au moins quelques phrases pour une analyse complète
+                    Écrivez au moins quelques phrases complètes pour une analyse détaillée
                   </p>
                 </div>
 
@@ -122,7 +103,7 @@ const WrittenAnalysis = ({ userEmail }) => {
                   className="btn btn-primary btn-lg w-full"
                   disabled={loading}
                 >
-                  {loading ? '🔍 Analyse en cours...' : '🚀 Enregistrer et Analyser'}
+                  {loading ? '🔍 Analyse IA en cours...' : '🚀 Analyser mon texte'}
                 </button>
               </form>
             </div>
@@ -155,10 +136,74 @@ const WrittenAnalysis = ({ userEmail }) => {
               {analysisResult && (
                 <div className="analysis-result">
                   <div className="result-header">
-                    <span className="result-badge">✨ Analysé par l'IA</span>
+                    <span className="result-badge">✨ Analyse IA</span>
+                    <span className="result-date">
+                      {new Date().toLocaleDateString('fr-FR', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
+                    </span>
                   </div>
                   <div className="result-content">
-                    <pre>{analysisResult}</pre>
+                    <div className="analysis-text">
+                      {analysisResult.split('\n').map((line, index) => {
+                        // Handle headers (## Titre)
+                        if (line.startsWith('## ')) {
+                          return (
+                            <h3 key={index} className="analysis-section-title">
+                              {line.replace('## ', '')}
+                            </h3>
+                          );
+                        }
+                        // Handle bold text (**texte**)
+                        if (line.includes('**')) {
+                          const parts = line.split(/(\*\*[^*]+\*\*)/g);
+                          return (
+                            <p key={index} className="analysis-paragraph">
+                              {parts.map((part, i) => {
+                                if (part.startsWith('**') && part.endsWith('**')) {
+                                  return (
+                                    <strong key={i}>
+                                      {part.replace(/\*\*/g, '')}
+                                    </strong>
+                                  );
+                                }
+                                return part;
+                              })}
+                            </p>
+                          );
+                        }
+                        // Handle list items
+                        if (line.trim().startsWith('-')) {
+                          return (
+                            <li key={index} className="analysis-list-item">
+                              {line.replace(/^-\s*/, '')}
+                            </li>
+                          );
+                        }
+                        // Handle numbered items
+                        if (line.match(/^\d+\./)) {
+                          return (
+                            <li key={index} className="analysis-list-item">
+                              {line.replace(/^\d+\.\s*/, '')}
+                            </li>
+                          );
+                        }
+                        // Empty lines
+                        if (line.trim() === '') {
+                          return <br key={index} />;
+                        }
+                        // Regular paragraphs
+                        return (
+                          <p key={index} className="analysis-paragraph">
+                            {line}
+                          </p>
+                        );
+                      })}
+                    </div>
                   </div>
                 </div>
               )}
