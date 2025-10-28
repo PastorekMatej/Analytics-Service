@@ -25,9 +25,20 @@ const authService = {
       const data = await response.json();
 
       if (!response.ok) {
+        // Handle errors properly
+        let errorMessage = 'Erreur de connexion';
+        
+        if (data.detail) {
+          if (typeof data.detail === 'string') {
+            errorMessage = data.detail;
+          } else if (Array.isArray(data.detail)) {
+            errorMessage = data.detail.map(err => err.msg || err.message).join(', ');
+          }
+        }
+        
         return {
           success: false,
-          message: data.detail || 'Erreur de connexion'
+          message: errorMessage
         };
       }
 
@@ -78,9 +89,23 @@ const authService = {
       const data = await response.json();
 
       if (!response.ok) {
+        // Handle Pydantic validation errors
+        let errorMessage = 'Erreur lors de la création du compte';
+        
+        if (data.detail) {
+          if (typeof data.detail === 'string') {
+            errorMessage = data.detail;
+          } else if (Array.isArray(data.detail)) {
+            // Pydantic validation errors format
+            errorMessage = data.detail.map(err => err.msg || err.message).join(', ');
+          } else if (typeof data.detail === 'object') {
+            errorMessage = JSON.stringify(data.detail);
+          }
+        }
+        
         return {
           success: false,
-          message: data.detail || 'Erreur lors de la création du compte'
+          message: errorMessage
         };
       }
 

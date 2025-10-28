@@ -22,9 +22,14 @@ const Login = ({ onLogin }) => {
         onLogin(response.email, response.role);
         navigate(response.role === 'student' ? '/written-analysis' : '/dashboard');
       } else {
-        setError(response.message || 'Email ou mot de passe invalide');
+        // Ensure error message is always a string
+        const errorMsg = typeof response.message === 'string' 
+          ? response.message 
+          : 'Email ou mot de passe invalide';
+        setError(errorMsg);
       }
     } catch (err) {
+      console.error('Login error:', err);
       setError('Erreur de connexion. Veuillez réessayer.');
     } finally {
       setLoading(false);
