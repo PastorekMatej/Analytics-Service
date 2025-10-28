@@ -58,7 +58,12 @@ textarea.form-control {
 }
 
 .result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .result-badge {
@@ -71,6 +76,12 @@ textarea.form-control {
   font-weight: 500;
 }
 
+.result-date {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  font-weight: 300;
+}
+
 .result-content pre {
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -79,6 +90,44 @@ textarea.form-control {
   line-height: 1.6;
   margin: 0;
   color: var(--text-primary);
+}
+
+/* Analysis Text Formatting */
+.analysis-text {
+  line-height: 1.8;
+}
+
+.analysis-section-title {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--primary-blue);
+  margin-top: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--primary-blue);
+}
+
+.analysis-section-title:first-child {
+  margin-top: 0;
+}
+
+.analysis-paragraph {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+  line-height: 1.8;
+}
+
+.analysis-paragraph strong {
+  color: var(--primary-blue);
+  font-weight: 500;
+}
+
+.analysis-list-item {
+  margin-bottom: var(--spacing-xs);
+  padding-left: var(--spacing-md);
+  color: var(--text-primary);
+  list-style-position: outside;
+  margin-left: var(--spacing-lg);
 }
 
 /* Tips List */
