@@ -15,6 +15,11 @@ const WrittenAnalysis = ({ userEmail }) => {
     setSuccess(false);
     setAnalysisResult(null);
 
+    if (!userEmail) {
+      setError('Vous devez être connecté pour soumettre un texte');
+      return;
+    }
+
     if (!message.trim()) {
       setError('Veuillez entrer un texte à analyser');
       return;

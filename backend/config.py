@@ -1,20 +1,21 @@
 """
 Configuration file for Matej Language Lab backend
+
+IMPORTANT: Set these environment variables before running:
+- OPENAI_API_KEY: Your OpenAI API key (required)
+- PROVIDER: API provider (default: OPENAI)
 """
 import os
-from dotenv import load_dotenv
-
-# Load environment variables from .env file
-load_dotenv()
 
 # OpenAI Configuration
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
+PROVIDER = os.environ.get("PROVIDER", "OPENAI")
 OPENAI_MODEL_GPT4 = "gpt-4"
-OPENAI_MODEL_GPT5 = "gpt-4-turbo-preview"  # Update when GPT-5 is available
+OPENAI_MODEL_GPT5 = "gpt-4-turbo-preview"
 
 # Admin Configuration
-ADMIN_EMAIL = os.getenv("ADMIN_EMAIL", "admin@matejlanguagelab.com")
-ADMIN_PASSWORD = os.getenv("ADMIN_PASSWORD")  # Should be set in .env
+ADMIN_EMAIL = os.environ.get("ADMIN_EMAIL", "admin@matejlanguagelab.com")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
 
 # Database Configuration
 DATA_DIR = "secure_data"
