@@ -46,7 +46,10 @@ La plateforme propose deux types de comptes distincts :
 python -m venv venv
 source venv/bin/activate  # Windows: venv\Scripts\activate
 pip install -r requirements.txt
+python run_backend.py
 ```
+API accessible sur `http://localhost:8000`  
+Documentation interactive: `http://localhost:8000/docs`
 
 **Frontend (React + Vite):**
 ```bash
@@ -54,7 +57,7 @@ cd frontend
 npm install  # première fois seulement
 npm run dev
 ```
-Accessible sur `http://localhost:5173`
+Interface accessible sur `http://localhost:5173`
 
 ---
 
@@ -69,6 +72,8 @@ Accessible sur `http://localhost:5173`
 - `a3e36b5` refactor: clean up legacy files
 
 **Objectifs principaux:**
+
+**Frontend:**
 - ✅ Migration Streamlit → React 18.3.1 + Vite 4.5.0
 - ✅ Section "Analyse des Textes Écrits" dédiée
 - ✅ Section "Analyse des Transcriptions TTS" dédiée
@@ -77,7 +82,17 @@ Accessible sur `http://localhost:5173`
 - ✅ Dashboard avec statistiques et filtrage par enseignant
 - ✅ Navigation responsive avec page profil
 
-**Livrables:** ✅ Architecture React | ✅ Configuration Vite | ✅ Auth System | 🔜 Tests
+**Backend:**
+- ✅ Architecture FastAPI modulaire avec routes séparées
+- ✅ Modèles Pydantic pour validation des données
+- ✅ Service de gestion JSON pour base de données
+- ✅ Configuration centralisée avec variables d'environnement
+- ✅ Restauration du système d'analyse OpenAI_Error_LLM_method.py
+- 🚧 Intégration des routes d'analyse avec le frontend
+- 🚧 Endpoints API pour soumission et récupération d'analyses
+- 🔜 Tests unitaires et d'intégration
+
+**Livrables:** ✅ Architecture React | ✅ Configuration Vite | ✅ Auth System | ✅ Backend FastAPI | 🔜 Intégration API | 🔜 Tests
 
 **Design specs:**
 - Fonts: Inter/SF Pro Display (weights 300-400)
@@ -85,7 +100,15 @@ Accessible sur `http://localhost:5173`
 - Cards: 16-18px radius, bordures #f0f0f0
 - Max-width: 1200px, grid 4 cols desktop
 
-**Status final:** ✅ COMPLETE - Prêt pour refactoring avec spécialiste UI/UX
+**Prochaines étapes Phase 1:**
+1. Créer les endpoints API pour l'analyse de textes
+2. Connecter le frontend aux routes backend (auth, analysis, dashboard)
+3. Implémenter la soumission de textes depuis WrittenAnalysis.jsx
+4. Afficher les résultats d'analyse dans l'interface
+5. Tests d'intégration frontend-backend
+6. Consultation spécialiste UI/UX pour optimisation finale
+
+**Status final:** 🚧 Backend architecture complete - Prêt pour intégration API frontend-backend
 
 ---
 
@@ -180,32 +203,26 @@ Accessible sur `http://localhost:5173`
 ## 🔌 API Endpoints
 
 ### Backend API (FastAPI)
-**Base URL:** `http://localhost:8000` (development)
+**Base URL:** `http://localhost:8000` (development)  
+**Documentation interactive:** `http://localhost:8000/docs` (Swagger UI)
 
 #### Authentication Endpoints
-- `POST /auth/login` - User login
-- `POST /auth/signup` - User registration  
-- `POST /auth/logout` - User logout
-- `GET /auth/me` - Get current user info
+- `POST /api/auth/login` - User login with email and password
+- `POST /api/auth/signup` - User registration with role selection
+- `GET /api/auth/teachers` - Get list of all teachers (for student profile dropdown)
 
-#### Student Data Endpoints
-- `GET /students/{student_id}/conversations` - Get student conversations
-- `POST /students/{student_id}/conversations` - Add new conversation
-- `GET /students/{student_id}/analysis` - Get analysis reports
-- `POST /students/{student_id}/analyze` - Run error analysis
-- `GET /students/{student_id}/teacher` - Get assigned teacher
-- `PUT /students/{student_id}/teacher` - Assign/update teacher
-
-#### Admin Endpoints
-- `GET /admin/students` - List all students
-- `GET /admin/analytics` - System analytics
-- `POST /admin/analyze/{student_id}` - Run analysis for student
-- `GET /admin/teachers` - List all teachers
-- `GET /admin/subscriptions` - Manage subscriptions (Phase 7)
+#### Student Endpoints
+- `POST /api/student/assign-teacher` - Assign or remove teacher from student
+- `GET /api/student/{student_email}/teacher` - Get the teacher assigned to a student
+- `GET /api/student/{student_email}/analyses` - Get all analyses for a student
 
 #### Teacher Endpoints
-- `GET /teachers/{teacher_id}/students` - Get assigned students
-- `GET /teachers/{teacher_id}/analytics` - Teacher dashboard analytics
+- `GET /api/teacher/{teacher_email}/students` - Get all students assigned to a teacher
+- `GET /api/teacher/{teacher_email}/dashboard` - Get dashboard statistics for a teacher
+
+#### Health Check
+- `GET /api/health` - Health check endpoint
+- `GET /` - API root with version info
 
 ### Frontend API (React)
 **Base URL:** `http://localhost:5173` (Vite dev server)
@@ -221,53 +238,84 @@ Accessible sur `http://localhost:5173`
 ## 🛠️ Architecture technique actuelle
 
 ### Stack technologique:
-- **Backend:** Python, FastAPI, Streamlit
+- **Backend:** Python 3.13, FastAPI 0.104.1, Uvicorn
 - **IA/ML:** OpenAI GPT-5, GPT-4 (vecteurs prévus avec Pinecone)
 - **Analytics Engine:** OpenAI library pour l'analyse des erreurs linguistiques
 - **Base de données:** JSON files (léger, rapide, facile à maintenir)
-- **Frontend:** React 18.3.1 + Vite 4.5.0 (migration depuis Streamlit)
+- **Frontend:** React 18.3.1 + Vite 4.5.0
 - **Build Tools:** Vite 4.5.0 (développement et build)
 - **Déploiement:** Local (migration vers cloud prévue)
 
-### Analytics Engine (Backend)
-**Core Library:** OpenAI Python library  
+### Backend Architecture
+**Framework:** FastAPI avec architecture modulaire  
 **Main Components:**
-- `OpenAI_Error_LLM_method.py` - Analyseur principal des erreurs linguistiques
-- `clients.py` - Configuration des clients OpenAI (GPT-5, GPT-4, embeddings)
-- `conf.py` - Configuration des API keys et paramètres
+- `backend/models.py` - Modèles Pydantic (User, Teacher, Student, Analysis)
+- `backend/db_service.py` - Service de gestion des fichiers JSON
+- `backend/routes/auth.py` - Routes d'authentification
+- `backend/routes/student.py` - Routes pour étudiants
+- `backend/routes/teacher.py` - Routes pour enseignants
+- `backend/main.py` - Application FastAPI principale
+- `run_backend.py` - Script de démarrage du serveur
+
+**Analytics Engine:**
+- `backend/OpenAI_Error_LLM_method.py` - Analyseur principal des erreurs linguistiques
+- `backend/clients.py` - Configuration des clients OpenAI (GPT-5, GPT-4, embeddings)
+- `backend/config.py` - Configuration centralisée (variables d'environnement)
 
 **Fonctionnalités:**
-- Analyse automatique des erreurs de grammaire et syntaxe (GPT-5)
+- Authentification avec rôles (Student/Teacher/Admin)
+- Gestion des relations enseignant-étudiant
+- Dashboard avec statistiques en temps réel
+- Analyse automatique des erreurs de grammaire et syntaxe
 - Détection des erreurs de vocabulaire et conjugaison
 - Suggestions d'amélioration personnalisées
 - Analyse de progression des étudiants FLE
-- Amélioration de la précision avec GPT-5
 
 **Note:** Intégration vectorielle Pinecone prévue pour futures améliorations
+
+### ⚠️ Règles de Modification du System Prompt
+
+**Fichier critique:** `backend/OpenAI_Error_LLM_method.py`
+
+Ce fichier contient le **system prompt principal** de l'agent IA qui définit le comportement d'analyse des erreurs linguistiques. Toute modification de ce fichier doit suivre les règles suivantes :
+
+
 
 ### Structure des fichiers:
 ```
 analytics-service/
 ├── backend/
-│   ├── streamlit_app.py          # Interface principale (legacy)
-│   ├── clients.py                # Clients API (OpenAI)
-│   ├── conf.py                   # Configuration
-│   ├── OpenAI_Error_LLM_method.py # Analyseur d'erreurs (OpenAI library)
-│   └── requirements.txt
-├── frontend/                     # React 18.3.1 + Vite 4.5.0
+│   ├── routes/
+│   │   ├── __init__.py
+│   │   ├── auth.py                    # Routes authentification
+│   │   ├── student.py                 # Routes étudiants
+│   │   └── teacher.py                 # Routes enseignants
+│   ├── models.py                      # Modèles Pydantic
+│   ├── db_service.py                  # Service JSON database
+│   ├── main.py                        # Application FastAPI
+│   ├── config.py                      # Configuration (env variables)
+│   ├── clients.py                     # Clients OpenAI (GPT-4, GPT-5)
+│   ├── OpenAI_Error_LLM_method.py     # ⚠️ CRITIQUE: System prompt IA
+│   ├── __init__.py
+│   └── teacher_student_relations.json
+├── frontend/                           # React 18.3.1 + Vite 4.5.0
 │   ├── src/
-│   │   ├── components/           # Composants React
-│   │   ├── pages/               # Pages de l'application
-│   │   ├── hooks/               # Hooks personnalisés
-│   │   ├── services/            # Services API
-│   │   └── utils/               # Utilitaires
-│   ├── public/                  # Assets statiques
+│   │   ├── components/                 # Composants React
+│   │   ├── pages/                     # Pages de l'application
+│   │   ├── hooks/                     # Hooks personnalisés
+│   │   ├── services/                  # Services API
+│   │   ├── styles/                    # Styles CSS
+│   │   └── utils/                     # Utilitaires
+│   ├── public/                        # Assets statiques
 │   ├── package.json
 │   ├── vite.config.js
 │   └── index.html
-├── secure_data/                 # Données utilisateurs
-│   ├── users_database.json
-│   └── student_DB/
+├── secure_data/                       # Données utilisateurs
+│   ├── users_database.json            # Base utilisateurs
+│   └── student_DB/                    # Analyses des étudiants
+├── run_backend.py                     # Script démarrage backend
+├── requirements.txt                   # Dépendances Python
+├── .cursorrules                       # Règles de développement
 └── README.md
 ```
 
