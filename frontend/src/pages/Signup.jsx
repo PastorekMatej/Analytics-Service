@@ -8,6 +8,7 @@ const Signup = () => {
     email: '',
     password: '',
     confirmPassword: '',
+    name: '',
     role: 'student',
     teacherId: ''
   });
@@ -36,7 +37,7 @@ const Signup = () => {
   };
 
   const validateForm = () => {
-    if (!formData.email || !formData.password || !formData.confirmPassword) {
+    if (!formData.email || !formData.password || !formData.confirmPassword || !formData.name) {
       setError('Tous les champs sont obligatoires');
       return false;
     }
@@ -80,6 +81,7 @@ const Signup = () => {
       const response = await authService.signup(
         formData.email,
         formData.password,
+        formData.name,
         formData.role,
         formData.role === 'student' ? formData.teacherId : null
       );
@@ -121,6 +123,22 @@ const Signup = () => {
           )}
 
           <form onSubmit={handleSubmit} className="auth-form">
+            <div className="form-group">
+              <label htmlFor="name" className="form-label">
+                Nom complet
+              </label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                className="form-control"
+                placeholder="Votre nom"
+                value={formData.name}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
             <div className="form-group">
               <label htmlFor="email" className="form-label">
                 Email

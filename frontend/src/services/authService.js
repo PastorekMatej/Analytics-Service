@@ -3,7 +3,7 @@
  * Handles user authentication, login, signup, and session management
  */
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = 'http://localhost:8000/api';
 
 const authService = {
   /**
@@ -14,45 +14,32 @@ const authService = {
    */
   async login(email, password) {
     try {
-      // TODO: Replace with actual API call when backend is ready
-      // For now, simulate authentication with mock data
-      
-      // Built-in admin check
-      if (email === 'admin@frenchlab.com' && password === 'AdminFrench2024!') {
-        return {
-          success: true,
-          email: email,
-          role: 'admin',
-          message: 'Admin login successful'
-        };
-      }
+      const response = await fetch(`${API_BASE_URL}/auth/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 500));
+      const data = await response.json();
 
-      // Mock user data (replace with actual API call)
-      const mockUsers = {
-        'student@example.com': { password: 'student123', role: 'student', teacherId: 'teacher@example.com' },
-        'student2@example.com': { password: 'student123', role: 'student', teacherId: null },
-        'teacher@example.com': { password: 'teacher123', role: 'teacher' },
-        'teacher2@example.com': { password: 'teacher123', role: 'teacher' }
-      };
-
-      const user = mockUsers[email];
-      
-      if (!user || user.password !== password) {
+      if (!response.ok) {
         return {
           success: false,
-          message: 'Email ou mot de passe invalide'
+          message: data.detail || 'Erreur de connexion'
         };
       }
 
       return {
-        success: true,
-        email: email,
-        role: user.role,
-        teacherId: user.teacherId || null,
-        message: 'Login successful'
+        success: data.success,
+        email: data.user.email,
+        name: data.user.name,
+        role: data.user.role,
+        teacherId: data.user.teacher_email,
+        students: data.user.students,
+        texts_count: data.user.texts_count,
+        message: data.message
       };
 
     } catch (error) {
@@ -72,30 +59,34 @@ const authService = {
    * @param {string} teacherId - Optional teacher ID for students
    * @returns {Promise<Object>} Response with success status
    */
-  async signup(email, password, role, teacherId = null) {
+  async signup(email, password, name, role, teacherId = null) {
     try {
-      // TODO: Replace with actual API call when backend is ready
-      
-      // Prevent signup with admin email
-      if (email === 'admin@frenchlab.com') {
+      const response = await fetch(`${API_BASE_URL}/auth/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+          name,
+          role,
+          teacher_email: teacherId,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
         return {
           success: false,
-          message: 'Cet email est réservé pour le compte admin'
+          message: data.detail || 'Erreur lors de la création du compte'
         };
       }
 
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 500));
-
-      // Store user data in localStorage (simulating database)
-      const users = JSON.parse(localStorage.getItem('users') || '{}');
-      users[email] = { password, role, teacherId };
-      localStorage.setItem('users', JSON.stringify(users));
-
-      // Simulate successful signup
       return {
-        success: true,
-        message: 'Compte créé avec succès'
+        success: data.success,
+        message: data.message
       };
 
     } catch (error) {
@@ -172,21 +163,21 @@ const authService = {
    */
   async getTeachersList() {
     try {
-      // TODO: Replace with actual API call when backend is ready
-      
-      // Simulate API call delay
-      await new Promise(resolve => setTimeout(resolve, 300));
+      const response = await fetch(`${API_BASE_URL}/auth/teachers`);
 
-      // Mock teachers list
-      const teachers = [
-        { email: 'teacher@example.com', name: 'Prof. Dubois' },
-        { email: 'teacher2@example.com', name: 'Prof. Martin' },
-        { email: 'admin@frenchlab.com', name: 'Administrateur' }
-      ];
+      const data = await response.json();
+
+      if (!response.ok) {
+        return {
+          success: false,
+          teachers: [],
+          message: data.detail || 'Erreur lors de la récupération des enseignants'
+        };
+      }
 
       return {
-        success: true,
-        teachers: teachers
+        success: data.success,
+        teachers: data.teachers
       };
 
     } catch (error) {
