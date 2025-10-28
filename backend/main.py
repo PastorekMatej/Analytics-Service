@@ -5,7 +5,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging
 
-from .routes import auth_router, student_router, teacher_router
+from .routes import auth_router, student_router, teacher_router, analysis_router
 
 
 # Configure logging
@@ -40,6 +40,7 @@ app.add_middleware(
 app.include_router(auth_router)
 app.include_router(student_router)
 app.include_router(teacher_router)
+app.include_router(analysis_router)
 
 
 @app.get("/")
