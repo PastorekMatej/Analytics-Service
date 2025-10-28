@@ -83,7 +83,7 @@ const Signup = () => {
         formData.password,
         formData.name,
         formData.role,
-        formData.role === 'student' ? formData.teacherId : null
+        formData.role === 'student' && formData.teacherId ? formData.teacherId : null
       );
 
       if (response.success) {

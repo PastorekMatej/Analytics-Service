@@ -5,9 +5,12 @@ from fastapi import APIRouter, HTTPException, status
 from fastapi.responses import JSONResponse
 from typing import Dict
 import hashlib
+import logging
 
 from ..models import LoginRequest, SignupRequest, UserResponse, UserRole
 from ..db_service import db
+
+logger = logging.getLogger(__name__)
 
 
 router = APIRouter(prefix="/api/auth", tags=["authentication"])
@@ -29,44 +32,53 @@ async def login(request: LoginRequest) -> Dict:
     Returns:
         User data with success message
     """
-    user = db.get_user_by_email(request.email)
-    
-    if not user:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Email ou mot de passe incorrect"
-        )
-    
-    # Verify password
-    hashed_password = hash_password(request.password)
-    if user.get("password") != hashed_password:
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail="Email ou mot de passe incorrect"
-        )
-    
-    # Get teacher if student
-    teacher_email = None
-    if user.get("role") == "student":
-        teacher_email = db.get_student_teacher(request.email)
-    
-    # Get students if teacher
-    students = []
-    if user.get("role") == "teacher":
-        students = db.get_teacher_students(request.email)
-    
-    return {
-        "success": True,
-        "message": "Connexion réussie",
-        "user": {
-            "email": user["email"],
-            "name": user.get("name", user["email"]),
-            "role": user["role"],
-            "teacher_email": teacher_email,
-            "students": students,
-            "texts_count": user.get("texts_count", 0)
+    try:
+        user = db.get_user_by_email(request.email)
+        
+        if not user:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Email ou mot de passe incorrect"
+            )
+        
+        # Verify password
+        hashed_password = hash_password(request.password)
+        if user.get("password") != hashed_password:
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Email ou mot de passe incorrect"
+            )
+        
+        # Get teacher if student
+        teacher_email = None
+        if user.get("role") == "student":
+            teacher_email = db.get_student_teacher(request.email)
+        
+        # Get students if teacher
+        students = []
+        if user.get("role") == "teacher":
+            students = db.get_teacher_students(request.email)
+        
+        return {
+            "success": True,
+            "message": "Connexion réussie",
+            "user": {
+                "email": user["email"],
+                "name": user.get("name", user["email"]),
+                "role": user["role"],
+                "teacher_email": teacher_email,
+                "students": students,
+                "texts_count": user.get("texts_count", 0)
+            }
         }
-    }
+    except HTTPException:
+        raise
+    except Exception as e:
+        logger.error(f"Login error for {request.email}: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Erreur serveur: {str(e)}"
+        )
 
 
 @router.post("/signup")
