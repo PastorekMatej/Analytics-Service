@@ -100,9 +100,9 @@ class JSONDatabase:
         data = self._read_json(self.relations_file)
         relations = data.get("relations", [])
         return [
-            r["student_email"] 
+            r.get("student_email") 
             for r in relations 
-            if r.get("teacher_email") == teacher_email
+            if r.get("teacher_email") == teacher_email and r.get("student_email")
         ]
     
     def assign_teacher_to_student(self, student_email: str, teacher_email: Optional[str]):
@@ -111,7 +111,7 @@ class JSONDatabase:
         relations = data.get("relations", [])
         
         # Remove existing relation
-        relations = [r for r in relations if r["student_email"] != student_email]
+        relations = [r for r in relations if r.get("student_email") != student_email]
         
         # Add new relation if teacher_email is provided
         if teacher_email:
@@ -131,7 +131,7 @@ class JSONDatabase:
         relations = data.get("relations", [])
         
         for r in relations:
-            if r["student_email"] == student_email:
+            if r.get("student_email") == student_email:
                 return r.get("teacher_email")
         
         return None
