@@ -4,6 +4,120 @@
    Sophisticated & Subtle
    =================================== */
 
+/* Student Analysis View */
+.analyses-list {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+.analysis-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  margin-bottom: 1.5rem;
+  border: 1px solid #f0f0f0;
+  transition: all 0.2s ease;
+}
+
+.analysis-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.analysis-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.analysis-info {
+  flex: 1;
+}
+
+.analysis-title {
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #2a2a2a;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.01em;
+}
+
+.analysis-date {
+  font-size: 0.8rem;
+  color: #8a8a8a;
+  margin: 0;
+  font-weight: 300;
+}
+
+.analysis-actions {
+  margin-left: 1rem;
+}
+
+.analysis-preview {
+  padding: 1.5rem;
+  background: #fafafa;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.text-excerpt {
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+  margin: 0;
+  font-style: italic;
+}
+
+.analysis-details {
+  padding: 1.5rem;
+  background: #ffffff;
+}
+
+.analysis-content {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.analysis-text {
+  line-height: 1.8;
+  color: #2a2a2a;
+}
+
+.analysis-section-title {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #2563eb;
+  margin: 1.5rem 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.analysis-section-title:first-child {
+  margin-top: 0;
+}
+
+.analysis-paragraph {
+  margin-bottom: 0.75rem;
+  color: #2a2a2a;
+  line-height: 1.7;
+}
+
+.analysis-paragraph strong {
+  color: #2563eb;
+  font-weight: 500;
+}
+
+.analysis-list-item {
+  margin-bottom: 0.5rem;
+  padding-left: 1rem;
+  color: #2a2a2a;
+  list-style-position: outside;
+  margin-left: 1rem;
+  line-height: 1.6;
+}
+
 .dashboard-page {
   width: 100%;
   min-height: 100vh;

@@ -28,7 +28,22 @@ export const submitTextForAnalysis = async (studentEmail, textContent, textType 
 
     if (!response.ok) {
       const error = await response.json();
-      throw new Error(error.detail || 'Erreur lors de la soumission');
+      
+      // Handle Pydantic validation errors
+      let errorMessage = 'Erreur lors de la soumission';
+      if (error.detail) {
+        if (typeof error.detail === 'string') {
+          errorMessage = error.detail;
+        } else if (Array.isArray(error.detail)) {
+          // Pydantic validation errors format
+          errorMessage = error.detail.map(err => {
+            const field = err.loc ? err.loc.join('.') : 'field';
+            return `${field}: ${err.msg || err.message || 'invalid'}`;
+          }).join(', ');
+        }
+      }
+      
+      throw new Error(errorMessage);
     }
 
     return await response.json();

@@ -1,47 +1,66 @@
 import { useState, useEffect } from 'react';
+import analysisService from '../services/analysisService';
 import './Dashboard.css';
 
 const Dashboard = ({ userRole, userEmail }) => {
   const [students, setStudents] = useState([]);
   const [selectedStudent, setSelectedStudent] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [analyses, setAnalyses] = useState([]);
+  const [expandedAnalysis, setExpandedAnalysis] = useState(null);
 
   useEffect(() => {
-    // Simulate loading students data
-    setTimeout(() => {
-      // Get all users from localStorage
-      const users = JSON.parse(localStorage.getItem('users') || '{}');
-      
-      // Filter students based on teacher
-      let filteredStudents = [];
-      
-      if (userRole === 'admin') {
-        // Admin sees all students
-        filteredStudents = Object.entries(users)
-          .filter(([email, data]) => data.role === 'student')
-          .map(([email, data]) => ({
-            email,
-            textsCount: Math.floor(Math.random() * 30),
-            lastActivity: new Date().toISOString().split('T')[0],
-            hasNewTexts: Math.random() > 0.5,
-            teacherId: data.teacherId
-          }));
-      } else if (userRole === 'teacher') {
-        // Teachers see only their assigned students
-        filteredStudents = Object.entries(users)
-          .filter(([email, data]) => data.role === 'student' && data.teacherId === userEmail)
-          .map(([email, data]) => ({
-            email,
-            textsCount: Math.floor(Math.random() * 30),
-            lastActivity: new Date().toISOString().split('T')[0],
-            hasNewTexts: Math.random() > 0.5,
-            teacherId: data.teacherId
-          }));
+    const loadData = async () => {
+      if (userRole === 'student') {
+        // Load analyses for student
+        try {
+          const response = await analysisService.getStudentAnalyses(userEmail);
+          setAnalyses(response.analyses || []);
+        } catch (error) {
+          console.error('Error loading analyses:', error);
+          setAnalyses([]);
+        }
+        setLoading(false);
+      } else {
+        // Load students for teacher/admin
+        setTimeout(() => {
+          // Get all users from localStorage
+          const users = JSON.parse(localStorage.getItem('users') || '{}');
+          
+          // Filter students based on teacher
+          let filteredStudents = [];
+          
+          if (userRole === 'admin') {
+            // Admin sees all students
+            filteredStudents = Object.entries(users)
+              .filter(([email, data]) => data.role === 'student')
+              .map(([email, data]) => ({
+                email,
+                textsCount: Math.floor(Math.random() * 30),
+                lastActivity: new Date().toISOString().split('T')[0],
+                hasNewTexts: Math.random() > 0.5,
+                teacherId: data.teacherId
+              }));
+          } else if (userRole === 'teacher') {
+            // Teachers see only their assigned students
+            filteredStudents = Object.entries(users)
+              .filter(([email, data]) => data.role === 'student' && data.teacherId === userEmail)
+              .map(([email, data]) => ({
+                email,
+                textsCount: Math.floor(Math.random() * 30),
+                lastActivity: new Date().toISOString().split('T')[0],
+                hasNewTexts: Math.random() > 0.5,
+                teacherId: data.teacherId
+              }));
+          }
+          
+          setStudents(filteredStudents);
+          setLoading(false);
+        }, 1000);
       }
-      
-      setStudents(filteredStudents);
-      setLoading(false);
-    }, 1000);
+    };
+
+    loadData();
   }, [userRole, userEmail]);
 
   if (loading) {
@@ -49,6 +68,134 @@ const Dashboard = ({ userRole, userEmail }) => {
       <div className="loading-spinner">
         <div className="spinner"></div>
         <p>Chargement du tableau de bord...</p>
+      </div>
+    );
+  }
+
+  // Student view - show analyses
+  if (userRole === 'student') {
+    return (
+      <div className="dashboard-page">
+        <div className="page-header">
+          <h1 className="page-title">📊 Mon Progrès</h1>
+          <p className="page-description">
+            Consultez vos analyses de textes et suivez votre progression
+          </p>
+        </div>
+
+        {analyses.length === 0 ? (
+          <div className="empty-state">
+            <div className="empty-icon">📚</div>
+            <h3 className="empty-title">Aucune analyse disponible</h3>
+            <p className="empty-description">
+              Soumettez votre premier texte dans l'onglet "Analyse Écrite" pour commencer votre parcours d'apprentissage.
+            </p>
+          </div>
+        ) : (
+          <div className="analyses-list">
+            {analyses.map((analysis, index) => (
+              <div key={analysis.id || index} className="analysis-card">
+                <div className="analysis-card-header">
+                  <div className="analysis-info">
+                    <h3 className="analysis-title">
+                      Analyse #{analyses.length - index}
+                    </h3>
+                    <p className="analysis-date">
+                      {new Date(analysis.created_at).toLocaleDateString('fr-FR', {
+                        day: 'numeric',
+                        month: 'long',
+                        year: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
+                    </p>
+                  </div>
+                  <div className="analysis-actions">
+                    <button
+                      className="btn btn-outline btn-sm"
+                      onClick={() => setExpandedAnalysis(expandedAnalysis === analysis.id ? null : analysis.id)}
+                    >
+                      {expandedAnalysis === analysis.id ? 'Masquer' : 'Voir détails'}
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="analysis-preview">
+                  <p className="text-excerpt">
+                    "{analysis.text_content ? analysis.text_content.substring(0, 100) + '...' : 'Texte non disponible'}"
+                  </p>
+                </div>
+
+                {expandedAnalysis === analysis.id && (
+                  <div className="analysis-details">
+                    <div className="analysis-content">
+                      {analysis.analysis_result ? (
+                        <div className="analysis-text">
+                          {analysis.analysis_result.split('\n').map((line, lineIndex) => {
+                            // Handle headers (## Titre)
+                            if (line.startsWith('## ')) {
+                              return (
+                                <h4 key={lineIndex} className="analysis-section-title">
+                                  {line.replace('## ', '')}
+                                </h4>
+                              );
+                            }
+                            // Handle bold text (**texte**)
+                            if (line.includes('**')) {
+                              const parts = line.split(/(\*\*[^*]+\*\*)/g);
+                              return (
+                                <p key={lineIndex} className="analysis-paragraph">
+                                  {parts.map((part, i) => {
+                                    if (part.startsWith('**') && part.endsWith('**')) {
+                                      return (
+                                        <strong key={i}>
+                                          {part.replace(/\*\*/g, '')}
+                                        </strong>
+                                      );
+                                    }
+                                    return part;
+                                  })}
+                                </p>
+                              );
+                            }
+                            // Handle list items
+                            if (line.trim().startsWith('-')) {
+                              return (
+                                <li key={lineIndex} className="analysis-list-item">
+                                  {line.replace(/^-\s*/, '')}
+                                </li>
+                              );
+                            }
+                            // Handle numbered items
+                            if (line.match(/^\d+\./)) {
+                              return (
+                                <li key={lineIndex} className="analysis-list-item">
+                                  {line.replace(/^\d+\.\s*/, '')}
+                                </li>
+                              );
+                            }
+                            // Empty lines
+                            if (line.trim() === '') {
+                              return <br key={lineIndex} />;
+                            }
+                            // Regular paragraphs
+                            return (
+                              <p key={lineIndex} className="analysis-paragraph">
+                                {line}
+                              </p>
+                            );
+                          })}
+                        </div>
+                      ) : (
+                        <p className="text-secondary">Analyse en cours...</p>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     );
   }
