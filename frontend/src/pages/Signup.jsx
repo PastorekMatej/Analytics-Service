@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import authService from '../services/authService';
 import './Auth.css';
@@ -8,12 +8,25 @@ const Signup = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'student'
+    role: 'student',
+    teacherId: ''
   });
+  const [teachers, setTeachers] = useState([]);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    // Load teachers list when component mounts
+    const loadTeachers = async () => {
+      const response = await authService.getTeachersList();
+      if (response.success) {
+        setTeachers(response.teachers);
+      }
+    };
+    loadTeachers();
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
@@ -67,7 +80,8 @@ const Signup = () => {
       const response = await authService.signup(
         formData.email,
         formData.password,
-        formData.role
+        formData.role,
+        formData.role === 'student' ? formData.teacherId : null
       );
 
       if (response.success) {
@@ -173,9 +187,36 @@ const Signup = () => {
                 <option value="teacher">Enseignant</option>
               </select>
               <p className="form-help">
-                ℹ️ Le rôle admin est géré par le compte admin intégré
+                👨‍🎓 Étudiant: Accès aux analyses de textes et suivi de progression
+                <br />
+                👨‍🏫 Enseignant: Accès au dashboard de vos étudiants
               </p>
             </div>
+
+            {formData.role === 'student' && (
+              <div className="form-group">
+                <label htmlFor="teacherId" className="form-label">
+                  Choisir un enseignant (optionnel)
+                </label>
+                <select
+                  id="teacherId"
+                  name="teacherId"
+                  className="form-control"
+                  value={formData.teacherId}
+                  onChange={handleChange}
+                >
+                  <option value="">Aucun enseignant pour le moment</option>
+                  {teachers.map((teacher) => (
+                    <option key={teacher.email} value={teacher.email}>
+                      {teacher.name} ({teacher.email})
+                    </option>
+                  ))}
+                </select>
+                <p className="form-help">
+                  Vous pouvez choisir un enseignant maintenant ou plus tard dans votre profil
+                </p>
+              </div>
+            )}
 
             <button
               type="submit"

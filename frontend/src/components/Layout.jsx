@@ -9,9 +9,10 @@ const Layout = ({ children, isAuthenticated, userEmail, userRole, onLogout }) =>
           <div className="header-content">
             <div className="logo">
               <Link to="/">
-                <span className="logo-icon">🔬</span>
-                <span className="logo-text">French Learning Analytics Lab</span>
+                <span className="logo-icon">✨</span>
+                <span className="logo-text">Matej Language Lab</span>
               </Link>
+              <span className="beta-badge">Beta - Gratuit</span>
             </div>
             
             <nav className="nav">
@@ -33,6 +34,9 @@ const Layout = ({ children, isAuthenticated, userEmail, userRole, onLogout }) =>
                       </Link>
                       <Link to="/progress" className="nav-link">
                         📈 Mon Progrès
+                      </Link>
+                      <Link to="/profile" className="nav-link">
+                        👤 Mon Profil
                       </Link>
                     </>
                   )}
@@ -67,10 +71,10 @@ const Layout = ({ children, isAuthenticated, userEmail, userRole, onLogout }) =>
       <footer className="footer">
         <div className="container">
           <p className="footer-text">
-            French Learning Analytics Lab - AI-Powered Language Assessment
+            Matej Language Lab - Propulsé par l'Intelligence Artificielle
           </p>
           <p className="footer-copyright">
-            © 2024 - Plateforme d'analyse pour étudiants FLE
+            © 2025 - Plateforme d'analyse linguistique pour étudiants FLE
           </p>
         </div>
       </footer>

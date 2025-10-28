@@ -8,6 +8,7 @@ import WrittenAnalysis from './pages/WrittenAnalysis';
 import OralAnalysis from './pages/OralAnalysis';
 import Progress from './pages/Progress';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 import './styles/App.css';
 
 const App = () => {
@@ -57,10 +58,14 @@ const App = () => {
                 path="/progress"
                 element={<Progress userEmail={userEmail} />}
               />
+              <Route
+                path="/profile"
+                element={<Profile userEmail={userEmail} userRole={userRole} />}
+              />
               {(userRole === 'admin' || userRole === 'teacher') && (
                 <Route
                   path="/dashboard"
-                  element={<Dashboard userRole={userRole} />}
+                  element={<Dashboard userRole={userRole} userEmail={userEmail} />}
                 />
               )}
             </>

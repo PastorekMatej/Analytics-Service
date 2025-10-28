@@ -32,8 +32,10 @@ const authService = {
 
       // Mock user data (replace with actual API call)
       const mockUsers = {
-        'student@example.com': { password: 'student123', role: 'student' },
-        'teacher@example.com': { password: 'teacher123', role: 'teacher' }
+        'student@example.com': { password: 'student123', role: 'student', teacherId: 'teacher@example.com' },
+        'student2@example.com': { password: 'student123', role: 'student', teacherId: null },
+        'teacher@example.com': { password: 'teacher123', role: 'teacher' },
+        'teacher2@example.com': { password: 'teacher123', role: 'teacher' }
       };
 
       const user = mockUsers[email];
@@ -49,6 +51,7 @@ const authService = {
         success: true,
         email: email,
         role: user.role,
+        teacherId: user.teacherId || null,
         message: 'Login successful'
       };
 
@@ -66,9 +69,10 @@ const authService = {
    * @param {string} email - User email
    * @param {string} password - User password
    * @param {string} role - User role (student/teacher)
+   * @param {string} teacherId - Optional teacher ID for students
    * @returns {Promise<Object>} Response with success status
    */
-  async signup(email, password, role) {
+  async signup(email, password, role, teacherId = null) {
     try {
       // TODO: Replace with actual API call when backend is ready
       
@@ -82,6 +86,11 @@ const authService = {
 
       // Simulate API call delay
       await new Promise(resolve => setTimeout(resolve, 500));
+
+      // Store user data in localStorage (simulating database)
+      const users = JSON.parse(localStorage.getItem('users') || '{}');
+      users[email] = { password, role, teacherId };
+      localStorage.setItem('users', JSON.stringify(users));
 
       // Simulate successful signup
       return {
@@ -153,6 +162,80 @@ const authService = {
       return {
         success: false,
         message: 'Erreur lors de la récupération des informations utilisateur'
+      };
+    }
+  },
+
+  /**
+   * Get list of all teachers
+   * @returns {Promise<Object>} List of teachers
+   */
+  async getTeachersList() {
+    try {
+      // TODO: Replace with actual API call when backend is ready
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      // Mock teachers list
+      const teachers = [
+        { email: 'teacher@example.com', name: 'Prof. Dubois' },
+        { email: 'teacher2@example.com', name: 'Prof. Martin' },
+        { email: 'admin@frenchlab.com', name: 'Administrateur' }
+      ];
+
+      return {
+        success: true,
+        teachers: teachers
+      };
+
+    } catch (error) {
+      console.error('Get teachers list error:', error);
+      return {
+        success: false,
+        message: 'Erreur lors de la récupération de la liste des enseignants',
+        teachers: []
+      };
+    }
+  },
+
+  /**
+   * Assign teacher to student
+   * @param {string} studentEmail - Student email
+   * @param {string} teacherEmail - Teacher email (null to remove assignment)
+   * @returns {Promise<Object>} Response with success status
+   */
+  async assignTeacher(studentEmail, teacherEmail) {
+    try {
+      // TODO: Replace with actual API call when backend is ready
+      
+      // Get users from localStorage
+      const users = JSON.parse(localStorage.getItem('users') || '{}');
+      
+      if (!users[studentEmail]) {
+        return {
+          success: false,
+          message: 'Étudiant non trouvé'
+        };
+      }
+
+      // Update teacher assignment
+      users[studentEmail].teacherId = teacherEmail;
+      localStorage.setItem('users', JSON.stringify(users));
+
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 300));
+
+      return {
+        success: true,
+        message: teacherEmail ? 'Enseignant assigné avec succès' : 'Assignation retirée'
+      };
+
+    } catch (error) {
+      console.error('Assign teacher error:', error);
+      return {
+        success: false,
+        message: 'Erreur lors de l\'assignation'
       };
     }
   }
