@@ -84,7 +84,7 @@ const studentService = {
       // Mock analysis result
       await new Promise(resolve => setTimeout(resolve, 2000));
       
-      const mockAnalysis = `📊 Analyse GPT-5 - Rapport d'erreurs linguistiques
+      const mockAnalysis = `📊 Analyse IA - Rapport d'erreurs linguistiques
 
 ✅ POINTS FORTS:
 - Bonne structure générale du texte

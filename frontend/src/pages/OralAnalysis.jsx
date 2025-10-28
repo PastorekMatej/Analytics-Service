@@ -186,7 +186,7 @@ const OralAnalysis = ({ userEmail }) => {
               {analysisResult && (
                 <div className="analysis-result">
                   <div className="result-header">
-                    <span className="result-badge">✨ Analysé par GPT-5</span>
+                    <span className="result-badge">✨ Analysé par l'IA</span>
                   </div>
                   <div className="result-content">
                     <pre>{analysisResult}</pre>

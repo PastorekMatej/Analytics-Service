@@ -59,7 +59,7 @@ const WrittenAnalysis = ({ userEmail }) => {
       <div className="page-header">
         <h1 className="page-title">📝 Analyse des Textes Écrits</h1>
         <p className="page-description">
-          Soumettez vos productions écrites en français pour une analyse complète avec l'IA GPT-5
+          Soumettez vos productions écrites en français pour une analyse complète avec l'Intelligence Artificielle
         </p>
       </div>
 
@@ -139,7 +139,7 @@ const WrittenAnalysis = ({ userEmail }) => {
               {loading && (
                 <div className="loading-spinner">
                   <div className="spinner"></div>
-                  <p>Analyse GPT-5 en cours...</p>
+                  <p>Analyse IA en cours...</p>
                 </div>
               )}
 
@@ -155,7 +155,7 @@ const WrittenAnalysis = ({ userEmail }) => {
               {analysisResult && (
                 <div className="analysis-result">
                   <div className="result-header">
-                    <span className="result-badge">✨ Analysé par GPT-5</span>
+                    <span className="result-badge">✨ Analysé par l'IA</span>
                   </div>
                   <div className="result-content">
                     <pre>{analysisResult}</pre>
