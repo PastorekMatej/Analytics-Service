@@ -1,0 +1,176 @@
+ÉVOLUTION_GLOBALE:
+- évolution de niveau: "A2 → B1"
+- résumé: L’étudiante a nettement gagné en ampleur textuelle (lettres argumentées, consignes, récits au passé) et en contrôle des structures complexes (subordonnées, hypothèses, registre semi‑formel). Les erreurs de passé composé (auxiliaire/accord) ont quasi disparu, l’ordre des mots s’améliore. Persistents: prépositions/constructions à l’infinitif, articles/déterminants, accords de base, quelques négations mal formées et emplois fautifs du subjonctif/conditionnel. Autocorrections visibles dès les leçons 15–15_2, signe de conscience métalinguistique accrue.
+
+TENDANCES D’ÉVOLUTION:
+- G01 (participe passé/auxiliaire au passé composé): ≈8–10 occurrences concentrées leçons 2–4 → 0 dans 13–15_2.
+- G08 (ordre des mots, placement adverbes/pronoms): ≈6 occurrences leçons 4–5 → 1 isolée leçon 12 → 0 dans 15–15_2.
+- G05 (accords/conjugaisons de base): ≈10 occurrences leçons 2–7 → 3–4 leçon 13 → 1–2 dans 15–15_2.
+- V04 (collocations plus naturelles): amélioration sensible dans 15–15_2 (auto‑révisions), même si 2–3 calques persistent.
+- Style: progression de la structuration argumentative (connecteurs, exemples, reformulations), diversité des genres textuels (courrier pro, argumentaire, récit), et apparition d’auto‑corrections explicites dès la leçon 15.
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, contraction, partitif)
+  occurrences: ≈14
+  exemples:
+    - "la langue français" → "la langue française" (leçon_1)
+    - "association des vos élèves" → "de vos élèves" (leçon_5_2)
+    - "des belles photos" → "de belles photos" (leçon_5)
+    - "la départ de Baptiste" → "le départ" (leçon_9_2)
+    - "A école" → "À l’école" ; "du anglais" → "de l’anglais" ; "le langue" → "la langue" (leçon_15)
+    - "cet expérience" → "cette expérience" (leçon_15_2)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / constructions à l’infinitif
+  occurrences: ≈15
+  exemples:
+    - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (leçon_1)
+    - "As‑tu quelque chose nouvelle ?" → "… quelque chose de nouveau ?" (leçon_2)
+    - "en nuit" → "la nuit / dans la nuit" (leçon_4)
+    - "dans l’école" → "à l’école" (leçon_5_2)
+    - "recommencent être ouvertes" → "recommencer à être ouvertes / rouvrent" (leçon_6_2)
+    - "t’aider avec chercher" → "t’aider à chercher" ; "attends pour recevoir" → "attends de recevoir" (leçon_7_1)
+    - "quelque chose différent" → "quelque chose de différent" ; "savoir travailler à leurs outils" → "… utiliser leurs outils" ; "un cours d’apprendre utiliser" → "un cours pour apprendre à utiliser" (leçon_10)
+    - "en langue que je voulais apprendre" → "dans la langue…" (leçon_15)
+    - "parler en français" → "parler français" ; "rencontrer avec la vie" → "faire l’expérience de / découvrir la vie…" (leçon_15_2)
+
+- type: G05
+  pattern: Accords de base (genre/nombre) et conjugaisons
+  occurrences: ≈12
+  exemples:
+    - "le première fois" → "la première fois" ; "ce gens" → "ces gens" (leçon_2)
+    - "j’étais… stressé / heureux" → "stressée / heureuse" (leçon_5)
+    - "très réussi / satisfée" → "très réussie / satisfaite" (leçon_6_1)
+    - "varieux" → "variés" (leçon_6_2)
+    - "tu envoie" → "tu envoies" (leçon_7_1)
+    - "les professeurs étaient très encourageant et rassurant" → "encourageants et rassurants" (leçon_13)
+
+- type: G08
+  pattern: Ordre des mots (adverbes, subordonnants, pronoms)
+  occurrences: ≈8
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (leçon_4)
+    - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (leçon_5)
+    - "Et je dois dire j’aime…" → "… dire que j’aime…" (leçon_2)
+    - "vous vous pouvez garer" → "vous pouvez vous garer" (leçon_5_2)
+    - "c’est que vous voyez mener…" → "c’est celle que vous voyez… / qui mène…" (leçon_5_2)
+    - "… et dans je suis…" → "… et qui me…" (leçon_12)
+
+- type: G01
+  pattern: Passé composé: auxiliaire/accord du participe passé
+  occurrences: ≈9
+  exemples:
+    - "j’ai arrivée" → "je suis arrivée" (leçon_4)
+    - "j’ai passée la nuit" → "j’ai passé la nuit" (leçon_4)
+    - "j’ai vue / visitée…" → "j’ai vu / visité…" (leçon_4)
+    - "j’y restée trois jours" → "j’y suis restée…" (leçon_4)
+    - "j’ai voyagée" → "j’ai voyagé" (leçon_4)
+
+- type: G03
+  pattern: Erreur de négation (ordre/placement)
+  occurrences: 2
+  exemples:
+    - "je n’ai connu pas" → "je n’ai pas connu" (leçon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (leçon_13)
+
+- type: G10
+  pattern: Usage fautif du subjonctif/conditionnel
+  occurrences: 3
+  exemples:
+    - "Bien que ma vie a changé" → "… ait changé" (leçon_2)
+    - "si … était…, cela lui rappellera" → "… lui rappellerait" (leçon_9_2)
+    - "je suis heureuse que j’ai pu" → "… que j’aie pu" (leçon_15_2)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / emprunts directs
+  occurrences: ≈9
+  exemples:
+    - "fluente" → "couramment / fluide" (leçon_1)
+    - "avanture", "défises" → "aventure", "défis" (leçon_2)
+    - "en Slovaque" → "en Slovaquie" (leçon_4)
+    - "effectivement" (au sens de efficacement) → "efficacement" (leçon_10)
+    - "détroits historiques" → "sites/lieux historiques" (leçon_13)
+    - "slang", "positions" → "jargon", "postes" (leçon_15_2)
+
+- type: V04
+  pattern: Collocations non naturelles
+  occurrences: ≈6
+  exemples:
+    - "mon énergie a monté" → "mon énergie a augmenté" (leçon_5)
+    - "Félicitations pour obtenir…" → "Félicitations pour l’obtention de…" (leçon_7_1)
+    - "un album photos" → "un album photo / un album de photos" (leçon_9_2)
+    - "trouver des nouveaux amis" → "se faire de nouveaux amis" (leçon_13)
+    - "rencontrer avec la vie" → "vivre/expérimenter la vie…" (leçon_15_2)
+
+- type: V05
+  pattern: Interférence (calque de la structure maternelle)
+  occurrences: ≈10
+  exemples:
+    - "la raison pourquoi" → "la raison pour laquelle" (leçon_1)
+    - "tout le meilleur à la maison le meilleur" → "rien ne vaut la maison / on est mieux chez soi" (leçon_4)
+    - "je veux te parler de mes jours" → "… de mes journées" (leçon_5)
+    - "Celui que je parle, c’est situé…" → "Celui dont je parle est situé…" (leçon_5_2)
+    - "moi et ma famille" → "ma famille et moi" (leçon_12)
+    - "le pays de la France" → "la France" (leçon_13)
+
+STYLE:
+- type: S05
+  pattern: Formulation maladroite / lourde
+  occurrences: ≈12
+  exemples:
+    - "tellement magnifique belle" → "tellement belle / magnifique" (leçon_1)
+    - "Je vous explique quelle est la localisation…" → "Je vous indique où se trouve…" (leçon_5_2)
+    - "le pays de la France" (leçon_13)
+    - Questions longues avec parenthèses superflues (leçon_10, leçon_15)
+
+ERREURS_PERSISTANTES:
+- G07 (articles/déterminants)
+  exemples:
+    - "parler le langue du pays" → "la langue" (leçon_13)
+    - "À école" → "À l’école" ; "le langue" → "la langue" (leçon_15)
+    - "cet expérience" → "cette expérience" (leçon_15_2)
+
+- G06 (prépositions / constructions à l’infinitif)
+  exemples:
+    - "en langue que je voulais apprendre" → "dans la langue…" (leçon_15)
+    - "parler en français" → "parler français" ; "rencontrer avec la vie" → "vivre/faire l’expérience de…" (leçon_15_2)
+
+- G05 (accords/conjugaisons de base)
+  exemples:
+    - "très encourageant et rassurant" → "encourageants et rassurants" (leçon_13)
+
+- G03 (négation)
+  exemples:
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (leçon_13)
+
+- G10 (subjonctif/conditionnel)
+  exemples:
+    - "je suis heureuse que j’ai pu" → "… que j’aie pu" (leçon_15_2)
+
+- V01 (faux amis)
+  exemples:
+    - "détroits historiques" → "sites/lieux historiques" (leçon_13)
+    - "slang", "positions" → "jargon", "postes" (leçon_15_2)
+
+- V04 (collocations)
+  exemples:
+    - "trouver des nouveaux amis" → "se faire de nouveaux amis" (leçon_13)
+    - "rencontrer avec la vie" → "vivre/expérimenter…" (leçon_15_2)
+
+- V05 (interférence)
+  exemples:
+    - "le pays de la France" → "la France" (leçon_13)
+
+- S05 (formulation maladroite)
+  exemples:
+    - "Après les jours que j’ai passés au lycée, moi et mon groupe…" (leçon_13)
+    - "Mais le temps parfait… est quand ?" (leçon_15)
+    - Conclusion lourde avec redondances (leçon_15_2)
+
+Conclusion synthétique:
+- Points forts: nette maîtrise des récits au passé, meilleure structuration argumentative, variété de registres et de genres, autocorrections efficaces dès L15.
+- Points à cibler en priorité: 1) prépositions et constructions infinitives (G06), 2) articles/déterminants (G07), 3) accords de base (G05), 4) subjonctif/conditionnel (G10), 5) calques lexicaux/collocations (V01/V04).
+- Trajectoire: progression solide et régulière vers B1, avec des erreurs désormais davantage locales que systématiques.

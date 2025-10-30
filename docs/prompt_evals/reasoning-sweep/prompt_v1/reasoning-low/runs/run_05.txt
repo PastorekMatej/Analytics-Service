@@ -1,0 +1,197 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  résumé: >
+    L’étudiante produit désormais des textes plus structurés et argumentatifs (questions complexes,
+    conditionnel, subordonnées), avec une meilleure maîtrise du passé composé et de la négation.
+    Les difficultés persistantes concernent surtout les articles/déterminants (genre, “de/des”),
+    les prépositions et constructions à l’infinitif, des collocations peu naturelles et des formulations
+    encore lourdes. Le socle grammatical progresse, mais l’aisance idiomatique et la précision
+    morphosyntaxique restent à consolider.
+
+TENDANCES D’ÉVOLUTION :
+- G01 (passé composé: accord/auxiliaire): ≈9 occurrences concentrées au texte lecon_4 → 0 à partir des textes lecon_9–lecon_15_2.
+- G03 (négation): 2 occurrences (lecon_2, lecon_13) → 0 dans lecon_15 et lecon_15_2.
+- G08 (ordre des mots / “que” après c’est pour ça): 4–5 occurrences dans lecon_4–lecon_5_2 → quasi 0 dès lecon_9.
+- G05 (accords/adjectifs et désinences verbales): 6–7 occurrences jusqu’à lecon_6 → baisse nette, encore 2–3 erreurs ponctuelles dans les textes récents.
+- G06 (prépositions / constructions à l’infinitif): récurrent et stable (8+ occurrences du début à la fin), persiste en lecon_15 et lecon_15_2.
+- G07 (articles/déterminants: genre, “de/des”, contraction): récurrent et persistant (12+ occurrences), encore présent en lecon_13, lecon_15, lecon_15_2.
+- G04 (passé composé vs imparfait): hésitations récurrentes apparues en lecon_15_2 (≥2 cas).
+- V01 (faux amis / choix lexical par calque): 7+ occurrences, persiste (lecon_13, lecon_15_2).
+- V04 (collocations non naturelles): 6+ occurrences, persiste dans les derniers textes.
+- V05 (interférence syntaxique slovaque): 3–4 occurrences, encore visible (lecon_12, lecon_13).
+- S05 (formulations lourdes/maladroites): récurrent, mieux contrôlé après lecon_9 mais encore présent (lecon_15, lecon_15_2).
+- S02 (phrases longues/mal ponctuées): 2–3 occurrences (lecon_5_2, lecon_10) → amélioration légère ensuite.
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, “de/des”, contraction, superlatif)
+  occurrences: ≈14
+  exemples:
+    - "la langue français" → "la langue française / le français" (lecon_1)
+    - "c'est le première fois" → "c'est la première fois" (lecon_2)
+    - "ce gens" → "ces gens" (lecon_2)
+    - "La lendemain" → "Le lendemain" (lecon_4)
+    - "l'association des vos élèves" → "de vos élèves" (lecon_5_2)
+    - "a des bons professeurs" → "a de bons professeurs" (lecon_6_1)
+    - "le pays de la France" → "la France" (lecon_13)
+    - "le langue du pays" → "la langue du pays" (lecon_13)
+    - "A école" → "À l’école" (lecon_15)
+    - "une apprentissage" → "un apprentissage" (lecon_15)
+    - "cet expérience" → "cette expérience" (lecon_15_2)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / constructions à l’infinitif
+  occurrences: ≈10
+  exemples:
+    - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (lecon_1)
+    - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+    - "t’aider avec chercher" → "t’aider à chercher" (lecon_7_1)
+    - "tu attends pour recevoir un email" → "tu attends de recevoir un e-mail / tu attends un e-mail" (lecon_7_1)
+    - "entrées de quelques attractions" → "entrées pour quelques attractions" (lecon_9_2)
+    - "travailler à leurs outils numériques" → "utiliser leurs outils numériques" (lecon_10)
+    - "un cours d’apprendre utiliser" → "un cours pour apprendre à utiliser" (lecon_10)
+    - "en langue que je voulais apprendre" → "dans la langue que je voulais apprendre" (lecon_15)
+
+- type: G01
+  pattern: Passé composé: accord du participe (avec avoir) et choix de l’auxiliaire (être/avoir)
+  occurrences: ≈9
+  exemples:
+    - "As-tu déjà voyagée" → "As-tu déjà voyagé" (lecon_4)
+    - "J’ai arrivée en nuit" → "Je suis arrivée (dans la nuit)" (lecon_4)
+    - "j’ai passée la nuit" → "j’ai passé la nuit" (lecon_4)
+    - "j’ai vue le Musée national" → "j’ai vu le Musée national" (lecon_4)
+    - "j’ai visitée le Château de Prague" → "j’ai visité le château de Prague" (lecon_4)
+    - "j’ai voyagée en Pologne" → "j’ai voyagé en Pologne" (lecon_4)
+    - "… des gens que je n’ai pas connu" → "… des gens que je n’ai pas connus" (lecon_2)
+
+- type: G03
+  pattern: Erreur de négation (placement de "ne… pas")
+  occurrences: 2
+  exemples:
+    - "qui je n'ai connu pas" → "que je n’ai pas connus" (lecon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- type: G08
+  pattern: Ordre des mots / placement de clitiques et subordonnants
+  occurrences: ≈4
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+    - "vous vous pouvez garer" → "vous pouvez vous garer" (lecon_5_2)
+    - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (lecon_5)
+    - "j’y restée trois jours" → "j’y suis restée trois jours" (lecon_4)
+
+- type: G05
+  pattern: Accords/conjugaisons de base (adjectifs, personne/temps)
+  occurrences: ≈8
+  exemples:
+    - "J’étais vraiment stressé" → "stressée" (lecon_5)
+    - "qui a donner des roses" → "qui a donné" (lecon_5)
+    - "j’étais plus heureux" → "plus heureuse" (lecon_5)
+    - "Je suis satisfée" → "satisfaite" (lecon_6_1)
+    - "tu envoie" → "tu envoies" (lecon_7_1)
+    - "très encourageant et rassurant" → "encourageants et rassurants" (lecon_13)
+    - "ils apprendrons le langue" → "ils apprendront la langue" (lecon_15)
+
+- type: G04
+  pattern: Confusion passé composé / imparfait (valeurs d’aspect)
+  occurrences: 2
+  exemples:
+    - "J’ai parlé (Je parlais) avec des gens de tout" → choisir selon le contexte (lecon_15_2)
+    - "j’ai tout compris (je comprenais tout)" → choisir selon le contexte (lecon_15_2)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / calques du slovaque
+  occurrences: ≈8
+  exemples:
+    - "avanture d’adrénaline" → "aventure pleine d’adrénaline" (lecon_2)
+    - "défises" → "défis" (lecon_2)
+    - "en Slovaque" → "en Slovaquie" (lecon_4)
+    - "varieux" → "variables" (lecon_6_2)
+    - "des camarades … chers" → "chaleureux" (lecon_13)
+    - "détroits historiques" → "sites/lieux historiques" (lecon_13)
+    - "slang / le gargon / le dialec" → "argot / jargon / dialecte" (lecon_15_2)
+
+- type: V04
+  pattern: Collocation non naturelle
+  occurrences: ≈6
+  exemples:
+    - "mon énergie a monté" → "mon énergie a augmenté" (lecon_5)
+    - "trouver des nouveaux amis" → "se faire de nouveaux amis" (lecon_13)
+    - "entrées de quelques attractions" → "entrées pour quelques attractions" (lecon_9_2)
+    - "rencontrer avec la vie" → "vivre des situations de la vie quotidienne" (lecon_15_2)
+    - "essayer des positions" → "occuper/essayer différents postes" (lecon_15_2)
+
+- type: V05
+  pattern: Interférence linguistique (structure/slovaquisme)
+  occurrences: 4
+  exemples:
+    - "C’est la raison pourquoi…" → "C’est la raison pour laquelle…" (lecon_1)
+    - "tout le meilleur à la maison le meilleur" → "Rien ne vaut d’être chez soi" (lecon_4)
+    - "moi et ma famille" → "ma famille et moi" (lecon_12)
+    - "moi et mon groupe…" → "ma classe et moi" (lecon_13)
+
+STYLE:
+- type: S05
+  pattern: Formulation maladroite / lourde
+  occurrences: ≈7
+  exemples:
+    - "Je vous explique quelle est la localisation…" → "Voici où se trouve l’école…" (lecon_5_2)
+    - "c’est pour ça j’étais triste" → "c’est pour cela que j’étais triste" (lecon_5)
+    - "C’est une nouvelle expérience, une aventure d’adrénaline" → "C’est une nouvelle expérience un peu risquée" (lecon_2)
+    - "C’est trouver au coin…" → "Il se trouve au coin…" (lecon_5_2)
+
+- type: S02
+  pattern: Phrases trop longues / ponctuation fragile
+  occurrences: 3
+  exemples:
+    - Enchaînements avec parenthèses/répétitions (lecon_5_2)
+    - Questions multiples et longues peu segmentées (lecon_10)
+
+ERREURS_PERSISTANTES :
+- G07 (articles/déterminants) — encore présent dans les 3 derniers textes.
+  Exemples:
+    - "le pays de la France" → "la France" (lecon_13)
+    - "une apprentissage / le langue" → "un apprentissage / la langue" (lecon_15)
+    - "cet expérience" → "cette expérience" (lecon_15_2)
+
+- G06 (prépositions / infinitif) — présent dans les textes récents.
+  Exemples:
+    - "en langue que je voulais apprendre" → "dans la langue que…" (lecon_15)
+    - "entrées de quelques attractions" → "entrées pour…" (lecon_9_2) [à proximité de la période récente]
+    - "cours d’apprendre utiliser" → "cours pour apprendre à utiliser" (lecon_10) [construit et récurrent jusqu’à tard]
+
+- G05 (accords/conjugaisons)
+  Exemples:
+    - "très encourageant et rassurant" → "encourageants et rassurants" (lecon_13)
+    - "ils apprendrons le langue" → "ils apprendront la langue" (lecon_15)
+
+- G04 (PC / imparfait)
+  Exemples:
+    - "J’ai parlé / Je parlais…" (lecon_15_2)
+    - "j’ai tout compris / je comprenais tout" (lecon_15_2)
+
+- G03 (négation)
+  Exemples:
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- V01 (faux amis)
+  Exemples:
+    - "chers (pour des camarades)" → "chaleureux" (lecon_13)
+    - "slang / le gargon / le dialec" → "argot / jargon / dialecte" (lecon_15_2)
+
+- V04 (collocations)
+  Exemples:
+    - "trouver des nouveaux amis" → "se faire de nouveaux amis" (lecon_13)
+    - "rencontrer avec la vie" → "vivre des situations de la vie quotidienne" (lecon_15_2)
+
+- S05 (formulations lourdes)
+  Exemples:
+    - "moi et mon groupe…" → "ma classe et moi" (lecon_13)
+    - "Mais le temps parfait… est quand ?" → "Quel est le moment idéal… ?" (lecon_15)
+
+Conclusion synthétique:
+- Progrès nets: disparition quasi totale des erreurs de passé composé (accord/auxiliaire), meilleure négation et ordre des mots, complexification des phrases et du registre.
+- À stabiliser en priorité: G07 (articles/déterminants), G06 (prépositions/constructions), V04 (collocations) et S05 (formulations plus idiomatiques).
+- Niveau actuel cohérent avec B1: l’étudiante communique de façon claire sur des sujets concrets et argumente, malgré des imprécisions morphosyntaxiques et lexicales récurrentes.
