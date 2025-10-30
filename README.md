@@ -44,6 +44,66 @@ La plateforme propose deux types de comptes distincts :
 
 **💰 Abonnement actuel:** Tous les comptes sont gratuits pendant la phase de développement (Beta). Un système de paiement sera ajouté en Phase 7.
 
+### 🔬 Prompt Evaluation (GPT-5)
+
+**Système de test automatisé pour calibrer le system prompt avec variations de reasoning_effort.**
+
+#### Installation
+```bash
+# Installer les dépendances (inclut rapidfuzz pour métriques de similarité)
+pip install -r requirements.txt
+```
+
+#### Lancer une évaluation
+```bash
+python -m backend.prompt_eval.runner \
+  --experiment reasoning-sweep \
+  --reasoning-efforts low medium high \
+  --runs 5 \
+  --prompt backend/system_prompt/prompt_v1.md \
+  --student secure_data/student_DB/alexandre.json \
+  --max-tokens 20000
+```
+
+#### Structure des résultats
+```
+docs/prompt_evals/reasoning-sweep/prompt_v1/
+├── reasoning-low/
+│   ├── runs/          # 5 rapports bruts (run_01.txt...run_05.txt)
+│   ├── summary/       # summary.md (X/5 accords) + summary.json (métriques)
+│   └── prompt/        # prompt.md (copie du prompt utilisé)
+├── reasoning-medium/
+│   └── ...
+└── reasoning-high/
+    └── ...
+```
+
+#### Métriques générées
+- **Accords quantitatifs**: X/5 pour ÉVOLUTION_GLOBALE, GRAMMAIRE, VOCABULAIRE, STYLE, PERSISTANTES
+- **Similarité qualitative**: Score 0-100 pour les résumés narratifs
+- **Tokens**: Totaux et moyens (prompt, completion, reasoning) par configuration
+- **Notes**: Erreurs API, warnings, particularités
+
+#### Paramètres supportés (GPT-5)
+- ✅ `--reasoning-efforts`: `low`, `medium`, `high` (contrôle profondeur de raisonnement)
+- ✅ `--max-tokens`: limite completion (défaut: 20000)
+  - **Important**: GPT-5 consomme des tokens pour raisonnement interne + sortie finale
+  - **Minimum recommandé**: 16000 (sinon sortie vide ou tronquée)
+- ✅ `--runs`: nombre de runs par config (défaut: 5)
+- ✅ `--out`: répertoire de sortie (défaut: `docs/prompt_evals`)
+
+#### Paramètres NON supportés par GPT-5
+- ❌ `temperature` (figé à 1)
+- ❌ `top_p` (non modifiable)
+- ❌ `seed` (non supporté)
+- ❌ `response_format` (pas de mode JSON strict)
+
+#### Architecture des modules
+- `backend/prompt_eval/runner.py`: CLI et orchestration des runs
+- `backend/prompt_eval/parser.py`: Parse les sorties LLM (free-text ou JSON)
+- `backend/prompt_eval/metrics.py`: Calcule accords X/5 et similarités
+- `backend/prompt_eval/report.py`: Génère summary.md et summary.json
+
 ### 🚀 Quick Start
 
 **Backend:**
