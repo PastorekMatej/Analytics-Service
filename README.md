@@ -1,60 +1,508 @@
-# 🔬 French Learning Analytics Lab
+# 🎓 Maister - French Learning Analytics Platform
 
-## 📊 Current Status
+> **An AI-powered platform for analyzing written and oral French productions for FLE (French as a Foreign Language) students.**
 
-**Status:** ✅ PHASE 1 COMPLETE - Full Stack Integration  
-**Last Updated:** October 28, 2025  
-**Current Phase:** Frontend-Backend integration (Auth ✅, Analysis ✅)  
-**Next Milestone:** Dashboard data display and teacher features
+[![Status](https://img.shields.io/badge/status-phase%201%20complete-success)](https://github.com)
+[![Language](https://img.shields.io/badge/language-English-blue)](https://github.com)
+[![UI](https://img.shields.io/badge/UI-English-green)](https://github.com)
 
-### Recent Commits:
-- `f0dd5db` docs: create comprehensive roadmap and secure documentation
-- `0955b00` feat: initialize React 18.3.1 + Vite 4.5.0 frontend structure
-- `de7f590` feat: create main React components, pages and services
-- `a3e36b5` refactor: clean up legacy files and update backend structure
-- `299007c` style: implement elegant minimalist design inspired by Crextio
-- `b553fb8` feat: add teacher-student account system and role management
-- `67488b2` docs: update README with Phase 1 completion and design specs
-- `17401f7` feat: implement complete FastAPI backend architecture
-- `6770162` fix: handle validation errors and prevent white screen
-- `afffc89` fix: resolve CORS issues, validation errors, and signup bug
-- `c20b0b3` docs: update README with auth integration status and bug fixes
-- `914a8b9` feat: connect WrittenAnalysis to backend API with enhanced display
+---
 
-### 🎯 Project Overview
-**Matej Language Lab** est une plateforme d'analyse avancée spécialisée dans l'évaluation des textes d'étudiants FLE (Français Langue Étrangère). La plateforme utilise l'IA pour analyser les erreurs linguistiques et fournir des retours personnalisés aux apprenants et enseignants.
+## 📋 Table of Contents
 
-**Objectif principal:** Créer une plateforme professionnelle d'analyse des productions écrites et orales en français pour les étudiants FLE, avec des fonctionnalités avancées de sauvegarde automatique et d'intégration TTS.
+- [Overview](#-overview)
+- [Features](#-features)
+- [Quick Start](#-quick-start)
+- [Account System](#-account-system)
+- [API Documentation](#-api-documentation)
+- [Architecture](#-architecture)
+- [Development](#-development)
+- [Roadmap](#-roadmap)
+- [Prompt Evaluation](#-prompt-evaluation-gpt-5)
 
-### 👥 Système de Comptes
+---
 
-La plateforme propose deux types de comptes distincts :
+## 🎯 Overview
 
-**👨‍🎓 Compte Étudiant:**
-- Accès aux analyses de textes écrits et productions orales
-- Suivi personnalisé de progression
-- Possibilité d'assigner un enseignant (optionnel)
-- Historique complet des analyses
+**Maister** is an advanced analytics platform specialized in evaluating texts from FLE (French as a Foreign Language) students. The platform uses AI to analyze linguistic errors and provide personalized feedback to learners and teachers.
 
-**👨‍🏫 Compte Enseignant:**
-- Dashboard dédié pour suivre les étudiants assignés
-- Accès aux analyses de tous les étudiants qui les ont choisis
-- Indicateurs de nouveaux textes soumis
-- Statistiques et rapports de progression
+### Key Capabilities
 
-**💰 Abonnement actuel:** Tous les comptes sont gratuits pendant la phase de développement (Beta). Un système de paiement sera ajouté en Phase 7.
+- **Comprehensive Text Analysis** - Analyzes all student texts together for complete progress reports
+- **Save & Analyze Separately** - Save texts without immediate analysis, then analyze when ready
+- **Progress Tracking** - Detailed dashboards with statistics and trend analysis
+- **Teacher-Student Management** - Assign teachers to students for personalized guidance
+- **Modern UI** - Elegant, responsive interface with full English localization
+- **Real-time Feedback** - Get detailed analysis reports with error categorization
 
-### 🔬 Prompt Evaluation (GPT-5)
+---
 
-**Système de test automatisé pour calibrer le system prompt avec variations de reasoning_effort.**
+## ✨ Features
 
-#### Installation
+### For Students 👨‍🎓
+
+- ✅ Submit written texts for comprehensive analysis
+- ✅ Save texts for later analysis
+- ✅ View detailed progress reports with error categorization
+- ✅ Track improvement over time with visual dashboards
+- ✅ Assign a teacher for personalized guidance (optional)
+- ✅ Complete analysis history
+
+### For Teachers 👨‍🏫
+
+- ✅ Dedicated dashboard to track assigned students
+- ✅ View all analyses from students who selected you
+- ✅ New text submission indicators
+- ✅ Statistics and progress reports per student
+- ✅ Monitor student improvement trends
+
+### Technical Features
+
+- ✅ Full English UI (translated January 2025)
+- ✅ Modern React 18.3.1 + Vite 4.5.0 frontend
+- ✅ FastAPI backend with modular architecture
+- ✅ OpenAI GPT-5/GPT-4 integration for analysis
+- ✅ JSON-based lightweight database
+- ✅ RESTful API with interactive documentation
+
+---
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- **Python:** 3.9+ (with venv for isolation)
+- **Node.js:** 18+ (for React frontend)
+- **OpenAI API Key:** Required for text analysis
+
+### Backend Setup
+
 ```bash
-# Installer les dépendances (inclut rapidfuzz pour métriques de similarité)
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Create .env file with your OpenAI API key
+echo "OPENAI_API_KEY=your_openai_key_here" > .env
+echo "PROVIDER=openai" >> .env
+
+# Start the backend server
+python run_backend.py
+```
+
+**Backend will be available at:**
+- API: `http://localhost:8000`
+- Interactive Docs: `http://localhost:8000/docs` (Swagger UI)
+
+⚠️ **Important:** You must create a `.env` file at the root with your OpenAI API key for analyses to work.
+
+### Frontend Setup
+
+```bash
+# Navigate to frontend directory
+cd frontend
+
+# Install dependencies (first time only)
+npm install
+
+# Start development server
+npm run dev
+```
+
+**Frontend will be available at:** `http://localhost:5173`
+
+**Application Language:** The entire user interface is in English (as of January 2025).
+
+---
+
+## 👥 Account System
+
+The platform offers two distinct account types:
+
+### 👨‍🎓 Student Account
+
+**Features:**
+- Access to written text and oral production analyses
+- Personalized progress tracking
+- Ability to assign a teacher (optional)
+- Complete analysis history
+- Save texts for later analysis
+- Comprehensive reports analyzing all submitted texts
+
+### 👨‍🏫 Teacher Account
+
+**Features:**
+- Dedicated dashboard to track assigned students
+- Access to analyses from all students who selected them
+- New text submission indicators
+- Statistics and progress reports
+
+### 💰 Subscription
+
+**Current Status:** All accounts are free during the development phase (Beta).  
+**Future:** A payment system will be added in Phase 7 (see [Roadmap](#-roadmap)).
+
+---
+
+## 🔌 API Documentation
+
+### Base URLs
+
+- **Backend API:** `http://localhost:8000` (development)
+- **Interactive Docs:** `http://localhost:8000/docs` (Swagger UI)
+
+### Authentication Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/auth/login` | User login with email and password |
+| `POST` | `/api/auth/signup` | User registration with role selection |
+| `GET` | `/api/auth/teachers` | Get list of all teachers (for student profile dropdown) |
+
+### Student Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/student/assign-teacher` | Assign or remove teacher from student |
+| `GET` | `/api/student/{student_email}/teacher` | Get the teacher assigned to a student |
+| `GET` | `/api/student/{student_email}/analyses` | Get all analyses for a student |
+
+### Teacher Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/teacher/{teacher_email}/students` | Get all students assigned to a teacher |
+| `GET` | `/api/teacher/{teacher_email}/dashboard` | Get dashboard statistics for a teacher |
+
+### Analysis Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/analysis/submit` | Submit texts for comprehensive analysis (analyzes all student texts) |
+| `POST` | `/api/analysis/save` | Save a text without performing analysis |
+| `GET` | `/api/analysis/student/{student_email}` | Get all analyses for a student (with pagination) |
+| `GET` | `/api/analysis/analysis/{analysis_id}` | Get a specific analysis by ID |
+| `DELETE` | `/api/analysis/analysis/{analysis_id}` | Delete a specific analysis |
+| `POST` | `/api/analysis/mark-as-read` | Mark analyses as read by teacher |
+
+**Note:** The `/api/analysis/submit` endpoint performs comprehensive analysis by combining all saved texts from the student for a complete progress report.
+
+### Health Check
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `GET` | `/api/health` | Health check endpoint |
+| `GET` | `/` | API root with version info |
+
+### Frontend Services
+
+The frontend uses service files located in `frontend/src/services/`:
+
+- `authService.js` - Authentication API calls
+- `studentService.js` - Student data management
+- `analysisService.js` - Analysis operations
+- `ttsService.js` - TTS integration (planned)
+
+---
+
+## 🛠️ Architecture
+
+### Technology Stack
+
+| Layer | Technology |
+|-------|------------|
+| **Backend** | Python 3.13, FastAPI 0.104.1, Uvicorn |
+| **AI/ML** | OpenAI GPT-5, GPT-4 (Pinecone vectors planned) |
+| **Database** | JSON files (lightweight, fast, easy to maintain) |
+| **Frontend** | React 18.3.1 + Vite 4.5.0 |
+| **Build Tools** | Vite 4.5.0 (development and build) |
+| **Deployment** | Local (cloud migration planned) |
+
+### Backend Architecture
+
+**Framework:** FastAPI with modular architecture
+
+**Main Components:**
+
+```
+backend/
+├── routes/
+│   ├── auth.py          # Authentication routes
+│   ├── student.py       # Student routes
+│   ├── teacher.py       # Teacher routes
+│   └── analysis.py      # Analysis routes
+├── models.py            # Pydantic models (User, Teacher, Student, Analysis)
+├── db_service.py        # JSON database service
+├── main.py              # FastAPI application
+├── config.py            # Configuration (environment variables)
+├── clients.py           # OpenAI clients (GPT-4, GPT-5, embeddings)
+└── OpenAI_Error_LLM_method.py  # ⚠️ CRITICAL: Main AI analysis engine
+```
+
+**Analytics Engine:**
+- `OpenAI_Error_LLM_method.py` - Main linguistic error analyzer
+- Uses OpenAI GPT-5/GPT-4 for comprehensive text analysis
+- Analyzes grammar, syntax, vocabulary, conjugation errors
+- Provides personalized improvement suggestions
+
+**Features:**
+- Role-based authentication (Student/Teacher/Admin)
+- Teacher-student relationship management
+- Real-time dashboard statistics
+- Automatic error detection and categorization
+- Progress analysis for FLE students
+
+### Frontend Architecture
+
+**Framework:** React 18.3.1 with functional components and hooks
+
+**Structure:**
+
+```
+frontend/
+├── src/
+│   ├── components/      # React components (Layout, etc.)
+│   ├── pages/          # Application pages
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Signup.jsx
+│   │   ├── WrittenAnalysis.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Profile.jsx
+│   │   └── ...
+│   ├── hooks/          # Custom React hooks
+│   ├── services/       # API service files
+│   ├── styles/         # CSS styles
+│   └── utils/          # Utility functions
+├── public/             # Static assets (logo.svg, etc.)
+├── package.json
+├── vite.config.js
+└── index.html
+```
+
+**Design System:**
+- **Fonts:** Inter/SF Pro Display (weights 300-400)
+- **Color Palette:** #fafafa, #2a2a2a, #ffcc4d
+- **Components:** Cards with 16-18px radius, borders #f0f0f0
+- **Layout:** Max-width 1200px, 4-column grid on desktop
+- **Language:** Full English UI (as of January 2025)
+
+### Project Structure
+
+```
+analytics-service/
+├── backend/
+│   ├── routes/              # API route handlers
+│   ├── models.py            # Data models
+│   ├── db_service.py        # Database service
+│   ├── main.py              # FastAPI app
+│   ├── config.py            # Configuration
+│   ├── clients.py           # OpenAI clients
+│   └── OpenAI_Error_LLM_method.py  # ⚠️ CRITICAL: AI system prompt
+├── frontend/                # React frontend
+│   ├── src/
+│   ├── public/
+│   └── package.json
+├── secure_data/             # User data storage
+│   ├── users_database.json
+│   └── student_DB/          # Student analyses
+├── docs/                    # Documentation
+│   └── prompt_evals/        # Prompt evaluation results
+├── run_backend.py           # Backend startup script
+├── requirements.txt         # Python dependencies
+├── .cursorrules             # Development rules
+└── README.md
+```
+
+---
+
+## 💻 Development
+
+### Environment Setup
+
+- **Python:** 3.9+ (with venv for isolation)
+- **Node.js:** 18+ (for React frontend)
+- **React:** 18.3.1 (functional components + hooks)
+- **Vite:** 4.5.0 (build tool + dev server)
+- **Docker:** For containerization (optional)
+- **Git:** Feature branch workflow (`feat/feature-name`)
+
+### Testing
+
+- **Backend:** pytest (Python)
+- **Frontend:** Jest + Testing Library (React)
+
+### Development Workflow
+
+> ℹ️ **Note:** Detailed development workflow and commit rules are in `.cursorrules`
+
+**Commit Format:**
+- `feat:` for new features
+- `fix:` for bug fixes
+- `refactor:` for code refactoring
+- `docs:` for documentation
+- `style:` for formatting
+
+**Branch Strategy:**
+- `feat/feature-name` for new features
+- `fix/bug-description` for bug fixes
+- `main` for production-ready code
+
+### ⚠️ Important Notes
+
+**System Prompt Modification:**
+The file `backend/OpenAI_Error_LLM_method.py` contains the **main AI system prompt** that defines the linguistic error analysis behavior. Any modification to this file should follow strict guidelines (see `.cursorrules` for details).
+
+---
+
+## 🗺️ Roadmap
+
+### ✅ Phase 1: Interface Redesign (COMPLETE)
+
+**Status:** ✅ **COMPLETE**  
+**Duration:** 3-4 weeks  
+**Completed:** January 2025
+
+**Achievements:**
+- ✅ Migration from Streamlit to React 18.3.1 + Vite 4.5.0
+- ✅ Complete FastAPI backend architecture
+- ✅ Student/Teacher account system with role management
+- ✅ Elegant minimalist design (Crextio-inspired)
+- ✅ Dashboard with statistics and filtering
+- ✅ Full UI translation to English
+- ✅ Application rebranding to "Maister" with logo
+- ✅ Text save functionality (save without analysis)
+- ✅ Comprehensive analysis (analyzes all student texts)
+- ✅ Progress dashboard with detailed reports and tabs
+
+**Next Steps:**
+- [ ] Display analysis history in dashboard
+- [ ] Implement teacher features (view all students)
+- [ ] End-to-end testing of complete flow
+
+---
+
+### 🔜 Phase 2: Automatic Saving (PLANNED)
+
+**Status:** 🔜 **PLANNED**  
+**Duration:** 4-5 weeks
+
+**Objectives:**
+- Desktop application (Electron) for Windows/Mac/Linux
+- Automatic detection of French texts
+- Hotkeys for quick saving (Ctrl+Shift+S)
+- Cloud synchronization via REST API
+
+**Deliverables:** Desktop app, API sync, Documentation
+
+---
+
+### 🔜 Phase 3: Specialized Consultation (PLANNED)
+
+**Status:** 🔜 **PLANNED**  
+**Duration:** 2-3 weeks
+
+**Objectives:**
+- Recruit UI/UX developer (React + Design)
+- TTS expert consultation (French FLE)
+- Technical recommendations
+
+**Deliverables:** Contracts, Expert reports, Implementation plan
+
+---
+
+### 🔜 Phase 4: Google Meet Integration (PLANNED)
+
+**Status:** 🔜 **PLANNED**  
+**Duration:** 3-4 weeks
+
+**Objectives:**
+- Google Meet API + OAuth2
+- Transcription pipeline (Google Speech-to-Text)
+- Recording management interface
+- Real-time transcription
+
+**Deliverables:** Google Meet module, Transcription interface, API documentation
+
+---
+
+### 🔜 Phase 5: TTS Calibration for French FLE (PLANNED)
+
+**Status:** 🔜 **PLANNED**  
+**Duration:** 4-6 weeks
+
+**Objectives:**
+- Specialized FLE TTS models
+- International accent adaptation
+- Evaluation metrics (accuracy, fluency)
+- Calibration interface
+
+**Deliverables:** Calibrated TTS models, Calibration interface, Documentation
+
+---
+
+### 🔜 Phase 6: TTS Transcription Saving (PLANNED)
+
+**Status:** 🔜 **PLANNED**  
+**Duration:** 2-3 weeks
+
+**Objectives:**
+- Transcription database + metadata
+- Management interface (filters, search, export)
+- Automatic sync with Google Meet
+- Backup and recovery
+
+**Deliverables:** Database, Management interface, API sync
+
+---
+
+### 🔜 Phase 7: Payment System & Subscriptions (PLANNED)
+
+**Status:** 🔜 **PLANNED**  
+**Duration:** 4-6 weeks
+
+**Objectives:**
+- Stripe integration for secure payments
+- Subscription plans (Free/Premium/Enterprise)
+- Monthly and annual subscriptions for students and teachers
+- Billing management and payment history
+- 14-day free trial periods
+- Admin dashboard for subscription management
+- Feature limitations based on plan
+
+**Planned Pricing:**
+- **Free:** Limited access (10 analyses/month)
+- **Student Premium:** €9.99/month - Unlimited analyses
+- **Teacher Pro:** €19.99/month - Full dashboard + 50 students
+- **Institution:** Custom quote - Unlimited access + priority support
+
+**Deliverables:** Stripe module, Subscription interface, Automatic billing system, Payment API documentation
+
+**Note:** All accounts remain free during development phases 1-6 (Beta version).
+
+---
+
+## 🔬 Prompt Evaluation (GPT-5)
+
+**Automated testing system to calibrate the system prompt with variations of `reasoning_effort`.**
+
+### Installation
+
+```bash
+# Install dependencies (includes rapidfuzz for similarity metrics)
 pip install -r requirements.txt
 ```
 
-#### Lancer une évaluation
+### Running an Evaluation
+
 ```bash
 python -m backend.prompt_eval.runner \
   --experiment reasoning-sweep \
@@ -65,377 +513,66 @@ python -m backend.prompt_eval.runner \
   --max-tokens 20000
 ```
 
-#### Structure des résultats
+### Results Structure
+
 ```
 docs/prompt_evals/reasoning-sweep/prompt_v1/
 ├── reasoning-low/
-│   ├── runs/          # 5 rapports bruts (run_01.txt...run_05.txt)
-│   ├── summary/       # summary.md (X/5 accords) + summary.json (métriques)
-│   └── prompt/        # prompt.md (copie du prompt utilisé)
+│   ├── runs/          # 5 raw reports (run_01.txt...run_05.txt)
+│   ├── summary/       # summary.md (X/5 agreements) + summary.json (metrics)
+│   └── prompt/        # prompt.md (copy of used prompt)
 ├── reasoning-medium/
 │   └── ...
 └── reasoning-high/
     └── ...
 ```
 
-#### Métriques générées
-- **Accords quantitatifs**: X/5 pour ÉVOLUTION_GLOBALE, GRAMMAIRE, VOCABULAIRE, STYLE, PERSISTANTES
-- **Similarité qualitative**: Score 0-100 pour les résumés narratifs
-- **Tokens**: Totaux et moyens (prompt, completion, reasoning) par configuration
-- **Notes**: Erreurs API, warnings, particularités
+### Generated Metrics
 
-#### Paramètres supportés (GPT-5)
-- ✅ `--reasoning-efforts`: `low`, `medium`, `high` (contrôle profondeur de raisonnement)
-- ✅ `--max-tokens`: limite completion (défaut: 20000)
-  - **Important**: GPT-5 consomme des tokens pour raisonnement interne + sortie finale
-  - **Minimum recommandé**: 16000 (sinon sortie vide ou tronquée)
-- ✅ `--runs`: nombre de runs par config (défaut: 5)
-- ✅ `--out`: répertoire de sortie (défaut: `docs/prompt_evals`)
+- **Quantitative Agreements**: X/5 for ÉVOLUTION_GLOBALE, GRAMMAIRE, VOCABULAIRE, STYLE, PERSISTANTES
+- **Qualitative Similarity**: Score 0-100 for narrative summaries
+- **Tokens**: Total and average (prompt, completion, reasoning) per configuration
+- **Notes**: API errors, warnings, particularities
 
-#### Paramètres NON supportés par GPT-5
-- ❌ `temperature` (figé à 1)
-- ❌ `top_p` (non modifiable)
-- ❌ `seed` (non supporté)
-- ❌ `response_format` (pas de mode JSON strict)
+### Supported Parameters (GPT-5)
 
-#### Architecture des modules
-- `backend/prompt_eval/runner.py`: CLI et orchestration des runs
-- `backend/prompt_eval/parser.py`: Parse les sorties LLM (free-text ou JSON)
-- `backend/prompt_eval/metrics.py`: Calcule accords X/5 et similarités
-- `backend/prompt_eval/report.py`: Génère summary.md et summary.json
+- ✅ `--reasoning-efforts`: `low`, `medium`, `high` (controls reasoning depth)
+- ✅ `--max-tokens`: completion limit (default: 20000)
+  - **Important**: GPT-5 consumes tokens for internal reasoning + final output
+  - **Recommended minimum**: 16000 (otherwise empty or truncated output)
+- ✅ `--runs`: number of runs per config (default: 5)
+- ✅ `--out`: output directory (default: `docs/prompt_evals`)
 
-### 🚀 Quick Start
+### Parameters NOT Supported by GPT-5
 
-**Backend:**
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-pip install -r requirements.txt
+- ❌ `temperature` (fixed at 1)
+- ❌ `top_p` (not modifiable)
+- ❌ `seed` (not supported)
+- ❌ `response_format` (no strict JSON mode)
 
-# Créer le fichier .env avec votre clé OpenAI
-echo "OPENAI_API_KEY=votre_cle_openai_ici" > .env
-echo "PROVIDER=openai" >> .env
+### Module Architecture
 
-python run_backend.py
-```
-⚠️ **Important:** Vous devez créer un fichier `.env` à la racine avec votre clé OpenAI pour que les analyses fonctionnent.
-
-API accessible sur `http://localhost:8000`  
-Documentation interactive: `http://localhost:8000/docs`
-
-**Frontend (React + Vite):**
-```bash
-cd frontend
-npm install  # première fois seulement
-npm run dev
-```
-Interface accessible sur `http://localhost:5173`
+- `backend/prompt_eval/runner.py`: CLI and run orchestration
+- `backend/prompt_eval/parser.py`: Parse LLM outputs (free-text or JSON)
+- `backend/prompt_eval/metrics.py`: Calculate X/5 agreements and similarities
+- `backend/prompt_eval/report.py`: Generate summary.md and summary.json
 
 ---
 
-## 🚀 Feature Implementation Phases
+## 📝 Recent Changes
 
-### Phase 1: Redesign de l'interface 🎨
-**Status:** 🚧 IN PROGRESS | **Durée:** 3-4 semaines  
-**Commits:**
-- `f0dd5db` docs: roadmap and secure documentation
-- `0955b00` feat: React 18.3.1 + Vite 4.5.0 structure
-- `de7f590` feat: components, pages and services
-- `a3e36b5` refactor: clean up legacy files
-- `299007c` style: elegant minimalist design
-- `b553fb8` feat: teacher-student account system
-- `67488b2` docs: Phase 1 completion and design specs
-- `17401f7` feat: complete FastAPI backend architecture
-
-**Objectifs principaux:**
-
-**Frontend:**
-- ✅ Migration Streamlit → React 18.3.1 + Vite 4.5.0
-- ✅ Section "Analyse des Textes Écrits" dédiée
-- ✅ Section "Analyse des Transcriptions TTS" dédiée
-- ✅ Design élégant et minimaliste (inspiré Crextio)
-- ✅ Système comptes Étudiant/Enseignant avec gestion des rôles
-- ✅ Dashboard avec statistiques et filtrage par enseignant
-- ✅ Navigation responsive avec page profil
-
-**Backend:**
-- ✅ Architecture FastAPI modulaire avec routes séparées
-- ✅ Modèles Pydantic pour validation des données
-- ✅ Service de gestion JSON pour base de données
-- ✅ Configuration centralisée avec variables d'environnement
-- ✅ Restauration du système d'analyse OpenAI_Error_LLM_method.py
-- ✅ Endpoints API pour soumission et récupération d'analyses
-- 🚧 Intégration des routes d'analyse avec le frontend
-- 🔜 Tests unitaires et d'intégration
-
-**Livrables:** ✅ Architecture React | ✅ Configuration Vite | ✅ Auth System | ✅ Backend FastAPI | 🔜 Intégration API | 🔜 Tests
-
-**Design specs:**
-- Fonts: Inter/SF Pro Display (weights 300-400)
-- Palette: #fafafa, #2a2a2a, #ffcc4d
-- Cards: 16-18px radius, bordures #f0f0f0
-- Max-width: 1200px, grid 4 cols desktop
-
-**Prochaines étapes Phase 1:**
-1. ✅ Créer les endpoints API pour l'analyse de textes
-2. Connecter le frontend aux routes backend (auth, analysis, dashboard)
-3. Implémenter la soumission de textes depuis WrittenAnalysis.jsx
-4. Afficher les résultats d'analyse dans l'interface
-5. Tests d'intégration frontend-backend
-6. Consultation spécialiste UI/UX pour optimisation finale
-
-**Status final:** ✅ COMPLETE - Backend + Frontend auth integration working
-
-**Bugs résolus (commits `6770162`, `afffc89`):**
-- ✅ CORS configuration : ajout ports 5174/5175 pour dev frontend
-- ✅ Validation robuste : protection KeyError dans db_service.py
-- ✅ Error handling : logging amélioré pour débogage auth
-- ✅ Signup bug : gestion correcte teacher_email vide → null
-- ✅ Page blanche après signup : affichage erreurs Pydantic corrigé
-
-**Fonctionnalités complétées (commit `914a8b9`):**
-- ✅ WrittenAnalysis.jsx connecté à l'API backend
-- ✅ Soumission de textes pour analyse
-- ✅ Affichage enrichi des résultats (formatage Markdown)
-- ✅ Gestion des erreurs et états de chargement
-- ✅ Interface utilisateur responsive et élégante
-
-**Prochaines étapes Phase 1:**
-- [ ] Afficher l'historique des analyses dans le dashboard
-- [ ] Implémenter les fonctionnalités enseignant (voir tous les étudiants)
-- [ ] Tests end-to-end du flux complet
+**January 2025:**
+- ✅ Complete UI translation to English
+- ✅ Application rebranded to "Maister" with logo
+- ✅ New text save functionality (save without analysis)
+- ✅ Comprehensive analysis feature (analyzes all student texts)
+- ✅ Enhanced dashboard with progress tracking and analysis tabs
+- ✅ Improved sidebar navigation with collapsible menu
 
 ---
 
-### Phase 2: Sauvegarde automatique 💾
-**Status:** 🔜 PLANNED | **Durée:** 4-5 semaines
-
-**Objectifs principaux:**
-- Application desktop (Electron) pour Windows/Mac/Linux
-- Détection automatique des textes français
-- Hotkeys pour sauvegarde rapide (Ctrl+Shift+S)
-- API REST synchronisation cloud
-
-**Livrables:** Application desktop, API sync, Documentation
+**Last Updated:** January 2025
 
 ---
 
-### Phase 3: Consultation spécialisée 👥
-**Status:** 🔜 PLANNED | **Durée:** 2-3 semaines
-
-**Objectifs principaux:**
-- Recrutement développeur UI/UX (React + Design)
-- Consultation expert TTS (français FLE)
-- Recommandations techniques
-
-**Livrables:** Contrats, Rapports d'expertise, Plan d'implémentation
-
----
-
-### Phase 4: Intégration Google Meet 🎥
-**Status:** 🔜 PLANNED | **Durée:** 3-4 semaines
-
-**Objectifs principaux:**
-- API Google Meet + OAuth2
-- Pipeline transcription (Google Speech-to-Text)
-- Interface gestion enregistrements
-- Transcription temps réel
-
-**Livrables:** Module Google Meet, Interface transcriptions, Documentation API
-
----
-
-### Phase 5: Calibration TTS français FLE 🎯
-**Status:** 🔜 PLANNED | **Durée:** 4-6 semaines
-
-**Objectifs principaux:**
-- Modèles TTS spécialisés FLE
-- Adaptation accents internationaux
-- Métriques évaluation (précision, fluidité)
-- Interface de calibration
-
-**Livrables:** Modèles TTS calibrés, Interface calibration, Documentation
-
----
-
-### Phase 6: Sauvegarde transcriptions TTS 💾
-**Status:** 🔜 PLANNED | **Durée:** 2-3 semaines
-
-**Objectifs principaux:**
-- Base de données transcriptions + métadonnées
-- Interface gestion (filtres, recherche, export)
-- Sync automatique avec Google Meet
-- Backup et récupération
-
-**Livrables:** Base de données, Interface gestion, API sync
-
----
-
-### Phase 7: Système de Paiement et Abonnements 💳
-**Status:** 🔜 PLANNED | **Durée:** 4-6 semaines
-
-**Objectifs principaux:**
-- Intégration Stripe pour paiements sécurisés
-- Plans d'abonnement (Gratuit/Premium/Entreprise)
-- Abonnements mensuels et annuels pour étudiants et enseignants
-- Gestion de la facturation et historique des paiements
-- Périodes d'essai gratuites (14 jours)
-- Tableau de bord administrateur pour gestion des abonnements
-- Limitation des fonctionnalités selon le plan
-
-**Plans tarifaires prévus:**
-- **Gratuit:** Accès limité (10 analyses/mois)
-- **Étudiant Premium:** 9.99€/mois - Analyses illimitées
-- **Enseignant Pro:** 19.99€/mois - Dashboard complet + 50 étudiants
-- **Institution:** Sur devis - Accès illimité + support prioritaire
-
-**Livrables:** Module Stripe, Interface abonnements, Système de facturation automatique, Documentation API paiements
-
-**Note:** Tous les comptes restent gratuits pendant les phases de développement 1-6 (Version Beta).
-
----
-
-## 🔌 API Endpoints
-
-### Backend API (FastAPI)
-**Base URL:** `http://localhost:8000` (development)  
-**Documentation interactive:** `http://localhost:8000/docs` (Swagger UI)
-
-#### Authentication Endpoints
-- `POST /api/auth/login` - User login with email and password
-- `POST /api/auth/signup` - User registration with role selection
-- `GET /api/auth/teachers` - Get list of all teachers (for student profile dropdown)
-
-#### Student Endpoints
-- `POST /api/student/assign-teacher` - Assign or remove teacher from student
-- `GET /api/student/{student_email}/teacher` - Get the teacher assigned to a student
-- `GET /api/student/{student_email}/analyses` - Get all analyses for a student
-
-#### Teacher Endpoints
-- `GET /api/teacher/{teacher_email}/students` - Get all students assigned to a teacher
-- `GET /api/teacher/{teacher_email}/dashboard` - Get dashboard statistics for a teacher
-
-#### Analysis Endpoints
-- `POST /api/analysis/submit` - Submit a text for analysis (student)
-- `GET /api/analysis/student/{student_email}` - Get all analyses for a student (with pagination)
-- `GET /api/analysis/analysis/{analysis_id}` - Get a specific analysis by ID
-- `DELETE /api/analysis/analysis/{analysis_id}` - Delete a specific analysis
-- `POST /api/analysis/mark-as-read` - Mark analyses as read by teacher
-
-#### Health Check
-- `GET /api/health` - Health check endpoint
-- `GET /` - API root with version info
-
-### Frontend API (React)
-**Base URL:** `http://localhost:5173` (Vite dev server)
-
-#### Service Files
-- `src/services/authService.js` - Authentication API calls
-- `src/services/studentService.js` - Student data management
-- `src/services/analysisService.js` - Analysis operations
-- `src/services/ttsService.js` - TTS integration
-
----
-
-## 🛠️ Architecture technique actuelle
-
-### Stack technologique:
-- **Backend:** Python 3.13, FastAPI 0.104.1, Uvicorn
-- **IA/ML:** OpenAI GPT-5, GPT-4 (vecteurs prévus avec Pinecone)
-- **Analytics Engine:** OpenAI library pour l'analyse des erreurs linguistiques
-- **Base de données:** JSON files (léger, rapide, facile à maintenir)
-- **Frontend:** React 18.3.1 + Vite 4.5.0
-- **Build Tools:** Vite 4.5.0 (développement et build)
-- **Déploiement:** Local (migration vers cloud prévue)
-
-### Backend Architecture
-**Framework:** FastAPI avec architecture modulaire  
-**Main Components:**
-- `backend/models.py` - Modèles Pydantic (User, Teacher, Student, Analysis)
-- `backend/db_service.py` - Service de gestion des fichiers JSON
-- `backend/routes/auth.py` - Routes d'authentification
-- `backend/routes/student.py` - Routes pour étudiants
-- `backend/routes/teacher.py` - Routes pour enseignants
-- `backend/main.py` - Application FastAPI principale
-- `run_backend.py` - Script de démarrage du serveur
-
-**Analytics Engine:**
-- `backend/OpenAI_Error_LLM_method.py` - Analyseur principal des erreurs linguistiques
-- `backend/clients.py` - Configuration des clients OpenAI (GPT-5, GPT-4, embeddings)
-- `backend/config.py` - Configuration centralisée (variables d'environnement)
-
-**Fonctionnalités:**
-- Authentification avec rôles (Student/Teacher/Admin)
-- Gestion des relations enseignant-étudiant
-- Dashboard avec statistiques en temps réel
-- Analyse automatique des erreurs de grammaire et syntaxe
-- Détection des erreurs de vocabulaire et conjugaison
-- Suggestions d'amélioration personnalisées
-- Analyse de progression des étudiants FLE
-
-**Note:** Intégration vectorielle Pinecone prévue pour futures améliorations
-
-### ⚠️ Règles de Modification du System Prompt
-
-**Fichier critique:** `backend/OpenAI_Error_LLM_method.py`
-
-Ce fichier contient le **system prompt principal** de l'agent IA qui définit le comportement d'analyse des erreurs linguistiques. Toute modification de ce fichier doit suivre les règles suivantes :
-
-
-
-### Structure des fichiers:
-```
-analytics-service/
-├── backend/
-│   ├── routes/
-│   │   ├── __init__.py
-│   │   ├── auth.py                    # Routes authentification
-│   │   ├── student.py                 # Routes étudiants
-│   │   └── teacher.py                 # Routes enseignants
-│   ├── models.py                      # Modèles Pydantic
-│   ├── db_service.py                  # Service JSON database
-│   ├── main.py                        # Application FastAPI
-│   ├── config.py                      # Configuration (env variables)
-│   ├── clients.py                     # Clients OpenAI (GPT-4, GPT-5)
-│   ├── OpenAI_Error_LLM_method.py     # ⚠️ CRITIQUE: System prompt IA
-│   ├── __init__.py
-│   └── teacher_student_relations.json
-├── frontend/                           # React 18.3.1 + Vite 4.5.0
-│   ├── src/
-│   │   ├── components/                 # Composants React
-│   │   ├── pages/                     # Pages de l'application
-│   │   ├── hooks/                     # Hooks personnalisés
-│   │   ├── services/                  # Services API
-│   │   ├── styles/                    # Styles CSS
-│   │   └── utils/                     # Utilitaires
-│   ├── public/                        # Assets statiques
-│   ├── package.json
-│   ├── vite.config.js
-│   └── index.html
-├── secure_data/                       # Données utilisateurs
-│   ├── users_database.json            # Base utilisateurs
-│   └── student_DB/                    # Analyses des étudiants
-├── run_backend.py                     # Script démarrage backend
-├── requirements.txt                   # Dépendances Python
-├── .cursorrules                       # Règles de développement
-└── README.md
-```
-
----
-
-## 📝 Notes de développement
-
-### Environnement de développement:
-- **Python:** 3.9+ (avec venv pour isolation)
-- **Node.js:** 18+ (pour React + app desktop)
-- **React:** 18.3.1 (composants fonctionnels + hooks)
-- **Vite:** 4.5.0 (build tool + dev server)
-- **Docker:** Pour la containerisation
-- **Git:** Workflow feature branches (feat/feature-name)
-- **Testing:** pytest (Python), Jest + Testing Library (React)
-
-> ℹ️ **Note:** Le workflow de développement et les règles de commit sont détaillés dans le fichier `.cursorrules`
-
----
-
-*Dernière mise à jour: December 27, 2024*
+*Made with ❤️ for French language learners*
