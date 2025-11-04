@@ -559,7 +559,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
-- `[commit-hash]` **feat:** update homepage hero title to highlight platform for both students and teachers
+- `a3538f9` **feat:** update homepage hero title to highlight platform for both students and teachers
 - `33a395c` **docs:** refactor README with improved structure and organization
 - `03e700c` **feat:** translate entire UI to English and rebrand to Maister
 
