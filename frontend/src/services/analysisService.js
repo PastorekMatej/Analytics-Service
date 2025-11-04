@@ -158,6 +158,54 @@ export const markAnalysesAsRead = async (studentEmail, teacherEmail) => {
 };
 
 /**
+ * Save a text without analysis
+ * @param {string} studentEmail - Student email
+ * @param {string} textContent - Text to save
+ * @param {string} textType - Type of text (written/oral)
+ * @returns {Promise} Save result
+ */
+export const saveTextOnly = async (studentEmail, textContent, textType = 'written') => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/save`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        student_email: studentEmail,
+        text_content: textContent,
+        text_type: textType,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      
+      // Handle Pydantic validation errors
+      let errorMessage = 'Erreur lors de la sauvegarde';
+      if (error.detail) {
+        if (typeof error.detail === 'string') {
+          errorMessage = error.detail;
+        } else if (Array.isArray(error.detail)) {
+          // Pydantic validation errors format
+          errorMessage = error.detail.map(err => {
+            const field = err.loc ? err.loc.join('.') : 'field';
+            return `${field}: ${err.msg || err.message || 'invalid'}`;
+          }).join(', ');
+        }
+      }
+      
+      throw new Error(errorMessage);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error saving text:', error);
+    throw error;
+  }
+};
+
+/**
  * Mock data for development (when backend is not available)
  */
 export const mockAnalysis = {
@@ -189,6 +237,7 @@ B1 - Utilisateur indépendant
 // Default export
 const analysisService = {
   submitTextForAnalysis,
+  saveTextOnly,
   getStudentAnalyses,
   getAnalysisById,
   deleteAnalysis,

@@ -50,48 +50,107 @@ const App = () => {
 
   return (
     <Router>
-      <Layout
-        isAuthenticated={isAuthenticated}
-        userEmail={userEmail}
-        userRole={userRole}
-        onLogout={handleLogout}
-      >
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route
-            path="/login"
-            element={<Login onLogin={handleLogin} />}
-          />
-          <Route path="/signup" element={<Signup />} />
-          
-          {isAuthenticated && (
-            <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route
+          path="/login"
+          element={
+            <Layout
+              isAuthenticated={isAuthenticated}
+              userEmail={userEmail}
+              userRole={userRole}
+              onLogout={handleLogout}
+            >
+              <Login onLogin={handleLogin} />
+            </Layout>
+          }
+        />
+        <Route
+          path="/signup"
+          element={
+            <Layout
+              isAuthenticated={isAuthenticated}
+              userEmail={userEmail}
+              userRole={userRole}
+              onLogout={handleLogout}
+            >
+              <Signup />
+            </Layout>
+          }
+        />
+        
+        {isAuthenticated && (
+          <>
+            <Route
+              path="/written-analysis"
+              element={
+                <Layout
+                  isAuthenticated={isAuthenticated}
+                  userEmail={userEmail}
+                  userRole={userRole}
+                  onLogout={handleLogout}
+                >
+                  <WrittenAnalysis userEmail={userEmail} />
+                </Layout>
+              }
+            />
+            <Route
+              path="/oral-analysis"
+              element={
+                <Layout
+                  isAuthenticated={isAuthenticated}
+                  userEmail={userEmail}
+                  userRole={userRole}
+                  onLogout={handleLogout}
+                >
+                  <OralAnalysis userEmail={userEmail} />
+                </Layout>
+              }
+            />
+            <Route
+              path="/progress"
+              element={
+                <Layout
+                  isAuthenticated={isAuthenticated}
+                  userEmail={userEmail}
+                  userRole={userRole}
+                  onLogout={handleLogout}
+                >
+                  <Dashboard userRole={userRole} userEmail={userEmail} />
+                </Layout>
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Layout
+                  isAuthenticated={isAuthenticated}
+                  userEmail={userEmail}
+                  userRole={userRole}
+                  onLogout={handleLogout}
+                >
+                  <Profile userEmail={userEmail} userRole={userRole} />
+                </Layout>
+              }
+            />
+            {(userRole === 'admin' || userRole === 'teacher') && (
               <Route
-                path="/written-analysis"
-                element={<WrittenAnalysis userEmail={userEmail} />}
+                path="/dashboard"
+                element={
+                  <Layout
+                    isAuthenticated={isAuthenticated}
+                    userEmail={userEmail}
+                    userRole={userRole}
+                    onLogout={handleLogout}
+                  >
+                    <Dashboard userRole={userRole} userEmail={userEmail} />
+                  </Layout>
+                }
               />
-              <Route
-                path="/oral-analysis"
-                element={<OralAnalysis userEmail={userEmail} />}
-              />
-              <Route
-                path="/progress"
-                element={<Dashboard userRole={userRole} userEmail={userEmail} />}
-              />
-              <Route
-                path="/profile"
-                element={<Profile userEmail={userEmail} userRole={userRole} />}
-              />
-              {(userRole === 'admin' || userRole === 'teacher') && (
-                <Route
-                  path="/dashboard"
-                  element={<Dashboard userRole={userRole} userEmail={userEmail} />}
-                />
-              )}
-            </>
-          )}
-        </Routes>
-      </Layout>
+            )}
+          </>
+        )}
+      </Routes>
     </Router>
   );
 };

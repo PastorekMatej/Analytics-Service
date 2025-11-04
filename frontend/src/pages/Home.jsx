@@ -4,6 +4,12 @@ import './Home.css';
 const Home = () => {
   return (
     <div className="home-page">
+      {/* Logo positioned at top-left */}
+      <div className="home-logo">
+        <img src="/logo.svg" alt="Maister" className="home-logo-img" />
+        <span className="home-logo-text">Maister</span>
+      </div>
+      
       {/* Hero Section */}
       <section className="hero">
         <div className="hero-background">
@@ -19,46 +25,29 @@ const Home = () => {
                   <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"/>
                 </svg>
               </div>
-              <span>Propulsé par l'Intelligence Artificielle</span>
+              <span>Powered by Artificial Intelligence</span>
             </div>
             
             <h1 className="hero-title">
-              Maîtrisez le français avec
-              <span className="gradient-text"> l'expertise de Matej</span>
+              Master French with
+              <span className="gradient-text"> Maister</span>
             </h1>
             
             <p className="hero-subtitle">
-              Une plateforme d'analyse linguistique avancée qui combine l'expérience pédagogique 
-              de Matej avec la puissance de l'IA pour accélérer votre apprentissage du français.
+              An advanced linguistic analysis platform that combines artificial intelligence 
+              and pedagogical expertise to accelerate your French learning.
             </p>
             
             <div className="hero-actions">
               <Link to="/signup" className="btn btn-primary">
-                <span>Commencer gratuitement</span>
+                <span>Start for free</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
               <Link to="/login" className="btn btn-outline">
-                Se connecter
+                Sign in
               </Link>
-            </div>
-            
-            <div className="hero-stats">
-              <div className="stat-item">
-                <div className="stat-number">500+</div>
-                <div className="stat-label">Étudiants actifs</div>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-item">
-                <div className="stat-number">10K+</div>
-                <div className="stat-label">Textes analysés</div>
-              </div>
-              <div className="stat-divider"></div>
-              <div className="stat-item">
-                <div className="stat-number">95%</div>
-                <div className="stat-label">Satisfaction</div>
-              </div>
             </div>
           </div>
           
@@ -70,37 +59,37 @@ const Home = () => {
                   <span></span>
                   <span></span>
                 </div>
-                <div className="preview-title">Analyse en temps réel</div>
+                <div className="preview-title">Real-time Analysis</div>
               </div>
               <div className="preview-content">
                 <div className="analysis-card">
                   <div className="analysis-header">
                     <div className="analysis-icon">📝</div>
                     <div className="analysis-info">
-                      <div className="analysis-title">Texte soumis</div>
-                      <div className="analysis-time">Il y a 2 minutes</div>
+                      <div className="analysis-title">Text submitted</div>
+                      <div className="analysis-time">2 minutes ago</div>
                     </div>
                   </div>
                   <div className="analysis-progress">
                     <div className="progress-bar">
                       <div className="progress-fill"></div>
                     </div>
-                    <span className="progress-text">Analyse en cours...</span>
+                    <span className="progress-text">Analysis in progress...</span>
                   </div>
                 </div>
                 
                 <div className="results-card">
                   <div className="result-item">
                     <div className="result-icon">✓</div>
-                    <div className="result-text">Grammaire corrigée</div>
+                    <div className="result-text">Grammar corrected</div>
                   </div>
                   <div className="result-item">
                     <div className="result-icon">📊</div>
-                    <div className="result-text">Niveau B2 détecté</div>
+                    <div className="result-text">B2 level detected</div>
                   </div>
                   <div className="result-item">
                     <div className="result-icon">🎯</div>
-                    <div className="result-text">+15% de progression</div>
+                    <div className="result-text">+15% progress</div>
                   </div>
                 </div>
               </div>
@@ -113,13 +102,13 @@ const Home = () => {
       <section className="features">
         <div className="features-container">
           <div className="features-header">
-            <div className="section-badge">Fonctionnalités</div>
+            <div className="section-badge">Features</div>
             <h2 className="section-title">
-              Une solution complète pour l'apprentissage du français
+              A complete solution for learning French
             </h2>
             <p className="section-description">
-              Découvrez comment notre plateforme révolutionne l'enseignement du français 
-              grâce à l'intelligence artificielle et l'expertise pédagogique.
+              Discover how our platform revolutionizes French teaching 
+              through artificial intelligence and pedagogical expertise.
             </p>
           </div>
           
@@ -130,13 +119,13 @@ const Home = () => {
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="feature-title">Analyse Intelligente des Textes</h3>
+              <h3 className="feature-title">Intelligent Text Analysis</h3>
               <p className="feature-description">
-                Détection automatique des erreurs de grammaire, syntaxe, vocabulaire et conjugaison 
-                avec des suggestions d'amélioration personnalisées.
+                Automatic detection of grammar, syntax, vocabulary, and conjugation errors 
+                with personalized improvement suggestions.
               </p>
               <div className="feature-link">
-                <span>En savoir plus</span>
+                <span>Learn more</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -149,13 +138,13 @@ const Home = () => {
                   <path d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="feature-title">Analyse des Productions Orales</h3>
+              <h3 className="feature-title">Oral Production Analysis</h3>
               <p className="feature-description">
-                Transcription automatique et analyse de la prononciation, fluidité 
-                et précision linguistique de vos enregistrements audio.
+                Automatic transcription and analysis of pronunciation, fluency 
+                and linguistic accuracy of your audio recordings.
               </p>
               <div className="feature-link">
-                <span>En savoir plus</span>
+                <span>Learn more</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -168,13 +157,13 @@ const Home = () => {
                   <path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="feature-title">Suivi de Progression Avancé</h3>
+              <h3 className="feature-title">Advanced Progress Tracking</h3>
               <p className="feature-description">
-                Tableaux de bord détaillés avec statistiques, rapports de progression 
-                et recommandations adaptées à votre niveau CECRL.
+                Detailed dashboards with statistics, progress reports 
+                and recommendations tailored to your CEFR level.
               </p>
               <div className="feature-link">
-                <span>En savoir plus</span>
+                <span>Learn more</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -187,13 +176,13 @@ const Home = () => {
                   <path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="feature-title">Intelligence Artificielle Avancée</h3>
+              <h3 className="feature-title">Advanced Artificial Intelligence</h3>
               <p className="feature-description">
-                Algorithmes d'IA de dernière génération pour des analyses précises 
-                et des suggestions d'amélioration personnalisées.
+                State-of-the-art AI algorithms for accurate analysis 
+                and personalized improvement suggestions.
               </p>
               <div className="feature-link">
-                <span>En savoir plus</span>
+                <span>Learn more</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -206,13 +195,13 @@ const Home = () => {
                   <path d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="feature-title">Espace Enseignants</h3>
+              <h3 className="feature-title">Teacher Space</h3>
               <p className="feature-description">
-                Tableau de bord complet pour suivre les progrès de vos étudiants, 
-                analyser les erreurs communes et adapter votre enseignement.
+                Complete dashboard to track your students' progress, 
+                analyze common errors and adapt your teaching.
               </p>
               <div className="feature-link">
-                <span>En savoir plus</span>
+                <span>Learn more</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
@@ -225,78 +214,16 @@ const Home = () => {
                   <path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </div>
-              <h3 className="feature-title">Synchronisation Cloud</h3>
+              <h3 className="feature-title">Cloud Synchronization</h3>
               <p className="feature-description">
-                Sauvegarde automatique et synchronisation de vos textes 
-                depuis n'importe quel appareil (fonctionnalité à venir).
+                Automatic backup and synchronization of your texts 
+                from any device (coming soon).
               </p>
               <div className="feature-link">
-                <span>En savoir plus</span>
+                <span>Learn more</span>
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                   <path d="M6 12L10 8L6 4" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section className="testimonials">
-        <div className="testimonials-container">
-          <div className="testimonials-header">
-            <div className="section-badge">Témoignages</div>
-            <h2 className="section-title">
-              Ce que disent nos utilisateurs
-            </h2>
-          </div>
-          
-          <div className="testimonials-grid">
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <div className="testimonial-quote">
-                  "La plateforme a révolutionné ma façon d'enseigner le français. 
-                  L'analyse automatique me fait gagner un temps précieux."
-                </div>
-                <div className="testimonial-author">
-                  <div className="author-avatar">M</div>
-                  <div className="author-info">
-                    <div className="author-name">Marie Dubois</div>
-                    <div className="author-role">Professeure de FLE</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <div className="testimonial-quote">
-                  "En 3 mois, j'ai progressé de A2 à B1 grâce aux analyses 
-                  personnalisées et aux recommandations de Matej."
-                </div>
-                <div className="testimonial-author">
-                  <div className="author-avatar">A</div>
-                  <div className="author-info">
-                    <div className="author-name">Ahmed Al-Rashid</div>
-                    <div className="author-role">Étudiant</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="testimonial-card">
-              <div className="testimonial-content">
-                <div className="testimonial-quote">
-                  "L'interface est intuitive et les analyses sont d'une précision 
-                  remarquable. Je recommande vivement !"
-                </div>
-                <div className="testimonial-author">
-                  <div className="author-avatar">S</div>
-                  <div className="author-info">
-                    <div className="author-name">Sophie Chen</div>
-                    <div className="author-role">Étudiante</div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -308,28 +235,28 @@ const Home = () => {
         <div className="cta-container">
           <div className="cta-content">
             <h2 className="cta-title">
-              Prêt à transformer votre apprentissage du français ?
+              Ready to transform your French learning?
             </h2>
             <p className="cta-description">
-              Rejoignez plus de 500 étudiants et enseignants qui utilisent déjà 
-              notre plateforme pour accélérer leur progression en français.
+              Join over 500 students and teachers who already use 
+              our platform to accelerate their French progress.
             </p>
             <div className="cta-actions">
               <Link to="/signup" className="btn btn-primary btn-lg">
-                <span>Commencer gratuitement</span>
+                <span>Start for free</span>
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
               </Link>
               <Link to="/login" className="btn btn-outline btn-lg">
-                Se connecter
+                Sign in
               </Link>
             </div>
             <div className="cta-note">
               <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
                 <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"/>
               </svg>
-              <span>Gratuit • Aucune carte de crédit requise</span>
+              <span>Free • No credit card required</span>
             </div>
           </div>
         </div>
