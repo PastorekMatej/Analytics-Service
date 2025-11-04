@@ -2,7 +2,6 @@
 
 > **An AI-powered platform for analyzing written and oral French productions for FLE (French as a Foreign Language) students.**
 
-
 ---
 
 ## 📋 Table of Contents
@@ -560,12 +559,14 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `[commit-hash]` **feat:** update homepage hero title to highlight platform for both students and teachers
 - `33a395c` **docs:** refactor README with improved structure and organization
 - `03e700c` **feat:** translate entire UI to English and rebrand to Maister
 
 ### January 2025 Updates
 
 - ✅ Complete UI translation to English
+- ✅ Updated homepage hero title to "Learn or Teach French" to highlight dual audience
 - ✅ Application rebranded to "Maister" with logo
 - ✅ New text save functionality (save without analysis)
 - ✅ Comprehensive analysis feature (analyzes all student texts)

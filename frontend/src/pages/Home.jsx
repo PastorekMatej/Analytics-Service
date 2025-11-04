@@ -29,7 +29,7 @@ const Home = () => {
             </div>
             
             <h1 className="hero-title">
-              Master French with
+              Learn or Teach French with
               <span className="gradient-text"> Maister</span>
             </h1>
             
