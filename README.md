@@ -2,9 +2,6 @@
 
 > **An AI-powered platform for analyzing written and oral French productions for FLE (French as a Foreign Language) students.**
 
-[![Status](https://img.shields.io/badge/status-phase%201%20complete-success)](https://github.com)
-[![Language](https://img.shields.io/badge/language-English-blue)](https://github.com)
-[![UI](https://img.shields.io/badge/UI-English-green)](https://github.com)
 
 ---
 
@@ -561,13 +558,20 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ## 📝 Recent Changes
 
-**January 2025:**
+### Recent Commits
+
+- `33a395c` **docs:** refactor README with improved structure and organization
+- `03e700c` **feat:** translate entire UI to English and rebrand to Maister
+
+### January 2025 Updates
+
 - ✅ Complete UI translation to English
 - ✅ Application rebranded to "Maister" with logo
 - ✅ New text save functionality (save without analysis)
 - ✅ Comprehensive analysis feature (analyzes all student texts)
 - ✅ Enhanced dashboard with progress tracking and analysis tabs
 - ✅ Improved sidebar navigation with collapsible menu
+- ✅ Refactored README with improved structure and documentation
 
 ---
 
