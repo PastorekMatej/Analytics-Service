@@ -15,22 +15,109 @@ from ..OpenAI_Error_LLM_method import Analyser
 router = APIRouter(prefix="/api/analysis", tags=["analysis"])
 
 
-@router.post("/submit")
-async def submit_text_for_analysis(
+@router.post("/save")
+async def save_text_only(
     student_email: str = Body(..., embed=True),
     text_content: str = Body(..., embed=True),
     text_type: str = Body("written", embed=True)
 ) -> Dict:
     """
-    Submit a text for analysis
+    Save a text without performing analysis
     
     Args:
         student_email: Email of the student
-        text_content: The text to analyze
+        text_content: The text to save
         text_type: Type of text (written/oral)
         
     Returns:
-        Analysis result with ID
+        Success message with text ID
+    """
+    # Verify student exists
+    student = db.get_user_by_email(student_email)
+    if not student:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Étudiant non trouvé"
+        )
+    
+    if student.get("role") != "student":
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Seuls les étudiants peuvent sauvegarder des textes"
+        )
+    
+    try:
+        # Generate unique ID for this text
+        text_id = str(uuid.uuid4())
+        
+        # Create text object (without analysis_result)
+        text_data = {
+            "id": text_id,
+            "student_email": student_email,
+            "text_content": text_content,
+            "text_type": text_type,
+            "analysis_result": None,  # No analysis performed
+            "created_at": datetime.now().isoformat()
+        }
+        
+        # Get or create student data file
+        student_data = db.get_student_data(student_email)
+        if not student_data:
+            student_data = {
+                "student_email": student_email,
+                "analyses": [],
+                "texts_count": 0,
+                "has_new_texts": False
+            }
+        
+        # Add text to student data
+        if "analyses" not in student_data:
+            student_data["analyses"] = []
+        
+        student_data["analyses"].append(text_data)
+        student_data["texts_count"] = len(student_data["analyses"])
+        student_data["has_new_texts"] = True
+        student_data["last_activity"] = datetime.now().isoformat()
+        
+        # Save to database
+        db.save_student_data(student_email, student_data)
+        
+        # Update user texts count
+        db.update_user(student_email, {"texts_count": student_data["texts_count"]})
+        
+        return {
+            "success": True,
+            "message": "Texte sauvegardé avec succès",
+            "text_id": text_id,
+            "texts_count": student_data["texts_count"]
+        }
+    
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Erreur lors de la sauvegarde: {str(e)}"
+        )
+
+
+@router.post("/submit")
+async def submit_text_for_analysis(
+    student_email: str = Body(..., embed=True),
+    text_content: Optional[str] = Body(None, embed=True),
+    text_type: str = Body("written", embed=True)
+) -> Dict:
+    """
+    Submit texts for comprehensive analysis
+    
+    This endpoint analyzes ALL saved texts from the student, not just a single text.
+    It combines all written texts and generates a comprehensive analysis report.
+    
+    Args:
+        student_email: Email of the student
+        text_content: Optional - The text to analyze (if provided, will be included in the analysis)
+        text_type: Type of text (written/oral) - only written texts are analyzed
+        
+    Returns:
+        Analysis result with ID, including the number of texts analyzed
     """
     # Verify student exists
     student = db.get_user_by_email(student_email)
@@ -47,26 +134,7 @@ async def submit_text_for_analysis(
         )
     
     try:
-        # Create analyzer instance
-        analyzer = Analyser(student_id=student_email)
-        
-        # Perform analysis
-        analysis_result = analyzer.error_analyse(text_content)
-        
-        # Generate unique ID for this analysis
-        analysis_id = str(uuid.uuid4())
-        
-        # Create analysis object
-        analysis_data = {
-            "id": analysis_id,
-            "student_email": student_email,
-            "text_content": text_content,
-            "text_type": text_type,
-            "analysis_result": analysis_result,
-            "created_at": datetime.now().isoformat()
-        }
-        
-        # Get or create student data file
+        # Get all student texts for comprehensive analysis
         student_data = db.get_student_data(student_email)
         if not student_data:
             student_data = {
@@ -76,12 +144,66 @@ async def submit_text_for_analysis(
                 "has_new_texts": False
             }
         
-        # Add analysis to student data
+        # Collect all texts from the student (only written texts for now)
+        all_texts = []
+        if "analyses" in student_data:
+            for analysis in student_data["analyses"]:
+                if analysis.get("text_content") and (analysis.get("text_type") == "written" or not analysis.get("text_type")):
+                    all_texts.append(analysis.get("text_content"))
+        
+        # If no texts found, add the current text
+        if not all_texts and text_content:
+            all_texts.append(text_content)
+        
+        if not all_texts:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Aucun texte disponible pour l'analyse"
+            )
+        
+        # Combine all texts for analysis
+        combined_text = "\n\n---\n\n".join(all_texts)
+        
+        # Create analyzer instance
+        analyzer = Analyser(student_id=student_email)
+        
+        # Perform analysis on all texts
+        analysis_result = analyzer.error_analyse(combined_text)
+        
+        # Find the most recent text without analysis or update the most recent one
+        most_recent_analysis = None
+        most_recent_index = -1
+        
         if "analyses" not in student_data:
             student_data["analyses"] = []
         
-        student_data["analyses"].append(analysis_data)
-        student_data["texts_count"] = len(student_data["analyses"])
+        # Find the most recent text (written type) that matches or is the most recent
+        for i, analysis in enumerate(student_data["analyses"]):
+            if (analysis.get("text_type") == "written" or not analysis.get("text_type")):
+                if not most_recent_analysis or analysis.get("created_at", "") > most_recent_analysis.get("created_at", ""):
+                    most_recent_analysis = analysis
+                    most_recent_index = i
+        
+        # Update or create analysis entry
+        if most_recent_analysis and most_recent_index >= 0:
+            # Update existing analysis with global result
+            student_data["analyses"][most_recent_index]["analysis_result"] = analysis_result
+            analysis_id = student_data["analyses"][most_recent_index]["id"]
+            analysis_data = student_data["analyses"][most_recent_index]
+        else:
+            # Create new analysis entry if none exists
+            analysis_id = str(uuid.uuid4())
+            analysis_data = {
+                "id": analysis_id,
+                "student_email": student_email,
+                "text_content": text_content if text_content else combined_text[:500] + "...",  # Store excerpt
+                "text_type": text_type,
+                "analysis_result": analysis_result,
+                "created_at": datetime.now().isoformat()
+            }
+            student_data["analyses"].append(analysis_data)
+        
+        student_data["texts_count"] = len([a for a in student_data["analyses"] if a.get("text_content")])
         student_data["has_new_texts"] = True
         student_data["last_activity"] = datetime.now().isoformat()
         
@@ -93,10 +215,11 @@ async def submit_text_for_analysis(
         
         return {
             "success": True,
-            "message": "Analyse effectuée avec succès",
+            "message": "Analyse effectuée avec succès sur l'ensemble des textes",
             "analysis_id": analysis_id,
             "analysis": analysis_result,
-            "texts_count": student_data["texts_count"]
+            "texts_count": student_data["texts_count"],
+            "texts_analyzed": len(all_texts)
         }
     
     except Exception as e:

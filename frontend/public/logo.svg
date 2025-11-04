@@ -1,0 +1,18 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="32" cy="32" r="32" fill="url(#gradient)"/>
+  
+  <!-- Letter M -->
+  <path d="M18 48V20L26 32L32 20L38 32L46 20V48H40V36L34 48H30L24 36V48H18Z" fill="white"/>
+  
+  <!-- Decorative dot -->
+  <circle cx="50" cy="18" r="4" fill="white" opacity="0.9"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+</svg>
+
