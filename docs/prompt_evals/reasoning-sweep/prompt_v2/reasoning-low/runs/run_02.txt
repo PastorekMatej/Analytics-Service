@@ -1,0 +1,562 @@
+{
+  "erreurs_recurrentes": {
+    "grammaire": [
+      {
+        "type": "G07",
+        "pattern": "Mauvais emploi des articles/déterminants (absence, genre, contraction, superlatif)",
+        "occurrences": 12,
+        "exemples": [
+          {
+            "texte_id": "lecon_1",
+            "erreur": "la langue français",
+            "correction": "la langue française"
+          },
+          {
+            "texte_id": "lecon_2",
+            "erreur": "c'est le première fois",
+            "correction": "c'est la première fois"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "La lendemain",
+            "correction": "Le lendemain"
+          },
+          {
+            "texte_id": "lecon_9_2",
+            "erreur": "un album photos",
+            "correction": "un album photo / un album de photos"
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "une apprentissage",
+            "correction": "un apprentissage"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "cet expérience",
+            "correction": "cette expérience"
+          }
+        ]
+      },
+      {
+        "type": "G06",
+        "pattern": "Utilisation incorrecte des prépositions / constructions à l'infinitif",
+        "occurrences": 11,
+        "exemples": [
+          {
+            "texte_id": "lecon_1",
+            "erreur": "j'ai commencé apprendre",
+            "correction": "j'ai commencé à apprendre"
+          },
+          {
+            "texte_id": "lecon_2",
+            "erreur": "As-tu quelque chose nouvelle ?",
+            "correction": "As-tu quelque chose de nouveau ?"
+          },
+          {
+            "texte_id": "lecon_5_2",
+            "erreur": "dans l'école de vos élèves",
+            "correction": "à l'école de vos élèves"
+          },
+          {
+            "texte_id": "lecon_6_2",
+            "erreur": "recommencent être ouvertes",
+            "correction": "recommencent à être ouvertes"
+          },
+          {
+            "texte_id": "lecon_7_1",
+            "erreur": "je peux t'aider avec chercher",
+            "correction": "je peux t'aider à chercher"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "je ne parlais pas bien en français",
+            "correction": "je ne parlais pas bien français"
+          }
+        ]
+      },
+      {
+        "type": "G01",
+        "pattern": "Accord du participe passé avec avoir (accords fautifs en -é/-ée/-és)",
+        "occurrences": 9,
+        "exemples": [
+          {
+            "texte_id": "lecon_4",
+            "erreur": "As-tu déjà voyagée ?",
+            "correction": "As-tu déjà voyagé ?"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "j'ai passée la nuit",
+            "correction": "j'ai passé la nuit"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "j'ai vue le Musée national",
+            "correction": "j'ai vu le musée national"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "j'ai visitée le Château de Prague",
+            "correction": "j'ai visité le château de Prague"
+          },
+          {
+            "texte_id": "lecon_5",
+            "erreur": "ce qui m'a touché",
+            "correction": "ce qui m'a touchée"
+          }
+        ]
+      },
+      {
+        "type": "G09",
+        "pattern": "Confusion des temps composés / auxiliaires (être/avoir) et omission de l'auxiliaire",
+        "occurrences": 3,
+        "exemples": [
+          {
+            "texte_id": "lecon_4",
+            "erreur": "J'ai arrivée en nuit",
+            "correction": "Je suis arrivée la nuit"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "j'y restée trois jours",
+            "correction": "j'y suis restée trois jours"
+          },
+          {
+            "texte_id": "lecon_5",
+            "erreur": "j'eu un cappuccino",
+            "correction": "j'ai eu un cappuccino"
+          }
+        ]
+      },
+      {
+        "type": "G05",
+        "pattern": "Accords de base (sujet-verbe, adjectifs au genre/nombre)",
+        "occurrences": 9,
+        "exemples": [
+          {
+            "texte_id": "lecon_5",
+            "erreur": "j'étais vraiment stressé",
+            "correction": "j'étais vraiment stressée"
+          },
+          {
+            "texte_id": "lecon_6_1",
+            "erreur": "mon école est très réussi",
+            "correction": "mon école est très réussie"
+          },
+          {
+            "texte_id": "lecon_7_1",
+            "erreur": "tu envoie ton CV",
+            "correction": "tu envoies ton CV"
+          },
+          {
+            "texte_id": "lecon_10",
+            "erreur": "les enfants voudrions",
+            "correction": "les enfants voudraient"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "les professeurs étaient très encourageant et rassurant",
+            "correction": "les professeurs étaient très encourageants et rassurants"
+          }
+        ]
+      },
+      {
+        "type": "G08",
+        "pattern": "Ordre incorrect des mots (adverbes/pronoms/que)",
+        "occurrences": 4,
+        "exemples": [
+          {
+            "texte_id": "lecon_4",
+            "erreur": "Tu me vraiment manques",
+            "correction": "Tu me manques vraiment"
+          },
+          {
+            "texte_id": "lecon_5_2",
+            "erreur": "vous vous pouvez garer",
+            "correction": "vous pouvez vous garer"
+          },
+          {
+            "texte_id": "lecon_5",
+            "erreur": "c'est pour ça j'étais triste",
+            "correction": "c'est pour ça que j'étais triste"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "vous n’avez me pas croire",
+            "correction": "vous ne me croirez pas"
+          }
+        ]
+      },
+      {
+        "type": "G03",
+        "pattern": "Erreur de négation (position de ne/pas et des pronoms)",
+        "occurrences": 2,
+        "exemples": [
+          {
+            "texte_id": "lecon_2",
+            "erreur": "qui je n'ai connu pas",
+            "correction": "que je n'ai pas connus"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "vous n’avez me pas croire",
+            "correction": "vous ne me croirez pas"
+          }
+        ]
+      },
+      {
+        "type": "G04",
+        "pattern": "Confusion passé composé / imparfait (récit vs arrière-plan)",
+        "occurrences": 2,
+        "exemples": [
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "les gens parlaient rapidement et ils ont utilisé le slang que je n’ai pas compris",
+            "correction": "les gens parlaient rapidement et utilisaient de l'argot que je ne comprenais pas"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "J’ai parlé avec des gens ... j’ai tout compris",
+            "correction": "Je parlais avec des gens ... je comprenais mieux"
+          }
+        ]
+      },
+      {
+        "type": "G10",
+        "pattern": "Usage fautif du conditionnel (formation/emploi)",
+        "occurrences": 2,
+        "exemples": [
+          {
+            "texte_id": "lecon_9_1",
+            "erreur": "vous pourr-iez nous comprendre",
+            "correction": "vous pourriez nous comprendre"
+          },
+          {
+            "texte_id": "lecon_9_2",
+            "erreur": "cela lui rappellera (hypothèse)",
+            "correction": "cela lui rappellerait"
+          }
+        ]
+      }
+    ],
+    "vocabulaire": [
+      {
+        "type": "V01",
+        "pattern": "Faux amis / emprunts non adaptés",
+        "occurrences": 6,
+        "exemples": [
+          {
+            "texte_id": "lecon_2",
+            "erreur": "des défises",
+            "correction": "des défis"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "rester en Slovaque",
+            "correction": "rester en Slovaquie"
+          },
+          {
+            "texte_id": "lecon_6_2",
+            "erreur": "les horaires d'ouverture sont varieux",
+            "correction": "les horaires d'ouverture sont variés/variables"
+          },
+          {
+            "texte_id": "lecon_10",
+            "erreur": "apprendre plus effectivement",
+            "correction": "apprendre plus efficacement"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "détroits historiques",
+            "correction": "sites/monuments historiques"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "le slang",
+            "correction": "l'argot / le jargon"
+          }
+        ]
+      },
+      {
+        "type": "V02",
+        "pattern": "Mauvais choix de mot (nuance/registre)",
+        "occurrences": 4,
+        "exemples": [
+          {
+            "texte_id": "lecon_7_1",
+            "erreur": "des entreprises préférables",
+            "correction": "des entreprises de préférence / ciblées"
+          },
+          {
+            "texte_id": "lecon_7_2",
+            "erreur": "la rue et le parking sont toujours cassés",
+            "correction": "la rue et le parking sont toujours en mauvais état"
+          },
+          {
+            "texte_id": "lecon_9_1",
+            "erreur": "sa performance est parfaite",
+            "correction": "ses performances sont excellentes"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "des camarades de classe étaient vraiment chers",
+            "correction": "des camarades de classe étaient vraiment sympas/chaleureux"
+          }
+        ]
+      },
+      {
+        "type": "V04",
+        "pattern": "Collocations non naturelles",
+        "occurrences": 6,
+        "exemples": [
+          {
+            "texte_id": "lecon_5_2",
+            "erreur": "des sacs de siège",
+            "correction": "des poufs"
+          },
+          {
+            "texte_id": "lecon_12",
+            "erreur": "situées à des lieux différents",
+            "correction": "situées à des endroits différents"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "J’ai visité le pays de la France",
+            "correction": "J’ai visité la France"
+          },
+          {
+            "texte_id": "lecon_9_2",
+            "erreur": "des entrées de quelques attractions",
+            "correction": "des entrées pour quelques attractions"
+          },
+          {
+            "texte_id": "lecon_10",
+            "erreur": "faire un cours d’apprendre utiliser",
+            "correction": "organiser un cours pour apprendre à utiliser"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "rencontrer avec la vie",
+            "correction": "se confronter à la vie réelle / faire l'expérience de la vie quotidienne"
+          }
+        ]
+      },
+      {
+        "type": "V05",
+        "pattern": "Interférence linguistique (calque du slovaque / structure)",
+        "occurrences": 6,
+        "exemples": [
+          {
+            "texte_id": "lecon_1",
+            "erreur": "C'est la raison pourquoi",
+            "correction": "C'est la raison pour laquelle"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "tout le meilleur à la maison le meilleur",
+            "correction": "on n'est jamais mieux que chez soi"
+          },
+          {
+            "texte_id": "lecon_5_2",
+            "erreur": "C'est trouver au coin de la rue",
+            "correction": "Il se trouve au coin de la rue"
+          },
+          {
+            "texte_id": "lecon_12",
+            "erreur": "moi et ma famille",
+            "correction": "ma famille et moi"
+          },
+          {
+            "texte_id": "lecon_5",
+            "erreur": "c'est pour ça j'étais triste",
+            "correction": "c'est pour ça que j'étais triste"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "rencontrer avec la vie",
+            "correction": "se confronter à la vie réelle"
+          }
+        ]
+      }
+    ],
+    "style": [
+      {
+        "type": "S02",
+        "pattern": "Phrases trop longues / ponctuation et parenthèses mal gérées",
+        "occurrences": 3,
+        "exemples": [
+          {
+            "texte_id": "lecon_9_2",
+            "erreur": "C'est une super idée, mais je ne suis pas d'accord parce que pour cette occasion - la départ de Baptiste - je voudrais préparer quelque chose de différent.",
+            "correction": "C'est une super idée. Mais pour le départ de Baptiste, je préférerais préparer quelque chose de différent."
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "Mais, ce n’était pas ... (Mais l’apprentissage chez moi était plus important pour moi).",
+            "correction": "Mais ce n’était pas le plus important : pour moi, l’apprentissage à la maison comptait davantage."
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "Au début, le travail était vraiment difficile pour moi (...) que je n’ai pas compris!",
+            "correction": "Au début, le travail était vraiment difficile pour moi, car je ne comprenais pas l'argot et les gens parlaient vite."
+          }
+        ]
+      },
+      {
+        "type": "S05",
+        "pattern": "Formulation maladroite / lourde",
+        "occurrences": 6,
+        "exemples": [
+          {
+            "texte_id": "lecon_1",
+            "erreur": "je voudrais partager mon expérience avec mes études de la langue française avec vous",
+            "correction": "je voudrais partager avec vous mon expérience d'apprentissage du français"
+          },
+          {
+            "texte_id": "lecon_5_2",
+            "erreur": "Je vous explique quelle est la localisation de l'école",
+            "correction": "Je vous indique où se trouve l'école"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "la chose plus importante, amusez-vous !",
+            "correction": "et surtout, amusez-vous !"
+          },
+          {
+            "texte_id": "lecon_12",
+            "erreur": "je crois que ce projet apportera plus de sécurité et des sourires",
+            "correction": "je crois que ce projet apportera plus de sécurité et de confort"
+          }
+        ]
+      }
+    ]
+  },
+  "erreurs_persistantes": {
+    "grammaire": [
+      {
+        "type": "G07",
+        "pattern": "Mauvais emploi des articles/déterminants",
+        "derniers_textes": [
+          "lecon_13",
+          "lecon_15",
+          "lecon_15_2"
+        ],
+        "exemples": [
+          {
+            "texte_id": "lecon_13",
+            "erreur": "Toujours parler le langue du pays visité",
+            "correction": "Toujours parler la langue du pays visité"
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "une apprentissage",
+            "correction": "un apprentissage"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "cet expérience",
+            "correction": "cette expérience"
+          }
+        ]
+      }
+    ],
+    "vocabulaire": [
+      {
+        "type": "V04",
+        "pattern": "Collocations non naturelles",
+        "derniers_textes": [
+          "lecon_13",
+          "lecon_15",
+          "lecon_15_2"
+        ],
+        "exemples": [
+          {
+            "texte_id": "lecon_13",
+            "erreur": "J’ai visité le pays de la France",
+            "correction": "J’ai visité la France"
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "en langue que je voulais apprendre",
+            "correction": "dans la langue que je voulais apprendre"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "rencontrer avec la vie",
+            "correction": "se confronter à la vie réelle"
+          }
+        ]
+      }
+    ],
+    "style": [
+      {
+        "type": "S05",
+        "pattern": "Formulation maladroite / lourde",
+        "derniers_textes": [
+          "lecon_13",
+          "lecon_15",
+          "lecon_15_2"
+        ],
+        "exemples": [
+          {
+            "texte_id": "lecon_13",
+            "erreur": "Notamment, quelques conseils pour bien réussir cet échange:",
+            "correction": "Voici quelques conseils pour bien réussir cet échange :"
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "Mais, ce n’était pas quelque chose qui était le plus important...",
+            "correction": "Mais ce n’était pas le plus important…"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "c’est une aventure pour rencontrer avec la vie",
+            "correction": "c’est une aventure qui permet de se confronter à la vie réelle"
+          }
+        ]
+      },
+      {
+        "type": "S02",
+        "pattern": "Phrases longues / ponctuation perfectible",
+        "derniers_textes": [
+          "lecon_13",
+          "lecon_15",
+          "lecon_15_2"
+        ],
+        "exemples": [
+          {
+            "texte_id": "lecon_13",
+            "erreur": "Après les jours que j’ai passés au lycée, moi et mon groupe de classe en Slovaquie avec notre professeur de langue français, nous avons visité...",
+            "correction": "Après mes journées au lycée, mon groupe et moi, avec notre professeur de français, avons visité..."
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "Premièrement, ... (Mais l’apprentissage chez moi était plus important pour moi).",
+            "correction": "Premièrement, ... Mais l’apprentissage à la maison était plus important pour moi."
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "Au début, ... (parlais pas bien français) ... (que je ne comprenais pas)!",
+            "correction": "Au début, ... car je ne parlais pas bien français et je ne comprenais pas l’argot."
+          }
+        ]
+      }
+    ]
+  },
+  "conclusion_synthetique": {
+    "evolution_niveau": {
+      "niveau_depart": "A2+",
+      "niveau_actuel": "B1",
+      "nombre_textes_analyses": 16
+    },
+    "synthese": {
+      "niveau_initial": "Le premier texte (lecon_1) correspond à un niveau A2+ : l’étudiante s’exprime avec aisance sur des sujets personnels et relie des idées simples, mais présente de nombreuses erreurs systématiques sur les articles/déterminants (G07), les prépositions et constructions à l’infinitif (G06), ainsi que des formulations calquées du slovaque (V05).",
+      "progression_observee": "Entre les leçons 4 et 10, on observe une meilleure structuration du discours, une variété de connecteurs et un élargissement lexical. Les erreurs lourdes sur le passé composé (accords fautifs et auxiliaires, G01/G09) diminuent nettement après lecon_5. L’usage des temps s’élargit (emploi du conditionnel, subordination), et la cohérence globale s’améliore malgré des maladresses.",
+      "niveau_actuel_detail": "Les deux derniers textes (lecon_15 et lecon_15_2) relèvent d’un niveau B1: capacité à argumenter, à relater une expérience de manière suivie, et à nuancer son avis. Les erreurs d’articles (G07) et de collocations (V04) restent fréquentes, et la formulation peut être lourde (S05). Quelques interférences persistent, mais la maîtrise des temps du passé est globalement plus sûre, avec une confusion PC/imparfait encore ponctuelle (G04).",
+      "points_forts": "Bonne aisance rédactionnelle, richesse thématique, connecteurs variés, amélioration notable du passé composé (accords et auxiliaires), capacité à exprimer une opinion et à illustrer par des exemples.",
+      "points_a_ameliorer": "Articles/déterminants (G07) et prépositions/constructions à l’infinitif (G06), collocations et choix lexicaux naturels (V04/V02), ordre des mots et négation (G08/G03), allègement du style et ponctuation (S05/S02).",
+      "recommandations": "1) Révisions ciblées: articles (la/le/de l’), superlatif, démonstratifs; verbes + préposition (aider à, commencer à, attendre de, rêver de). 2) Travail de collocations et reformulation (corpus de phrases modèles, lecture extensive, fiches de chunks). 3) Drills sur l’ordre des pronoms et la négation. 4) Réécriture de paragraphes pour condenser/simplifier les phrases et stabiliser la ponctuation. 5) Pour PC/imparfait: exercices de narration (arrière-plan vs événements)."
+    }
+  }
+}

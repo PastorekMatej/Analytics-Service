@@ -388,7 +388,7 @@ The file `backend/OpenAI_Error_LLM_method.py` contains the **main AI system prom
 
 ### 🔜 Phase 2: Automatic Saving (PLANNED)
 
-**Status:** 🔜 **PLANNED**  
+**Status:** 🔜 **PLANNED**
 **Duration:** 4-5 weeks
 
 **Objectives:**
@@ -559,20 +559,22 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
-- `a3538f9` **feat:** update homepage hero title to highlight platform for both students and teachers
 - `33a395c` **docs:** refactor README with improved structure and organization
 - `03e700c` **feat:** translate entire UI to English and rebrand to Maister
 
 ### January 2025 Updates
 
-- ✅ Complete UI translation to English
-- ✅ Updated homepage hero title to "Learn or Teach French" to highlight dual audience
-- ✅ Application rebranded to "Maister" with logo
-- ✅ New text save functionality (save without analysis)
-- ✅ Comprehensive analysis feature (analyzes all student texts)
-- ✅ Enhanced dashboard with progress tracking and analysis tabs
-- ✅ Improved sidebar navigation with collapsible menu
-- ✅ Refactored README with improved structure and documentation
+- ✅ **Interface Redesign**: Complete overhaul of the "My Teacher" section in the Profile page with a modern, card-based layout.
+- ✅ **Progress Indicators**: Added "In Progress" banners and badges for the "My Voice" feature to clearly communicate development status.
+- ✅ **Typography**: Refactored global typography with a harmonized 'Inter' font stack, improved heading hierarchy, and refined color palette.
+- ✅ **Iconography**: Updated navigation icons (text analysis) and section icons for better visual semantics.
+- ✅ **Responsive Design**: Improved mobile responsiveness for profile and teacher selection sections.
+- ✅ Application rebranded to "Maister" with logo.
+- ✅ New text save functionality (save without analysis).
+- ✅ Comprehensive analysis feature (analyzes all student texts).
+- ✅ Enhanced dashboard with progress tracking and analysis tabs.
+- ✅ Improved sidebar navigation with collapsible menu.
+- ✅ Refactored README with improved structure and documentation.
 
 ---
 

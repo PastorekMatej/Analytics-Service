@@ -83,6 +83,12 @@
   gap: 0.5rem;
 }
 
+.sidebar.collapsed .sidebar-header {
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .sidebar-toggle {
   width: 32px;
   height: 32px;
@@ -105,7 +111,7 @@
 }
 
 .sidebar.collapsed .sidebar-toggle {
-  margin: 0 auto;
+  margin: 0;
 }
 
 /* Logo */
@@ -212,6 +218,20 @@
 
 .nav-link span {
   flex: 1;
+}
+
+.nav-badge-in-progress {
+  font-size: 0.875rem;
+  margin-left: auto;
+  opacity: 0.8;
+}
+
+.sidebar.collapsed .nav-badge-in-progress {
+  display: none;
+}
+
+.nav-link-in-progress {
+  position: relative;
 }
 
 .nav-link-primary {

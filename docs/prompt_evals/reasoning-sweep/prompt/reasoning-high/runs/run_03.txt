@@ -1,0 +1,175 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  résumé: >
+    La production gagne en ampleur et en maîtrise des registres (courriel formel, avis argumenté, conseils).
+    Les temps du récit sont mieux contrôlés qu’au début et les textes sont plus structurés. 
+    Cependant, des erreurs récurrentes demeurent (articles/déterminants, prépositions/constructions à l’infinitif, accords/conjugaisons de base, négation), ce qui limite encore la précision.
+
+TENDANCES D’ÉVOLUTION :
+  - G01 (participe passé/auxiliaire au passé composé) : ≈9–10 occurrences concentrées au texte leçon_4 → 0 occurrence nette dans les leçons_7 à 15_2.
+  - G09 (temps composés inadaptés, p. ex. passé simple) : 1 occurrence (leçon_5) → 0 ensuite.
+  - G08 (ordre des mots/pronoms, “que” après c’est pour ça) : 3–4 occurrences dans leçons_4–5_2 → résiduel (1 occurrence isolée leçon_13).
+  - G05 (accords/conjugaisons de base) : ≈8 occurrences leçons_2–7 → baisse, mais persiste à faible fréquence dans les leçons_10–15_2 (2–3 cas).
+  - G04 (passé composé vs imparfait) : erreurs plus conscientes en leçon_15_2 (auto-corrections entre parenthèses) → amélioration partielle mais instable.
+  - G06 (prépositions/constructions à l’infinitif) : récurrent et stable (≈9–10 occurrences réparties jusqu’à leçon_15_2).
+  - G07 (articles/déterminants/partitif) : récurrent et persistant (≈14+ occurrences, y compris dans les deux derniers textes).
+  - V01 (faux amis/lexique) et V04 (collocations) : toujours présents, mais mieux ciblés (l’étudiante tente de se corriger par des parenthèses).
+  - S05 (formulations lourdes) : encore visible, mais la macro-structure des textes est plus nette (connecteurs, paragraphes).
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (genre, partitif, “de” devant adjectif, choix du déterminant)
+  occurrences: ≈14+
+  exemples:
+    - "la langue français" → "la langue française / le français" (leçon_1)
+    - "quelque chose nouvelle" → "quelque chose de nouveau" (leçon_2)
+    - "ce gens" → "ces gens" (leçon_2)
+    - "La lendemain" → "Le lendemain" (leçon_4)
+    - "association des vos élèves" → "association de vos élèves" (leçon_5_2)
+    - "Je vous souhaite avoir des bonnes deux semaines" → "… de passer deux bonnes semaines" (leçon_5_2)
+    - "des bons professeurs" → "de bons professeurs" (leçon_6_1)
+    - "la départ" → "le départ" (leçon_7_2)
+    - "le pays de la France" → "la France" (leçon_13)
+    - "le langue du pays" → "la langue du pays" (leçon_13)
+    - "du anglais" → "de l’anglais" (leçon_15)
+    - "cet expérience" → "cette expérience" (leçon_15_2)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / constructions à l’infinitif
+  occurrences: ≈9–10
+  exemples:
+    - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (leçon_1)
+    - "dans une colocation" → "en colocation" (leçon_2)
+    - "recommencent être ouvertes" → "recommencent à être ouvertes" (leçon_6_2)
+    - "t’aider avec chercher" → "t’aider à chercher" (leçon_7_1)
+    - "tu attends pour recevoir" → "tu attends de recevoir" (leçon_7_1)
+    - "travailler à leurs outils numériques" → "utiliser leurs outils numériques" (leçon_10)
+    - "apprendre utiliser" → "apprendre à utiliser" (leçon_10)
+    - "en langue que je voulais apprendre" → "dans la langue que je voulais apprendre" (leçon_15)
+    - "entrées de quelques attractions" → "entrées pour quelques attractions" (leçon_9_2)
+
+- type: G01
+  pattern: Participe passé/auxiliaire au passé composé (accord fautif avec avoir, auxiliaire mal choisi)
+  occurrences: ≈9–10 (surtout leçon_4)
+  exemples:
+    - "As-tu déjà voyagée…" → "As-tu déjà voyagé…" (leçon_4)
+    - "j’ai passée la nuit" → "j’ai passé la nuit" (leçon_4)
+    - "j’ai vue le Musée national" → "j’ai vu…" (leçon_4)
+    - "j’ai visitée le château" → "j’ai visité…" (leçon_4)
+    - "j’y restée trois jours" → "j’y suis restée…" (leçon_4)
+    - "j’ai voyagée en Pologne" → "j’ai voyagé…" (leçon_4)
+    - "qui a donner des roses" → "qui a donné…" (leçon_5)
+
+- type: G05
+  pattern: Accords/conjugaisons de base (genre/nombre, personne)
+  occurrences: ≈8–9
+  exemples:
+    - "c’est le première fois" → "c’est la première fois" (leçon_2)
+    - "j’étais plus heureux" → "j’étais plus heureuse" (leçon_5)
+    - "mon école est très réussi" → "très réussie" (leçon_6_1)
+    - "Je suis satisfée" → "satisfaite" (leçon_6_1)
+    - "tu envoie" → "tu envoies" (leçon_7_1)
+    - "les enfants voudrions" → "les enfants voudront/voudraient" (leçon_10)
+    - "très encourageant" → "très encourageants" (leçon_13)
+
+- type: G03
+  pattern: Erreur de négation (ne/… pas, placement des pronoms)
+  occurrences: 3–4
+  exemples:
+    - "je n’ai connu pas" → "je ne connaissais pas" (leçon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (leçon_13)
+    - "parlais pas bien français" → "je ne parlais pas bien français" (leçon_15_2)
+
+- type: G04
+  pattern: Confusion passé composé / imparfait
+  occurrences: 3–4
+  exemples:
+    - "je n’ai connu pas" → "je ne connaissais pas" (leçon_2)
+    - "ils ont utilisé … je n’ai pas compris" → "ils utilisaient … je ne comprenais pas" (leçon_15_2)
+    - "J’ai parlé … j’ai tout compris" → "Je parlais … je comprenais" (leçon_15_2)
+
+- type: G08
+  pattern: Ordre des mots (adverbes/pronoms) et oubli du “que”
+  occurrences: 3–4
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (leçon_4)
+    - "vous vous pouvez garer" → "vous pouvez vous garer" (leçon_5_2)
+    - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (leçon_5)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / calques lexicaux
+  occurrences: 7–8
+  exemples:
+    - "fluente" → "couramment" (leçon_1)
+    - "défises" → "défis" (leçon_2)
+    - "en Slovaque" → "en Slovaquie" (leçon_4)
+    - "varieux" → "variables" (leçon_6_2)
+    - "détroits historiques" → "sites historiques" (leçon_13)
+    - "slang / gargon" → "argot" (leçon_15_2)
+    - "positions (différentes)" → "postes (différents)" (leçon_15_2)
+
+- type: V04
+  pattern: Collocation non naturelle
+  occurrences: 5–6
+  exemples:
+    - "un album photos" → "un album photo" (leçon_9_2)
+    - "Il est un bon employé" → "C’est un bon employé" (leçon_9_1)
+    - "mon énergie a monté" → "mon énergie a augmenté" (leçon_5)
+    - "des sacs de siège" → "des poufs / des fauteuils poire" (leçon_6_1)
+    - "J’ai habité avec une fille" → "J’ai vécu chez…" (leçon_13)
+
+- type: V05
+  pattern: Interférence linguistique (structure/calque du slovaque)
+  occurrences: 3–4
+  exemples:
+    - "la raison pourquoi" → "la raison pour laquelle" (leçon_1)
+    - "tout le meilleur à la maison le meilleur" → "rien ne vaut la maison" (leçon_4)
+    - "rencontrer avec la vie" → "se confronter à la vie" (leçon_15_2)
+    - "moi et ma famille" → "ma famille et moi" (leçon_12)
+
+STYLE:
+- type: S05
+  pattern: Formulation maladroite / lourde
+  occurrences: 6–8
+  exemples:
+    - "Je vous explique quelle est la localisation…" → "Je vous indique l’emplacement…" (leçon_5_2)
+    - "Saurez-vous faire un cours d’apprendre utiliser…" → "Pourrez-vous organiser une formation pour apprendre à utiliser…" (leçon_10)
+    - "Le matin n’était pas que j’ai l’imaginer" → "Le matin n’était pas comme je l’avais imaginé" (leçon_5)
+
+ERREURS_PERSISTANTES :
+  - G07 (articles/déterminants) — encore présentes dans les 3 derniers textes:
+    • "le pays de la France" → "la France" (leçon_13)
+    • "le langue du pays" → "la langue" (leçon_13)
+    • "du anglais" → "de l’anglais" (leçon_15)
+    • "cet expérience" → "cette expérience" (leçon_15_2)
+
+  - G06 (prépositions/constructions à l’infinitif) — persiste:
+    • "en langue que je voulais apprendre" → "dans la langue…" (leçon_15)
+    • "rencontrer avec la vie" → "se confronter à la vie" (leçon_15_2)
+
+  - G05 (accords/conjugaisons) — résiduel:
+    • "très encourageant" → "encourageants" (leçon_13)
+
+  - G03 (négation) — encore instable:
+    • "parlais pas bien français" → "je ne parlais pas bien français" (leçon_15_2)
+
+  - G04 (PC vs imparfait) — encore hésitations:
+    • "ils ont utilisé… je n’ai pas compris" → "ils utilisaient… je ne comprenais pas" (leçon_15_2)
+
+  - V01 (faux amis) — toujours visible:
+    • "détroits historiques" → "sites historiques" (leçon_13)
+    • "slang/gargon" → "argot" (leçon_15_2)
+
+  - V04 (collocations) — persiste à faible fréquence:
+    • "un album photos" → "un album photo" (leçon_9_2 — juste avant la série finale)
+    • "J’ai habité avec…" → "J’ai vécu chez…" (leçon_13)
+
+  - S05 (formulations lourdes) — encore présentes:
+    • tournures longues/peu idiomatiques dans l’argumentation (leçons_13, 15, 15_2)
+
+Conclusion synthétique:
+- Progrès net en structuration du discours, variété des connecteurs et capacité à argumenter et conseiller (B1).
+- Les erreurs de base sur le passé composé (accord/auxiliaire) ont fortement diminué.
+- Erreurs persistantes surtout sur G07 (articles/déterminants) et G06 (prépositions/constructions à l’infinitif), plus quelques accords/conjugaisons (G05), négation (G03) et choix lexicaux (V01/V04).

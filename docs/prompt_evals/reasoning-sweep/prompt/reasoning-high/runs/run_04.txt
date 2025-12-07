@@ -1,0 +1,143 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  résumé: >
+    L’étudiante a nettement gagné en ampleur discursive (argumentation, hypothèses, registre plus soutenu quand nécessaire) et en maîtrise des temps usuels. Les erreurs lourdes de passé composé (accords/auxiliaires) très présentes au début ont presque disparu. Toutefois, les déterminants/articles (G07) et les prépositions/constructions à l’infinitif (G06) restent fréquemment fautifs, de même que quelques accords (G05) et placements (G08). Les deux derniers textes montrent aussi une bonne conscience métalinguistique (auto‑corrections), caractéristique d’un B1 en consolidation.
+
+TENDANCES D’ÉVOLUTION :
+  - G01 (accords/auxiliaires au passé composé) : ≈11 occurrences concentrées au leçon_4 → 0 dès leçon_7.
+  - G05 (accords/conjugaisons de base) : ≈14 occurrences leçons_2–10 → ≈4 dans leçons_12–15_2.
+  - G07 (articles/déterminants) : ≈15 occurrences globales, persiste (≈6 dans leçons_15 et 15_2).
+  - G06 (prépositions / constructions à l’infinitif) : ≈10 occurrences globales, persiste (≈3 dans leçons_13–15_2).
+  - G08 (ordre des mots/relatifs) : 5–6 occurrences dispersées, en baisse mais non stabilisé.
+  - G03 (négation) : 2 occurrences (leçons_2 et 13) → 0 dans leçons_15 et 15_2.
+  - G10 (subjonctif/conditionnel) : 2 occurrences (leçons_2 et 15_2) → encore ponctuel.
+  - V01 (faux amis) : 4–5 occurrences (leçons_2, 13, 15_2), persiste à bas bruit.
+  - V02 (choix lexical) : ≈6 occurrences, tendance à la baisse après leçon_10.
+  - S05 (formulations lourdes/calques) : fréquent au début, mieux maîtrisé, mais réapparaît lors d’énoncés complexes (leçons_13–15_2).
+  - S02 (phrases longues/ponctuation) : réapparaît avec l’usage de parenthèses en leçons_15–15_2.
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G01
+  pattern: Accord/auxiliaire au passé composé (accords fautifs avec avoir, auxiliaire être/avoir mal choisi)
+  occurrences: 11
+  exemples:
+    - "As-tu déjà voyagée..." → "As-tu déjà voyagé..." (lecon_4)
+    - "J´ai arrivée en nuit" → "Je suis arrivée dans la nuit" (lecon_4)
+    - "où j´ai passée la nuit" → "où j’ai passé la nuit" (lecon_4)
+    - "j´ai vue le Musée national" → "j’ai vu le Musée national" (lecon_4)
+    - "J´ai visitée le Château de Bojnice" → "J’ai visité le château de Bojnice" (lecon_4)
+
+- type: G03
+  pattern: Erreur de négation (placement du ne/pas et pronoms)
+  occurrences: 2
+  exemples:
+    - "des gens qui je n'ai connu pas" → "des gens que je n’ai pas connus" (lecon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- type: G05
+  pattern: Accords/conjugaisons de base (genre/nombre, personne)
+  occurrences: 14
+  exemples:
+    - "c'est le première fois" → "c’est la première fois" (lecon_2)
+    - "j'étais plus heureux" → "j’étais plus heureuse" (lecon_5)
+    - "Je suis satisfée!" → "Je suis satisfaite !" (lecon_6_1)
+    - "tu envoie" → "tu envoies" (lecon_7_1)
+
+- type: G06
+  pattern: Prépositions et constructions à l’infinitif
+  occurrences: 10
+  exemples:
+    - "j´ai commencé apprendre" → "j’ai commencé à apprendre" (lecon_1)
+    - "t'aider avec chercher" → "t’aider à chercher" (lecon_7_1)
+    - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+    - "tu attends pour recevoir" → "tu attends de recevoir" (lecon_7_1)
+    - "rencontrer avec la vie" → "découvrir/faire l’expérience de la vie" (lecon_15_2)
+
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, contraction)
+  occurrences: 15
+  exemples:
+    - "la langue français" → "la langue française / le français" (lecon_1)
+    - "j'adore ce gens" → "j’adore ces gens" (lecon_2)
+    - "Il est un bon employé" → "C’est un bon employé" (lecon_9_1)
+    - "A école" → "À l’école" (lecon_15)
+    - "cet expérience" → "cette expérience" (lecon_15_2)
+
+- type: G08
+  pattern: Ordre des mots/relatifs (que/qui, que obligatoire, place des pronoms)
+  occurrences: 6
+  exemples:
+    - "des gens qui je n'ai connu pas" → "des gens que je n’ai pas connus" (lecon_2)
+    - "c'est pour ça j'étais triste" → "c’est pour ça que j’étais triste" (lecon_5)
+    - "vous vous pouvez garer" → "vous pouvez vous garer" (lecon_5_2)
+
+- type: G10
+  pattern: Subjonctif/conditionnel mal employés ou non employés
+  occurrences: 2
+  exemples:
+    - "Bien que ma vie a changé" → "Bien que ma vie ait changé" (lecon_2)
+    - "je suis heureuse que j’ai pu" → "je suis heureuse que j’aie pu" (lecon_15_2)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / mots mal choisis par calque
+  occurrences: 4
+  exemples:
+    - "des défises" → "des défis" (lecon_2)
+    - "une avanture d’adrénaline" → "une aventure pleine d’adrénaline" (lecon_2)
+    - "détroits historiques" → "monuments/sites historiques" (lecon_13)
+    - "positions différentes" → "postes différents" (lecon_15_2)
+
+- type: V02
+  pattern: Choix lexical inadapté (nuance/registre)
+  occurrences: 6
+  exemples:
+    - "la rue et le parking sont toujours cassés" → "sont en mauvais état" (lecon_7_2)
+    - "sa performance est parfaite" → "ses performances sont excellentes" (lecon_9_1)
+    - "des camarades ... étaient vraiment chers" → "étaient très sympathiques" (lecon_13)
+
+- type: V04
+  pattern: Collocations non naturelles
+  occurrences: 2
+  exemples:
+    - "un album photos" → "un album photo" (lecon_9_2)
+    - "des sacs de siège" → "des poufs / des fauteuils poire" (lecon_6_1)
+
+- type: V05
+  pattern: Interférences linguistiques (calques de la syntaxe maternelle)
+  occurrences: 4
+  exemples:
+    - "tout le meilleur à la maison le meilleur" → "rien ne vaut la maison" (lecon_4)
+    - "moi et ma famille" → "ma famille et moi" (lecon_12)
+    - "association des vos élèves" → "association des parents d’élèves" (lecon_5_2)
+
+STYLE:
+- type: S02
+  pattern: Phrases trop longues / ponctuation maladroite (parenthèses, enchaînements)
+  occurrences: 3
+  exemples:
+    - Énumération très longue avec parenthèses (lecon_15)
+    - "Toujours parler le langue du pays visité, être cher... et la chose plus importante, amusez-vous!" (lecon_13)
+
+- type: S05
+  pattern: Formulation maladroite / lourde
+  occurrences: 8
+  exemples:
+    - "Ce la est la raison pourquoi j´ai commencé apprendre..." → "C’est pourquoi j’ai commencé à apprendre..." (lecon_1)
+    - "je vous explique quelle est la localisation..." → "je vous explique où se situe..." (lecon_5_2)
+
+ERREURS_PERSISTANTES :
+- G07 (articles/déterminants) Exemples: "le langue" (lecon_13) ; "A école", "le langue" (lecon_15) ; "cet expérience", "de les gens" (lecon_15_2)
+- G06 (prépositions/constructions à l’infinitif) Exemples: "en langue que..." (lecon_15) ; "rencontrer avec la vie" (lecon_15_2)
+- G03 (négation) Exemple: "vous n’avez me pas croire" (lecon_13)
+- G10 (subjonctif/conditionnel) Exemple: "je suis heureuse que j’ai pu" → "... que j’aie pu" (lecon_15_2)
+- G05 (accords de base) Exemple: "très encourageant et rassurant" → "encourageants et rassurants" (lecon_13)
+- V01 (faux amis) Exemples: "détroits historiques" (lecon_13) ; "positions" pour "postes" (lecon_15_2)
+- V02 (choix lexical) Exemple: "chers" pour "sympas/chaleureux" (lecon_13)
+- S02/S05 (ponctuation et formulations lourdes) Exemples: phrases à parenthèses et énumérations longues (lecon_15 ; lecon_15_2)
+
+Conclusion synthétique:
+- Progrès marqués: disparition des erreurs graves de passé composé; complexité et cohérence argumentatives en hausse; meilleure adaptation au registre; auto‑corrections conscientes.
+- Stabilité/persistance: articles/déterminants (G07) et prépositions/constructions infinitives (G06) restent le point faible principal; quelques accords (G05), ordres des mots (G08) et calques lexicaux (V01/V05) subsistent.
+- Priorités à court terme: sécuriser G07 et G06 (drills ciblés, listes de collocations), puis affiner G05 et G08 dans la rédaction révisée.

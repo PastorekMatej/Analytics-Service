@@ -1,0 +1,334 @@
+{
+  "erreurs_recurrentes": {
+    "grammaire": [
+      {
+        "type": "G07",
+        "pattern": "Mauvais emploi des articles/déterminants (absence, genre, double déterminant)",
+        "occurrences": 14,
+        "exemples": [
+          {
+            "texte_id": "lecon_2",
+            "erreur": "c'est le première fois",
+            "correction": "c'est la première fois"
+          },
+          {
+            "texte_id": "lecon_5_2",
+            "erreur": "Je suis secrétaire de l'association des vos élèves",
+            "correction": "Je suis secrétaire de l'association de vos élèves"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "Toujours parler le langue du pays visité",
+            "correction": "Toujours parler la langue du pays visité"
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "A école, nous avions des cours de langue anglais",
+            "correction": "À l’école, nous avions des cours d’anglais"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "j’ai pu cet expérience",
+            "correction": "j’ai pu avoir cette expérience"
+          }
+        ]
+      },
+      {
+        "type": "G06",
+        "pattern": "Utilisation incorrecte des prépositions / constructions à l’infinitif",
+        "occurrences": 9,
+        "exemples": [
+          {
+            "texte_id": "lecon_1",
+            "erreur": "j´ai commencé apprendre cette langue",
+            "correction": "j’ai commencé à apprendre cette langue"
+          },
+          {
+            "texte_id": "lecon_7_1",
+            "erreur": "je peux t'aider avec chercher un emploi",
+            "correction": "je peux t'aider à chercher un emploi"
+          },
+          {
+            "texte_id": "lecon_7_1",
+            "erreur": "tu attends pour recevoir un email",
+            "correction": "tu attends de recevoir un e-mail"
+          },
+          {
+            "texte_id": "lecon_6_2",
+            "erreur": "recommencent être ouvertes le 27 décembre",
+            "correction": "recommencent à être ouvertes le 27 décembre"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "une aventure pour rencontrer avec la vie",
+            "correction": "une aventure pour se confronter à la vie"
+          }
+        ]
+      },
+      {
+        "type": "G01",
+        "pattern": "Accord du participe passé avec avoir (sur-accord en -é/-ée)",
+        "occurrences": 10,
+        "exemples": [
+          {
+            "texte_id": "lecon_4",
+            "erreur": "As-tu déjà voyagée quelque part",
+            "correction": "As-tu déjà voyagé quelque part"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "j´ai passée la nuit",
+            "correction": "j’ai passé la nuit"
+          },
+          {
+            "texte_id": "lecon_4",
+            "erreur": "j´ai vue le Musée national / j´ai visitée le château",
+            "correction": "j’ai vu le musée national / j’ai visité le château"
+          }
+        ]
+      },
+      {
+        "type": "G05",
+        "pattern": "Accords de base (sujet-verbe, genre, pluriel, superlatif)",
+        "occurrences": 9,
+        "exemples": [
+          {
+            "texte_id": "lecon_5",
+            "erreur": "J'étais vraiment stressé",
+            "correction": "J’étais vraiment stressée"
+          },
+          {
+            "texte_id": "lecon_6_1",
+            "erreur": "je suis satisfée",
+            "correction": "je suis satisfaite"
+          },
+          {
+            "texte_id": "lecon_7_1",
+            "erreur": "tu envoie ton CV",
+            "correction": "tu envoies ton CV"
+          },
+          {
+            "texte_id": "lecon_10",
+            "erreur": "les enfants voudrions",
+            "correction": "les enfants voudraient"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "Les professeurs étaient très encourageant et rassurant",
+            "correction": "Les professeurs étaient très encourageants et rassurants"
+          }
+        ]
+      },
+      {
+        "type": "G08",
+        "pattern": "Ordre incorrect des mots (clitiques, que obligatoire, adverbes)",
+        "occurrences": 5,
+        "exemples": [
+          {
+            "texte_id": "lecon_4",
+            "erreur": "Tu me vraiment manques",
+            "correction": "Tu me manques vraiment"
+          },
+          {
+            "texte_id": "lecon_5",
+            "erreur": "c'est pour ça j'étais triste",
+            "correction": "c'est pour ça que j'étais triste"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "vous n’avez me pas croire",
+            "correction": "vous ne me croirez pas"
+          }
+        ]
+      }
+    ],
+    "vocabulaire": [
+      {
+        "type": "V04",
+        "pattern": "Collocations non naturelles",
+        "occurrences": 6,
+        "exemples": [
+          {
+            "texte_id": "lecon_5",
+            "erreur": "mon énergie a monté",
+            "correction": "mon énergie a augmenté / je me suis sentie plus en forme"
+          },
+          {
+            "texte_id": "lecon_7_2",
+            "erreur": "la rue et le parking sont toujours cassés",
+            "correction": "la rue et le parking sont en mauvais état"
+          },
+          {
+            "texte_id": "lecon_2",
+            "erreur": "une avanture d'adrénaline",
+            "correction": "une aventure pleine d’adrénaline"
+          }
+        ]
+      },
+      {
+        "type": "V01",
+        "pattern": "Faux amis / choix lexical inexact",
+        "occurrences": 4,
+        "exemples": [
+          {
+            "texte_id": "lecon_2",
+            "erreur": "des défises",
+            "correction": "des défis"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "visiter beaucoup de détroits historiques",
+            "correction": "visiter beaucoup de sites historiques"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "le slang",
+            "correction": "l’argot"
+          }
+        ]
+      },
+      {
+        "type": "V05",
+        "pattern": "Interférence linguistique (structures calquées)",
+        "occurrences": 5,
+        "exemples": [
+          {
+            "texte_id": "lecon_12",
+            "erreur": "moi et ma famille utilisons la gare beaucoup",
+            "correction": "ma famille et moi utilisons souvent la gare"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "moi et mon groupe de classe en Slovaquie...",
+            "correction": "mon groupe-classe et moi (en Slovaquie)..."
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "rencontrer avec la vie",
+            "correction": "se confronter à la vie"
+          }
+        ]
+      }
+    ],
+    "style": [
+      {
+        "type": "S02",
+        "pattern": "Phrases trop longues / ponctuation insuffisante",
+        "occurrences": 5,
+        "exemples": [
+          {
+            "texte_id": "lecon_2",
+            "erreur": "Ils sont très chaleureux et intelligents, nous avons toujours quelque chose à dire :)",
+            "correction": "Ils sont très chaleureux et intelligents. Nous avons toujours quelque chose à dire."
+          },
+          {
+            "texte_id": "lecon_10",
+            "erreur": "Puis, ce que je voudrais vous demander c’est quand (si) les enfants voudrions faire quelque chose différent [...] pourraient-ils?",
+            "correction": "Puis, je voudrais vous demander ceci: si les enfants veulent faire autre chose, pourront-ils le faire?"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "C’est une expérience enrichissante et certainement, c’est une aventure pour rencontrer avec la vie [...]",
+            "correction": "C’est une expérience enrichissante et une vraie immersion dans la vie quotidienne des Français."
+          }
+        ]
+      },
+      {
+        "type": "S05",
+        "pattern": "Formulation maladroite / lourde",
+        "occurrences": 7,
+        "exemples": [
+          {
+            "texte_id": "lecon_1",
+            "erreur": "Ce la est la raison pourquoi j´ai commencé apprendre cette langue",
+            "correction": "C’est la raison pour laquelle j’ai commencé à apprendre cette langue"
+          },
+          {
+            "texte_id": "lecon_7_2",
+            "erreur": "je crois que vous pouvez gérer",
+            "correction": "je suis sûr que vous saurez vous adapter"
+          },
+          {
+            "texte_id": "lecon_13",
+            "erreur": "J’ai visité le pays de la France",
+            "correction": "J’ai visité la France"
+          }
+        ]
+      }
+    ]
+  },
+  "erreurs_persistantes": {
+    "grammaire": [
+      {
+        "type": "G07",
+        "pattern": "Mauvais emploi des articles/déterminants",
+        "present_dans_textes": [
+          "lecon_13",
+          "lecon_15",
+          "lecon_15_2"
+        ],
+        "exemples": [
+          {
+            "texte_id": "lecon_13",
+            "erreur": "parler le langue du pays visité",
+            "correction": "parler la langue du pays visité"
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "A école, nous avions des cours de langue anglais",
+            "correction": "À l’école, nous avions des cours d’anglais"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "j’ai pu cet expérience",
+            "correction": "j’ai pu avoir cette expérience"
+          }
+        ]
+      }
+    ],
+    "vocabulaire": [],
+    "style": [
+      {
+        "type": "S05",
+        "pattern": "Formulation maladroite / lourde",
+        "present_dans_textes": [
+          "lecon_13",
+          "lecon_15",
+          "lecon_15_2"
+        ],
+        "exemples": [
+          {
+            "texte_id": "lecon_13",
+            "erreur": "J’ai visité le pays de la France",
+            "correction": "J’ai visité la France"
+          },
+          {
+            "texte_id": "lecon_15",
+            "erreur": "le moment parfait pour commencer à apprendre les langues étrangères est quand?",
+            "correction": "Quand est-il idéal de commencer à apprendre une langue étrangère?"
+          },
+          {
+            "texte_id": "lecon_15_2",
+            "erreur": "une aventure pour rencontrer avec la vie",
+            "correction": "une véritable immersion dans la vie quotidienne"
+          }
+        ]
+      }
+    ]
+  },
+  "conclusion_synthetique": {
+    "evolution_niveau": {
+      "niveau_depart": "A2",
+      "niveau_actuel": "B1",
+      "nombre_textes_analyses": 16
+    },
+    "synthese": {
+      "niveau_initial": "Le premier texte (lecon_1) montre un niveau A2: phrases simples, connecteurs de base, nombreuses erreurs sur les articles/déterminants (G07), prépositions/constructions à l’infinitif (G06), accords de base (G05) et ordre des mots (G08). Le lexique est élémentaire avec quelques calques.",
+      "progression_observee": "Entre les textes 4 et 10, on observe une nette diminution des erreurs au passé composé: les sur-accords du participe passé avec avoir (G01) se concentrent surtout dans le texte lecon_4 et disparaissent ensuite. La cohérence discursive progresse, le vocabulaire s’élargit et la variété des connecteurs augmente.",
+      "niveau_actuel_detail": "Les deux derniers textes (lecon_15 et lecon_15_2) relèvent d’un B1: capacité à argumenter, donner des exemples, structurer un avis et décrire une expérience professionnelle. Toutefois, persistent des erreurs d’articles/déterminants (G07) et des formulations lourdes (S05); des imprécisions sur certaines prépositions/constructions (G06) et des collocations restent ponctuellement visibles.",
+      "points_forts": "Meilleure maîtrise des temps du récit, enrichissement lexical, structuration plus claire des idées, utilisation de connecteurs et d’exemples concrets.",
+      "points_a_ameliorer": "Articles/déterminants (G07), prépositions et constructions à l’infinitif (G06), accords de base résiduels (G05), collocations (V04) et formulations trop calquées/maladroites (S05/V05).",
+      "recommandations": "Travail ciblé sur: 1) articles et déterminants en contexte (générique/spécifique, noms abstraits, démonstratifs); 2) prépositions avec les verbes usuels et tournures à/de + infinitif; 3) automatismes d’accord de base (pluriel, féminin, -ent, superlatif); 4) acquisition de collocations fréquentes via lecture/écoute authentiques; 5) réécriture guidée de phrases lourdes pour gagner en naturel."
+    }
+  }
+}

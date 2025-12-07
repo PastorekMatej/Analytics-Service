@@ -26,21 +26,21 @@ def modal_agreement_count(sets: List[Tuple[str, ...]]) -> int:
 
 
 def compute_agreements(outputs: Sequence[ParsedOutput]) -> dict:
-    """Compute X/5 style agreement counts for each section.
+    """Compute X/5 style agreement counts for each section (prompt_v2 format).
 
-    - evolution_global: exact match on (level_from, level_to)
+    - niveau_evolution: exact match on (niveau_depart, niveau_actuel)
     - grammaire/vocabulaire/style: exact match on the SET of codes present
-    - persistantes: not scored as X/5; we can estimate by exact list match
+    - persistantes: exact match on the SET of error codes present
     """
     n = len(outputs)
     if n == 0:
         return {}
 
-    # Evolution agreement
-    evo_pairs = [
-        (o.level_from or "", o.level_to or "") for o in outputs
+    # Niveau evolution agreement (replaces evolution_globale)
+    niveau_pairs = [
+        (o.niveau_depart or "", o.niveau_actuel or "") for o in outputs
     ]
-    evo_agree = modal_agreement_count([tuple(p) for p in evo_pairs])
+    niveau_agree = modal_agreement_count([tuple(p) for p in niveau_pairs])
 
     # Error code set agreements
     g_sets = [tuple(sorted(set(_codes(o.erreurs_grammaire)))) for o in outputs]
@@ -50,12 +50,12 @@ def compute_agreements(outputs: Sequence[ParsedOutput]) -> dict:
     v_agree = modal_agreement_count(v_sets)
     s_agree = modal_agreement_count(s_sets)
 
-    # Persistantes agreement (optional)
+    # Persistantes agreement
     p_sets = [tuple(sorted(set(o.erreurs_persistantes))) for o in outputs]
     p_agree = modal_agreement_count(p_sets)
 
     return {
-        "evolution_globale": evo_agree,
+        "niveau_evolution": niveau_agree,
         "grammaire": g_agree,
         "vocabulaire": v_agree,
         "style": s_agree,
@@ -65,16 +65,30 @@ def compute_agreements(outputs: Sequence[ParsedOutput]) -> dict:
 
 
 def compute_similarity(outputs: Sequence[ParsedOutput]) -> dict:
-    """Compute mean similarity for narrative fields like resume."""
-    resumes = [o.resume.strip() for o in outputs if o.resume and o.resume.strip()]
-    if len(resumes) < 2:
-        return {"resume_mean_similarity": None}
+    """Compute mean similarity for narrative synthese fields (prompt_v2 format)."""
+    # Compare synthese_niveau_initial + synthese_progression + synthese_niveau_actuel
+    syntheses = []
+    for o in outputs:
+        parts = []
+        if o.synthese_niveau_initial:
+            parts.append(o.synthese_niveau_initial)
+        if o.synthese_progression:
+            parts.append(o.synthese_progression)
+        if o.synthese_niveau_actuel:
+            parts.append(o.synthese_niveau_actuel)
+        if parts:
+            syntheses.append(" ".join(parts))
+    
+    if len(syntheses) < 2:
+        return {"synthese_mean_similarity": None}
+    
     # pairwise token_set_ratio average
     scores: List[float] = []
-    for i in range(len(resumes)):
-        for j in range(i + 1, len(resumes)):
-            scores.append(float(token_set_ratio(resumes[i], resumes[j])))
+    for i in range(len(syntheses)):
+        for j in range(i + 1, len(syntheses)):
+            scores.append(float(token_set_ratio(syntheses[i], syntheses[j])))
     mean_score = sum(scores) / len(scores) if scores else None
-    return {"resume_mean_similarity": mean_score}
+    return {"synthese_mean_similarity": mean_score}
+
 
 

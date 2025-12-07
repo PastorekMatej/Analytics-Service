@@ -1,0 +1,124 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  résumé: >
+    Depuis le premier texte (lecon_1), l’étudiante a nettement gagné en organisation du discours (enchaînements D’abord/Ensuite/Puis/Pour conclure), en ampleur lexicale et en aisance pour argumenter et raconter. Les erreurs de passé composé (accords/auxiliaires) ont fortement régressé après lecon_4. En revanche, les déterminants/articles (G07), certaines prépositions/constructions (G06), des accords de base (G05) et quelques tours maladroits (S05) demeurent fréquents. Le niveau global actuel, jugé sur les deux derniers textes (lecon_15 et lecon_15_2), correspond à un B1 fonctionnel.
+
+TENDANCES D’ÉVOLUTION :
+  - G01 (participe passé au passé composé: accords/auxiliaires) : ≈6 occurrences concentrées au lecon_4 → 0 dans lecon_13, lecon_15, lecon_15_2.
+  - G08 (ordre des mots/placement des pronoms) : 2–3 occurrences (lecon_2, lecon_4) → 1 résurgence isolée au lecon_13 → 0 au lecon_15 et lecon_15_2.
+  - G03 (négation) : erreur nette au lecon_2 → amélioration globale, mais 1 reprise au lecon_13.
+  - G05 (accords/conjugaisons de base) : récurrent du lecon_2 au lecon_10 (≈10 occurrences/ensemble) → baisse relative mais encore présent au lecon_13 et lecon_15 (≈1–2 par texte récent).
+  - G06 (prépositions/constructions à l’infinitif) : récurrent et stable (≈7–9 occurrences réparties) ; persiste au lecon_15 et lecon_15_2.
+  - G07 (articles/déterminants: absence, genre, partitif, contraction) : récurrent et persistant tout au long (≈12–15 occurrences) ; toujours 2–3 occurrences par texte dans les derniers écrits.
+  - V01 (faux amis / calques) : présent tôt (lecon_2) et encore au lecon_15_2 (slang → argot) ; persistance légère.
+  - V04 (collocations peu naturelles) : récurrent (lecon_7_2, lecon_9_2) et encore au lecon_15_2 ; persistant.
+  - V05 (interférences structurelles) : visible (ordre “moi et …”) encore au lecon_13 ; persistant léger.
+  - S05 (formulations lourdes/maladroites) : récurrent mais tendance à être moins gênant au fil du temps ; encore quelques occurrences dans les 2 derniers textes.
+
+ERREURS_RÉCURRENTES:
+ GRAMMAIRE:
+  - type: G07
+    pattern: Mauvais emploi des articles/déterminants (absence, genre, partitif, contraction)
+    occurrences: ≈14
+    exemples:
+      - "ce gens" → "ces gens" (lecon_2)
+      - "association des vos élèves" → "association des parents d’élèves" (lecon_5_2)
+      - "la départ" → "le départ" (lecon_9_2)
+      - "A école" / "le langue" → "À l’école" / "la langue" (lecon_15)
+      - "cet expérience", "de les gens français" → "cette expérience", "des Français" (lecon_15_2)
+
+  - type: G06
+    pattern: Utilisation incorrecte des prépositions / constructions à l’infinitif
+    occurrences: ≈8
+    exemples:
+      - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (lecon_1)
+      - "je peux t’aider avec chercher" → "je peux t’aider à chercher" (lecon_7_1)
+      - "tu attends pour recevoir" → "tu attends de recevoir" (lecon_7_1)
+      - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+
+  - type: G05
+    pattern: Accords et conjugaisons de base (genre/nombre, personne, superlatif)
+    occurrences: ≈10
+    exemples:
+      - "le première fois" → "la première fois" (lecon_2)
+      - "Je suis satisfée" → "Je suis satisfaite" (lecon_6_1)
+      - "les horaires sont varieux" → "les horaires sont variés" (lecon_6_2)
+      - "tu envoie" → "tu envoies" (lecon_7_1)
+      - "Les professeurs étaient très encourageant et rassurant" → "… encouragés et rassurants" (lecon_13)
+      - "La chose plus importante" → "La chose la plus importante" (lecon_15)
+
+  - type: G01
+    pattern: Passé composé: accord du participe avec avoir / choix d’auxiliaire
+    occurrences: ≈6
+    exemples:
+      - "j’ai vue le Musée national" → "j’ai vu" (lecon_4)
+      - "j’ai visitée le château" → "j’ai visité" (lecon_4)
+      - "où j’ai passée la nuit" → "où j’ai passé la nuit" (lecon_4)
+      - "J’ai arrivée en nuit" → "Je suis arrivée dans la nuit" (lecon_4)
+
+  - type: G03
+    pattern: Erreur de négation (placement de ne… pas)
+    occurrences: 2
+    exemples:
+      - "je n’ai connu pas" → "je n’ai pas connu" (lecon_2)
+      - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+  - type: G08
+    pattern: Ordre des mots (placement des pronoms/adverbes)
+    occurrences: 3
+    exemples:
+      - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+      - "qui je n’ai connu pas" → "que je ne connaissais pas" (lecon_2)
+      - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+ VOCABULAIRE:
+  - type: V01
+    pattern: Faux amis / emprunts / calques
+    occurrences: 4
+    exemples:
+      - "défises" → "défis" (lecon_2)
+      - "avanture d’adrénaline" → "aventure pleine d’adrénaline" (lecon_2)
+      - "slang" → "argot/jargon" (lecon_15_2)
+      - "le pays de la France" → "la France" (lecon_13)
+
+  - type: V04
+    pattern: Collocation non naturelle
+    occurrences: ≈4
+    exemples:
+      - "la rue/le parking sont cassés" → "… sont en mauvais état" (lecon_7_2)
+      - "un album photos" → "un album photo" (lecon_9_2)
+      - "entrées de quelques attractions" → "entrées pour quelques attractions" (lecon_9_2)
+      - "rencontrer avec la vie" → "faire l’expérience de la vie" (lecon_15_2)
+
+  - type: V05
+    pattern: Interférence linguistique (structure slovaque)
+    occurrences: 3
+    exemples:
+      - "moi et ma famille utilisons…" → "ma famille et moi utilisons…" (lecon_12)
+      - "moi et mon groupe de classe…" → "mes camarades de classe et moi…" (lecon_13)
+      - "C’est la raison pourquoi…" → "C’est la raison pour laquelle…" (lecon_1)
+
+ STYLE:
+  - type: S05
+    pattern: Formulation maladroite / lourde
+    occurrences: ≈6
+    exemples:
+      - "C’est trouver au coin…" → "Il se trouve au coin…" (lecon_5_2)
+      - "je peux t’aider avec chercher…" → "je peux t’aider à chercher…" (lecon_7_1)
+      - "Saurez-vous faire un cours d’apprendre utiliser…" → "Pourriez-vous proposer un cours d’initiation aux outils numériques ?" (lecon_10)
+      - "Mais le temps parfait… est quand ?" → "Quel est le moment idéal pour… ?" (lecon_15)
+
+ERREURS_PERSISTANTES :
+  - G07 (articles/déterminants) Exemples: "le pays de la France" → "la France" (lecon_13) ; "À l’école / la langue" au lieu de "A école / le langue" (lecon_15) ; "cette expérience" au lieu de "cet expérience" (lecon_15_2)
+  - G06 (prépositions/constructions) Exemple: "en langue que je voulais apprendre" → "dans la langue que je voulais apprendre" / "en anglais" (lecon_15)
+  - G05 (accords/conjugaisons de base) Exemples: "… très encourageant et rassurant" → "encourageants et rassurants" (lecon_13) ; "La chose plus importante" → "La chose la plus importante" (lecon_15)
+  - G03 (négation) Exemple: "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+  - V01 (faux amis / emprunts) Exemple: "slang" → "argot/jargon" (lecon_15_2)
+  - V04 (collocations) Exemple: "rencontrer avec la vie" → "faire l’expérience de la vie" (lecon_15_2)
+  - V05 (interférence structurelle) Exemple: "moi et mon groupe de classe…" → "mes camarades de classe et moi…" (lecon_13)
+  - S05 (formulations lourdes) Exemple: "Mais le temps parfait… est quand ?" → "Quel est le moment idéal… ?" (lecon_15)
+
+Conclusion synthétique:
+  - Progrès nets dans la narration, l’argumentation et la gestion des temps usuels (réduction forte des erreurs de passé composé après lecon_4).
+  - Stabilité/persistance des erreurs de base sur les déterminants (G07), certaines prépositions (G06) et accords (G05), avec des formulations parfois lourdes (S05).
+  - Capacité actuelle B1: l’étudiante se fait bien comprendre sur des sujets concrets et peut défendre un avis, mais doit consolider la morphosyntaxe (articles, prépositions, accords) pour tendre vers B1+ puis B2.

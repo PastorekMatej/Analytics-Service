@@ -1,0 +1,153 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  résumé: >
+    Dominika écrit désormais des textes plus longs et structurés (lettres formelles, argumentation, consignes), manie davantage les connecteurs et tente des subordonnées et du conditionnel. Les grosses erreurs sur le passé composé (accords/auxiliaires) ont nettement reculé. En revanche, des erreurs de base et récurrentes persistent (articles/déterminants, accords, constructions prépositionnelles, ordre des clitiques), ainsi que des collocations peu naturelles. Progrès net en ampleur et organisation du discours, mais stabilité des erreurs morpho-syntaxiques de base.
+
+TENDANCES D’ÉVOLUTION :
+- G01 (participe passé/auxiliaires au passé composé) : ≈9 occurrences concentrées au texte lecon_4 → 0 dès lecon_5 et absent dans les deux derniers textes.
+- G03 (négation) : 1 occurrence au lecon_2 + 1 au lecon_13 → 0 dans les deux derniers textes.
+- G08 (ordre des mots/placement des pronoms) : 2 occurrences (lecon_4, lecon_13) → 0 dans les deux derniers textes.
+- Style/discours (non codé) : diversité de connecteurs et organisation paragraphe → nette augmentation (2–3 connecteurs/texte au début → 6–8 dans les textes récents).
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, contraction, partitif « de »)
+  occurrences: ≈14
+  exemples:
+    - "la langue français" → "le français" (lecon_1)
+    - "ce gens" → "ces gens" (lecon_2)
+    - "La lendemain" → "Le lendemain" (lecon_4)
+    - "de l'association des vos élèves" → "de l’association de vos élèves" (lecon_5_2)
+    - "des belles photos" → "de belles photos" (lecon_5)
+    - "des bons professeurs" → "de bons professeurs" (lecon_6_1)
+    - "la départ de Baptiste" → "le départ de Baptiste" (lecon_9_2)
+    - "le langue du pays" → "la langue du pays" (lecon_13)
+    - "A école / du anglais / le langue" → "À l’école / de l’anglais / la langue" (lecon_15)
+    - "cet expérience", "de les gens" → "cette expérience", "des gens" (lecon_15_2)
+
+- type: G06
+  pattern: Prépositions et constructions à l’infinitif (à, de, en, contractions)
+  occurrences: ≈6
+  exemples:
+    - "commencé apprendre" → "commencé à apprendre" (lecon_1)
+    - "dans une colocation" → "en colocation" (lecon_2)
+    - "en nuit" → "la nuit" (lecon_4)
+    - "avec chercher ton premier emploi" → "à chercher" (lecon_7_1)
+    - "un cours d’apprendre utiliser" → "un cours pour apprendre à utiliser" (lecon_10)
+    - "rencontrer avec la vie" → "se confronter à la vie / faire l’expérience de la vie" (lecon_15_2)
+
+- type: G05
+  pattern: Accords/conjugaisons de base (genre/nombre, sujet-verbe)
+  occurrences: ≈12
+  exemples:
+    - "c’est le première fois" → "c’est la première fois" (lecon_2)
+    - "J’étais vraiment stressé" → "stressée" (lecon_5)
+    - "mon école est très réussi" → "très réussie" (lecon_6_1)
+    - "je suis satisfée" → "satisfaite" (lecon_6_1)
+    - "tu envoie" → "tu envoies" (lecon_7_1)
+    - "les enfants voudrions / devrient" → "voudraient / devraient" (lecon_10)
+    - "c’est les enfants …" → "ce sont les enfants …" (lecon_10)
+    - "très encourageant et rassurant" → "encourageants et rassurants" (lecon_13)
+
+- type: G01
+  pattern: Participe passé (accord avec avoir) et choix d’auxiliaire au passé composé
+  occurrences: ≈9 (concentrées au lecon_4)
+  exemples:
+    - "j’ai passée la nuit" → "j’ai passé la nuit" (lecon_4)
+    - "j’ai vue le Musée national" → "j’ai vu le musée national" (lecon_4)
+    - "j’ai visitée le Château" → "j’ai visité le château" (lecon_4)
+    - "J’ai arrivée…" → "Je suis arrivée…" (lecon_4)
+    - "j’y restée…" → "j’y suis restée…" (lecon_4)
+    - "j’ai voyagée en Pologne" → "j’ai voyagé en Pologne" (lecon_4)
+
+- type: G03
+  pattern: Erreur de négation (placement du ne/pas, ordre avec pronoms)
+  occurrences: 2
+  exemples:
+    - "qui je n’ai connu pas" → "que je n’ai pas connus" (lecon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- type: G08
+  pattern: Ordre incorrect des mots (placement des adverbes/pronoms, subordination « que »)
+  occurrences: 3
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+    - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (lecon_5)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / emprunts / formes non françaises
+  occurrences: ≈8
+  exemples:
+    - "avanture d’adrénaline" → "aventure riche en adrénaline" (lecon_2)
+    - "défises" → "défis" (lecon_2)
+    - "varieux" → "variables / variés" (lecon_6_2)
+    - "slang" → "argot" (lecon_15_2)
+    - "détroits historiques" → "sites/monuments historiques" (lecon_13)
+    - "fluente" (pour le niveau) → "courante" (lecon_15)
+
+- type: V04
+  pattern: Collocations non naturelles
+  occurrences: ≈5
+  exemples:
+    - "C’est trouver au coin…" → "C’est situé au coin…" (lecon_5_2)
+    - "un cours d’apprendre utiliser…" → "un cours pour apprendre à utiliser…" (lecon_10)
+    - "un album photos" → "un album photo" (lecon_9_2)
+    - "rencontrer avec la vie" → "se confronter à la vie / faire l’expérience de la vie" (lecon_15_2)
+    - "Félicitations pour obtenir ton diplôme" → "Félicitations pour ton diplôme / pour l’obtention de ton diplôme" (lecon_7_1)
+
+- type: V05
+  pattern: Interférences structurelles (calques du slovaque)
+  occurrences: ≈5
+  exemples:
+    - "Ce la est la raison pourquoi…" → "C’est la raison pour laquelle…" (lecon_1)
+    - "Je vous souhaite avoir des bonnes deux semaines" → "Je vous souhaite de passer deux bonnes semaines" (lecon_5_2)
+    - "moi et ma famille utilisons…" → "ma famille et moi utilisons…" (lecon_12)
+    - "je veux te parler de mes jours" → "je veux te parler de mes journées / de ma semaine" (lecon_5)
+
+STYLE:
+- type: S02
+  pattern: Phrases longues / ponctuation et parenthèses envahissantes
+  occurrences: ≈6
+  exemples:
+    - Multiples insertions entre parenthèses alourdissant la phrase (lecon_9_2, lecon_10, lecon_15, lecon_15_2)
+    - "Mais le temps (moment) parfait pour commencer…" (lecon_15)
+    - "je voulais (voudrais)… (le dialect, le gargon)" (lecon_15_2)
+
+- type: S05
+  pattern: Formulations maladroites / lourdes
+  occurrences: ≈10
+  exemples:
+    - "Je pense que cette langue est tellement magnifique belle." → "… est très belle" (lecon_1)
+    - "C’est trouver au coin…" → "C’est situé…" (lecon_5_2)
+    - "dans je suis vraiment stressée" → "ce qui me stresse vraiment" (lecon_12)
+    - "je voudrais préparer… pour rencontrer avec la vie" → "… pour faire face à la vie quotidienne" (lecon_15_2)
+
+ERREURS_PERSISTANTES :
+- G07 (articles/déterminants) — toujours présentes dans les 3 derniers textes.
+  Ex.: "le langue", "A école", "du anglais" (lecon_15) ; "cet expérience", "de les gens" (lecon_15_2) ; "le langue du pays" (lecon_13)
+
+- G05 (accords et conjugaisons de base) — encore fréquentes.
+  Ex.: "les enfants voudrions / devrient" (lecon_10, juste avant la période finale) ; "très encourageant et rassurant" (lecon_13)
+
+- G03 (négation) — résiduelle mais encore visible récemment.
+  Ex.: "vous n’avez me pas croire" (lecon_13)
+
+- G08 (ordre des mots / placement des clitiques) — encore observé.
+  Ex.: "vous n’avez me pas croire" (lecon_13)
+
+- V01 (faux amis / emprunts) — réapparaît dans les textes les plus récents.
+  Ex.: "slang" (lecon_15_2) ; "fluente" (lecon_15)
+
+- V04 (collocations non naturelles) — toujours actif en fin de parcours.
+  Ex.: "rencontrer avec la vie" (lecon_15_2)
+
+- S02/S05 (ponctuation lourde et formulations maladroites) — récurrent en fin de corpus.
+  Ex.: Parenthèses multiples et reformulations intraphrastiques (lecon_15, lecon_15_2)
+
+Synthèse finale:
+- Progrès marquant: disparition des erreurs massives sur le participe passé/auxiliaires; meilleure structuration du discours (connecteurs, paragraphes, ton adapté).
+- Stabilité/persistance: articles/déterminants, accords de base, prépositions/constructions à l’infinitif, collocations non naturelles, placement des clitiques.
+- Priorités de travail: 1) Système des déterminants (articles, de/des, partitif), 2) Accords de base (adj/sujet-verbe) et chaînes clitiques, 3) Prépositions et constructions verbales (à/de + infinitif), 4) Collocations usuelles et désambiguisation lexicale (faux amis).

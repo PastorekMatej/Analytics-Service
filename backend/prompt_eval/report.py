@@ -12,20 +12,21 @@ from .parser import ParsedOutput
 
 
 def _top_header_lines(agreements: dict, similarities: dict, usage_totals: Dict[str, int], usage_means: Dict[str, float]) -> List[str]:
+    """Generate summary header for prompt_v2 format."""
     n = agreements.get("total_runs", 0)
     def line(label: str, key: str) -> str:
         return f"{label}: {agreements.get(key, 0)}/{n}"
 
     lines = [
-        line("ÉVOLUTION_GLOBALE", "evolution_globale"),
+        line("NIVEAU_EVOLUTION", "niveau_evolution"),
         line("Erreurs GRAMMAIRE", "grammaire"),
         line("Erreurs VOCABULAIRE", "vocabulaire"),
         line("Erreurs STYLE", "style"),
         line("Erreurs PERSISTANTES", "persistantes"),
     ]
-    sim = similarities.get("resume_mean_similarity")
+    sim = similarities.get("synthese_mean_similarity")
     if sim is not None:
-        lines.append(f"Résumé similarity (moyenne): {sim:.1f}/100")
+        lines.append(f"Synthèse similarity (moyenne): {sim:.1f}/100")
     # Tokens
     total = usage_totals.get("total_tokens", 0)
     pt = usage_totals.get("prompt_tokens", 0)

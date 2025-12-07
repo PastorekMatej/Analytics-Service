@@ -1,0 +1,166 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  résumé: >
+    Par rapport au premier texte (A2), Dominika produit aujourd’hui des textes plus longs et structurés (B1), gère mieux les temps usuels, enchaîne ses idées et argumente dans des registres variés (courriel formel, avis, récit, consignes). Les erreurs d’auxiliaire/participe passé ont fortement diminué. Restent toutefois des problèmes récurrents avec les articles/déterminants, les prépositions/constructions à l’infinitif, quelques accords de base, des calques lexicaux et des formulations lourdes.
+
+TENDANCES D’ÉVOLUTION :
+- G01 (auxiliaire/accord du participe passé): ≈9 occurrences concentrées en lecon_4 → 0 occurrences dans les textes récents (lecon_9_1 à lecon_15_2).
+- G03 (négation): 1 occurrence tôt (lecon_2) → 1 occurrence tard (lecon_13) → erreur devenue rare et sporadique.
+- G05 (accords/conjugaisons de base): fréquent au début (≈5–6 occurrences cumulées lecon_2–6_1) → encore présent mais moins dense dans les derniers textes (≈1–2 occurrences par texte).
+- G06 (prépositions / constructions à l’infinitif): récurrent du début à la fin (≈2–3 occurrences par texte au début; pic en lecon_10; encore 1–2 occurrences dans les deux derniers textes) → légère amélioration mais persistance.
+- G07 (articles/déterminants): récurrent et stable (≥1–3 occurrences par texte du début à la fin), sans baisse nette.
+- V01 (faux amis / choix lexical fautif): persistance basse mais régulière (lecon_2, 6_2, 13, 15_2).
+- V05 (interférence slovaque): présente du début (lecon_1) et encore visible récemment (lecon_13), mais moins fréquente.
+- S05 (formulations lourdes): mieux maîtrisé qu’au début (moins de tournures calquées), mais encore quelques maladresses isolées.
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G01
+  pattern: Auxiliaire erroné et/ou accord fautif du participe passé
+  occurrences: 9
+  exemples:
+    - "As-tu déjà voyagée" → "As-tu déjà voyagé" (lecon_4)
+    - "j´ai arrivée en nuit" → "je suis arrivée dans la nuit" (lecon_4)
+    - "où j´ai passée la nuit" → "où j’ai passé la nuit" (lecon_4)
+    - "j´ai vue le Musée national" → "j’ai vu le Musée national" (lecon_4)
+    - "j´ai visitée Le château de Prague" → "j’ai visité le château de Prague" (lecon_4)
+    - "j´ai vue beaucoup d´autres choses" → "j’ai vu beaucoup d’autres choses" (lecon_4)
+    - "j´y restée trois jours" → "j’y suis restée trois jours" (lecon_4)
+    - "j´ai voyagée en Pologne" → "j’ai voyagé en Pologne" (lecon_4)
+    - "J´ai visitée le Château de Bojnice" → "J’ai visité le château de Bojnice" (lecon_4)
+
+- type: G03
+  pattern: Erreur de négation (placement du ne/pas/pronom)
+  occurrences: 2
+  exemples:
+    - "qui je n'ai connu pas" → "que je ne connaissais pas" (lecon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- type: G05
+  pattern: Accords et conjugaisons de base (genre/nombre, sujet-verbe)
+  occurrences: 9
+  exemples:
+    - "le première fois" → "la première fois" (lecon_2)
+    - "j'adore ce gens" → "j’adore ces gens" (lecon_2)
+    - "j'étais vraiment stressé" → "stressée" (lecon_5)
+    - "qui a donner" → "qui a donné" (lecon_5)
+    - "Je suis satisfée" → "Je suis satisfaite" (lecon_6_1)
+    - "tu envoie" → "tu envoies" (lecon_7_1)
+    - "la départ" → "le départ" (lecon_9_2)
+    - "les enfants voudrions" → "les enfants voudraient" (lecon_10)
+    - "très encourageant et rassurant" → "très encourageants et rassurants" (lecon_13)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / construction à l’infinitif
+  occurrences: 10
+  exemples:
+    - "j´ai commencé apprendre" → "j’ai commencé à apprendre" (lecon_1)
+    - "dans une colocation" → "en colocation" (lecon_2)
+    - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+    - "t'aider avec chercher" → "t’aider à chercher" (lecon_7_1)
+    - "tu attends pour recevoir" → "tu attends de recevoir" (lecon_7_1)
+    - "quelque chose différent" → "quelque chose de différent" (lecon_10)
+    - "faire un cours d’apprendre utiliser" → "organiser un cours pour apprendre à utiliser" (lecon_10)
+    - "en apprentissage du anglais" → "dans l’apprentissage de l’anglais" (lecon_15)
+    - "rencontrer avec la vie" → "vivre des situations de la vie quotidienne" (lecon_15_2)
+    - "de utilisation" → "d’utilisation / à l’utilisation" selon le contexte (lecon_10)
+
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, partitif, contraction)
+  occurrences: 11
+  exemples:
+    - "la langue français" → "la langue française / le français" (lecon_1)
+    - "de l'association des vos élèves" → "de vos élèves" (lecon_5_2)
+    - "des bons professeurs" → "de bons professeurs" (lecon_6_1)
+    - "le pays de la France" → "la France" (lecon_13)
+    - "Toujours parler le langue" → "Toujours parler la langue" (lecon_13)
+    - "trouver des nouveaux amis" → "trouver de nouveaux amis" (lecon_13)
+    - "A école" → "À l’école" (lecon_15)
+    - "le langue" → "la langue" (lecon_15)
+    - "cet expérience" → "cette expérience" (lecon_15_2)
+    - "de les gens français" → "des gens français / comme les Français" (lecon_15_2)
+    - "je lisais de livres" → "je lisais des livres" (lecon_15)
+
+- type: G08
+  pattern: Ordre incorrect des mots / lien subordonnant manquant
+  occurrences: 3
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+    - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (lecon_5)
+    - "Je dois dire j’aime..." → "Je dois dire que j’aime..." (lecon_2)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / formes inexistantes ou calquées
+  occurrences: 5
+  exemples:
+    - "avanture d’adrénaline" → "aventure pleine d’adrénaline" (lecon_2)
+    - "défises" → "défis" (lecon_2)
+    - "varieux" → "variés / variables" (lecon_6_2)
+    - "détroits historiques" → "sites/lieux historiques" (lecon_13)
+    - "slang / gargon" → "argot / jargon" (lecon_15_2)
+
+- type: V02
+  pattern: Mauvais choix de mot (nuance/registre)
+  occurrences: 2
+  exemples:
+    - "plus effectivement" → "plus efficacement" (lecon_10)
+    - "des camarades [...] étaient vraiment chers" → "étaient très sympas/chaleureux" (lecon_13)
+
+- type: V05
+  pattern: Interférence linguistique (structure calquée)
+  occurrences: 4
+  exemples:
+    - "C’est la raison pourquoi..." → "C’est la raison pour laquelle..." (lecon_1)
+    - "Je vous explique quelle est la localisation..." → "Je vous indique où se trouve..." (lecon_5_2)
+    - "moi et ma famille utilisons" → "ma famille et moi utilisons" (lecon_12)
+    - "moi et mon groupe de classe" → "mon groupe de classe et moi" (lecon_13)
+
+STYLE:
+- type: S05
+  pattern: Formulation maladroite / lourde
+  occurrences: 5
+  exemples:
+    - "Je vous explique quelle est la localisation..." → "Je vous indique où se trouve..." (lecon_5_2)
+    - "(c’est) que vous voyez mener..." → reformuler en une phrase simple (lecon_5_2)
+    - "Je veux te parler de mes jours" → "de mes journées" (lecon_5)
+    - "C’est quelque chose qui prend du temps et dans je suis..." → "Cela prend du temps et je suis..." (lecon_12)
+    - "le pays de la France, la ville qui s’appelle Cognac" → "la France, la ville de Cognac" (lecon_13)
+
+ERREURS_PERSISTANTES :
+- G07 (articles/déterminants) — toujours présentes dans les 3 derniers textes
+  exemples:
+    - "le pays de la France" → "la France" (lecon_13)
+    - "A école / le langue" → "À l’école / la langue" (lecon_15)
+    - "cet expérience"; "de les gens français" → "cette expérience"; "des gens français / les Français" (lecon_15_2)
+
+- G06 (prépositions / constructions à l’infinitif) — encore visibles récemment
+  exemples:
+    - "en apprentissage du anglais" → "dans l’apprentissage de l’anglais" (lecon_15)
+    - "rencontrer avec la vie" → "vivre des situations de la vie quotidienne" (lecon_15_2)
+
+- G05 (accords/conjugaisons de base) — résiduels mais présents
+  exemples:
+    - "très encourageant et rassurant" → "très encourageants et rassurants" (lecon_13)
+
+- G03 (négation) — rare mais persiste
+  exemples:
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- V01 (faux amis)
+  exemples:
+    - "détroits historiques" → "sites historiques" (lecon_13)
+    - "slang / gargon" → "argot / jargon" (lecon_15_2)
+
+- V02 (choix lexical inadapté)
+  exemples:
+    - "des camarades [...] chers" → "sympas/chaleureux" (lecon_13)
+
+- V05 (interférence de structure)
+  exemples:
+    - "moi et mon groupe de classe" → "mon groupe de classe et moi" (lecon_13)
+
+Conclusion synthétique:
+- Progression nette sur la gestion des temps (disparition des erreurs d’auxiliaire/participe) et sur l’organisation du discours (connecteurs, ton adapté).
+- Stabilité/persistance: articles/déterminants (G07) et prépositions/constructions à l’infinitif (G06) restent le point faible majeur; quelques accords de base (G05) et calques lexicaux (V01/V05) subsistent.
+- Capacité actuelle cohérente avec un niveau B1: idées développées et argumentées malgré des erreurs récurrentes de micro-syntaxe.

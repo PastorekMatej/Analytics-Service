@@ -1,0 +1,175 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  résumé: >
+    Depuis le premier texte (A2), l’étudiante a nettement gagné en ampleur syntaxique (phrases complexes, hypothèses, argumentation écrite, registres semi‑formels) et en aisance discursive (connecteurs, exemples). Les erreurs sur le passé composé, très nombreuses au début (auxiliaire/participe), ont fortement diminué. Les points encore fragiles sont surtout les déterminants/articles, les prépositions/constructions à l’infinitif, certains accords de base et quelques tours peu naturels. Ensemble, les deux derniers textes correspondent à un B1 solide, avec une bonne conscience métalinguistique (autocorrections entre parenthèses).
+
+TENDANCES D’ÉVOLUTION :
+  - G01 (participe passé/auxiliaire) : ≈9 occurrences concentrées au leçon_4 → 0 dans les leçons_13, _15, _15_2.
+  - G06 (prépositions / constructions à l’infinitif) : ≈11 occurrences globales ; baisse mais persistance dans les 3 derniers textes (3+).
+  - G07 (articles/déterminants) : ≈10 occurrences sur l’ensemble ; encore plusieurs occurrences dans les leçons_13 et _15.
+  - G05 (accords/conjugaisons de base) : ≈11 occurrences ; mieux maîtrisés mais encore visibles dans les leçons_13 et _15.
+  - G08 (ordre des mots/placement des pronoms) : ≈4–5 occurrences au début/milieu → résiduel (1) dans les 3 derniers textes.
+  - G03 (négation) : faible fréquence mais réapparaît (leçon_13).
+  - G04 (imparfait vs passé composé) : récurrences ponctuelles du récit au passé (≥3), encore visibles au leçon_15_2.
+  - V01 (faux amis/calques) : ≥4 occurrences ; persiste (leçons_13, _15_2).
+  - V04 (collocations non naturelles) : ≥6 occurrences ; encore 1–2 dans les derniers textes.
+  - V02 (choix lexical/nuance) : ≥4 occurrences ; globalement mieux ciblé.
+  - V05 (interférences de la L1) : ≥3 occurrences ; encore 1 au leçon_13.
+  - S05 (formulations lourdes/maladresses) : récurrent mais en nette amélioration (autocorrections, structure plus claire).
+  - S02 (ponctuation/parenthèses) : encore présent mais mieux contrôlé.
+
+ERREURS_RÉCURRENTES:
+  GRAMMAIRE:
+  - type: G07
+    pattern: Mauvais emploi des articles/déterminants (absence, genre, de/des, contraction)
+    occurrences: 10
+    exemples:
+      - "As-tu quelque chose nouvelle ?" → "… quelque chose de nouveau ?" (lecon_2)
+      - "j'adore ce gens" → "j'adore ces gens" (lecon_2)
+      - "l'association des vos élèves" → "… de vos élèves" (lecon_5_2)
+      - "Je vous souhaite avoir des bonnes deux semaines" → "… deux bonnes semaines" (lecon_5_2)
+      - "parler le langue du pays" → "parler la langue du pays" (lecon_13)
+      - "des nouveaux amis" → "de nouveaux amis" (lecon_13)
+      - "des cours de langue anglais" → "des cours d’anglais" (lecon_15)
+      - "en apprentissage du anglais" → "de l’anglais" (lecon_15)
+      - "la langue français" → "la langue française" (lecon_1)
+  - type: G06
+    pattern: Utilisation incorrecte des prépositions / construction à l’infinitif / subordonnants
+    occurrences: 11
+    exemples:
+      - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (lecon_1)
+      - "en nuit" → "la nuit" (lecon_4)
+      - "c’est pour ça j’étais…" → "c’est pour ça que j’étais…" (lecon_5)
+      - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+      - "t’aider avec chercher" → "t’aider à chercher" (lecon_7_1)
+      - "tu attends pour recevoir" → "tu attends de recevoir" (lecon_7_1)
+      - "payer pour les ordinateurs" → "payer les ordinateurs" (lecon_10)
+      - "savoir travailler à leurs outils numériques" → "savoir utiliser leurs outils numériques" (lecon_10)
+      - "faire un cours d’apprendre utiliser…" → "… pour apprendre à utiliser…" (lecon_10)
+      - "J’ai habité avec une fille" → "J’ai habité chez une fille" (lecon_13)
+      - "en langue que je voulais" → "dans la langue que je voulais" (lecon_15)
+  - type: G05
+    pattern: Accords/conjugaisons de base (genre/nombre ; verbes fréquents)
+    occurrences: 11
+    exemples:
+      - "le première fois" → "la première fois" (lecon_2)
+      - "j’étais … stressé / plus heureux" → "stressée / plus heureuse" (lecon_5)
+      - "mon école est très réussi" → "… très réussie" (lecon_6_1)
+      - "Je suis satisfée" → "satisfaite" (lecon_6_1)
+      - "varieux" → "variés" (lecon_6_2)
+      - "tu envoie" → "tu envoies" (lecon_7_1)
+      - "la départ" → "le départ" (lecon_9_2)
+      - "très encourageant et rassurant" → "encourageants et rassurants" (lecon_13)
+      - "la chose plus importante" → "la chose la plus importante" (lecon_15)
+  - type: G08
+    pattern: Ordre incorrect des mots (pronoms/adverbes, que/qui)
+    occurrences: 4
+    exemples:
+      - "avec des gens qui je n’ai connu pas" → "… que je ne connaissais pas" (lecon_2)
+      - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+      - "vous vous pouvez garer" → "vous pouvez vous garer" (lecon_5_2)
+      - "vous n’avez me pas croire" → "vous ne me croirez pas / vous n’allez pas me croire" (lecon_13)
+  - type: G01
+    pattern: Participe passé / auxiliaire au passé composé (forme et accord)
+    occurrences: 9
+    exemples:
+      - "As‑tu déjà voyagée" → "voyagé" (lecon_4)
+      - "J’ai arrivée…" → "Je suis arrivée…" (lecon_4)
+      - "où j’ai passée la nuit" → "… j’ai passé…" (lecon_4)
+      - "j’ai vue … / j’ai visitée" → "j’ai vu / j’ai visité" (lecon_4)
+      - "j’y restée trois jours" → "j’y suis restée…" (lecon_4)
+      - "j’ai voyagée" → "j’ai voyagé" (lecon_4)
+  - type: G03
+    pattern: Erreur de négation (placement des éléments ne…pas)
+    occurrences: 2
+    exemples:
+      - "qui je n’ai connu pas" → "… que je ne connaissais pas" (lecon_2)
+      - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+  - type: G04
+    pattern: Confusion imparfait / passé composé (récit de fond vs faits ponctuels)
+    occurrences: 3
+    exemples:
+      - "qui je n’ai connu pas" → "… que je ne connaissais pas" (lecon_2)
+      - "n’était pas que j’ai l’imaginer" → "n’était pas ce que j’avais imaginé" (lecon_5)
+      - "que je n’ai pas compris" (récit d’habitude) → "que je ne comprenais pas" (lecon_15_2)
+
+  VOCABULAIRE:
+  - type: V01
+    pattern: Faux amis / anglicismes / calques
+    occurrences: 5
+    exemples:
+      - "avanture d’adrénaline" → "aventure pleine d’adrénaline" (lecon_2)
+      - "défises" → "défis" (lecon_2)
+      - "en Slovaque" → "en Slovaquie" (lecon_4)
+      - "détroits historiques" → "sites/lieux historiques" (lecon_13)
+      - "slang" → "argot/jargon" (lecon_15_2)
+  - type: V02
+    pattern: Choix lexical peu naturel (nuance/registre)
+    occurrences: 4
+    exemples:
+      - "la rue et le parking sont cassés" → "endommagés / en mauvais état" (lecon_7_2)
+      - "votre annonce" (décision) → "votre décision" (lecon_9_1)
+      - "chers (camarades)" → "gentils / sympathiques" (lecon_13)
+      - "plus effectivement" → "plus efficacement" (lecon_10)
+  - type: V04
+    pattern: Collocations non naturelles
+    occurrences: 6
+    exemples:
+      - "j’ai dormi toute la route" → "tout le trajet / pendant tout le trajet" (lecon_4)
+      - "C’est trouver au coin" → "Il se trouve au coin" (lecon_5_2)
+      - "mon énergie a monté" → "a augmenté" (lecon_5)
+      - "un album photos" → "un album photo" (lecon_9_2)
+      - "entrées de quelques attractions" → "des billets pour certaines attractions" (lecon_9_2)
+      - "rencontrer avec la vie" → "découvrir la vie / se confronter à la vie" (lecon_15_2)
+  - type: V05
+    pattern: Interférence linguistique (structure de la L1)
+    occurrences: 3
+    exemples:
+      - "tout le meilleur à la maison le meilleur" (calque) → "rien ne vaut d’être chez soi" (lecon_4)
+      - "moi et ma famille" → "ma famille et moi" (lecon_12)
+      - "moi et mon groupe de classe" → "mon groupe et moi" (lecon_13)
+
+  STYLE:
+  - type: S05
+    pattern: Formulations maladroites / lourdes
+    occurrences: 7
+    exemples:
+      - "Celui que je parle, c’est situé…" → "Celui dont je parle se trouve…" (lecon_5_2)
+      - "Je vous souhaite avoir des bonnes deux semaines" → "Je vous souhaite de passer deux bonnes semaines" (lecon_5_2)
+      - "c’est une aventure pour rencontrer avec la vie" → "c’est une expérience pour découvrir la vie" (lecon_15_2)
+  - type: S02
+    pattern: Phrases mal ponctuées / parenthèses envahissantes
+    occurrences: 3
+    exemples:
+      - Parenthèses et incises multiples qui alourdissent la phrase (lecon_10)
+      - Parenthèses de corrections dans le flux du texte (lecon_15, lecon_15_2)
+
+ERREURS_PERSISTANTES :
+  - G07 (articles/déterminants) — encore présentes dans les 3 derniers textes
+    exemples:
+      - "parler le langue du pays" → "la langue" (lecon_13)
+      - "des cours de langue anglais" → "des cours d’anglais" (lecon_15)
+      - "en apprentissage du anglais" → "de l’anglais" (lecon_15)
+  - G06 (prépositions / constructions à l’infinitif)
+    exemples:
+      - "J’ai habité avec une fille" → "chez une fille" (lecon_13)
+      - "en langue que je voulais…" → "dans la langue…" (lecon_15)
+      - "rencontrer avec la vie" → "découvrir la vie / se confronter à la vie" (lecon_15_2)
+  - G05 (accords de base)
+    exemples:
+      - "très encourageant et rassurant" → "encourageants et rassurants" (lecon_13)
+      - "la chose plus importante" → "la chose la plus importante" (lecon_15)
+  - G08 (ordre des mots / placement des pronoms)
+    exemple:
+      - "vous n’avez me pas croire" → "vous ne me croirez pas / vous n’allez pas me croire" (lecon_13)
+  - G03 (négation)
+    exemple:
+      - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+  - G04 (imparfait vs passé composé)
+    exemple:
+      - "que je n’ai pas compris" (récit d’habitude) → "que je ne comprenais pas" (lecon_15_2)
+
+Conclusion synthétique:
+  - Progrès marqués en narration, argumentation et gestion des temps composés (réduction nette des erreurs G01).
+  - Stabilité correcte de la syntaxe complexe et du registre écrit (B1).
+  - Erreurs persistantes surtout sur G07/G06/G05, plus quelques placements (G08) et choix lexicaux (V01/V04). Un travail ciblé sur articles/déterminants et prépositions/constructions à l’infinitif fera probablement passer au B1+.

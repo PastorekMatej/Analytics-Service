@@ -67,15 +67,20 @@ const Layout = ({ children, isAuthenticated, userEmail, userRole, onLogout }) =>
                   <>
                     <Link to="/written-analysis" className="nav-link">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4zM18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"/>
+                        <path fillRule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clipRule="evenodd"/>
                       </svg>
                       {!isSidebarCollapsed && <span>My Writings</span>}
                     </Link>
-                    <Link to="/oral-analysis" className="nav-link">
+                    <Link to="/oral-analysis" className="nav-link nav-link-in-progress">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                         <path d="M12 14c1.66 0 2.99-1.34 2.99-3L15 5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3zm5.3-3c0 3-2.54 5.1-5.3 5.1S6.7 14 6.7 11H5c0 3.41 2.72 6.23 6 6.72V21h2v-3.28c3.28-.48 6-3.3 6-6.72h-1.7z"/>
                       </svg>
-                      {!isSidebarCollapsed && <span>My Voice</span>}
+                      {!isSidebarCollapsed && (
+                        <>
+                          <span>My Voice</span>
+                          <span className="nav-badge-in-progress">🚧</span>
+                        </>
+                      )}
                     </Link>
                     <Link to="/progress" className="nav-link">
                       <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
