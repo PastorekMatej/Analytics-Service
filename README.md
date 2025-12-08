@@ -43,6 +43,7 @@
 - ✅ Track improvement over time with visual dashboards
 - ✅ Assign a teacher for personalized guidance (optional)
 - ✅ Complete analysis history
+- ✅ Upload PDF/Word/TXT files and auto-transcribe them to plain text (no correction)
 
 ### For Teachers 👨‍🏫
 
@@ -183,6 +184,7 @@ The platform offers two distinct account types:
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | `POST` | `/api/analysis/submit` | Submit texts for comprehensive analysis (analyzes all student texts) |
+| `POST` | `/api/analysis/transcribe-file` | Transcribe PDF/DOCX/TXT to plain text (no correction). Audio (mp3, wav, etc.) uses Whisper. |
 | `POST` | `/api/analysis/save` | Save a text without performing analysis |
 | `GET` | `/api/analysis/student/{student_email}` | Get all analyses for a student (with pagination) |
 | `GET` | `/api/analysis/analysis/{analysis_id}` | Get a specific analysis by ID |
@@ -335,6 +337,7 @@ analytics-service/
 
 - **Backend:** pytest (Python)
 - **Frontend:** Jest + Testing Library (React)
+- **New tests:** `backend/tests/test_transcription.py` covers file-type and size validation plus successful transcription stubbing.
 
 ### Development Workflow
 
@@ -378,6 +381,7 @@ The file `backend/OpenAI_Error_LLM_method.py` contains the **main AI system prom
 - ✅ Text save functionality (save without analysis)
 - ✅ Comprehensive analysis (analyzes all student texts)
 - ✅ Progress dashboard with detailed reports and tabs
+- ✅ Document upload flow for written analysis with OpenAI transcription (no correction)
 
 **Next Steps:**
 - [ ] Display analysis history in dashboard
@@ -559,11 +563,13 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `feat:` **File upload and transcription** - Added PDF/DOCX/TXT file upload with automatic transcription for written analysis
 - `33a395c` **docs:** refactor README with improved structure and organization
 - `03e700c` **feat:** translate entire UI to English and rebrand to Maister
 
 ### January 2025 Updates
 
+- ✅ **File Upload Feature**: Added document upload (PDF, DOCX, TXT) with automatic transcription to plain text. Files are transcribed without correction and the text is automatically populated in the analysis form. Supports files up to 25MB.
 - ✅ **Interface Redesign**: Complete overhaul of the "My Teacher" section in the Profile page with a modern, card-based layout.
 - ✅ **Progress Indicators**: Added "In Progress" banners and badges for the "My Voice" feature to clearly communicate development status.
 - ✅ **Typography**: Refactored global typography with a harmonized 'Inter' font stack, improved heading hierarchy, and refined color palette.

@@ -2,7 +2,8 @@
 Analysis routes for Matej Language Lab
 Handles text analysis submissions and retrieval
 """
-from fastapi import APIRouter, HTTPException, status, Body
+import io
+from fastapi import APIRouter, HTTPException, status, Body, UploadFile, File
 from typing import Dict, List, Optional
 from datetime import datetime
 import uuid
@@ -10,9 +11,180 @@ import uuid
 from ..models import TextAnalysis
 from ..db_service import db
 from ..OpenAI_Error_LLM_method import Analyser
+from ..clients import get_openai_client
+from PyPDF2 import PdfReader
+from docx import Document
+
+
+ALLOWED_CONTENT_TYPES = {
+    "application/pdf",
+    "application/msword",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "text/plain",
+}
+MAX_FILE_SIZE_MB = 25
+MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024
+TEXTUAL_CONTENT_TYPES = {
+    "application/pdf",
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    "text/plain",
+}
+AUDIO_CONTENT_TYPES = {
+    "audio/flac",
+    "audio/m4a",
+    "audio/mp3",
+    "audio/mp4",
+    "audio/mpeg",
+    "audio/mpga",
+    "audio/oga",
+    "audio/ogg",
+    "audio/wav",
+    "audio/webm",
+}
 
 
 router = APIRouter(prefix="/api/analysis", tags=["analysis"])
+
+
+def _extract_text_from_file(file_bytes: bytes, content_type: str, filename: str) -> str:
+    def _normalize_pdf_text(text: str) -> str:
+        """
+        Reduce excessive line breaks from PDF extraction while preserving paragraphs.
+        PyPDF2 often extracts text with each word on a separate line.
+        """
+        import re
+
+        if not text:
+            return ""
+        
+        # Normalize line endings
+        text = text.replace("\r\n", "\n").replace("\r", "\n")
+        
+        # Fix hyphenated line breaks (word-\nword becomes wordword)
+        text = re.sub(r"-\s*\n\s*", "", text)
+        
+        # Simple approach: replace ALL newlines with spaces
+        # This will join words that are on separate lines
+        text = text.replace("\n", " ")
+        
+        # Clean up multiple spaces
+        text = re.sub(r" +", " ", text)
+        
+        # Trim whitespace
+        return text.strip()
+
+    if content_type == "text/plain":
+        try:
+            return file_bytes.decode("utf-8")
+        except UnicodeDecodeError:
+            return file_bytes.decode("latin-1", errors="ignore")
+
+    if content_type == "application/pdf":
+        reader = PdfReader(io.BytesIO(file_bytes))
+        pages = [page.extract_text() or "" for page in reader.pages]
+        raw = "\n".join(pages)
+        return _normalize_pdf_text(raw)
+
+    if content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+        doc = Document(io.BytesIO(file_bytes))
+        paragraphs = [p.text for p in doc.paragraphs]
+        return "\n".join(paragraphs).strip()
+
+    if content_type == "application/msword":
+        # Legacy .doc not supported without extra dependencies
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Format .doc non supporté. Merci d'utiliser un fichier .docx."
+        )
+
+    raise HTTPException(
+        status_code=status.HTTP_400_BAD_REQUEST,
+        detail="Format de fichier non pris en charge. Utilisez PDF, DOCX ou TXT."
+    )
+
+
+@router.post("/transcribe-file")
+async def transcribe_file(file: UploadFile = File(...)) -> Dict:
+    """
+    Transcribe an uploaded document to plain text without correction.
+
+    Supports PDF, Word, and text files up to 25MB.
+    """
+    content_type = (file.content_type or "").lower()
+
+    if content_type not in ALLOWED_CONTENT_TYPES:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Format de fichier non pris en charge. Utilisez PDF, DOC/DOCX ou TXT."
+        )
+
+    file_bytes = await file.read()
+    if not file_bytes:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Le fichier est vide."
+        )
+
+    if len(file_bytes) > MAX_FILE_SIZE_BYTES:
+        raise HTTPException(
+            status_code=status.HTTP_413_REQUEST_ENTITY_TOO_LARGE,
+            detail=f"Taille maximale dépassée ({MAX_FILE_SIZE_MB}MB)."
+        )
+
+    # Branch: textual documents (PDF, DOCX, TXT)
+    if content_type in TEXTUAL_CONTENT_TYPES or content_type == "application/msword":
+        extracted = _extract_text_from_file(file_bytes, content_type, file.filename or "upload")
+        if not extracted:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="Impossible d'extraire du texte depuis ce fichier."
+            )
+        return {
+            "success": True,
+            "transcript": extracted,
+            "filename": file.filename,
+        }
+
+    # Branch: audio files (fallback to Whisper)
+    if content_type not in AUDIO_CONTENT_TYPES:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Format de fichier non pris en charge pour la transcription audio."
+        )
+
+    try:
+        client = get_openai_client()
+        buffer = io.BytesIO(file_bytes)
+        buffer.name = file.filename or "upload"
+        buffer.seek(0)
+
+        transcription = client.audio.transcriptions.create(
+            model="whisper-1",
+            file=(buffer.name, buffer),
+            response_format="text",
+            temperature=0
+        )
+
+        transcript_text = transcription if isinstance(transcription, str) else getattr(transcription, "text", "")
+
+        if not transcript_text:
+            raise HTTPException(
+                status_code=status.HTTP_502_BAD_GATEWAY,
+                detail="Transcription vide renvoyée par le service."
+            )
+
+        return {
+            "success": True,
+            "transcript": transcript_text,
+            "filename": file.filename,
+        }
+    except HTTPException:
+        raise
+    except Exception as exc:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Erreur lors de la transcription: {str(exc)}"
+        )
 
 
 @router.post("/save")

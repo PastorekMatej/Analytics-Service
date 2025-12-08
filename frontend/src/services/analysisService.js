@@ -6,6 +6,35 @@
 const API_BASE_URL = 'http://localhost:8000/api/analysis';
 
 /**
+ * Transcribe an uploaded file to text
+ * @param {File} file - File to transcribe
+ * @returns {Promise} Transcription result
+ */
+export const transcribeFile = async (file) => {
+  const formData = new FormData();
+  formData.append('file', file);
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/transcribe-file`, {
+      method: 'POST',
+      body: formData,
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      const errorMessage = data.detail || 'Erreur lors de la transcription';
+      throw new Error(errorMessage);
+    }
+
+    return data;
+  } catch (error) {
+    console.error('Error transcribing file:', error);
+    throw error;
+  }
+};
+
+/**
  * Submit a text for analysis
  * @param {string} studentEmail - Student email
  * @param {string} textContent - Text to analyze
@@ -242,6 +271,7 @@ const analysisService = {
   getAnalysisById,
   deleteAnalysis,
   markAnalysesAsRead,
+  transcribeFile,
   mockAnalysis,
 };
 
