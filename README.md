@@ -39,6 +39,9 @@
 
 - ✅ Submit written texts for comprehensive analysis
 - ✅ Save texts for later analysis
+- ✅ View all saved texts in a list below the submission form
+- ✅ Delete saved texts with confirmation
+- ✅ View text preview, creation date, and analysis status (analyzed/pending)
 - ✅ View detailed progress reports with error categorization
 - ✅ Track improvement over time with visual dashboards
 - ✅ Assign a teacher for personalized guidance (optional)
@@ -79,7 +82,9 @@
 python -m venv venv
 
 # Activate virtual environment
-# Windows:
+# Windows PowerShell:
+.\venv\Scripts\Activate.ps1
+# Windows CMD:
 venv\Scripts\activate
 # macOS/Linux:
 source venv/bin/activate
@@ -90,14 +95,29 @@ pip install -r requirements.txt
 # Create .env file with your OpenAI API key
 echo "OPENAI_API_KEY=your_openai_key_here" > .env
 echo "PROVIDER=openai" >> .env
+```
 
-# Start the backend server
+**Start the backend server:**
+
+**Option 1: Using uvicorn directly (recommended)**
+```powershell
+# Windows PowerShell
+.\venv\Scripts\Activate.ps1
+uvicorn backend.main:app --host 127.0.0.1 --port 8000
+```
+
+**Option 2: Using the run script**
+```powershell
+# Windows PowerShell (set UTF-8 encoding to avoid emoji issues)
+$env:PYTHONIOENCODING="utf-8"
+.\venv\Scripts\Activate.ps1
 python run_backend.py
 ```
 
 **Backend will be available at:**
-- API: `http://localhost:8000`
+- API: `http://localhost:8000` or `http://127.0.0.1:8000`
 - Interactive Docs: `http://localhost:8000/docs` (Swagger UI)
+- Health Check: `http://localhost:8000/api/health`
 
 ⚠️ **Important:** You must create a `.env` file at the root with your OpenAI API key for analyses to work.
 
@@ -112,6 +132,11 @@ npm install
 
 # Start development server
 npm run dev
+```
+
+**For explicit host/port configuration:**
+```bash
+npm run dev -- --host 0.0.0.0 --port 5173
 ```
 
 **Frontend will be available at:** `http://localhost:5173`
@@ -563,12 +588,14 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `feat:` **Saved texts list display** - Added "My Saved Texts" section in My Writings page to display all saved texts with preview, date, status, and delete functionality
 - `feat:` **File upload and transcription** - Added PDF/DOCX/TXT file upload with automatic transcription for written analysis
 - `33a395c` **docs:** refactor README with improved structure and organization
 - `03e700c` **feat:** translate entire UI to English and rebrand to Maister
 
 ### January 2025 Updates
 
+- ✅ **Saved Texts List**: Added a new "My Saved Texts" section in the My Writings page that displays all saved texts below the submission form. Users can view text previews (truncated to 100 characters), creation dates, analysis status badges (Analyzed/Pending), and delete texts with confirmation. The list automatically refreshes after saving or deleting texts.
 - ✅ **File Upload Feature**: Added document upload (PDF, DOCX, TXT) with automatic transcription to plain text. Files are transcribed without correction and the text is automatically populated in the analysis form. Supports files up to 25MB.
 - ✅ **Interface Redesign**: Complete overhaul of the "My Teacher" section in the Profile page with a modern, card-based layout.
 - ✅ **Progress Indicators**: Added "In Progress" banners and badges for the "My Voice" feature to clearly communicate development status.

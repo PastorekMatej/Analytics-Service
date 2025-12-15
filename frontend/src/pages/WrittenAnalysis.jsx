@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import analysisService from '../services/analysisService';
 import './Analysis.css';
 
@@ -11,6 +11,9 @@ const WrittenAnalysis = ({ userEmail }) => {
   const [fileError, setFileError] = useState('');
   const [transcriptionLoading, setTranscriptionLoading] = useState(false);
   const [infoMessage, setInfoMessage] = useState('');
+  const [texts, setTexts] = useState([]);
+  const [textsLoading, setTextsLoading] = useState(false);
+  const [deletingTextId, setDeletingTextId] = useState(null);
 
   const MAX_FILE_SIZE_BYTES = 25 * 1024 * 1024;
   const allowedTypes = [
@@ -19,6 +22,81 @@ const WrittenAnalysis = ({ userEmail }) => {
     'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
     'text/plain',
   ];
+
+  // Fetch texts on mount and when userEmail changes
+  useEffect(() => {
+    if (userEmail) {
+      refreshTexts();
+    }
+  }, [userEmail]);
+
+  // Refresh texts list
+  const refreshTexts = async () => {
+    if (!userEmail) return;
+
+    setTextsLoading(true);
+    try {
+      const response = await analysisService.getStudentAnalyses(userEmail);
+      // Filter for written texts only and sort by date (most recent first)
+      const writtenTexts = (response.analyses || [])
+        .filter(text => text.text_type === 'written' || !text.text_type)
+        .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+      setTexts(writtenTexts);
+    } catch (err) {
+      console.error('Error fetching texts:', err);
+      setTexts([]);
+    } finally {
+      setTextsLoading(false);
+    }
+  };
+
+  // Handle text deletion
+  const handleDeleteText = async (textId) => {
+    if (!userEmail) {
+      setError('You must be logged in to delete a text');
+      return;
+    }
+
+    if (!window.confirm('Are you sure you want to delete this text? This action cannot be undone.')) {
+      return;
+    }
+
+    setDeletingTextId(textId);
+    try {
+      await analysisService.deleteAnalysis(textId, userEmail);
+      // Refresh texts list after deletion
+      await refreshTexts();
+    } catch (err) {
+      console.error('Error deleting text:', err);
+      setError(err.message || 'Error deleting text. Please try again.');
+    } finally {
+      setDeletingTextId(null);
+    }
+  };
+
+  // Format date for display
+  const formatDate = (dateString) => {
+    if (!dateString) return 'Unknown date';
+    try {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    } catch {
+      return 'Invalid date';
+    }
+  };
+
+  // Truncate text preview
+  const truncateText = (text, maxLength = 100) => {
+    if (!text) return '';
+    if (text.length <= maxLength) return text;
+    return text.substring(0, maxLength).trim() + '...';
+  };
 
   const handleFileChange = (e) => {
     const file = e.target.files?.[0];
@@ -110,6 +188,9 @@ const WrittenAnalysis = ({ userEmail }) => {
         // Reset form
         setMessage('');
         setSelectedFile(null);
+        
+        // Refresh texts list
+        await refreshTexts();
       } else {
         setError(response.message || 'Error saving text');
       }
@@ -279,6 +360,88 @@ Yesterday, I went to the market with my family. We bought fresh vegetables and f
                   )}
                 </button>
               </form>
+            </div>
+          </div>
+
+          {/* My Saved Texts Section */}
+          <div className="card" style={{ marginTop: '2rem' }}>
+            <div className="card-header">
+              <div className="card-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/>
+                </svg>
+              </div>
+              <h2 className="card-title">My Saved Texts</h2>
+              <p className="card-subtitle">View and manage your saved texts</p>
+            </div>
+            
+            <div className="card-body">
+              {textsLoading ? (
+                <div className="placeholder">
+                  <svg className="animate-spin" width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ margin: '0 auto 1rem' }}>
+                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="62.832" strokeDashoffset="62.832">
+                      <animate attributeName="stroke-dasharray" dur="2s" values="0 62.832;31.416 31.416;0 62.832" repeatCount="indefinite"/>
+                      <animate attributeName="stroke-dashoffset" dur="2s" values="0;-31.416;-62.832" repeatCount="indefinite"/>
+                    </circle>
+                  </svg>
+                  <p>Loading your texts...</p>
+                </div>
+              ) : texts.length === 0 ? (
+                <div className="placeholder">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ margin: '0 auto 1rem', opacity: 0.5 }}>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="16" y1="13" x2="8" y2="13"/>
+                    <line x1="16" y1="17" x2="8" y2="17"/>
+                  </svg>
+                  <p>No saved texts yet</p>
+                  <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>Save your first text using the form above</p>
+                </div>
+              ) : (
+                <div className="texts-list">
+                  {texts.map((text) => (
+                    <div key={text.id} className="text-item">
+                      <div className="text-content">
+                        <div className="text-preview">{truncateText(text.text_content)}</div>
+                        <div className="text-meta">
+                          <span className="text-date">{formatDate(text.created_at)}</span>
+                          <span className={`status-badge ${text.analysis_result ? 'status-analyzed' : 'status-pending'}`}>
+                            {text.analysis_result ? 'Analyzed' : 'Pending'}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="text-actions">
+                        <button
+                          className="btn btn-danger btn-sm"
+                          onClick={() => handleDeleteText(text.id)}
+                          disabled={deletingTextId === text.id}
+                          title="Delete this text"
+                        >
+                          {deletingTextId === text.id ? (
+                            <>
+                              <svg className="animate-spin" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="2" strokeDasharray="37.7" strokeDashoffset="37.7">
+                                  <animate attributeName="stroke-dasharray" dur="1s" values="0 37.7;18.85 18.85;0 37.7" repeatCount="indefinite"/>
+                                  <animate attributeName="stroke-dashoffset" dur="1s" values="0;-18.85;-37.7" repeatCount="indefinite"/>
+                                </circle>
+                              </svg>
+                              Deleting...
+                            </>
+                          ) : (
+                            <>
+                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                              </svg>
+                              Delete
+                            </>
+                          )}
+                        </button>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
