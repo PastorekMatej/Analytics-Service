@@ -588,7 +588,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
-- `feat:` **Saved texts list display** - Added "My Saved Texts" section in My Writings page to display all saved texts with preview, date, status, and delete functionality
+- `6fbe391` **feat:** Saved texts list display - Added "My Saved Texts" section in My Writings page to display all saved texts with preview, date, status, and delete functionality
 - `feat:` **File upload and transcription** - Added PDF/DOCX/TXT file upload with automatic transcription for written analysis
 - `33a395c` **docs:** refactor README with improved structure and organization
 - `03e700c` **feat:** translate entire UI to English and rebrand to Maister
