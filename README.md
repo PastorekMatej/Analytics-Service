@@ -588,6 +588,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `82815e3` **fix:** Conclusion section display - Fixed parsing logic to prevent 'résumé: >' from being detected as CONCLUSION section header, improved extraction of résumé content from ÉVOLUTION_GLOBALE section, and added comprehensive logging for debugging
 - `6fbe391` **feat:** Saved texts list display - Added "My Saved Texts" section in My Writings page to display all saved texts with preview, date, status, and delete functionality
 - `feat:` **File upload and transcription** - Added PDF/DOCX/TXT file upload with automatic transcription for written analysis
 - `33a395c` **docs:** refactor README with improved structure and organization
@@ -598,6 +599,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 - ✅ **Saved Texts List**: Added a new "My Saved Texts" section in the My Writings page that displays all saved texts below the submission form. Users can view text previews (truncated to 100 characters), creation dates, analysis status badges (Analyzed/Pending), and delete texts with confirmation. The list automatically refreshes after saving or deleting texts.
 - ✅ **File Upload Feature**: Added document upload (PDF, DOCX, TXT) with automatic transcription to plain text. Files are transcribed without correction and the text is automatically populated in the analysis form. Supports files up to 25MB.
 - ✅ **Interface Redesign**: Complete overhaul of the "My Teacher" section in the Profile page with a modern, card-based layout.
+- ✅ **Analysis Report Redesign**: Improved the visual presentation of analysis reports in the dashboard. Added structured cards for error types, modern tab styling, and enhanced typography for better readability. Fixed conclusion section to correctly display résumé content from analysis reports.
 - ✅ **Progress Indicators**: Added "In Progress" banners and badges for the "My Voice" feature to clearly communicate development status.
 - ✅ **Typography**: Refactored global typography with a harmonized 'Inter' font stack, improved heading hierarchy, and refined color palette.
 - ✅ **Iconography**: Updated navigation icons (text analysis) and section icons for better visual semantics.
