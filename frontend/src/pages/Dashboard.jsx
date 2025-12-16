@@ -1216,28 +1216,6 @@ const Dashboard = ({ userRole, userEmail }) => {
     
     return (
       <div key={analysis.id || index} className="analysis-card">
-        <div className="analysis-card-header">
-          <div className="analysis-info">
-            <div className="analysis-meta">
-              <h3 className="analysis-title">
-                {hasAnalysis ? (
-                  <>Report generated on {new Date(analysis.created_at).toLocaleDateString('en-US', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric'
-                  })}</>
-                ) : (
-                  <>Text saved on {new Date(analysis.created_at).toLocaleDateString('en-US', {
-                    day: 'numeric',
-                    month: 'long',
-                    year: 'numeric'
-                  })}</>
-                )}
-              </h3>
-            </div>
-          </div>
-        </div>
-
         {isAnalyzing && (
           <div className="analysis-progress-container">
             <div className="analyzing-indicator">
@@ -1283,6 +1261,24 @@ const Dashboard = ({ userRole, userEmail }) => {
               </div>
             )}
           </div>
+        </div>
+
+        <div className="analysis-footer" style={{ padding: '1.5rem', borderTop: '1px solid #f1f5f9' }}>
+          <h3 className="analysis-title" style={{ fontSize: '1rem', margin: 0 }}>
+            {hasAnalysis ? (
+              <>Report generated on {new Date(analysis.created_at).toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              })}</>
+            ) : (
+              <>Text saved on {new Date(analysis.created_at).toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              })}</>
+            )}
+          </h3>
         </div>
       </div>
     );
