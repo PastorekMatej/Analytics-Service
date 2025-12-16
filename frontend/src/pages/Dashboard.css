@@ -1121,3 +1121,67 @@
 .analysis-static-card[class*="theme-"] .analysis-static-content {
   color: var(--theme-text-dark);
 }
+
+/* Level Evolution Badges */
+.level-evolution-badge-container {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: white;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.05);
+  width: fit-content;
+}
+
+.level-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 80px;
+}
+
+.level-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.level-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e293b;
+}
+
+.from-level .level-value {
+  color: #64748b;
+}
+
+.to-level .level-value {
+  color: #10b981; /* Teal/Green */
+}
+
+.level-arrow {
+  color: #cbd5e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.level-change-simple {
+  padding: 0.75rem 1rem;
+  background: white;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 1.125rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.level-change-simple strong {
+  color: #115e59;
+}
