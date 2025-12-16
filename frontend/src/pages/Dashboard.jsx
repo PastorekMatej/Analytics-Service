@@ -376,7 +376,7 @@ const processBoldText = (text, keyPrefix) => {
 };
 
 // Helper to render error block
-const renderErrorBlock = (block, key) => {
+const renderErrorBlock = (block, key, accentColor = 'blue') => {
   // Parse block lines into structured data
   const data = {
     pattern: '',
@@ -402,7 +402,7 @@ const renderErrorBlock = (block, key) => {
   });
 
   return (
-    <div key={`error-${key}`} className="analysis-error-card">
+    <div key={`error-${key}`} className={`analysis-error-card theme-${accentColor}`}>
       <div className="error-card-header">
         <div className="error-type-wrapper">
           <span className="error-type-label">Type</span>
@@ -458,7 +458,7 @@ const renderErrorBlock = (block, key) => {
 };
 
 // Format section content for display
-const formatSectionContent = (content) => {
+const formatSectionContent = (content, accentColor = 'blue') => {
   if (!content) return null;
 
   const lines = content.split('\n');
@@ -471,7 +471,7 @@ const formatSectionContent = (content) => {
     // Skip empty lines, unless we need to close a block or it's significant
     if (!line) {
         if (currentErrorBlock) {
-             formattedElements.push(renderErrorBlock(currentErrorBlock, i));
+             formattedElements.push(renderErrorBlock(currentErrorBlock, i, accentColor));
              currentErrorBlock = null;
         }
         continue;
@@ -480,11 +480,11 @@ const formatSectionContent = (content) => {
     // Handle headers (## Titre or GRAMMAIRE:, VOCABULAIRE:, STYLE:)
     if (line.startsWith('## ') || line.match(/^(GRAMMAIRE|VOCABULAIRE|STYLE):$/)) {
       if (currentErrorBlock) {
-        formattedElements.push(renderErrorBlock(currentErrorBlock, i));
+        formattedElements.push(renderErrorBlock(currentErrorBlock, i, accentColor));
         currentErrorBlock = null;
       }
       formattedElements.push(
-        <h4 key={`header-${i}`} className="analysis-section-title">
+        <h4 key={`header-${i}`} className={`analysis-section-title text-${accentColor}`}>
           {line.replace(/^##\s*/, '').replace(':', '')}
         </h4>
       );
@@ -496,7 +496,7 @@ const formatSectionContent = (content) => {
     const typeMatch = line.match(/^[-•*]?\s*(type|erreur)\s*:/i);
     if (typeMatch) {
       if (currentErrorBlock) {
-        formattedElements.push(renderErrorBlock(currentErrorBlock, i));
+        formattedElements.push(renderErrorBlock(currentErrorBlock, i, accentColor));
       }
       // Clean up the type line (remove bullet if present)
       const cleanType = line.replace(/^[-•*]\s*/, '');
@@ -523,7 +523,7 @@ const formatSectionContent = (content) => {
         continue;
       } else {
         // If it looks like a new section or new error block, close current one
-        formattedElements.push(renderErrorBlock(currentErrorBlock, i));
+        formattedElements.push(renderErrorBlock(currentErrorBlock, i, accentColor));
         currentErrorBlock = null;
         // Fall through to process this line as start of something new
       }
@@ -559,7 +559,7 @@ const formatSectionContent = (content) => {
 
   // Close any remaining error block
   if (currentErrorBlock) {
-    formattedElements.push(renderErrorBlock(currentErrorBlock, lines.length));
+    formattedElements.push(renderErrorBlock(currentErrorBlock, lines.length, accentColor));
   }
 
   return formattedElements;
@@ -609,23 +609,23 @@ const splitRecurrentErrors = (content) => {
 };
 
 // Analysis Section Component (Collapsible)
-const AnalysisSection = ({ title, content, icon, defaultOpen = false, count = 0 }) => {
+const AnalysisSection = ({ title, content, icon, accentColor = 'blue', defaultOpen = false, count = 0 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   
   if (!content || content.trim().length === 0) return null;
   
   return (
-    <div className="analysis-accordion-item">
+    <div className={`analysis-accordion-item theme-${accentColor}`}>
       <button 
         className={`analysis-accordion-header ${isOpen ? 'active' : ''}`} 
         onClick={() => setIsOpen(!isOpen)}
       >
         <div className="accordion-title-wrapper">
-          <span className="accordion-icon">{icon}</span>
+          <span className={`accordion-icon text-${accentColor}-500`}>{icon}</span>
           <span className="accordion-title">{title}</span>
-          {count > 0 && <span className="accordion-count">{count}</span>}
+          {count > 0 && <span className={`accordion-count bg-${accentColor}-500`}>{count}</span>}
         </div>
-        <div className="accordion-arrow">
+        <div className={`accordion-arrow text-${accentColor}-400`}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" style={{ transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.3s' }}>
             <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
           </svg>
@@ -635,7 +635,7 @@ const AnalysisSection = ({ title, content, icon, defaultOpen = false, count = 0 
       {isOpen && (
         <div className="analysis-accordion-content">
           <div className="analysis-text">
-            {formatSectionContent(content)}
+            {formatSectionContent(content, accentColor)}
           </div>
         </div>
       )}
@@ -1002,8 +1002,9 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Grammar Errors" 
             content={splitErrors.grammaire} 
+            accentColor="green"
             icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-green-500">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
               </svg>
             }
@@ -1014,8 +1015,9 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Vocabulary Errors" 
             content={splitErrors.vocabulaire} 
+            accentColor="blue"
             icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-blue-500">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
               </svg>
             }
@@ -1025,8 +1027,9 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Style Suggestions" 
             content={splitErrors.style} 
+            accentColor="pink"
             icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-pink-500">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clipRule="evenodd"/>
               </svg>
             }
@@ -1036,8 +1039,9 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Persistent Errors" 
             content={parsedSections.erreursPersistantes} 
+            accentColor="orange"
             icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-orange-500">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd"/>
               </svg>
             }
@@ -1047,8 +1051,9 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Evolution Trends" 
             content={parsedSections.tendancesEvolution} 
+            accentColor="purple"
             icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-purple-500">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd"/>
               </svg>
             }
@@ -1058,8 +1063,9 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Level Evolution" 
             content={parsedSections.evolutionGlobale} 
+            accentColor="teal"
             icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-teal-500">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 5.414 4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
                 <path fillRule="evenodd" d="M3.293 15.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 11.414 4.707 15.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
               </svg>
@@ -1070,8 +1076,9 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Conclusion" 
             content={parsedSections.conclusion} 
+            accentColor="indigo"
             icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor" className="text-indigo-500">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clipRule="evenodd"/>
               </svg>
             }
