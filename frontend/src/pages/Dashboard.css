@@ -1126,13 +1126,15 @@
 .level-evolution-badge-container {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-  padding: 1rem;
+  justify-content: center;
+  gap: 3rem;
+  margin: 0 auto 1.5rem auto;
+  padding: 1.5rem;
   background: white;
   border-radius: 12px;
   border: 1px solid rgba(0,0,0,0.05);
-  width: fit-content;
+  width: 100%;
+  max-width: 400px;
 }
 
 .level-badge {
@@ -1140,29 +1142,40 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-width: 80px;
+  min-width: 90px;
+  position: relative;
 }
 
 .level-label {
   font-size: 0.75rem;
   font-weight: 700;
   color: #64748b;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+  opacity: 0.8;
 }
 
 .level-value {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #1e293b;
+  line-height: 1;
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  background: #f8fafc;
+  min-width: 80px;
+  text-align: center;
 }
 
 .from-level .level-value {
   color: #64748b;
+  background: #f1f5f9;
 }
 
 .to-level .level-value {
-  color: #10b981; /* Teal/Green */
+  color: #0d9488; /* Teal-700 */
+  background: #ccfbf1; /* Teal-100 */
+  box-shadow: 0 4px 6px -1px rgba(20, 184, 166, 0.1);
 }
 
 .level-arrow {
@@ -1170,6 +1183,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 1rem;
+}
+
+.level-arrow svg {
+  width: 32px;
+  height: 32px;
 }
 
 .level-change-simple {
