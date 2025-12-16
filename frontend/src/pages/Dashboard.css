@@ -1168,8 +1168,8 @@
 }
 
 .from-level .level-value {
-  color: #64748b;
-  background: #f1f5f9;
+  color: #0f766e; /* Teal-800 */
+  background: #f0fdfa; /* Teal-50 */
 }
 
 .to-level .level-value {
@@ -1179,7 +1179,7 @@
 }
 
 .level-arrow {
-  color: #cbd5e1;
+  color: #14b8a6; /* Teal-500 */
   display: flex;
   align-items: center;
   justify-content: center;
