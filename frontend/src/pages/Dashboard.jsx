@@ -492,30 +492,40 @@ const formatSectionContent = (content) => {
     }
 
     // Detect error block start (type: G01, etc.)
-    // We look for "type:" or "erreur:" at the start of the line
-    if (line.toLowerCase().startsWith('type:') || line.toLowerCase().startsWith('erreur:')) {
+    // We look for "type:" or "erreur:" at the start of the line, possibly preceded by a bullet
+    const typeMatch = line.match(/^[-•*]?\s*(type|erreur)\s*:/i);
+    if (typeMatch) {
       if (currentErrorBlock) {
         formattedElements.push(renderErrorBlock(currentErrorBlock, i));
       }
-      currentErrorBlock = { type: line, lines: [] };
+      // Clean up the type line (remove bullet if present)
+      const cleanType = line.replace(/^[-•*]\s*/, '');
+      currentErrorBlock = { type: cleanType, lines: [] };
       continue;
     }
 
     // If inside an error block, collect lines
     if (currentErrorBlock) {
       // Check if this line looks like part of the error block
-      // Lists, specific keywords, or indented text usually belong to the block
-      if (line.startsWith('-') || line.match(/^\d+\./) || 
-          line.toLowerCase().startsWith('pattern:') || 
-          line.toLowerCase().startsWith('exemples:') || 
-          line.toLowerCase().startsWith('occurrences:') || 
-          line.toLowerCase().startsWith('explication:')) {
-        currentErrorBlock.lines.push(line);
+      // We accept almost anything indented or that looks like a key:value or list item
+      // We also accept lines that are clearly NOT new sections
+      const isHeader = line.startsWith('## ') || line.match(/^(GRAMMAIRE|VOCABULAIRE|STYLE):$/);
+      const isNewType = line.match(/^[-•*]?\s*(type|erreur)\s*:/i);
+      
+      if (!isHeader && !isNewType) {
+        // Clean up leading bullets from keys inside the block if they exist
+        // e.g. "- pattern: ..." -> "pattern: ..."
+        let cleanLine = line;
+        if (line.match(/^[-•*]\s*(pattern|occurrences|exemples|explication)\s*:/i)) {
+          cleanLine = line.replace(/^[-•*]\s*/, '');
+        }
+        currentErrorBlock.lines.push(cleanLine);
         continue;
       } else {
-        // If it doesn't look like part of the block, close the block and process line normally
+        // If it looks like a new section or new error block, close current one
         formattedElements.push(renderErrorBlock(currentErrorBlock, i));
         currentErrorBlock = null;
+        // Fall through to process this line as start of something new
       }
     }
 
