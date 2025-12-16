@@ -1259,15 +1259,6 @@ const Dashboard = ({ userRole, userEmail }) => {
             <div className="progress-columns">
               {/* Written Analyses Column */}
               <div className="progress-column">
-                <div className="column-header">
-                  <div className="column-icon">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586l-8 8-8-8V4zM3 9.414l7 7 7-7V19a1 1 0 01-1 1H4a1 1 0 01-1-1V9.414z"/>
-                    </svg>
-                  </div>
-                  <h2 className="column-title">Written Analyses</h2>
-                  <span className="column-count">{writtenAnalyses.length}</span>
-                </div>
                 <div className="analyses-list">
                   {writtenAnalyses.length === 0 ? (
                     <div className="column-empty">
