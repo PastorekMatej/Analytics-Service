@@ -588,6 +588,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `6f7bc1c` **feat:** harmonize analysis dashboard design with color themes and symmetry - Introduced color themes (green, blue, pink, orange, purple, teal, indigo) for each analysis section, improving visual hierarchy and symmetry
 - `7c2060e` **fix:** relax regex for detecting error blocks to handle bullet points - Fixed issue where error cards were not rendering correctly because the parser didn't account for bullet points or indentation in the raw text
 - `e317ebe` **feat:** improve graphical presentation of analysis error cards - Redesigned error cards with structured layout, better typography, and distinct sections for pattern, occurrences, examples, and explanation
 - `d4a1483` **fix:** remove written analyses column header - Removed the "Written Analyses" header from the dashboard progress column
