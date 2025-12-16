@@ -553,28 +553,146 @@
 .analysis-error-card {
   background: #ffffff;
   border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  margin-bottom: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
   overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+  transition: box-shadow 0.2s;
+}
+
+.analysis-error-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
 }
 
 .error-card-header {
   background: #f8fafc;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 1.25rem;
   border-bottom: 1px solid #e2e8f0;
   display: flex;
   align-items: center;
 }
 
-.error-type {
+.error-type-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.error-type-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #64748b;
+  letter-spacing: 0.05em;
+  background: rgba(100, 116, 139, 0.1);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+}
+
+.error-type-value {
   font-family: 'Inter', sans-serif;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #334155;
 }
 
 .error-card-body {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.error-grid-row {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.error-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.error-pattern {
+  flex: 1;
+  min-width: 200px;
+}
+
+.error-occurrences {
+  min-width: 100px;
+}
+
+.error-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #94a3b8;
+  letter-spacing: 0.05em;
+}
+
+.error-content {
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-weight: 500;
+  background: #f1f5f9;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.error-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #fee2e2;
+  color: #ef4444;
+  font-weight: 700;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  align-self: flex-start;
+}
+
+.examples-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: #f8fafc;
+  border-radius: 8px;
   padding: 1rem;
+  border: 1px solid #e2e8f0;
+}
+
+.example-item {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.95rem;
+  color: #475569;
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.example-item::before {
+  content: "•";
+  position: absolute;
+  left: 0.25rem;
+  color: #3b82f6;
+  font-weight: bold;
+}
+
+.explanation-text {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.other-detail {
+  font-size: 0.9rem;
+  color: #64748b;
+  padding-left: 0.5rem;
+  border-left: 2px solid #cbd5e1;
 }
 
 /* Tailwind-like utility classes used in JSX */

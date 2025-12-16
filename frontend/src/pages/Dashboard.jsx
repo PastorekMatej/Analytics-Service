@@ -377,28 +377,81 @@ const processBoldText = (text, keyPrefix) => {
 
 // Helper to render error block
 const renderErrorBlock = (block, key) => {
+  // Parse block lines into structured data
+  const data = {
+    pattern: '',
+    occurrences: '',
+    examples: '',
+    explanation: '',
+    others: []
+  };
+
+  block.lines.forEach(line => {
+    const l = line.trim();
+    if (l.toLowerCase().startsWith('pattern:')) {
+      data.pattern = l.replace(/pattern:\s*/i, '');
+    } else if (l.toLowerCase().startsWith('occurrences:')) {
+      data.occurrences = l.replace(/occurrences:\s*/i, '');
+    } else if (l.toLowerCase().startsWith('exemples:')) {
+      data.examples = l.replace(/exemples:\s*/i, '');
+    } else if (l.toLowerCase().startsWith('explication:')) {
+      data.explanation = l.replace(/explication:\s*/i, '');
+    } else {
+      data.others.push(l);
+    }
+  });
+
   return (
     <div key={`error-${key}`} className="analysis-error-card">
       <div className="error-card-header">
-        <span className="error-type">{block.type.replace(/type:\s*/i, '').replace(/erreur:\s*/i, '')}</span>
+        <div className="error-type-wrapper">
+          <span className="error-type-label">Type</span>
+          <span className="error-type-value">{block.type.replace(/type:\s*/i, '').replace(/erreur:\s*/i, '')}</span>
+        </div>
       </div>
       <div className="error-card-body">
-        {block.lines.map((line, idx) => {
-           // Simple formatting for lines inside error card
-           if (line.toLowerCase().startsWith('pattern:')) {
-             return <div key={idx} className="error-pattern"><strong>Pattern:</strong> {line.replace(/pattern:\s*/i, '')}</div>;
-           }
-           if (line.toLowerCase().startsWith('occurrences:')) {
-             return <div key={idx} className="error-occurrences"><strong>Occurrences:</strong> {line.replace(/occurrences:\s*/i, '')}</div>;
-           }
-           if (line.toLowerCase().startsWith('exemples:')) {
-             return <div key={idx} className="error-examples"><strong>Exemples:</strong> {line.replace(/exemples:\s*/i, '')}</div>;
-           }
-           if (line.toLowerCase().startsWith('explication:')) {
-             return <div key={idx} className="error-detail"><strong>Explication:</strong> {line.replace(/explication:\s*/i, '')}</div>;
-           }
-           return <div key={idx} className="error-detail">{line}</div>;
-        })}
+        <div className="error-grid-row">
+          {data.pattern && (
+            <div className="error-section error-pattern">
+              <span className="error-label">Pattern</span>
+              <span className="error-content">{data.pattern}</span>
+            </div>
+          )}
+          {data.occurrences && (
+            <div className="error-section error-occurrences">
+              <span className="error-label">Occurrences</span>
+              <span className="error-badge">{data.occurrences}</span>
+            </div>
+          )}
+        </div>
+        
+        {data.examples && (
+          <div className="error-section error-examples">
+            <span className="error-label">Examples</span>
+            <div className="examples-list">
+              {data.examples.split('/').map((ex, i) => (
+                <div key={i} className="example-item">
+                  {ex.trim()}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {data.explanation && (
+          <div className="error-section error-explanation">
+            <span className="error-label">Explanation</span>
+            <p className="explanation-text">{data.explanation}</p>
+          </div>
+        )}
+
+        {data.others.length > 0 && (
+          <div className="error-section error-others">
+            {data.others.map((line, idx) => (
+              <div key={idx} className="other-detail">{line}</div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   );
