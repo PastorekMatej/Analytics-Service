@@ -1055,6 +1055,24 @@ const Dashboard = ({ userRole, userEmail }) => {
           </div>
         )}
 
+        {/* Level Evolution - Static Display */}
+        {parsedSections.evolutionGlobale && (
+          <div className="analysis-static-card theme-teal">
+            <h4 className="analysis-static-title">
+              <span className="analysis-static-icon">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 5.414 4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
+                  <path fillRule="evenodd" d="M3.293 15.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 11.414 4.707 15.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
+                </svg>
+              </span>
+              Level Evolution
+            </h4>
+            <div className="analysis-static-content">
+              {formatSectionContent(parsedSections.evolutionGlobale, 'teal')}
+            </div>
+          </div>
+        )}
+
         <div className="analysis-accordions">
           {/* Grammar Errors */}
           <AnalysisSection 
@@ -1113,19 +1131,6 @@ const Dashboard = ({ userRole, userEmail }) => {
             icon={
               <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z" clipRule="evenodd"/>
-              </svg>
-            }
-          />
-
-          {/* Level Evolution */}
-          <AnalysisSection 
-            title="Level Evolution" 
-            content={parsedSections.evolutionGlobale} 
-            accentColor="teal"
-            icon={
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 5.414 4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
-                <path fillRule="evenodd" d="M3.293 15.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 11.414 4.707 15.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
               </svg>
             }
           />
