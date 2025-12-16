@@ -588,6 +588,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `d4a1483` **fix:** remove written analyses column header - Removed the "Written Analyses" header from the dashboard progress column
 - `82aedde` **fix:** increase font size of analysis section titles
 - `82815e3` **fix:** Conclusion section display - Fixed parsing logic to prevent 'résumé: >' from being detected as CONCLUSION section header, improved extraction of résumé content from ÉVOLUTION_GLOBALE section, and added comprehensive logging for debugging
 - `6fbe391` **feat:** Saved texts list display - Added "My Saved Texts" section in My Writings page to display all saved texts with preview, date, status, and delete functionality
