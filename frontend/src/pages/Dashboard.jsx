@@ -343,7 +343,7 @@ const extractEvolutionData = (content, sections) => {
   // Always set conclusion if we found resume content
   // The extractEvolutionData should take priority for résumé content
   if (resumeContent && resumeContent.trim().length > 0) {
-    sections.conclusion = resumeContent;
+    // sections.conclusion = resumeContent; // Don't move to conclusion, keep in Level Evolution
     console.log('[extractEvolutionData] ✅ Successfully extracted résumé content:', {
       length: resumeContent.length,
       preview: resumeContent.substring(0, 200),
@@ -409,7 +409,9 @@ const extractEvolutionData = (content, sections) => {
     }
   }
 
-  sections.evolutionGlobale = keepLines.join('\n').trim();
+  // Reconstruct evolutionGlobale with intro lines + resume content
+  const introContent = keepLines.join('\n').trim();
+  sections.evolutionGlobale = [introContent, resumeContent].filter(Boolean).join('\n\n').trim();
 };
 
 // Helper to process bold text
