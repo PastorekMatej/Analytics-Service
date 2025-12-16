@@ -588,6 +588,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `7c2060e` **fix:** relax regex for detecting error blocks to handle bullet points - Fixed issue where error cards were not rendering correctly because the parser didn't account for bullet points or indentation in the raw text
 - `e317ebe` **feat:** improve graphical presentation of analysis error cards - Redesigned error cards with structured layout, better typography, and distinct sections for pattern, occurrences, examples, and explanation
 - `d4a1483` **fix:** remove written analyses column header - Removed the "Written Analyses" header from the dashboard progress column
 - `82aedde` **fix:** increase font size of analysis section titles
