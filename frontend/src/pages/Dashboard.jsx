@@ -343,7 +343,7 @@ const extractEvolutionData = (content, sections) => {
   // Always set conclusion if we found resume content
   // The extractEvolutionData should take priority for résumé content
   if (resumeContent && resumeContent.trim().length > 0) {
-    // sections.conclusion = resumeContent; // Don't move to conclusion, keep in Level Evolution
+    sections.conclusion = resumeContent;
     console.log('[extractEvolutionData] ✅ Successfully extracted résumé content:', {
       length: resumeContent.length,
       preview: resumeContent.substring(0, 200),
@@ -395,7 +395,13 @@ const extractEvolutionData = (content, sections) => {
       }
     }
 
+    // Keep the niveau line in the evolutionGlobale text, but cleaned if necessary
+    // This ensures Level Evolution section is not empty
     if (isNiveauLine) {
+      // Optional: Clean it up or just keep it. Let's keep it as is for now
+      // but maybe remove "évolution de niveau:" prefix if it's there to be cleaner?
+      let cleaned = line.replace(/évolution de niveau[:\s]*/i, '').replace(/[""]/g, '').trim();
+      keepLines.push(`Level Change: ${cleaned}`);
       continue;
     }
 
@@ -409,9 +415,8 @@ const extractEvolutionData = (content, sections) => {
     }
   }
 
-  // Reconstruct evolutionGlobale with intro lines + resume content
-  const introContent = keepLines.join('\n').trim();
-  sections.evolutionGlobale = [introContent, resumeContent].filter(Boolean).join('\n\n').trim();
+  // Reconstruct evolutionGlobale with intro lines only (resume moved to conclusion)
+  sections.evolutionGlobale = keepLines.join('\n').trim();
 };
 
 // Helper to process bold text
