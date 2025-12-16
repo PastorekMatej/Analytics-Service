@@ -356,6 +356,60 @@ const extractEvolutionData = (content, sections) => {
       linesCount: fullContent.split('\n').length
     });
   }
+
+  // Clean up sections.evolutionGlobale by removing niveau and resume content
+  // We reconstruct the content by filtering out the parts we extracted
+  const linesToProcess = fullContent.split('\n');
+  const keepLines = [];
+  let inResumeBlock = false;
+
+  for (let i = 0; i < linesToProcess.length; i++) {
+    const line = linesToProcess[i];
+    const trimmedLine = line.trim();
+    const upperLine = trimmedLine.toUpperCase();
+    
+    // Check if line matches any niveau pattern
+    const isNiveauLine = niveauPatterns.some(p => line.match(p));
+    
+    // Check if line starts the résumé block
+    // Must match the same logic used for extraction
+    const isResumeStart = trimmedLine.toLowerCase().includes('résumé') && (trimmedLine.includes(':') || trimmedLine.includes('>'));
+    
+    // If we are in resume block, check if we hit a new section (end of resume)
+    if (inResumeBlock) {
+      // Check for section headers that mark end of resume
+      if (upperLine === 'ERREURS_RÉCURRENTES' || 
+          upperLine === 'ERREURS RÉCURRENTES' ||
+          upperLine.startsWith('ERREURS_RÉCURRENTES') ||
+          upperLine.startsWith('ERREURS RÉCURRENTES') ||
+          upperLine.startsWith('TENDANCES') ||
+          upperLine.startsWith('ERREURS_PERSISTANTES') ||
+          upperLine === 'GRAMMAIRE:' ||
+          upperLine === 'VOCABULAIRE:' ||
+          upperLine === 'STYLE:') {
+        // Only if not indented
+        if (!line.match(/^\s{4,}/)) { 
+           inResumeBlock = false;
+           // Fall through to add this line (it's the next header)
+        }
+      }
+    }
+
+    if (isNiveauLine) {
+      continue;
+    }
+
+    if (isResumeStart) {
+      inResumeBlock = true;
+      continue;
+    }
+
+    if (!inResumeBlock) {
+      keepLines.push(line);
+    }
+  }
+
+  sections.evolutionGlobale = keepLines.join('\n').trim();
 };
 
 // Helper to process bold text
@@ -406,21 +460,18 @@ const renderErrorBlock = (block, key, accentColor = 'blue') => {
       <div className="error-card-header">
         <div className="error-type-wrapper">
           <span className="error-type-label">Type</span>
-          <span className="error-type-value">{block.type.replace(/type:\s*/i, '').replace(/erreur:\s*/i, '')}</span>
+          <span className="error-type-value">
+            {block.type.replace(/type:\s*/i, '').replace(/erreur:\s*/i, '')}
+            {data.pattern && <span className="error-pattern-inline" style={{ marginLeft: '12px', fontWeight: '500', fontSize: '1rem', color: '#334155', borderLeft: '1px solid #e2e8f0', paddingLeft: '12px' }}>{data.pattern}</span>}
+          </span>
         </div>
       </div>
       <div className="error-card-body">
-        <div className="error-grid-row">
-          {data.pattern && (
-            <div className="error-section error-pattern">
-              <span className="error-label">Pattern</span>
-              <span className="error-content">{data.pattern}</span>
-            </div>
-          )}
+        <div className="error-grid-row" style={{ justifyContent: 'center' }}>
           {data.occurrences && (
-            <div className="error-section error-occurrences">
+            <div className="error-section error-occurrences" style={{ alignItems: 'center' }}>
               <span className="error-label">Occurrences</span>
-              <span className="error-badge">{data.occurrences}</span>
+              <span className="error-badge" style={{ alignSelf: 'center' }}>{data.occurrences}</span>
             </div>
           )}
         </div>
@@ -1002,7 +1053,7 @@ const Dashboard = ({ userRole, userEmail }) => {
           <AnalysisSection 
             title="Grammar Errors" 
             content={splitErrors.grammaire} 
-            accentColor="green"
+            accentColor="red"
             icon={
               <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
