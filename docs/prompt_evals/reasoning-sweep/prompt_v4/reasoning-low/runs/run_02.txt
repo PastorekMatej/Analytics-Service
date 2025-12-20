@@ -1,0 +1,197 @@
+ÉVOLUTION_GLOBALE:
+- évolution de niveau: A2 → B1+
+- évaluations numériques par texte:
+  - 2024-01-12 (lecon_1): 24/100 (A2)
+  - 2024-02-05 (lecon_2): 26/100 (A2+)
+  - 2024-03-19 (lecon_4): 27/100 (A2+)
+  - 2024-04-27 (lecon_5_2): 28/100 (A2+)
+  - 2024-05-08 (lecon_5): 30/100 (A2+)
+  - 2024-06-20 (lecon_6_1): 31/100 (A2+)
+  - 2024-07-20 (lecon_6_2): 33/100 (A2+)
+  - 2024-08-20 (lecon_7_1): 34/100 (B1)
+  - 2024-09-20 (lecon_7_2): 36/100 (B1)
+  - 2024-10-20 (lecon_9_1): 40/100 (B1)
+  - 2024-11-20 (lecon_9_2): 41/100 (B1)
+  - 2024-11-20 (lecon_10): 42/100 (B1)
+  - 2024-12-20 (lecon_12): 44/100 (B1+)
+  - 2024-12-20 (lecon_13): 45/100 (B1+)
+  - 2025-01-20 (lecon_15): 47/100 (B1+)
+  - 2025-02-20 (lecon_15_2): 48/100 (B1+)
+- progression globale: +24 points
+- résumé:
+  Production plus longue et mieux structurée, diversification des registres (messages familiers, lettres formelles, argumentation), maîtrise grandissante de la syntaxe de base et des temps simples. Forte réduction des erreurs au passé composé (accords/auxiliaires). En revanche, persistent des problèmes de prépositions/constructions à l’infinitif, d’articles/déterminants et d’accords, ainsi que des collocations peu naturelles. Bonne conscience métalinguistique visible dans les deux derniers textes (autocorrections entre parenthèses).
+
+TENDANCES D’ÉVOLUTION:
+- G01 (accords/auxiliaires au passé composé): ≈7 occurrences concentrées au lecon_4 → 0 à partir de lecon_7. Amélioration nette et durable.
+- G03 (négation): 1–2 occurrences dans lecon_2 → 1 occurrence résiduelle au lecon_13. Légère amélioration mais encore instable.
+- G05 (accords/conjugaisons de base): ≈10 occurrences sur leçons 1–7 → ≈3 occurrences sur 10–15. Réduction sensible.
+- G06 (prépositions et constructions à l’infinitif): ≈10 occurrences cumulées sur 1–10 → encore 4–5 occurrences sur 12–15. Erreur persistante.
+- G07 (articles/déterminants): ≈8 occurrences sur 1–9 → 2–3 occurrences encore dans 13–15. Amélioration partielle.
+- G08 (ordre des mots/placement des clitiques): 4 occurrences sur 1–5 → 0–1 après 10. Globalement résolu.
+- V01 (faux amis/calques): ≈5 occurrences sur l’ensemble → 2 occurrences encore dans 10 et 13. Baisse mais non éliminée.
+- V04 (collocations non naturelles): ≈6–7 occurrences réparties tout au long → persiste dans 10 et 15_2.
+- S02 (phrases longues/mal ponctuées): ≈3 occurrences sur 1–6 → 1–2 occurrences isolées après 10. Amélioration.
+- S05 (formulations lourdes/maladroites): forte récurrence au début (≈7) → moins fréquente mais encore visible (≈4) dans 12–15.
+- Points positifs notables: montée en complexité syntactique (subordonnées, hypothèses, justifications), meilleure adéquation au registre formel dans les lettres, capacité d’auto-correction explicite dans les deux derniers textes.
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G05
+  pattern: Accords et conjugaisons de base (genre/nombre, personne)
+  occurrences: ≈15
+  exemples:
+    - "la langue français" → "la langue française" (lecon_1)
+    - "le première fois" → "la première fois" (lecon_2)
+    - "J’étais vraiment stressé" → "stressée" (lecon_5)
+    - "les professeurs étaient très encourageant" → "encourageants" (lecon_13)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / constructions à l’infinitif
+  occurrences: ≈14
+  exemples:
+    - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (lecon_1)
+    - "en nuit" → "la nuit" (lecon_4)
+    - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+    - "t’aider avec chercher" → "t’aider à chercher" (lecon_7_1)
+    - "travailler à leurs outils numériques" → "utiliser leurs outils numériques" (lecon_10)
+    - "A école" → "à l’école" (lecon_15)
+
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, partitif)
+  occurrences: ≈12
+  exemples:
+    - "l’association des vos élèves" → "de vos élèves" (lecon_5_2)
+    - "des bonnes deux semaines" → "de bonnes deux semaines" (lecon_5_2)
+    - "la départ" → "le départ" (lecon_9_2)
+    - "le langue" → "la langue" (lecon_13)
+    - "cet expérience" → "cette expérience" (lecon_15_2)
+
+- type: G08
+  pattern: Ordre des mots / placement des pronoms et adverbes
+  occurrences: ≈6
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+    - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (lecon_5)
+    - "vous vous pouvez garer" → "vous pouvez vous garer" (lecon_5_2)
+
+- type: G03
+  pattern: Erreur de négation (placement du ne/pas et des pronoms)
+  occurrences: ≈3
+  exemples:
+    - "qui je n’ai connu pas" → "que je ne connaissais pas" (lecon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- type: G01
+  pattern: Passé composé: accords/auxiliaire erronés
+  occurrences: ≈7 (fortement concentrées dans lecon_4)
+  exemples:
+    - "As-tu déjà voyagée…?" → "voyagé" (lecon_4)
+    - "j’ai passée la nuit" → "passé" (lecon_4)
+    - "j’ai vue" → "vu" (lecon_4)
+    - "J’ai visitée le Château" → "visité le château" (lecon_4)
+    - "J’ai arrivée" → "Je suis arrivée" (lecon_4)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / calques
+  occurrences: ≈7
+  exemples:
+    - "fluente" → "courante" (lecon_1)
+    - "avanture d’adrénaline" → "aventure pleine d’adrénaline" (lecon_2)
+    - "en Slovaque" → "en Slovaquie" (lecon_4)
+    - "plus effectivement" → "plus efficacement" (lecon_10)
+    - "détroits historiques" → "sites/lieux historiques" (lecon_13)
+
+- type: V02
+  pattern: Mauvais choix de mot (registre/nuance)
+  occurrences: ≈3
+  exemples:
+    - "des camarades… étaient vraiment chers" → "sympas/chaleureux" (lecon_13)
+    - "entreprises préférables" → "entreprises privilégiées/qui t’intéressent" (lecon_7_1)
+
+- type: V04
+  pattern: Collocation non naturelle
+  occurrences: ≈8
+  exemples:
+    - "avoir des visites" → "recevoir des visites" (lecon_2)
+    - "album photos" → "album photo" (lecon_9_2)
+    - "savoir travailler à leurs outils numériques" → "savoir utiliser…" (lecon_10)
+    - "rencontrer avec la vie" → "vivre des situations de la vie réelle" (lecon_15_2)
+    - "endroit pour devenir meilleur" → "pour s’améliorer" (lecon_6_1)
+
+- type: V05
+  pattern: Interférence linguistique (structure slovaque)
+  occurrences: ≈4
+  exemples:
+    - "tout le meilleur à la maison le meilleur" → "rien ne vaut la maison" (lecon_4)
+    - "moi et ma famille" → "ma famille et moi" (lecon_12)
+    - "Le matin n’était pas que j’ai l’imaginer" → "… comme je l’avais imaginé" (lecon_5)
+
+STYLE:
+- type: S02
+  pattern: Phrases trop longues / ponctuation mal maîtrisée
+  occurrences: ≈4
+  exemples:
+    - Fragmentation: "… une perspective plus large. plus d’expériences…" → phrase à réunir (lecon_10)
+    - Passage confus avec parenthèses: "C’est trouver au coin…" → réécriture claire (lecon_5_2)
+
+- type: S05
+  pattern: Formulations maladroites / lourdes
+  occurrences: ≈10
+  exemples:
+    - "raison pourquoi" → "raison pour laquelle" (lecon_1)
+    - "C’est trouver au coin…" → "Il est situé…" (lecon_5_2)
+    - "le pays de la France" → "la France" (lecon_13)
+    - "poser des questions pour connaître le slang" → "poser des questions pour apprendre le jargon" (lecon_15_2)
+
+ERREURS_PERSISTANTES:
+- G05 (accords/conjugaisons) — encore présentes dans les 3 derniers textes
+  exemples:
+    - "les professeurs étaient très encourageant" → "encourageants" (lecon_13)
+    - "apprendrons" pour "ils" au lieu de "apprendront" (forme proposée en parenthèse) (lecon_15)
+
+- G06 (prépositions / infinitif) — persiste
+  exemples:
+    - "A école" → "à l’école" (lecon_15)
+    - "parler en français" → "parler français" (lecon_15_2)
+
+- G07 (articles/déterminants) — persiste
+  exemples:
+    - "le langue" → "la langue" (lecon_13 et lecon_15)
+    - "cet expérience" → "cette expérience" (lecon_15_2)
+
+- G03 (négation) — résiduelle
+  exemple:
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+- G04 (PC/Imparfait) — choix de temps encore hésitant
+  exemple:
+    - "je n’ai pas compris" (contexte itératif) → "je ne comprenais pas" (lecon_15_2, autocorrection indiquée)
+
+- V01 (faux amis/calques) — persiste
+  exemples:
+    - "plus effectivement" → "plus efficacement" (rappel depuis lecon_10)
+    - "slang" → "jargon" (lecon_15_2)
+
+- V02 (choix lexical) — persiste légèrement
+  exemple:
+    - "chers" (pour des camarades) → "sympas/chaleureux" (lecon_13)
+
+- V04 (collocations) — persiste
+  exemple:
+    - "rencontrer avec la vie" → "vivre des situations de la vie réelle" (lecon_15_2)
+
+- V05 (interférences) — traces dans la syntaxe
+  exemple:
+    - "moi et mon groupe…" → "mon groupe et moi…" (lecon_13)
+
+- S02 (ponctuation/segments) — encore des découpages maladroits
+  exemple:
+    - "… plus de connaissances. Cordialement" avec phrase précédente hachée (lecon_10) et usage de parenthèses fréquentes (lecon_15, 15_2)
+
+- S05 (formulation lourde) — persiste
+  exemples:
+    - "le pays de la France" → "la France" (lecon_13)
+    - périphrases et reformulations redondantes avec parenthèses (lecon_15, lecon_15_2)
+
+Conclusion synthétique: passage d’une production A2 (lexique limité, erreurs fréquentes d’articles/prépositions, passé composé très fragile) à un B1+ fonctionnel: idées mieux articulées, registres variés, argumentation et demandes polies maîtrisées. Les erreurs morphosyntaxiques de base diminuent nettement, mais les constructions prépositionnelles, les déterminants et certaines collocations restent à consolider. L’autocorrection visible dans les deux derniers textes est un excellent indicateur d’autonomie et de progression.

@@ -1,6 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import Layout from './components/Layout';
+import AppLayout from './components/AppLayout';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -9,6 +9,7 @@ import OralAnalysis from './pages/OralAnalysis';
 import Progress from './pages/Progress';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
+import Corrections from './pages/Corrections';
 import './styles/App.css';
 
 const App = () => {
@@ -52,30 +53,20 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login onLogin={handleLogin} />} />
+        <Route path="/signup" element={<Signup />} />
+        
+        {/* Progress page - wrapped in AppLayout */}
         <Route
-          path="/login"
+          path="/progress"
           element={
-            <Layout
-              isAuthenticated={isAuthenticated}
-              userEmail={userEmail}
-              userRole={userRole}
+            <AppLayout 
+              userEmail={userEmail} 
+              userRole={userRole} 
               onLogout={handleLogout}
             >
-              <Login onLogin={handleLogin} />
-            </Layout>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <Layout
-              isAuthenticated={isAuthenticated}
-              userEmail={userEmail}
-              userRole={userRole}
-              onLogout={handleLogout}
-            >
-              <Signup />
-            </Layout>
+              <Progress userEmail={userEmail} userRole={userRole} />
+            </AppLayout>
           }
         />
         
@@ -84,72 +75,52 @@ const App = () => {
             <Route
               path="/written-analysis"
               element={
-                <Layout
-                  isAuthenticated={isAuthenticated}
-                  userEmail={userEmail}
-                  userRole={userRole}
-                  onLogout={handleLogout}
-                >
+                <AppLayout userEmail={userEmail} userRole={userRole} onLogout={handleLogout}>
                   <WrittenAnalysis userEmail={userEmail} />
-                </Layout>
+                </AppLayout>
               }
             />
             <Route
               path="/oral-analysis"
               element={
-                <Layout
-                  isAuthenticated={isAuthenticated}
-                  userEmail={userEmail}
-                  userRole={userRole}
-                  onLogout={handleLogout}
-                >
+                <AppLayout userEmail={userEmail} userRole={userRole} onLogout={handleLogout}>
                   <OralAnalysis userEmail={userEmail} />
-                </Layout>
-              }
-            />
-            <Route
-              path="/progress"
-              element={
-                <Layout
-                  isAuthenticated={isAuthenticated}
-                  userEmail={userEmail}
-                  userRole={userRole}
-                  onLogout={handleLogout}
-                >
-                  <Dashboard userRole={userRole} userEmail={userEmail} />
-                </Layout>
+                </AppLayout>
               }
             />
             <Route
               path="/profile"
               element={
-                <Layout
-                  isAuthenticated={isAuthenticated}
-                  userEmail={userEmail}
-                  userRole={userRole}
-                  onLogout={handleLogout}
-                >
+                <AppLayout userEmail={userEmail} userRole={userRole} onLogout={handleLogout}>
                   <Profile userEmail={userEmail} userRole={userRole} />
-                </Layout>
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/corrections"
+              element={
+                <AppLayout userEmail={userEmail} userRole={userRole} onLogout={handleLogout}>
+                  <Corrections userEmail={userEmail} userRole={userRole} />
+                </AppLayout>
               }
             />
             {(userRole === 'admin' || userRole === 'teacher') && (
               <Route
                 path="/dashboard"
                 element={
-                  <Layout
-                    isAuthenticated={isAuthenticated}
-                    userEmail={userEmail}
-                    userRole={userRole}
-                    onLogout={handleLogout}
-                  >
+                  <AppLayout userEmail={userEmail} userRole={userRole} onLogout={handleLogout}>
                     <Dashboard userRole={userRole} userEmail={userEmail} />
-                  </Layout>
+                  </AppLayout>
                 }
               />
             )}
           </>
         )}
+        
+        {/* Redirect unauthenticated users - Temporarily disabled for Progress testing */}
+        {/* {!isAuthenticated && (
+          <Route path="/progress" element={<Navigate to="/login" replace />} />
+        )} */}
       </Routes>
     </Router>
   );

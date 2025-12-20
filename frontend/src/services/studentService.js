@@ -3,7 +3,9 @@
  * Handles student data, conversations, and analysis operations
  */
 
-const API_BASE_URL = '/api';
+import { parseProgressData } from '../utils/analysisParser';
+
+const API_BASE_URL = 'http://127.0.0.1:8000/api';
 
 const studentService = {
   /**
@@ -163,43 +165,33 @@ Prochain objectif: Maîtriser le subjonctif et les pronoms relatifs`;
    */
   async getProgress(studentEmail) {
     try {
-      // TODO: Replace with actual API call when backend is ready
+      // Fetch all analyses for the student
+      const response = await fetch(`${API_BASE_URL}/analysis/student/${studentEmail}`);
+      const data = await response.json();
       
-      await new Promise(resolve => setTimeout(resolve, 500));
+      if (!data.success) {
+        return {
+          success: false,
+          message: data.message || 'Error loading progress'
+        };
+      }
       
-      // Mock progress data
+      // Parse analyses into progress data
+      const progressData = parseProgressData(data.analyses || []);
+      
       return {
         success: true,
         data: {
-          student_id: studentEmail,
-          conversations: [
-            {
-              message_id: 'lecon_1',
-              date: '2024-12-20T10:00:00Z',
-              type: 'production_écrite',
-              message: 'Bonjour, je m\'appelle Marie et j\'habite à Paris. J\'étudie le français depuis deux ans.'
-            },
-            {
-              message_id: 'lecon_2',
-              date: '2024-12-22T14:30:00Z',
-              type: 'production_écrite',
-              message: 'Hier, je suis allé au marché avec ma famille. Nous avons acheté des fruits et des légumes frais.'
-            }
-          ],
-          analyses: [
-            {
-              date: '2024-12-20T10:05:00.000',
-              result: 'Analyse du texte lecon_1: Très bon début! Quelques petites erreurs à corriger...'
-            }
-          ]
+          student_email: studentEmail,
+          progress_data: progressData,
+          total_analyses: data.analyses?.length || 0
         }
       };
-
     } catch (error) {
       console.error('Get progress error:', error);
       return {
         success: false,
-        message: 'Erreur lors du chargement de la progression'
+        message: 'Error loading progress'
       };
     }
   }

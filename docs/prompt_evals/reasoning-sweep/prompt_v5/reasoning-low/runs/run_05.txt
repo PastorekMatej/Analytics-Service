@@ -1,0 +1,201 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2+ → B1"
+  évaluations numériques par texte (format date du texte: évaluation):
+  - 2024-01-12: 28/100 (A2+) - Amélioration majeure: premières structures argumentatives, connecteurs simples
+  - 2024-02-05: 30/100 (A2+) - Amélioration mineure: richesse lexicale du quotidien (colocation)
+  - 2024-03-19: 27/100 (A2+) - Régression majeure: accords/formation du passé composé très fautifs
+  - 2024-04-27: 31/100 (A2+) - Amélioration mineure: texte informatif structuré (repérage spatial)
+  - 2024-05-08: 30/100 (A2+) - Stabilité: narration au passé encore instable, mais variété de temps tentée
+  - 2024-06-20: 33/100 (A2+) - Amélioration mineure: argumentation simple, lexique scolaire
+  - 2024-07-20: 34/100 (B1) - Amélioration majeure: meilleure cohérence discursive, consignes procédurales
+  - 2024-08-20: 33/100 (A2+) - Stabilité: consignes, mais prépositions/infinitifs encore fautifs
+  - 2024-09-20: 36/100 (B1) - Amélioration mineure: ton professionnel, justification claire
+  - 2024-10-20: 38/100 (B1) - Amélioration majeure: hypothèse/conditionnel émergent, registre formel
+  - 2024-11-20: 36/100 (B1) - Stabilité: lettre amicale avec propositions, quelques maladresses
+  - 2024-11-20: 39/100 (B1) - Amélioration mineure: questionnement structuré, lexique du numérique
+  - 2024-12-20: 40/100 (B1) - Amélioration mineure: plaidoyer citoyen, argumentation plus nette
+  - 2024-12-20: 41/100 (B1) - Amélioration mineure: récit d’échange, variété lexicale et conseils
+  - 2025-01-20: 40/100 (B1) - Stabilité: réflexion métacognitive, mais nombreux déterminants/prépositions
+  - 2025-02-20: 41/100 (B1) - Amélioration mineure: retour d’expérience professionnelle, registres variés
+  - 2025-04-12: 38/100 (B1) - Régression mineure: phrases longues, coordination excessive, accords
+  - 2025-04-12: 42/100 (B1) - Amélioration mineure: lettre formelle structurée (demande de stage), argumentation plus dense
+  progression globale: +14 points
+  résumé:
+  - Progression notable en longueur, variété thématique (vie étudiante, lettres formelles, plaidoyer citoyen, RH, stages) et connecteurs (d’abord/ensuite/pour conclure).
+  - Amélioration claire du passé composé (accords/auxiliaires) après 2024-03-19; meilleure gestion de la négation et du placement pronominal.
+  - Erreurs encore fréquentes sur déterminants, prépositions/constructions à l’infinitif, accords de base, collocations; style parfois lourd (phrases longues/coordination).
+
+TENDANCES D’ÉVOLUTION :
+- G01 (accord/formation du participe passé avec avoir): ≈10–12 occurrences dans 2024-03-19 à 2024-05-08 → ≈0–1 après 2024-07-20. Amélioration nette et durable.
+- G03 (négation: ne/pas/pronoms): 4–5 occurrences dans 2024-02-05 à 2024-12-20 → 1–2 occurrences isolées après 2024-12-20. Tendance à la baisse.
+- G05 (accords de base: sujet–verbe, adjectifs): ≈18–20 occurrences dans 2024-01-12 à 2024-11-20 → ≈10–12 dans 2024-12-20 à 2025-04-12. Amélioration légère mais persistante.
+- G06 (prépositions / construction à l’infinitif): ≈12–14 occurrences dans 2024-01-12 à 2024-11-20 → ≈10–12 dans 2024-12-20 à 2025-04-12. Stabilité: persiste sans baisse nette.
+- G07 (articles/déterminants): ≈15–18 occurrences dans 2024-01-12 à 2024-11-20 → ≈8–10 dans 2024-12-20 à 2025-04-12. Baisse sensible mais non résolue.
+- G08 (ordre des mots / placement des pronoms): 6–7 occurrences dans 2024-02-05 à 2024-11-20 → 2–3 occurrences dans 2025-01-20 à 2025-04-12. Amélioration.
+- G10 (conditionnel/subjonctif): apparaît dès 2024-10-20 (2–3 occurrences d’emplois fautifs) → maintien de l’usage avec erreurs sporadiques jusqu’au 2025-04-12. Complexification en cours.
+- V01 (faux amis/calques): 5–6 occurrences dans 2024-02-05 à 2024-11-20 → 4–5 dans 2024-12-20 à 2025-04-12. Fréquence stable, attention au registre professionnel.
+- V04 (collocations non naturelles): ≈6–8 occurrences tout au long → persistance (RH, université, travail).
+- S01/S02 (coordination excessive / phrases longues): amélioration globale au milieu du corpus → recrudescence marquée le 2025-04-12 (premier texte de cette date).
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE
+- type: G01
+  pattern: Accord/formation du passé composé avec avoir
+  occurrences: 10–12
+  exemples:
+    - "j’ai passée la nuit" → "j’ai passé la nuit" (2024-03-19)
+    - "j’ai vue le Musée national" → "j’ai vu le musée national" (2024-03-19)
+    - "j’ai visitée le Château..." → "j’ai visité le château..." (2024-03-19)
+
+- type: G03
+  pattern: Erreur de négation (placement de ne/pas/pronoms)
+  occurrences: 5
+  exemples:
+    - "qui je n’ai connu pas" → "que je ne connaissais pas" (2024-02-05)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (2024-12-20)
+
+- type: G04
+  pattern: Confusion passé composé / imparfait (et temps du récit)
+  occurrences: 3–4
+  exemples:
+    - "Bien que ma vie a changé" → "bien que ma vie ait changé" (mode/temps) (2024-02-05)
+    - "J’ai parlé… enfin, j’ai tout compris" (récit visant l’imparfait) → "Je parlais…, je comprenais…" (2025-02-20)
+
+- type: G05
+  pattern: Accords de base (sujet–verbe, adjectifs)
+  occurrences: 20+
+  exemples:
+    - "c’est le première fois" → "c’est la première fois" (2024-02-05)
+    - "Je suis satisfée" → "Je suis satisfaite" (2024-06-20)
+    - "les horaires sont varieux" → "les horaires sont variés" (2024-07-20)
+
+- type: G06
+  pattern: Prépositions / constructions à l’infinitif
+  occurrences: 20+
+  exemples:
+    - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (2024-01-12)
+    - "je peux t’aider avec chercher" → "je peux t’aider à chercher" (2024-08-20)
+    - "apprendre utiliser" → "apprendre à utiliser" (2024-11-20)
+
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants
+  occurrences: 20+
+  exemples:
+    - "la langue français" → "la langue française" (2024-01-12)
+    - "As-tu quelque chose nouvelle ?" → "… quelque chose de nouveau ?" (2024-02-05)
+    - "association des vos élèves" → "association de vos élèves" (2024-04-27)
+    - "le langue" → "la langue" (2024-12-20)
+
+- type: G08
+  pattern: Ordre des mots / placement des pronoms, que
+  occurrences: 6–8
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (2024-03-19)
+    - "Je dois dire j’aime…" → "Je dois dire que j’aime…" (2024-02-05)
+    - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (2024-05-08)
+
+- type: G10
+  pattern: Conditionnel/subjonctif mal employés
+  occurrences: 3–4
+  exemples:
+    - "j’espère que vous pourr-iez" → "j’espère que vous pourriez" (2024-10-20)
+    - "je pouvais…" (projection) → "je pourrais…" (2025-04-12)
+
+VOCABULAIRE
+- type: V01
+  pattern: Faux amis / calques
+  occurrences: 8–10
+  exemples:
+    - "avanture d’adrénaline" → "aventure pleine d’adrénaline" (2024-02-05)
+    - "défises" → "défis" (2024-02-05)
+    - "bénévole (pour moi)" → "bénéfique (pour moi)" (2025-04-12)
+
+- type: V03
+  pattern: Répétition lexicale excessive
+  occurrences: 7–9
+  exemples:
+    - Empilement des connecteurs "D’abord/Ensuite/Puis/Enfin" (2024-07-20; 2024-09-20; 2025-04-12)
+    - "j’ai vu / j’ai visité" en série (2024-03-19)
+
+- type: V04
+  pattern: Collocations non naturelles
+  occurrences: 8–10
+  exemples:
+    - "la rue et le parking sont cassés" → "… en mauvais état" (2024-09-20)
+    - "faire des connections" → "tisser des liens / nouer des contacts" (2025-04-12)
+    - "rencontrer avec la vie" → "se confronter à la vie / découvrir la vie" (2025-02-20)
+
+- type: V05
+  pattern: Interférence (calque syntaxique)
+  occurrences: 6–8
+  exemples:
+    - "association des vos élèves" → "association de vos élèves" (2024-04-27)
+    - "Dans je suis vraiment stressée" → "J’en suis vraiment stressée / Cela me stresse" (2024-12-20)
+
+STYLE
+- type: S01
+  pattern: Coordination excessive
+  occurrences: 7–9
+  exemples:
+    - Listes enchaînées par et/mais/puis sans hiérarchie (2024-03-19; 2025-04-12)
+
+- type: S02
+  pattern: Phrases trop longues / ponctuation déficiente
+  occurrences: 6–8
+  exemples:
+    - Incises/parenthèses au lieu de subordonnées (2024-11-20; 2025-02-20)
+    - Paragraphes à rallonge (2025-04-12)
+
+- type: S05
+  pattern: Formulations lourdes / maladroites
+  occurrences: 15+
+  exemples:
+    - "Ce la est la raison pourquoi…" → "C’est la raison pour laquelle…" (2024-01-12)
+    - "C’est que vous voyez mener…" → "C’est la route qui mène…" (2024-04-27)
+
+ERREURS_PERSISTANTES (dans les 3 derniers textes: 2025-01-20, 2025-02-20, 2025-04-12) :
+- G05 (accords de base)
+  Exemple: "les professeurs étaient très encourageant" → "très encourageants" (2024-12-20) et maintien d’accords hésitants en 2025-02-20; 2025-04-12
+- G06 (prépositions / infinitif)
+  Exemples:
+  - "A école" → "À l’école" (2025-01-20)
+  - "parlais pas bien en français" → "parlais mal le français" ou "ne parlais pas bien français" (2025-02-20)
+  - "ce que je voudrais pratiquer les en faisant" → "que je voudrais mettre en pratique en faisant" (2025-04-12)
+- G07 (articles/déterminants)
+  Exemples:
+  - "le langue" → "la langue" (2025-01-20)
+  - "cet expérience" → "cette expérience" (2025-02-20)
+  - "le santé" → "la santé" (2025-04-12)
+- G08 (ordre des mots / pronoms)
+  Exemples:
+  - "pratiquer les en faisant" → "les pratiquer en faisant" (2025-04-12)
+  - "Ce que ma hiérarchie demande, c’est de moi venir..." → "Ma hiérarchie me demande de venir..." (2025-04-12)
+- G10 (conditionnel/subjonctif)
+  Exemples:
+  - "Je pouvais…" → "Je pourrais…" (2025-02-20; 2025-04-12)
+- V01 (faux amis)
+  Exemples:
+  - "bénévole (pour moi)" → "bénéfique (pour moi)" (2025-04-12)
+  - "slang/gargon" → "argot/jargon" (2025-02-20)
+- V04 (collocations non naturelles)
+  Exemples:
+  - "rencontrer avec la vie" → "se confronter à la vie" (2025-02-20)
+  - "organiser une courte teambuilding" → "organiser un court team building / un séminaire de cohésion" (2025-04-12)
+- V05 (interférence linguistique)
+  Exemple:
+  - "Chaque membre… a une responsabilité des compétences" → "a des responsabilités selon ses compétences" (2025-04-12)
+- S01 (coordination excessive)
+  Exemple:
+  - Empilement de solutions reliées par et/puis sans articulation logique (2025-04-12)
+- S02 (phrases longues / ponctuation)
+  Exemple:
+  - Périodes très longues avec incises non intégrées (2025-04-12)
+- S05 (formulations lourdes)
+  Exemples:
+  - "Ce que ma hiérarchie demande…" → "Ma hiérarchie me demande…" (2025-04-12)
+  - "je voudrais pratiquer les en faisant…" → "je voudrais mettre en pratique en faisant…" (2025-04-12)
+
+Conclusion synthétique:
+- Progrès solide vers B1: meilleure cohérence textuelle, variété de tâches (lettres formelles, exposés, plaidoyers), et nette réduction des erreurs de passé composé et de négation.
+- Compétences actuelles B1: l’étudiante s’exprime avec aisance relative sur des thèmes familiers/professionnels, mais la précision morphosyntaxique reste fragile (déterminants, prépositions, accords), et le style souffre parfois de coordinations excessives et de collocations non idiomatiques.
+- Priorités ciblées: 1) systèmes des déterminants et des prépositions (schémas à + infinitif, de + nom, contractions), 2) accords (adjectifs, pluriel, sujet–verbe), 3) collocations/lexique idiomatique en contexte académique/professionnel, 4) consolidation du conditionnel/subjonctif dans les requêtes formelles, 5) découpage syntaxique et ponctuation.

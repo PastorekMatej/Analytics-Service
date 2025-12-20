@@ -1,0 +1,174 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  évaluations numériques par texte (format date du texte: évaluation):
+  - 2024-01-12: 24/100 (A2) - Amélioration majeure: premières structures argumentatives claires malgré des erreurs nombreuses
+  - 2024-02-05: 27/100 (A2+) - Amélioration majeure: variété des temps et des connecteurs
+  - 2024-03-19: 23/100 (A2) - Régression majeure: passé composé (accords/auxiliaires) très instable
+  - 2024-04-27: 28/100 (A2+) - Amélioration mineure: progression en rédaction fonctionnelle
+  - 2024-05-08: 26/100 (A2+) - Régression mineure: temps du passé et accords
+  - 2024-06-20: 30/100 (A2+) - Amélioration majeure: cohérence du discours et lexique scolaire
+  - 2024-07-20: 31/100 (A2+) - Amélioration mineure: consignes procédurales plus nettes
+  - 2024-08-20: 32/100 (A2+) - Amélioration mineure: structuration du conseil/guide
+  - 2024-09-20: 35/100 (B1) - Amélioration majeure: registre professionnel plus adapté
+  - 2024-10-20: 37/100 (B1) - Amélioration majeure: argumentation et modalisation (conditionnel) en émergence
+  - 2024-11-20: 38/100 (B1) - Amélioration mineure: prise de position nuancée
+  - 2024-11-20: 39/100 (B1) - Amélioration majeure: questions structurées en contexte scolaire
+  - 2024-12-20: 41/100 (B1) - Amélioration majeure: lettre d’opinion mieux organisée
+  - 2024-12-20: 40/100 (B1) - Amélioration mineure: récit d’échange riche (quelques calques)
+  - 2025-01-20: 40/100 (B1) - Stabilité: mêmes forces et faiblesses (prépositions, articles)
+  - 2025-02-20: 41/100 (B1) - Amélioration mineure: narration d’expérience professionnelle crédible
+  - 2025-04-12: 39/100 (B1) - Régression mineure: surcharge syntaxique et ponctuation irrégulière
+  - 2025-04-12: 42/100 (B1) - Amélioration majeure: argumentaire plus structuré et vocabulaire professionnel
+  progression globale: +18 points
+  résumé:
+  - Progression nette en longueur, variété thématique (colocation, voyages, RH, vie scolaire, entreprise, démarches administratives) et structuration (connecteurs logiques).
+  - Forte baisse des erreurs au passé composé après 2024-03-19. Meilleure adéquation du registre en contexte formel.
+  - Erreurs encore visibles: articles/déterminants, prépositions/constructions à l’infinitif, accords de base, placement des pronoms, formulations lourdes; pics de style (phrases longues) dans les lettres du 2025-04-12.
+
+TENDANCES D'ÉVOLUTION :
+- G01 (passé composé: accord/auxiliaire/formation): ≈10 occurrences entre 2024-03-19 et 2024-05-08 → 0–1 dès 2024-09-20 (amélioration marquée).
+- G03 (négation: ne/pas, place des pronoms): 4–5 occurrences entre 2024-02-05 et 2024-12-20 → 1 occurrence sporadique après 2025-02-20 (baisse).
+- G05 (accords de base: sujet-verbe, adjectifs, personne): 12–15 occurrences entre 2024-02-05 et 2024-08-20 → 7–9 occurrences entre 2024-11-20 et 2025-04-12 (amélioration légère, encore fréquent).
+- G06 (prépositions / à + infinitif / constructions figées): 10–12 occurrences entre 2024-01-12 et 2024-08-20 → 8–10 occurrences entre 2024-11-20 et 2025-04-12 (stabilité: peu d’amélioration).
+- G07 (articles/déterminants: genre, partitif, contraction): ≈12 occurrences entre 2024-01-12 et 2024-07-20 → ≈7 occurrences entre 2024-11-20 et 2025-04-12 (baisse notable).
+- G08 (ordre des mots / placement des pronoms): 4–5 occurrences entre 2024-02-05 et 2024-03-19 → 1–2 occurrences isolées après 2025-01-20 (amélioration).
+- G10 (conditionnel/subjonctif): apparaît à partir du 2024-10-20 (2–3 occurrences jusqu’au 2025-04-12) → formes encore instables mais en progrès.
+- V01 (faux amis/calques): fréquence faible mais continue (≈1–2 par tranche de 3 textes), dont “bénévole” pour “bénéfique” (2025-04-12).
+- V04 (collocations non naturelles): stable (≈1–2 par texte) → persiste dans les contextes pro/administratifs.
+- S01–S02 (coordination/phrases longues): tendance globale à la baisse, mais recrudescence marquée le 2025-04-12 (lettre longue).
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE
+- type: G01
+  pattern: Passé composé (accord avec avoir / auxiliaire / formation)
+  occurrences: 10+
+  exemples:
+    - "j´ai passée la nuit" → "j’ai passé la nuit" (2024-03-19)
+    - "j´ai vue le Musée national" → "j’ai vu le musée national" (2024-03-19)
+    - "j´ai visitée Le château de Prague" → "j’ai visité le château de Prague" (2024-03-19)
+
+- type: G03
+  pattern: Erreur de négation (ne/pas; place des pronoms)
+  occurrences: 4–5
+  exemples:
+    - "qui je n’ai connu pas" → "que je ne connaissais pas / que je ne connais pas" (2024-02-05)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (2024-12-20)
+
+- type: G05
+  pattern: Accords de base (sujet–verbe; adjectifs; personne)
+  occurrences: 20+
+  exemples:
+    - "c’est le première fois" → "c’est la première fois" (2024-02-05)
+    - "Je suis satisfée" → "Je suis satisfaite" (2024-06-20)
+    - "les horaires sont varieux" → "les horaires sont variés" (2024-07-20)
+    - "tu envoie ton CV" → "tu envoies ton CV" (2024-08-20)
+    - "les enfants voudrions" → "les enfants voudraient" (2024-11-20)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / construction à l’infinitif
+  occurrences: 20+
+  exemples:
+    - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (2024-01-12)
+    - "je peux t’aider avec chercher" → "je peux t’aider à chercher" (2024-08-20)
+    - "apprendre utiliser" → "apprendre à utiliser" (2024-11-20)
+    - "C’est trouver au coin..." → "C’est situé au coin..." (2024-04-27)
+
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (genre, absence, partitif)
+  occurrences: 20+
+  exemples:
+    - "la langue français" → "la langue française" (2024-01-12)
+    - "As-tu quelque chose nouvelle ?" → "As-tu quelque chose de nouveau ?" (2024-02-05)
+    - "association des vos élèves" → "association de vos élèves" (2024-04-27)
+    - "le santé" → "la santé" (2025-04-12)
+
+- type: G08
+  pattern: Ordre des mots / placement des pronoms
+  occurrences: 6–8
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (2024-03-19)
+    - "Je dois dire j’aime..." → "Je dois dire que j’aime..." (2024-02-05)
+    - "ce que je voudrais pratiquer les en faisant" → "ce que je voudrais mettre en pratique en faisant / les pratiquer en..." (2025-04-12)
+
+- type: G10
+  pattern: Usage fautif du conditionnel/subjonctif
+  occurrences: 3–4
+  exemples:
+    - "J’espère que vous pourr-iez nous comprendre" → "J’espère que vous pourrez nous comprendre" (2024-10-20)
+    - "Je pouvais apprendre..." (hypothèse) → "Je pourrais apprendre..." (2025-04-12)
+
+VOCABULAIRE
+- type: V01
+  pattern: Faux amis / calques
+  occurrences: 6–8
+  exemples:
+    - "défises" → "défis" (2024-02-05)
+    - "bénévole" (pour “bénéfique”) (2025-04-12)
+    - "slang / gargon" → "argot / jargon" (2025-02-20)
+
+- type: V03
+  pattern: Répétition lexicale excessive
+  occurrences: 8–10
+  exemples:
+    - Empilement "D’abord / Ensuite / Puis / Enfin" (plusieurs dates, p.ex. 2024-03-19)
+    - "j’ai vu / j’ai visité / j’ai vu / j’ai visité" (2024-03-19)
+
+- type: V04
+  pattern: Collocation non naturelle
+  occurrences: 8–10
+  exemples:
+    - "faire des connections" → "tisser des liens / nouer des contacts" (2025-04-12)
+    - "la rue et le parking sont cassés" → "… sont en mauvais état" (2024-09-20)
+    - "réussir des expériences" → "acquérir de l’expérience" (2025-04-12)
+
+- type: V05
+  pattern: Interférence linguistique (structure calquée)
+  occurrences: 6–8
+  exemples:
+    - "je vous explique quelle est la localisation" → "je vous indique l’emplacement" (2024-04-27)
+    - "Moi et ma famille utilisons..." → "Ma famille et moi utilisons..." (2024-12-20)
+
+STYLE
+- type: S01
+  pattern: Coordination excessive (et/mais/puis)
+  occurrences: 8–10
+  exemples:
+    - Listes juxtaposées sans hiérarchie claire (2024-03-19; 2025-04-12)
+
+- type: S02
+  pattern: Phrases trop longues / ponctuation déficiente
+  occurrences: 6–8
+  exemples:
+    - Périodes très longues avec ruptures et redites (2025-04-12)
+
+- type: S05
+  pattern: Formulations maladroites / lourdes
+  occurrences: 15+
+  exemples:
+    - "Ce la est la raison pourquoi..." → "C’est la raison pour laquelle..." (2024-01-12)
+    - "C’est que vous voyez mener..." → "C’est la route qui mène..." (2024-04-27)
+    - "Pourquoi est ce stage tellement important..." → "Pourquoi ce stage est-il si important..." (2025-04-12)
+
+ERREURS_PERSISTANTES (dans les 3 derniers textes: 2025-02-20, 2025-04-12, 2025-04-12):
+- Accords de base (G05) Exemple: "Je suis l’employé" → "Je suis l’employée" (2025-04-12)
+- Constructions prépositionnelles / à + infinitif (G06) Exemples:
+  - "rencontrer avec la vie" → "se confronter à la vie / découvrir la vie" (2025-02-20)
+  - "ce que je voudrais pratiquer les en faisant..." → "… les pratiquer en faisant / … mettre en pratique en faisant..." (2025-04-12)
+- Articles / déterminants (G07) Exemples:
+  - "cet expérience" → "cette expérience" (2025-02-20)
+  - "le santé" → "la santé" (2025-04-12)
+- Ordre des mots / pronoms (G08) Exemple: "pratiquer les en faisant" → "les pratiquer en faisant" (2025-04-12)
+- Conditionnel / modalisation (G10) Exemples:
+  - "Je pouvais apprendre..." → "Je pourrais apprendre..." (2025-04-12)
+  - "si vous pouvez signer..." → "si vous pourriez signer..." (2025-04-12)
+- Faux amis / calques (V01) Exemples:
+  - "slang / gargon" → "argot / jargon" (2025-02-20)
+  - "bénévole" (pour “bénéfique”) → "bénéfique" (2025-04-12)
+- Collocations non naturelles (V04) Exemples:
+  - "réussir des expériences" → "acquérir de l’expérience" (2025-04-12)
+  - "organiser une courte teambuilding" → "organiser un court team building / une journée de cohésion" (2025-04-12)
+- Coordination excessive (S01) Exemple: accumulation de "et / puis" pour enchaîner plusieurs solutions (2025-04-12)
+- Phrases longues / ponctuation (S02) Exemple: périodes très étirées avec incises mal intégrées (2025-04-12)
+- Formulations lourdes (S05) Exemples:
+  - "Ce que ma hiérarchie demande, c’est de moi venir..." → "Ma hiérarchie me demande de venir..." (2025-04-12)
+  - "Pourquoi est ce stage tellement important..." → "Pourquoi ce stage est-il si important..." (2025-04-12)

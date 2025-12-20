@@ -1,0 +1,185 @@
+ÉVOLUTION_GLOBALE:
+- évolution de niveau: "A2 → B1+"
+- évaluations numériques par texte:
+  - 2024-01-12T08:15:30Z (lecon_1): 22/100 (A2)
+  - 2024-02-05T14:22:10Z (lecon_2): 27/100 (A2+)
+  - 2024-03-19T09:45:50Z (lecon_4): 29/100 (A2+)
+  - 2024-04-27T16:30:05Z (lecon_5_2): 30/100 (A2+)
+  - 2024-05-08T11:12:40Z (lecon_5): 31/100 (A2+)
+  - 2024-06-20T10:01:15Z (lecon_6_1): 33/100 (A2+)
+  - 2024-07-20T10:01:30Z (lecon_6_2): 34/100 (B1)
+  - 2024-08-20T10:01:45Z (lecon_7_1): 36/100 (B1)
+  - 2024-09-20T10:02:00Z (lecon_7_2): 37/100 (B1)
+  - 2024-10-20T10:02:15Z (lecon_9_1): 40/100 (B1)
+  - 2024-11-20T10:02:30Z (lecon_9_2): 41/100 (B1)
+  - 2024-11-20T10:02:45Z (lecon_10): 42/100 (B1)
+  - 2024-12-20T10:04:45Z (lecon_12): 44/100 (B1+)
+  - 2024-12-20T10:09:45Z (lecon_13): 45/100 (B1+)
+  - 2025-01-20T10:10:45Z (lecon_15): 46/100 (B1+)
+  - 2025-02-20T10:11:45Z (lecon_15_2): 48/100 (B1+)
+- progression globale: +26 points
+- résumé:
+  - Progrès nets en organisation du discours (connecteurs d’abord/ensuite/puis/pour conclure), en adéquation de registre (capacité à écrire des textes semi-formels et formels), et en complexité phrastique (questions indirectes, hypothèses).
+  - Les erreurs d’auxiliaire/participe passé, très nombreuses au début (voyage à Prague), disparaissent ensuite.
+  - Erreurs persistantes mais en baisse: articles/déterminants, prépositions/constructions à l’infinitif, accords de base et placement des pronoms/adverbes. Calques lexicaux et formulations maladroites restent fréquents.
+
+TENDANCES D’ÉVOLUTION:
+- G01 (auxiliaire/accord du participe passé): ≈7 occurrences concentrées dans lecon_4 → 0 dès lecon_5.
+- G07 (articles/déterminants): ≈12 occurrences leçons 1–7 → ≈6 occurrences leçons 9–15_2 (baisse ~50% mais encore visible).
+- G06 (prépositions et construction à l’infinitif): ≈5 occurrences leçons 1–7 → ≈3 leçons 9–15_2 (baisse modérée).
+- G05 (accords/conjugaisons de base): ≈9 occurrences leçons 1–7 → ≈6 leçons 9–15_2 (baisse partielle).
+- G08 (ordre des mots/placement des pronoms): 3 occurrences leçons 1–7 → 1 occurrence leçons 9–15_2 (amélioration nette).
+- V01 (faux amis/choix lexical approximatif): 3 → 3 (stable: “aventure/défis/argot…”, “variés”, “lieux/détroits”).
+- V04 (collocations non naturelles): 3 → 3 (stable: “parler de mes jours”, “recevoir des visites”, “connaître le jargon”, “faire un cours d’apprendre…”).
+- V05 (interférences syntaxiques du slovaque): 4 → 2 (réduction mais encore présente: “moi et…”, “celui que je parle”, “dans je suis stressée”).
+- S05 (formulations lourdes/maladroites): 4 → 3 (légère baisse; lisibilité en progrès mais encore des tournures pesantes).
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, contraction, partitif)
+  occurrences: 18+
+  exemples:
+    - lecon_1: "la langue français" → "la langue française"
+    - lecon_2: "quelque chose nouvelle" → "quelque chose de nouveau"
+    - lecon_5: "des belles photos" → "de belles photos"
+    - lecon_6_1: "des bons professeurs" → "de bons professeurs"
+    - lecon_9_2: "la départ de Baptiste" → "le départ"
+    - lecon_13: "le langue du pays" → "la langue du pays"
+    - lecon_15: "A école" → "À l’école" ; "des cours de langue anglais" → "des cours d’anglais"
+    - lecon_15_2: "cet expérience" → "cette expérience" ; "de les gens français" → "des gens français / les Français"
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / construction à l’infinitif
+  occurrences: 7
+  exemples:
+    - lecon_1: "j’ai commencé apprendre" → "j’ai commencé à apprendre"
+    - lecon_7_1: "t’aider avec chercher" → "t’aider à chercher"
+    - lecon_6_2: "recommencent être ouvertes" → "recommencent à être ouvertes"
+    - lecon_7_1: "tu attends pour recevoir" → "tu attends de recevoir / tu attends un e-mail"
+    - lecon_10: "un cours d’apprendre utiliser" → "un cours pour apprendre à utiliser"
+    - lecon_15_2: "rencontrer avec la vie" → "vivre des situations de la vie / découvrir la vie"
+
+- type: G05
+  pattern: Conjugaison/accords de base (accord GN, genre, personne)
+  occurrences: 12
+  exemples:
+    - lecon_2: "c’est le première fois" → "c’est la première fois"
+    - lecon_2: "j’adore ce gens" → "ces gens"
+    - lecon_5: "J’étais vraiment stressé" → "stressée"
+    - lecon_7_1: "tu envoie" → "tu envoies"
+    - lecon_6_1: "je suis satisfée" → "satisfaite"
+    - lecon_13: "les professeurs étaient très encourageant" → "encourageants"
+    - lecon_10: "les enfants voudrions" → "voudraient"
+    - lecon_12: "la gare… il a des défauts" → "elle a des défauts"
+
+- type: G01
+  pattern: Accord/auxiliaire du participe passé (avec avoir/être)
+  occurrences: 7
+  exemples:
+    - lecon_4: "As-tu déjà voyagée" → "voyagé"
+    - lecon_4: "j’ai arrivée" → "je suis arrivée"
+    - lecon_4: "j’ai passée la nuit" → "j’ai passé la nuit"
+    - lecon_4: "j’ai vue / visitée / j’y restée / j’ai voyagée" → "j’ai vu / visité / j’y suis restée / j’ai voyagé"
+
+- type: G08
+  pattern: Ordre des mots (pronoms/adverbes, subordination)
+  occurrences: 4
+  exemples:
+    - lecon_4: "Tu me vraiment manques" → "Tu me manques vraiment"
+    - lecon_5_2: "vous vous pouvez garer" → "vous pouvez vous garer"
+    - lecon_5: "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste"
+    - lecon_13: "vous n’avez me pas croire" → "vous ne me croirez pas"
+
+- type: G03
+  pattern: Erreur de négation (ne…pas / placement des clitiques)
+  occurrences: 2
+  exemples:
+    - lecon_2: "je n’ai connu pas" → "je n’ai pas connu"
+    - lecon_13: "vous n’avez me pas croire" → "vous ne me croirez pas"
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / choix lexical fautif
+  occurrences: 6
+  exemples:
+    - lecon_2: "avanture" → "aventure" ; "défises" → "défis"
+    - lecon_6_2: "varieux" → "variés"
+    - lecon_13: "détroits historiques" → "sites/lieux historiques"
+    - lecon_10: "effectivement" (pour “efficacement”)
+    - lecon_15_2: "slang" → "argot/jargon"
+
+- type: V04
+  pattern: Collocations non naturelles
+  occurrences: 6
+  exemples:
+    - lecon_5: "parler de mes jours" → "parler de ma semaine / de mes journées"
+    - lecon_2: "avoir des visites" → "recevoir des visites"
+    - lecon_5: "j’eu un cappuccino" → "j’ai pris un cappuccino"
+    - lecon_7_2: "la rue/le parking sont cassés" → "sont dégradés/en mauvais état"
+    - lecon_10: "faire un cours d’apprendre utiliser" → "organiser un cours pour apprendre à utiliser"
+    - lecon_15_2: "connaître le slang" → "apprendre le jargon / se familiariser avec"
+
+- type: V05
+  pattern: Interférences linguistiques (calque du slovaque)
+  occurrences: 5
+  exemples:
+    - lecon_5_2: "Celui que je parle, c’est situé…" → "Celui dont je parle se trouve…"
+    - lecon_5_2: "C’est trouver au coin…" → "Ça se trouve au coin…"
+    - lecon_12: "moi et ma famille" → "ma famille et moi"
+    - lecon_12: "dans je suis vraiment stressée" → "ce qui me stresse vraiment"
+    - lecon_13: "moi et mon groupe de classe… professeur de langue français" → "mon groupe-classe et moi… de français"
+
+STYLE:
+- type: S05
+  pattern: Formulation maladroite / lourde
+  occurrences: 7
+  exemples:
+    - lecon_1: "tellement magnifique belle" → "très belle"
+    - lecon_5_2: "je vous explique quelle est la localisation…" → "je vous indique où se trouve…"
+    - lecon_7_2: "je crois que vous pouvez gérer" → "vous saurez vous adapter"
+    - lecon_10: "Saurez-vous faire un cours d’apprendre…" → "Pourrez-vous organiser un cours pour apprendre à utiliser…"
+    - lecon_15_2: "aventure pour rencontrer avec la vie…" → "expérience pour vivre des situations réelles…"
+
+
+ERREURS_PERSISTANTES (dans les 3 dernières leçons: lecon_13, lecon_15, lecon_15_2):
+- G07 (articles/déterminants)
+  exemples:
+    - lecon_13: "le langue du pays" → "la langue du pays"
+    - lecon_15: "A école" → "À l’école" ; "des cours de langue anglais" → "des cours d’anglais"
+    - lecon_15_2: "cet expérience" → "cette expérience" ; "de les gens français" → "des gens français / les Français"
+
+- G06 (prépositions / infinitif)
+  exemples:
+    - lecon_15_2: "rencontrer avec la vie" → "vivre des situations de la vie / découvrir la vie"
+
+- G05 (accords/conjugaisons)
+  exemples:
+    - lecon_13: "les professeurs étaient très encourageant" → "encourageants"
+
+- G08 (ordre des mots)
+  exemples:
+    - lecon_13: "vous n’avez me pas croire" → "vous ne me croirez pas"
+
+- G03 (négation)
+  exemples:
+    - lecon_13: "vous n’avez me pas croire" → "vous ne me croirez pas"
+
+- V01 (faux amis / choix lexical)
+  exemples:
+    - lecon_13: "détroits historiques" → "sites/lieux historiques"
+    - lecon_15_2: "slang" → "argot/jargon"
+
+- V04 (collocations non naturelles)
+  exemples:
+    - lecon_15_2: "connaître le jargon" (préférer "apprendre/se familiariser avec")
+    - lecon_15_2: "expérience… rencontrer avec la vie" → "vivre des situations réelles"
+
+- V05 (interférences)
+  exemples:
+    - lecon_13: "moi et mon groupe…" → "mon groupe et moi"
+
+
+Conclusion synthétique:
+- L’étudiante a nettement gagné en aisance textuelle, en structuration et en registre, passant d’un A2 (production simple, erreurs fréquentes) à un B1+ (messages clairs et organisés, capacité à argumenter et à s’adapter au destinataire).
+- Les erreurs d’auxiliaire/participe passé ont été résolues après lecon_4. Les difficultés résiduelles concernent surtout les articles (G07), certaines prépositions/constructions (G06), des accords de base (G05) et quelques calques/choix lexicaux (V01/V04). L’ordre des mots s’améliore mais reste à surveiller. Continuer à cibler G07/G06 en priorité consolidera l’accès au niveau B2.

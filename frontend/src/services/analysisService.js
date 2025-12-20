@@ -3,7 +3,7 @@
  * Handles all analysis-related API calls
  */
 
-const API_BASE_URL = 'http://localhost:8000/api/analysis';
+const API_BASE_URL = 'http://127.0.0.1:8000/api/analysis';
 
 /**
  * Transcribe an uploaded file to text
@@ -89,7 +89,7 @@ export const submitTextForAnalysis = async (studentEmail, textContent, textType 
  * @param {number} offset - Pagination offset
  * @returns {Promise} List of analyses
  */
-export const getStudentAnalyses = async (studentEmail, limit = 10, offset = 0) => {
+export const getStudentAnalyses = async (studentEmail, limit = 1000, offset = 0) => {
   try {
     const response = await fetch(
       `${API_BASE_URL}/student/${studentEmail}?limit=${limit}&offset=${offset}`

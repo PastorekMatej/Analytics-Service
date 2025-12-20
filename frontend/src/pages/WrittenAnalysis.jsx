@@ -1,6 +1,73 @@
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { FileText, Save, Upload, Trash2, Loader2, AlertCircle, CheckCircle2, Info } from 'lucide-react';
 import analysisService from '../services/analysisService';
-import './Analysis.css';
+
+// Status badge component
+const StatusBadge = ({ status }) => {
+  if (status === 'analyzed') {
+    return (
+      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100">
+        Analyzed
+      </span>
+    );
+  }
+  return (
+    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-600 border border-amber-100">
+      Pending
+    </span>
+  );
+};
+
+// Text item component - Grid Card Version
+const TextItem = ({ text, date, status, onDelete, isDeleting }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="relative flex flex-col bg-white border border-slate-200 rounded-2xl p-5 transition-all hover:shadow-md hover:border-slate-300 min-h-[240px] group"
+    >
+      {/* Text Preview on Top */}
+      <div className="flex-1 mb-4">
+        <div className="text-sm leading-relaxed text-slate-700 line-clamp-4">
+          {text}
+        </div>
+      </div>
+
+      {/* Metadata and Status Badge in Middle */}
+      <div className="flex flex-col gap-3 mb-3">
+        <div className="flex items-center justify-between gap-2">
+          <span className="text-xs text-slate-500 font-medium">{date}</span>
+        </div>
+        <div className="flex items-start">
+          <StatusBadge status={status} />
+        </div>
+      </div>
+
+      {/* Delete Button in Bottom-Right Corner */}
+      <div className="flex justify-end mt-auto">
+        <button
+          onClick={onDelete}
+          disabled={isDeleting}
+          className="flex items-center gap-2 px-3 py-2 bg-red-50 hover:bg-red-100 text-red-600 text-xs font-semibold rounded-xl border border-red-100 transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+          title="Delete this text"
+        >
+          {isDeleting ? (
+            <>
+              <Loader2 size={14} className="animate-spin" />
+              Deleting...
+            </>
+          ) : (
+            <>
+              <Trash2 size={14} />
+              Delete
+            </>
+          )}
+        </button>
+      </div>
+    </motion.div>
+  );
+};
 
 const WrittenAnalysis = ({ userEmail }) => {
   const [message, setMessage] = useState('');
@@ -92,7 +159,7 @@ const WrittenAnalysis = ({ userEmail }) => {
   };
 
   // Truncate text preview
-  const truncateText = (text, maxLength = 100) => {
+  const truncateText = (text, maxLength = 150) => {
     if (!text) return '';
     if (text.length <= maxLength) return text;
     return text.substring(0, maxLength).trim() + '...';
@@ -203,252 +270,197 @@ const WrittenAnalysis = ({ userEmail }) => {
   };
 
   return (
-    <div className="analysis-page">
-      <div className="page-background">
-        <div className="page-gradient"></div>
-        <div className="page-pattern"></div>
-      </div>
-      
-      <div className="page-container">
-        <div className="page-header">
-          <div className="page-badge">
-            <div className="badge-icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"/>
-              </svg>
-            </div>
-            <span>AI Analysis</span>
+    <div className="flex min-h-screen bg-slate-50 font-sans text-slate-900">
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto">
+        <div className="p-8">
+          {/* Page Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-slate-900 mb-2">Written Text Analysis</h1>
+            <p className="text-sm text-slate-500">
+              Submit your written French texts for comprehensive AI analysis and expert feedback
+            </p>
           </div>
-          
-          <h1 className="page-title">
-            <span className="gradient-text">Written Text</span> Analysis
-          </h1>
-          
-          <p className="page-description">
-            Submit your written French texts for comprehensive analysis 
-            with artificial intelligence and Maister's pedagogical expertise.
-          </p>
-        </div>
 
-        <div className="analysis-section">
-          <div className="card">
-            <div className="card-header">
-              <div className="card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6z"/>
-                  <polyline points="14,2 14,8 20,8"/>
-                  <line x1="16" y1="13" x2="8" y2="13"/>
-                  <line x1="16" y1="17" x2="8" y2="17"/>
-                  <polyline points="10,9 9,9 8,9"/>
-                </svg>
+          {/* New Text Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden mb-8"
+          >
+            <div className="flex items-center gap-4 px-8 py-6 border-b border-slate-100">
+              <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
+                <FileText size={24} />
               </div>
-              <h2 className="card-title">New Text</h2>
-              <p className="card-subtitle">Write your French text for analysis</p>
+              <div className="flex-1">
+                <h2 className="text-lg font-bold text-slate-800">New Text</h2>
+                <p className="text-sm text-slate-500">Write your French text for analysis</p>
+              </div>
             </div>
-            
-            <div className="card-body">
+
+            <div className="p-8">
+              {/* Alert Messages */}
               {error && (
-                <div className="alert alert-danger">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
-                  </svg>
-                  {error}
+                <div className="mb-6 flex items-center gap-3 px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                  <AlertCircle size={20} className="shrink-0" />
+                  <span>{error}</span>
                 </div>
               )}
 
               {success && (
-                <div className="alert alert-success">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                  </svg>
-                  Text saved successfully!
+                <div className="mb-6 flex items-center gap-3 px-4 py-3 bg-emerald-50 border border-emerald-200 rounded-xl text-emerald-700 text-sm">
+                  <CheckCircle2 size={20} className="shrink-0" />
+                  <span>Text saved successfully!</span>
                 </div>
               )}
 
               {fileError && (
-                <div className="alert alert-danger">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
-                  </svg>
-                  {fileError}
+                <div className="mb-6 flex items-center gap-3 px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
+                  <AlertCircle size={20} className="shrink-0" />
+                  <span>{fileError}</span>
                 </div>
               )}
 
               {infoMessage && (
-                <div className="alert alert-info">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                  </svg>
-                  {infoMessage}
+                <div className="mb-6 flex items-center gap-3 px-4 py-3 bg-blue-50 border border-blue-200 rounded-xl text-blue-700 text-sm">
+                  <Info size={20} className="shrink-0" />
+                  <span>{infoMessage}</span>
                 </div>
               )}
 
               <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                  <label htmlFor="file-upload" className="form-label">
+                {/* File Upload */}
+                <div className="mb-6">
+                  <label className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
                     Upload a file for transcription
                   </label>
-                  <div className="file-upload">
+                  <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6">
                     <input
                       id="file-upload"
                       type="file"
-                        className="file-input"
                       accept=".pdf,.doc,.docx,.txt"
                       onChange={handleFileChange}
                       disabled={transcriptionLoading}
+                      className="hidden"
                     />
-                    <label htmlFor="file-upload" className="btn btn-outline">
+                    <label
+                      htmlFor="file-upload"
+                      className={`inline-flex items-center gap-2 px-4 py-2 bg-white text-slate-700 border border-slate-200 rounded-2xl text-sm font-semibold cursor-pointer hover:bg-slate-50 transition-all shadow-sm ${
+                        transcriptionLoading ? 'opacity-50 cursor-not-allowed' : ''
+                      }`}
+                    >
+                      <Upload size={16} />
                       Choose file
                     </label>
-                    <p className="form-help">
-                      Formats: PDF, DOC/DOCX, TXT. Taille maximale 25MB. Le texte n&apos;est pas corrigé.
-                    </p>
                     {selectedFile && (
-                      <div className="file-selected">
-                        {selectedFile.name} ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
+                      <p className="text-xs text-slate-600 mt-3 font-medium">
+                        Selected: {selectedFile.name} ({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)
                         {transcriptionLoading && ' — transcription en cours...'}
-                      </div>
+                      </p>
                     )}
+                    <p className="text-xs text-slate-500 mt-3">
+                      Formats: PDF, DOC/DOCX, TXT. Maximum size 25MB. Text is not corrected.
+                    </p>
                   </div>
                 </div>
 
-                <div className="form-group">
-                  <label htmlFor="message" className="form-label">
+                {/* Text Area */}
+                <div className="mb-6">
+                  <label htmlFor="message" className="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
                     Your French text
                   </label>
-                  <div className="textarea-wrapper">
+                  <div className="relative">
                     <textarea
                       id="message"
-                      className="form-control"
-                      rows="12"
-                      placeholder="Write your French text here...
-
-Example:
-Yesterday, I went to the market with my family. We bought fresh vegetables and fruits. I really like shopping because I can see many interesting things..."
+                      rows={12}
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
+                      placeholder="Write your French text here...&#10;&#10;Example:&#10;Yesterday, I went to the market with my family. We bought fresh vegetables and fruits. I really like shopping because I can see many interesting things..."
                       required
+                      className="w-full px-4 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-sm text-slate-700 resize-vertical min-h-[200px] focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all"
                     />
                   </div>
-                  <p className="form-help">
+                  <p className="text-xs text-slate-500 mt-2">
                     Write at least a few complete sentences for detailed analysis
                   </p>
                 </div>
 
+                {/* Submit Button */}
                 <button
                   type="submit"
-                  className="btn btn-primary btn-lg w-full"
                   disabled={loading || transcriptionLoading}
+                  className="w-full flex items-center justify-center gap-3 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-bold rounded-2xl shadow-lg transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {loading ? (
                     <>
-                      <svg className="animate-spin" width="20" height="20" viewBox="0 0 20 20" fill="none">
-                        <circle cx="10" cy="10" r="8" stroke="currentColor" strokeWidth="2" strokeDasharray="31.416" strokeDashoffset="31.416">
-                          <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
-                          <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
-                        </circle>
-                      </svg>
+                      <Loader2 size={20} className="animate-spin" />
                       Saving...
                     </>
                   ) : (
                     <>
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M7.707 3.293a1 1 0 010 1.414L5.414 7H11a7 7 0 017 7v2a1 1 0 11-2 0v-2a5 5 0 00-5-5H5.414l2.293 2.293a1 1 0 11-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z"/>
-                      </svg>
+                      <Save size={20} />
                       Save
                     </>
                   )}
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
 
-          {/* My Saved Texts Section */}
-          <div className="card" style={{ marginTop: '2rem' }}>
-            <div className="card-header">
-              <div className="card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M9 12h6m-6 4h6m2 5H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5.586a1 1 0 0 1 .707.293l5.414 5.414a1 1 0 0 1 .293.707V19a2 2 0 0 1-2 2z"/>
-                </svg>
+          {/* Saved Texts Card */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden"
+          >
+            <div className="flex items-center gap-4 px-8 py-6 border-b border-slate-100">
+              <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
+                <FileText size={24} />
               </div>
-              <h2 className="card-title">My Saved Texts</h2>
-              <p className="card-subtitle">View and manage your saved texts</p>
+              <div className="flex-1">
+                <h2 className="text-lg font-bold text-slate-800">My Saved Texts</h2>
+                <p className="text-sm text-slate-500">View and manage your saved texts</p>
+              </div>
+              <div className="text-right">
+                <p className="text-2xl font-bold text-slate-900">{texts.length}</p>
+                <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Texts</p>
+              </div>
             </div>
-            
-            <div className="card-body">
+
+            <div className="p-8">
               {textsLoading ? (
-                <div className="placeholder">
-                  <svg className="animate-spin" width="24" height="24" viewBox="0 0 24 24" fill="none" style={{ margin: '0 auto 1rem' }}>
-                    <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="62.832" strokeDashoffset="62.832">
-                      <animate attributeName="stroke-dasharray" dur="2s" values="0 62.832;31.416 31.416;0 62.832" repeatCount="indefinite"/>
-                      <animate attributeName="stroke-dashoffset" dur="2s" values="0;-31.416;-62.832" repeatCount="indefinite"/>
-                    </circle>
-                  </svg>
-                  <p>Loading your texts...</p>
+                <div className="flex flex-col items-center justify-center py-12">
+                  <Loader2 size={32} className="animate-spin text-indigo-600 mb-4" />
+                  <p className="text-sm text-slate-500">Loading your texts...</p>
                 </div>
               ) : texts.length === 0 ? (
-                <div className="placeholder">
-                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ margin: '0 auto 1rem', opacity: 0.5 }}>
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                    <polyline points="14 2 14 8 20 8"/>
-                    <line x1="16" y1="13" x2="8" y2="13"/>
-                    <line x1="16" y1="17" x2="8" y2="17"/>
-                  </svg>
-                  <p>No saved texts yet</p>
-                  <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>Save your first text using the form above</p>
+                <div className="flex flex-col items-center justify-center py-12">
+                  <FileText size={48} className="text-slate-300 mb-4" />
+                  <p className="text-sm font-medium text-slate-700 mb-1">No saved texts yet</p>
+                  <p className="text-xs text-slate-500">Save your first text using the form above</p>
                 </div>
               ) : (
-                <div className="texts-list">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {texts.map((text) => (
-                    <div key={text.id} className="text-item">
-                      <div className="text-content">
-                        <div className="text-preview">{truncateText(text.text_content)}</div>
-                        <div className="text-meta">
-                          <span className="text-date">{formatDate(text.created_at)}</span>
-                          <span className={`status-badge ${text.analysis_result ? 'status-analyzed' : 'status-pending'}`}>
-                            {text.analysis_result ? 'Analyzed' : 'Pending'}
-                          </span>
-                        </div>
-                      </div>
-                      <div className="text-actions">
-                        <button
-                          className="btn btn-danger btn-sm"
-                          onClick={() => handleDeleteText(text.id)}
-                          disabled={deletingTextId === text.id}
-                          title="Delete this text"
-                        >
-                          {deletingTextId === text.id ? (
-                            <>
-                              <svg className="animate-spin" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <circle cx="8" cy="8" r="6" stroke="currentColor" strokeWidth="2" strokeDasharray="37.7" strokeDashoffset="37.7">
-                                  <animate attributeName="stroke-dasharray" dur="1s" values="0 37.7;18.85 18.85;0 37.7" repeatCount="indefinite"/>
-                                  <animate attributeName="stroke-dashoffset" dur="1s" values="0;-18.85;-37.7" repeatCount="indefinite"/>
-                                </circle>
-                              </svg>
-                              Deleting...
-                            </>
-                          ) : (
-                            <>
-                              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                                <path fillRule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                              </svg>
-                              Delete
-                            </>
-                          )}
-                        </button>
-                      </div>
-                    </div>
+                    <TextItem
+                      key={text.id}
+                      text={truncateText(text.text_content)}
+                      date={formatDate(text.created_at)}
+                      status={text.analysis_result ? 'analyzed' : 'pending'}
+                      onDelete={() => handleDeleteText(text.id)}
+                      isDeleting={deletingTextId === text.id}
+                    />
                   ))}
                 </div>
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
 
 export default WrittenAnalysis;
-

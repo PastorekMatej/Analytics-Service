@@ -43,7 +43,7 @@ const parseAnalysisResult = (analysisText) => {
     }
     
     if (isEvolutionHeader) {
-      if (currentSection === 'erreursRecurrentes') {
+      if (currentSection) {
         sections[currentSection] = currentContent.join('\n');
       }
       currentSection = 'evolutionGlobale';
@@ -58,34 +58,40 @@ const parseAnalysisResult = (analysisText) => {
         currentContentLength: currentContent.length,
         currentContentPreview: currentContent.slice(0, 5)
       });
-      // Save evolution content before switching
-      if (currentSection === 'evolutionGlobale') {
-        const evolutionContent = currentContent.join('\n');
-        sections['evolutionGlobale'] = evolutionContent;
-        console.log('[parseAnalysisResult] Saving evolutionGlobale content:', {
-          length: evolutionContent.length,
-          preview: evolutionContent.substring(0, 500),
-          lineCount: currentContent.length,
-          firstFewLines: currentContent.slice(0, 10),
-          allLines: currentContent
-        });
-        extractEvolutionData(evolutionContent, sections);
+      // Save content before switching
+      if (currentSection) {
+        sections[currentSection] = currentContent.join('\n');
+        
+        if (currentSection === 'evolutionGlobale') {
+           console.log('[parseAnalysisResult] Saving evolutionGlobale content:', {
+            length: sections['evolutionGlobale'].length,
+            preview: sections['evolutionGlobale'].substring(0, 500)
+          });
+          extractEvolutionData(sections['evolutionGlobale'], sections);
+        }
       }
       currentSection = 'erreursRecurrentes';
       currentContent = [];
       continue; // Skip the header line itself
     }
-    if (line.includes('TENDANCES D\'ÉVOLUTION') || line.includes("TENDANCES D'ÉVOLUTION")) {
-      if (currentSection === 'erreursRecurrentes') {
+    // Use regex to be more robust against casing, accents, and punctuation (colon)
+    if (line.match(/^TENDANCES\s+D['’]\s*[ÉE]VOLUTION/i)) {
+      if (currentSection) {
         sections[currentSection] = currentContent.join('\n');
+        if (currentSection === 'evolutionGlobale') {
+           extractEvolutionData(sections['evolutionGlobale'], sections);
+        }
       }
       currentSection = 'tendancesEvolution';
       currentContent = [];
       continue;
     }
     if (line.includes('ERREURS_PERSISTANTES') || line.includes('ERREURS PERSISTANTES')) {
-      if (currentSection === 'erreursRecurrentes') {
+      if (currentSection) {
         sections[currentSection] = currentContent.join('\n');
+        if (currentSection === 'evolutionGlobale') {
+           extractEvolutionData(sections['evolutionGlobale'], sections);
+        }
       }
       currentSection = 'erreursPersistantes';
       currentContent = [];
@@ -634,6 +640,19 @@ const splitRecurrentErrors = (content) => {
   
   for (const line of lines) {
     const upperLine = line.toUpperCase().trim();
+    
+    // Check for explicit section breaks that should stop collection in error sections
+    if (upperLine.startsWith('TENDANCES')) {
+       // If we find a TENDANCES header inside an error section, stop and save
+       if (currentSection) {
+         result[currentSection] = currentBuffer.join('\n');
+       }
+       // Don't start a new section here, just stop collecting for this one.
+       // The main parser loop should handle the TENDANCES section start.
+       // This is just a safeguard.
+       break;
+    }
+
     if (upperLine.includes('VOCABULAIRE') && (upperLine.endsWith(':') || upperLine.startsWith('##'))) {
       if (currentSection) {
         result[currentSection] = currentBuffer.join('\n');
@@ -667,10 +686,13 @@ const splitRecurrentErrors = (content) => {
 };
 
 // Analysis Section Component (Collapsible)
-const AnalysisSection = ({ title, content, icon, accentColor = 'blue', defaultOpen = false, count = 0 }) => {
+const AnalysisSection = ({ title, content, children, icon, accentColor = 'blue', defaultOpen = false, count = 0 }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   
-  if (!content || content.trim().length === 0) return null;
+  // Allow if content exists OR children exist
+  const hasContent = (content && typeof content === 'string' && content.trim().length > 0) || children;
+  
+  if (!hasContent) return null;
   
   return (
     <div className={`analysis-accordion-item theme-${accentColor}`}>
@@ -693,7 +715,7 @@ const AnalysisSection = ({ title, content, icon, accentColor = 'blue', defaultOp
       {isOpen && (
         <div className="analysis-accordion-content">
           <div className="analysis-text">
-            {formatSectionContent(content, accentColor)}
+            {children ? children : formatSectionContent(content, accentColor)}
           </div>
         </div>
       )}
@@ -1055,21 +1077,22 @@ const Dashboard = ({ userRole, userEmail }) => {
           </div>
         )}
 
-        {/* Level Evolution - Static Display */}
-        {parsedSections.evolutionGlobale && (
-          <div className="analysis-static-card theme-teal">
-            <h4 className="analysis-static-title">
-              <span className="analysis-static-icon">
+        <div className="analysis-accordions">
+          {/* Level Evolution */}
+          {parsedSections.evolutionGlobale && (
+            <AnalysisSection 
+              title="Level Evolution" 
+              accentColor="teal"
+              defaultOpen={true}
+              icon={
                 <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 5.414 4.707 9.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
                   <path fillRule="evenodd" d="M3.293 15.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L9 11.414 4.707 15.707a1 1 0 01-1.414 0z" clipRule="evenodd"/>
                 </svg>
-              </span>
-              Level Evolution
-            </h4>
-            <div className="analysis-static-content">
+              }
+            >
               {(() => {
-                // Custom rendering for Level Evolution to make "Level Change: A -> B" prominent
+                // Custom rendering for Level Evolution
                 const content = parsedSections.evolutionGlobale;
                 const lines = content.split('\n');
                 const levelChangeLineIndex = lines.findIndex(l => l.includes('Level Change:'));
@@ -1115,11 +1138,8 @@ const Dashboard = ({ userRole, userEmail }) => {
                 
                 return formatSectionContent(content, 'teal');
               })()}
-            </div>
-          </div>
-        )}
-
-        <div className="analysis-accordions">
+            </AnalysisSection>
+          )}
           {/* Grammar Errors */}
           <AnalysisSection 
             title="Grammar Errors" 
@@ -1347,104 +1367,94 @@ const Dashboard = ({ userRole, userEmail }) => {
   // Student view - show analyses
   if (userRole === 'student') {
     return (
-      <div className="dashboard-page">
+      <div className="dashboard-page progress-page-modern">
         <div className="page-background">
           <div className="page-gradient"></div>
           <div className="page-pattern"></div>
         </div>
         
         <div className="page-container">
-          <div className="page-header">
-            <div className="page-header-content">
-              <div className="page-header-left">
-                <div className="page-badge">
-                  <div className="badge-icon">
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                      <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"/>
+          <div className="page-header-modern">
+            <div className="page-header-content-modern">
+              <div className="page-header-main">
+                <div className="page-badge-modern">
+                  <div className="badge-icon-modern">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
                     </svg>
                   </div>
-                  <span>Progress tracking</span>
+                  <span>Progress Tracking</span>
                 </div>
                 
-                <h1 className="page-title">
-                  My <span className="gradient-text">Progress</span>
+                <h1 className="page-title-modern">
+                  My <span className="gradient-text-modern">Progress</span>
                 </h1>
                 
-                <p className="page-description">
-                  View your text analyses and track your French progress 
-                  with artificial intelligence.
+                <p className="page-description-modern">
+                  Track your French learning journey with AI-powered insights and detailed analysis reports.
                 </p>
               </div>
               
-              <div className="page-header-right">
-                {mostRecentWritten && (
-                  <div className="analyze-buttons-group">
-                    <button
-                      className={`btn btn-primary btn-lg ${analyzingAnalyses[mostRecentWritten.id] ? 'btn-loading' : ''}`}
-                      onClick={() => handleAnalyze(mostRecentWritten)}
-                      disabled={analyzingAnalyses[mostRecentWritten.id]}
-                    >
-                      {analyzingAnalyses[mostRecentWritten.id] ? (
-                        <>
-                          <svg className="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" strokeDasharray="31.416" strokeDashoffset="31.416">
-                              <animate attributeName="stroke-dasharray" dur="2s" values="0 31.416;15.708 15.708;0 31.416" repeatCount="indefinite"/>
-                              <animate attributeName="stroke-dashoffset" dur="2s" values="0;-15.708;-31.416" repeatCount="indefinite"/>
-                            </circle>
-                          </svg>
-                          Written analysis in progress...
-                        </>
-                      ) : (
-                        <>
-                          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clipRule="evenodd"/>
-                          </svg>
-                          Analyze written text
-                        </>
-                      )}
-                    </button>
-                  </div>
-                )}
-              </div>
+              {mostRecentWritten && (
+                <div className="page-header-actions">
+                  <button
+                    className={`btn-analyze-modern ${analyzingAnalyses[mostRecentWritten.id] ? 'analyzing' : ''}`}
+                    onClick={() => handleAnalyze(mostRecentWritten)}
+                    disabled={analyzingAnalyses[mostRecentWritten.id]}
+                  >
+                    {analyzingAnalyses[mostRecentWritten.id] ? (
+                      <>
+                        <svg className="animate-spin" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M21 12a9 9 0 11-6.219-8.56"/>
+                        </svg>
+                        <span>Analyzing...</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
+                          <path d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"/>
+                        </svg>
+                        <span>Analyze Text</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
           {analyses.length === 0 ? (
-            <div className="empty-state">
-              <div className="empty-icon">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
+            <div className="empty-state-modern">
+              <div className="empty-icon-modern">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
                 </svg>
               </div>
-              <h3 className="empty-title">No analysis available</h3>
-              <p className="empty-description">
-                Submit your first text in the "Written Analysis" tab 
-                to start your learning journey.
+              <h3 className="empty-title-modern">No Analysis Available</h3>
+              <p className="empty-description-modern">
+                Submit your first text in the "Written Analysis" section to begin tracking your progress.
               </p>
-              <div className="empty-actions">
-                <a href="/written-analysis" className="btn btn-primary">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+              <div className="empty-actions-modern">
+                <a href="/written-analysis" className="btn-empty-action">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"/>
                   </svg>
-                  Start analysis
+                  <span>Start Your First Analysis</span>
                 </a>
               </div>
             </div>
           ) : (
-            <div className="progress-columns">
-              {/* Written Analyses Column */}
-              <div className="progress-column">
-                <div className="analyses-list">
-                  {writtenAnalyses.length === 0 ? (
-                    <div className="column-empty">
-                      <p>No written analysis available</p>
-                    </div>
-                  ) : (
-                    writtenAnalyses.map((analysis, index) => 
-                      renderAnalysisCard(analysis, index, writtenAnalyses.length)
-                    )
-                  )}
-                </div>
+            <div className="progress-content-modern">
+              <div className="analyses-container-modern">
+                {writtenAnalyses.length === 0 ? (
+                  <div className="empty-analysis-modern">
+                    <p>No written analysis available</p>
+                  </div>
+                ) : (
+                  writtenAnalyses.map((analysis, index) => 
+                    renderAnalysisCard(analysis, index, writtenAnalyses.length)
+                  )
+                )}
               </div>
             </div>
           )}

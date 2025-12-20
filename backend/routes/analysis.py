@@ -3,10 +3,23 @@ Analysis routes for Matej Language Lab
 Handles text analysis submissions and retrieval
 """
 import io
+import sys
 from fastapi import APIRouter, HTTPException, status, Body, UploadFile, File
 from typing import Dict, List, Optional
 from datetime import datetime
 import uuid
+
+# Ensure UTF-8 encoding for console output on Windows
+if sys.platform == 'win32':
+    import codecs
+    try:
+        if hasattr(sys.stdout, 'buffer'):
+            sys.stdout = codecs.getwriter('utf-8')(sys.stdout.buffer, 'strict')
+        if hasattr(sys.stderr, 'buffer'):
+            sys.stderr = codecs.getwriter('utf-8')(sys.stderr.buffer, 'strict')
+    except (AttributeError, TypeError):
+        # Python 3.13+ may already have UTF-8 encoding or different structure
+        pass
 
 from ..models import TextAnalysis
 from ..db_service import db
@@ -316,31 +329,111 @@ async def submit_text_for_analysis(
                 "has_new_texts": False
             }
         
-        # Collect all texts from the student (only written texts for now)
-        all_texts = []
+        # Collect all texts from the student (only written texts for now) with their dates
+        all_texts_with_dates = []
         if "analyses" in student_data:
             for analysis in student_data["analyses"]:
                 if analysis.get("text_content") and (analysis.get("text_type") == "written" or not analysis.get("text_type")):
-                    all_texts.append(analysis.get("text_content"))
+                    # Extract and format date from created_at
+                    date_str = ""
+                    if analysis.get("created_at"):
+                        try:
+                            from datetime import datetime
+                            # Parse ISO format date and format as YYYY-MM-DD
+                            date_obj = datetime.fromisoformat(analysis["created_at"].replace("Z", "+00:00"))
+                            date_str = date_obj.strftime("%Y-%m-%d")
+                        except (ValueError, AttributeError):
+                            # Fallback: try to extract date from string if ISO parsing fails
+                            date_str = analysis.get("created_at", "")[:10] if len(analysis.get("created_at", "")) >= 10 else ""
+                    
+                    # Format text with date header
+                    text_with_date = f"[Date: {date_str}]\n{analysis.get('text_content')}" if date_str else analysis.get('text_content')
+                    all_texts_with_dates.append(text_with_date)
         
         # If no texts found, add the current text
-        if not all_texts and text_content:
-            all_texts.append(text_content)
+        if not all_texts_with_dates and text_content:
+            from datetime import datetime
+            current_date = datetime.now().strftime("%Y-%m-%d")
+            all_texts_with_dates.append(f"[Date: {current_date}]\n{text_content}")
         
-        if not all_texts:
+        if not all_texts_with_dates:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail="Aucun texte disponible pour l'analyse"
             )
         
         # Combine all texts for analysis
-        combined_text = "\n\n---\n\n".join(all_texts)
+        combined_text = "\n\n---\n\n".join(all_texts_with_dates)
+        try:
+            print(f"[Analysis] Starting analysis for {student_email}, {len(all_texts_with_dates)} texts, total length: {len(combined_text)} chars")
+        except UnicodeEncodeError:
+            # Fallback if print fails due to encoding
+            print(f"[Analysis] Starting analysis for {student_email}, {len(all_texts_with_dates)} texts")
         
         # Create analyzer instance
         analyzer = Analyser(student_id=student_email)
         
         # Perform analysis on all texts
-        analysis_result = analyzer.error_analyse(combined_text)
+        try:
+            print(f"[Analysis] Calling OpenAI API...")
+            analysis_result = analyzer.error_analyse(combined_text)
+            if analysis_result:
+                # Ensure the result is a valid UTF-8 string
+                if isinstance(analysis_result, bytes):
+                    analysis_result = analysis_result.decode('utf-8', errors='replace')
+                elif not isinstance(analysis_result, str):
+                    analysis_result = str(analysis_result)
+                
+                # Validate and sanitize UTF-8 encoding
+                try:
+                    # Try to encode to validate it's valid UTF-8
+                    analysis_result.encode('utf-8')
+                except UnicodeEncodeError:
+                    # If encoding fails, replace problematic characters
+                    analysis_result = analysis_result.encode('utf-8', errors='replace').decode('utf-8')
+            
+            # Safe logging
+            try:
+                result_length = len(analysis_result) if analysis_result else 0
+                print(f"[Analysis] OpenAI API call completed, result length: {result_length}")
+            except UnicodeEncodeError:
+                print("[Analysis] OpenAI API call completed")
+        except UnicodeEncodeError as unicode_error:
+            error_msg = f"Unicode encoding error: {str(unicode_error)}"
+            print(f"[Analysis] Unicode error: {error_msg}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Erreur d'encodage Unicode lors de l'analyse. Veuillez reessayer."
+            )
+        except UnicodeEncodeError as unicode_err:
+            # Handle Unicode encoding errors specifically
+            error_msg = "Unicode encoding error occurred during analysis"
+            print(f"[Analysis] Unicode encoding error: {unicode_err}")
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Erreur d'encodage Unicode lors de l'analyse. Veuillez reessayer."
+            )
+        except Exception as api_error:
+            # Safely convert error to string, handling Unicode issues
+            try:
+                error_msg = str(api_error)
+                # Try to encode to ensure it's UTF-8 safe
+                error_msg.encode('utf-8')
+            except (UnicodeEncodeError, UnicodeDecodeError):
+                # If encoding fails, create a safe ASCII message
+                error_msg = "An error occurred during analysis. Please try again."
+            
+            # Log the error safely
+            try:
+                print(f"[Analysis] OpenAI API error: {error_msg}")
+            except UnicodeEncodeError:
+                print("[Analysis] OpenAI API error occurred (encoding issue)")
+            
+            # Return safe error message
+            raise HTTPException(
+                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+                detail="Erreur lors de l'appel à l'API OpenAI. Veuillez reessayer."
+            )
         
         # Find the most recent text without analysis or update the most recent one
         most_recent_analysis = None
@@ -391,13 +484,43 @@ async def submit_text_for_analysis(
             "analysis_id": analysis_id,
             "analysis": analysis_result,
             "texts_count": student_data["texts_count"],
-            "texts_analyzed": len(all_texts)
+            "texts_analyzed": len(all_texts_with_dates)
         }
     
-    except Exception as e:
+    except HTTPException:
+        # Re-raise HTTP exceptions as-is
+        raise
+    except UnicodeEncodeError as unicode_err:
+        # Handle Unicode encoding errors specifically
+        try:
+            print("[Analysis] Unicode encoding error occurred")
+        except:
+            pass  # Even printing might fail
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Erreur lors de l'analyse: {str(e)}"
+            detail="Erreur d'encodage Unicode lors de l'analyse. Veuillez reessayer."
+        )
+    except Exception as e:
+        # Safely handle any other exceptions
+        error_type = type(e).__name__
+        try:
+            error_msg = str(e)
+            # Try to encode to ensure it's UTF-8 safe
+            error_msg.encode('utf-8')
+            safe_msg = f"Erreur lors de l'analyse ({error_type})"
+        except (UnicodeEncodeError, UnicodeDecodeError):
+            # If encoding fails, use a safe message
+            safe_msg = "Erreur lors de l'analyse. Veuillez reessayer."
+        
+        # Log safely
+        try:
+            print(f"[Analysis] Error occurred: {error_type}")
+        except:
+            print("[Analysis] Error occurred")
+        
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=safe_msg
         )
 
 

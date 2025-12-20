@@ -1,0 +1,160 @@
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1+"
+  évaluations numériques par texte:
+    - 2024-01-12 (lecon_1): 22/100 (A2)
+    - 2024-02-05 (lecon_2): 28/100 (A2+)
+    - 2024-03-19 (lecon_4): 30/100 (A2+)
+    - 2024-04-27 (lecon_5_2): 31/100 (A2+)
+    - 2024-05-08 (lecon_5): 34/100 (B1)
+    - 2024-06-20 (lecon_6_1): 36/100 (B1)
+    - 2024-07-20 (lecon_6_2): 38/100 (B1)
+    - 2024-08-20 (lecon_7_1): 40/100 (B1)
+    - 2024-09-20 (lecon_7_2): 42/100 (B1)
+    - 2024-10-20 (lecon_9_1): 45/100 (B1+)
+    - 2024-11-20 (lecon_9_2): 46/100 (B1+)
+    - 2024-11-20 (lecon_10): 47/100 (B1+)
+    - 2024-12-20 (lecon_12): 48/100 (B1+)
+    - 2024-12-20 (lecon_13): 49/100 (B1+)
+    - 2025-01-20 (lecon_15): 49/100 (B1+)
+    - 2025-02-20 (lecon_15_2): 50/100 (B1+)
+  progression globale: +28 points
+  résumé:
+    L’étudiante a nettement gagné en ampleur textuelle (arguments, lettres formelles, narration structurée) et en maitrise des connecteurs. Les erreurs de participes passés avec avoir, très nombreuses au début, disparaissent ensuite. Persistances notables: déterminants/articles, prépositions/constructions à l’infinitif, accords et conjugaisons de base, collocations peu naturelles et tournures d’influence slovaque.
+
+TENDANCES D’ÉVOLUTION :
+  - G01 (accord du participe passé avec avoir) : ≈9 occurrences concentrées dans le texte lecon_4 → 0 dans tous les textes à partir de lecon_5.
+  - G06 (prépositions / constructions à l’infinitif) : ≈8–9 occurrences dans lecs_1–7 → ≈4–5 occurrences dans lecs_9–15_2 (réduction ~40% mais encore fréquentes).
+  - G05 (accords/conjugaisons de base) : ≈8–9 occurrences dans lecs_1–7 → ≈5–6 occurrences dans lecs_9–15_2 (réduction ~30–40%; restent des confusions personne/genre).
+  - G08 (ordre des mots, placement pronoms/adverbes) : 3 occurrences avant lecon_7 → 1 occurrence ponctuelle après (meilleure maitrise).
+  - G03 (négation) : erreurs sporadiques (lecon_2, lecon_13) → quasi-stabilité (à surveiller).
+  - V01 (faux amis/anglicismes/calques) : récurrents tout au long (ex.: effectivement, varieux, avanture, gargon) → légère baisse mais encore présents dans les derniers textes.
+  - V04 (collocations non naturelles) et V05 (interférence structurelle) : stables sur la période; le registre s’améliore mais plusieurs tours restent calqués.
+  - S02 (phrases longues/ponctuation) : baisse des enchaînements confus; ponctuation et segmentation plus nettes à partir de lecon_9.
+  - S05 (formulations lourdes) : encore fréquentes mais mieux contrôlées dans les lettres formelles (lecon_9_1, lecon_7_2, lecon_12).
+
+ERREURS_RÉCURRENTES:
+  GRAMMAIRE:
+    - type: G07
+      pattern: Mauvais emploi des articles/déterminants (genre, absence, contraction de + le/la/les)
+      occurrences: 15+
+      exemples:
+        - "la langue français" → "la langue française" (lecon_1)
+        - "As-tu quelque chose nouvelle?" → "… quelque chose de nouveau ?" (lecon_2)
+        - "j'adore ce gens" → "j’adore ces gens" (lecon_2)
+        - "La lendemain" → "Le lendemain" (lecon_4)
+        - "des bons professeurs et l’équipement" → "de bons professeurs et un bon équipement" (lecon_6_1)
+        - "la départ de Baptiste" → "le départ de Baptiste" (lecon_9_2)
+        - "c'est les enfants…" → "ce sont les enfants…" (lecon_10)
+        - "A école" → "À l’école" (lecon_15)
+        - "en apprentissage / une apprentissage" → "un apprentissage" (lecon_15)
+        - "du anglais" → "de l’anglais" (lecon_15)
+        - "cet expérience" → "cette expérience" (lecon_15_2)
+        - "de les gens français" → "des gens français" (lecon_15_2)
+
+    - type: G06
+      pattern: Utilisation incorrecte des prépositions / construction à l’infinitif
+      occurrences: 12+
+      exemples:
+        - "commencé apprendre" → "commencé à apprendre" (lecon_1)
+        - "en nuit" → "de nuit / dans la nuit" (lecon_4)
+        - "dans l’école" (au sens de destination) → "à l’école" (lecon_5_2)
+        - "c’est … mener au côté" → "… qui mène du côté…" (lecon_5_2)
+        - "c’est pour ça j’étais triste" → "c’est pour ça que j’étais triste" (lecon_5)
+        - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+        - "t’aider avec chercher" → "t’aider à chercher" (lecon_7_1)
+        - "tu attends pour recevoir un email" → "tu attends un e-mail / tu attends de recevoir…" (lecon_7_1)
+        - "des entrées de quelques attractions" → "des entrées pour quelques attractions" (lecon_9_2)
+        - "un cours d’apprendre utiliser" → "un cours pour apprendre à utiliser" (lecon_10)
+        - "… et dans je suis vraiment stressée" → "… et j’en suis vraiment stressée / et je suis…" (lecon_12)
+        - "rencontrer avec la vie" → "faire face à la vie / découvrir la vie" (lecon_15_2)
+
+    - type: G05
+      pattern: Conjugaison/accords de base (personne, genre, adjectifs/participes hors cas G01)
+      occurrences: 10+
+      exemples:
+        - "c’est le première fois" → "c’est la première fois" (lecon_2)
+        - "la musique, c’est très forte" → "… c’est très fort" (lecon_2)
+        - "mon école est très réussi" → "très réussie" (lecon_6_1)
+        - "Je suis satisfée" → "Je suis satisfaite" (lecon_6_1)
+        - "tu envoie ton CV" → "tu envoies ton CV" (lecon_7_1)
+        - "les enfants voudrions" → "les enfants voudraient" (lecon_10)
+        - "… apprendre d’utilisation seules" → "… apprendre à les utiliser seuls" (lecon_10)
+        - "il a des défauts" (pour la gare) → "elle a des défauts" (lecon_12)
+
+    - type: G08
+      pattern: Ordre des mots (placement pronom/adverbe, verbes modaux)
+      occurrences: 3–4
+      exemples:
+        - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+        - "vous vous pouvez garer" → "vous pouvez vous garer" (lecon_5_2)
+        - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+    - type: G01
+      pattern: Accord du participe passé avec avoir
+      occurrences: 8–9 (texte narratif concentré)
+      exemples:
+        - "As-tu déjà voyagée…" → "As-tu déjà voyagé…" (lecon_4)
+        - "j’ai arrivée / j’ai passée / j’ai vue / j’ai visitée / j’y restée / j’ai voyagée…" → "je suis arrivée / j’ai passé / j’ai vu / j’ai visité / j’y suis restée / j’ai voyagé…" (lecon_4)
+
+  VOCABULAIRE:
+    - type: V01
+      pattern: Faux amis / calques du slovaque (lexique proche mais inexact)
+      occurrences: 7+
+      exemples:
+        - "avanture d’adrénaline" → "aventure (pleine) d’adrénaline" (lecon_2)
+        - "défises" → "défis" (lecon_2)
+        - "en Slovaque" (pays) → "en Slovaquie" (lecon_4)
+        - "varieux" → "variés" (lecon_6_2)
+        - "effectivement" (au sens d’efficacement) → "efficacement" (lecon_10)
+        - "le gargon / le dialec / le slang" → "le jargon / le dialecte / l’argot" (lecon_15_2)
+
+    - type: V04
+      pattern: Collocation non naturelle
+      occurrences: 5+
+      exemples:
+        - "un album photos" → "un album photo" (lecon_9_2)
+        - "un cours d’apprendre utiliser" → "un cours pour apprendre à utiliser" (lecon_10)
+        - "je vous souhaite avoir des bonnes deux semaines" → "je vous souhaite de passer deux bonnes semaines" (lecon_5_2)
+        - "rencontrer avec la vie" → "se confronter à la vie / découvrir la vie" (lecon_15_2)
+        - "t’aider avec chercher" → "t’aider à chercher" (lecon_7_1)
+
+    - type: V05
+      pattern: Interférence linguistique (structures calquées)
+      occurrences: 5+
+      exemples:
+        - "la raison pourquoi…" → "la raison pour laquelle…" (lecon_1)
+        - "C’est trouver…" → "Ça se trouve…" (lecon_5_2)
+        - "je veux te parler de mes jours" → "je veux te parler de mes journées" (lecon_5)
+        - "moi et ma famille" → "ma famille et moi" (lecon_12)
+        - "c’est pour ça j’étais…" → "c’est pour ça que j’étais…" (lecon_5)
+
+  STYLE:
+    - type: S02
+      pattern: Phrases trop longues / ponctuation perfectible
+      occurrences: 4–5
+      exemples:
+        - Enchaînements avec parenthèses et smileys sans découpage (lecon_2, lecon_4)
+        - Accumulation de questions sans segmentation claire (lecon_10)
+
+    - type: S05
+      pattern: Formulation maladroite / lourde
+      occurrences: 8+
+      exemples:
+        - "Je vous explique quelle est la localisation…" → "Je vous indique où se trouve…" (lecon_5_2)
+        - "Pourquoi la Slovaquie? … je peux t’aider avec chercher…" → "Pourquoi la Slovaquie ? … je peux t’aider à chercher…" (lecon_7_1)
+        - "… cela ne serait-il pas un problème ?" (période surchargée) (lecon_9_1)
+        - "… pour rencontrer avec la vie" (calque et lourdeur) (lecon_15_2)
+
+ERREURS_PERSISTANTES :
+  - G07 (articles/déterminants) — ex. "le langue / du anglais / une apprentissage" → "la langue / de l’anglais / un apprentissage" (lecon_15) ; "cet expérience / de les gens" → "cette expérience / des gens" (lecon_15_2) ; "le langue du pays" (lecon_13)
+  - G06 (prépositions/constructions) — ex. "un cours d’apprendre utiliser" → "pour apprendre à utiliser" (lecon_10, antérieur immédiat), "… et dans je suis…" (lecon_12, proche), "rencontrer avec la vie" → "se confronter à la vie" (lecon_15_2)
+  - G05 (accords/conjugaisons) — ex. "les enfants voudrions / devrient / seules" → "voudraient / devraient / seuls" (lecon_10), "cet expérience" (accord déterminant-nom) (lecon_15_2)
+  - G03 (négation) — ex. "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+  - G08 (ordre des mots) — ex. "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+  - V01 (faux amis) — ex. "effectivement" (pour 'efficacement') (lecon_10), "le gargon / le dialec / le slang" (lecon_15_2)
+  - V04 (collocations) — ex. "rencontrer avec la vie" (lecon_15_2)
+  - V05 (interférence) — ex. "moi et ma famille" (lecon_12), "c’est pour ça j’étais…" (lecon_5; persistance de tours analogues jusqu’aux derniers textes)
+
+Synthèse finale:
+- Points forts actuels: plus grande aisance discursive (lettres d’opinion, explications), variété de connecteurs, narration structurée.
+- Priorités de travail: sécuriser le système des déterminants (articles + contractions), les constructions prépositionnelles et à l’infinitif, les accords/conjugaisons de base (personne/genre), réduire les calques et affiner les collocations. Une relecture ciblée sur la négation et le placement des pronoms consolidera le niveau B1+ atteint.

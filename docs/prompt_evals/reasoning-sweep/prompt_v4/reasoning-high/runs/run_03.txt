@@ -1,0 +1,206 @@
+ÉVOLUTION_GLOBALE:
+- évolution de niveau: "A2+ → B1+"
+- évaluations numériques par texte:
+  - 2024-01-12: 28/100 (A2+)
+  - 2024-02-05: 30/100 (A2+)
+  - 2024-03-19: 31/100 (A2+)
+  - 2024-04-27: 33/100 (A2+)
+  - 2024-05-08: 34/100 (B1)
+  - 2024-06-20: 36/100 (B1)
+  - 2024-07-20: 37/100 (B1)
+  - 2024-08-20: 38/100 (B1)
+  - 2024-09-20: 40/100 (B1)
+  - 2024-10-20: 43/100 (B1+)
+  - 2024-11-20: 41/100 (B1)
+  - 2024-11-20: 42/100 (B1)
+  - 2024-12-20: 43/100 (B1+)
+  - 2024-12-20: 45/100 (B1+)
+  - 2025-01-20: 46/100 (B1+)
+  - 2025-02-20: 47/100 (B1+)
+- progression globale: +19 points
+- résumé:
+  L’étudiante a nettement gagné en maîtrise discursive (argumentation, connecteurs, conditionnel) et en fluidité. Les erreurs lourdes de passé composé (accords avec avoir, auxiliaires) et l’ordre des mots se raréfient. Les déterminants, les accords de base et les prépositions restent cependant des zones de fragilité, avec des interférences du slovaque encore visibles.
+
+TENDANCES D’ÉVOLUTION:
+- G01 (accord du participe passé avec avoir): ≈6 occurrences concentrées à la leçon 4 → 0 dans les leçons 13–15.
+- G08 (ordre des mots): 3 occurrences dans les leçons 2–5 → 0 dans les leçons 13–15.
+- G09 (confusion des temps composés): 2 occurrences (leçons 4–5) → 0 dans les leçons 13–15.
+- G10 (subjonctif/conditionnel): 1 erreur tôt (“Bien que ma vie a changé”, leçon_2) → emploi correct ensuite (“pour qu’il ait…”, leçon_9_2).
+- G07 (articles/déterminants): ≈10 occurrences dans les leçons 1–7 → 6–7 occurrences encore dans les leçons 13–15 (persistance élevée).
+- G06 (prépositions/compléments à l’infinitif/relatifs): ≈5 occurrences dans les leçons 1–7 → 2 occurrences dans les leçons 13–15 (réduction partielle).
+- G05 (accords/conjugaisons de base): ≈8 occurrences dans les leçons 2–7 → ≈6 occurrences encore dans les leçons 13–15 (persistance).
+- V01 (faux amis / formes inexactes): ≈4 occurrences tôt → 3 occurrences dans les leçons 13–15 (stabilité).
+- V04 (collocations non naturelles): ≈3 occurrences tôt → 2 occurrences dans les leçons 13–15 (légère amélioration).
+- V05 (interférence slovaque): 3 occurrences tôt → 2 occurrences dans les leçons 13–15 (stabilité).
+- S05 (formulations lourdes/maladroites): récurrent mais un peu mieux organisé dans les textes récents (phrases plus structurées, connecteurs variés).
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (absence, genre, forme, partitif)
+  occurrences: ≈14
+  exemples:
+    - “la langue français” → “la langue française / le français” (lecon_1)
+    - “le première fois” → “la première fois” (lecon_2)
+    - “ce gens” → “ces gens” (lecon_2)
+    - “La lendemain” → “Le lendemain” (lecon_4)
+    - “association des vos élèves” → “association de vos élèves” (lecon_5_2)
+    - “la départ de Baptiste” → “le départ de Baptiste” (lecon_9_2)
+    - “Toujours parler le langue…” → “… la langue …” (lecon_13)
+    - “A école / une apprentissage / le langue” → “À l’école / un apprentissage / la langue” (lecon_15)
+    - “cet expérience” → “cette expérience” (lecon_15_2)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / constructions à l’infinitif / relatifs
+  occurrences: ≈7
+  exemples:
+    - “j’ai commencé apprendre” → “j’ai commencé à apprendre” (lecon_1)
+    - “celui que je parle” → “celui dont je parle” (lecon_5_2)
+    - “recommencent être ouvertes” → “recommencent à être ouvertes” (lecon_6_2)
+    - “t’aider avec chercher” → “t’aider à chercher” (lecon_7_1)
+    - “attends pour recevoir” → “attends de recevoir” (lecon_7_1)
+    - “dans je suis vraiment stressée” → “dont je suis vraiment stressée” (lecon_12)
+    - “un cours d’apprendre utiliser” → “un cours pour apprendre à utiliser” (lecon_10)
+
+- type: G05
+  pattern: Accords/conjugaisons de base (genre/nombre, personnes, superlatif)
+  occurrences: ≈12
+  exemples:
+    - “c’est très forte” (la musique) → “elle est très forte” (lecon_2)
+    - “J’étais vraiment stressé/heureux” → “stressée/heureuse” (lecon_5)
+    - “école … très réussi” → “très réussie” (lecon_6_1)
+    - “Je suis satisfée” → “satisfaite” (lecon_6_1)
+    - “les horaires … varieux” → “variés” (lecon_6_2)
+    - “tu envoie” → “tu envoies” (lecon_7_1)
+    - “les enfants voudrions / devrient” → “voudraient / devraient” (lecon_10)
+    - “des professeurs … encourageant et rassurant” → “encourageants et rassurants” (lecon_13)
+    - “la chose plus importante” → “la chose la plus importante” (lecon_13)
+
+- type: G01
+  pattern: Accord du participe passé avec avoir (ajouts fautifs en -é(e))
+  occurrences: 6
+  exemples:
+    - “As-tu déjà voyagée… ?” → “voyagé” (lecon_4)
+    - “j’ai passée la nuit” → “j’ai passé la nuit” (lecon_4)
+    - “j’ai vue le Musée / visitée le château” → “vu / visité” (lecon_4)
+    - “J’ai voyagée en Pologne / J’ai visitée le Château” → “voyagé / visité” (lecon_4)
+
+- type: G03
+  pattern: Erreur de négation (ordre des éléments)
+  occurrences: 2
+  exemples:
+    - “qui je n’ai connu pas” → “que je ne connaissais pas” (lecon_2)
+    - “vous n’avez me pas croire” → “vous ne me croirez pas” (lecon_13)
+
+- type: G08
+  pattern: Ordre des mots (adverbes/pronoms/que)
+  occurrences: 4
+  exemples:
+    - “Tu me vraiment manques” → “Tu me manques vraiment” (lecon_4)
+    - “Et je dois dire j’aime…” → “… dire que j’aime …” (lecon_2)
+    - “c’est pour ça j’étais triste” → “c’est pour ça que j’étais triste” (lecon_5)
+    - “vous vous pouvez garer” → “vous pouvez vous garer” (lecon_5_2)
+
+- type: G09
+  pattern: Confusion des temps composés (temps/auxiliaires)
+  occurrences: 2
+  exemples:
+    - “j’eu un cappuccino” → “j’ai eu” (lecon_5)
+    - “j’y restée trois jours” → “j’y suis restée trois jours” (lecon_4)
+
+VOCABULAIRE
+- type: V01
+  pattern: Faux amis / formes fautives / calques lexicaux
+  occurrences: ≈7
+  exemples:
+    - “avanture / défises” → “aventure / défis” (lecon_2)
+    - “en Slovaque” (pays) → “en Slovaquie” (lecon_4)
+    - “grâce aux prix” (valeur négative) → “à cause des prix” (lecon_4)
+    - “varieux” → “variés/variables” (lecon_6_2)
+    - “détroits historiques” → “sites/lieux historiques” (lecon_13)
+    - “gargon / dialec / slang” → “jargon / dialecte / argot” (lecon_15_2)
+
+- type: V04
+  pattern: Collocations non naturelles
+  occurrences: 5
+  exemples:
+    - “avoir des visites” → “recevoir des visites” (lecon_2)
+    - “album photos” → “album photo” (lecon_9_2)
+    - “Félicitations pour obtenir ton diplôme” → “… pour l’obtention de ton diplôme” (lecon_7_1)
+    - “parler bien en français” → “bien parler français” (lecon_15_2)
+    - “la dernière année” → “l’année dernière” (lecon_13)
+
+- type: V05
+  pattern: Interférence linguistique (structures calquées du slovaque)
+  occurrences: 5
+  exemples:
+    - “moi et ma famille / moi et mon groupe” → “ma famille et moi / mon groupe et moi” (lecon_12, lecon_13)
+    - “tout le meilleur à la maison le meilleur” (calque) → formulation idiomatique (lecon_4)
+    - “le moment parfait … est quand ?” → “quel est le meilleur moment… ?” (lecon_15)
+    - “rencontrer avec la vie” → “affronter la vie / faire face à la vie” (lecon_15_2)
+
+STYLE
+- type: S05
+  pattern: Formulation maladroite / peu idiomatique
+  occurrences: ≈8
+  exemples:
+    - “quelle est la localisation de l’école” → “où se trouve l’école” (lecon_5_2)
+    - “Pour conclure, je vais apprendre … ma vie entière” → “… toute ma vie” (lecon_1)
+    - “c’est quelque chose qui prend du temps et dans je suis vraiment stressée” → “ce qui me prend du temps et me stresse vraiment” (lecon_12)
+    - segments hachés ou répétitifs (“pour moi aussi… pour moi aussi”) (lecon_7_1)
+
+- type: S02
+  pattern: Phrases trop longues / ponctuation perfectible
+  occurrences: 3
+  exemples:
+    - Récit de voyage enchaîné sans pauses nettes (lecon_4)
+    - Suite de questions longues avec parenthèses (lecon_10)
+    - Accumulations avec émoticônes/parenthèses rendant la lecture heurtée (plusieurs textes)
+
+ERREURS_PERSISTANTES:
+- G07 (articles/déterminants) — présent dans les 3 derniers textes
+  exemples:
+    - “Toujours parler le langue…” (lecon_13)
+    - “A école / une apprentissage / le langue” (lecon_15)
+    - “cet expérience” (lecon_15_2)
+
+- G06 (prépositions/constructions)
+  exemples:
+    - “un cours d’apprendre utiliser…” (lecon_10, juste avant les 3 derniers)
+    - “apprendre d’utilisation seules” (lecon_10)
+    - “rencontrer avec la vie” (lecon_15_2)
+
+- G05 (accords/conjugaisons de base)
+  exemples:
+    - “encourageant et rassurant” (pour des professeurs) (lecon_13)
+    - “la chose plus importante” → “la plus importante” (lecon_13)
+    - “ils … apprendrons” → “apprendront” (lecon_15)
+
+- G03 (négation)
+  exemples:
+    - “vous n’avez me pas croire” → “vous ne me croirez pas” (lecon_13)
+
+- V01 (faux amis / formes fautives)
+  exemples:
+    - “détroits historiques” (lecon_13)
+    - “gargon / dialec / slang” (lecon_15_2)
+
+- V04 (collocations non naturelles)
+  exemples:
+    - “la dernière année” (lecon_13)
+    - “parler bien en français” → “bien parler français” (lecon_15_2)
+
+- V05 (interférences)
+  exemples:
+    - “moi et mon groupe …” (lecon_13)
+    - “le moment parfait … est quand ?” (lecon_15)
+    - “rencontrer avec la vie” (lecon_15_2)
+
+- S05 (formulations lourdes)
+  exemples:
+    - redondances/parenthèses intrusives et segments peu idiomatiques (lecons_13, 15, 15_2)
+
+Conclusion synthétique:
+- Les progrès sont nets: meilleure organisation du discours, variété des connecteurs, apparition maîtrisée du conditionnel et du subjonctif, disparition quasi totale des erreurs d’auxiliaire/accord au passé composé et de l’ordre des mots.
+- Les priorités actuelles: sécuriser les déterminants (G07), les accords de base (G05) et les prépositions/constructions (G06), réduire les calques lexicaux et améliorer les collocations (V01/V04/V05).
+- Niveau global: passage de A2+ (départ) à B1+ (actuel), avec une marge vers B2 dès que la précision grammaticale et l’idiomaticité seront stabilisées.

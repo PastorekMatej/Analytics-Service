@@ -960,6 +960,7 @@
 
 .analysis-accordion-item[class*="theme-"] .analysis-accordion-content {
   background-color: var(--theme-bg-soft);
+  border-top: 1px solid var(--theme-border);
 }
 
 .analysis-accordion-item[class*="theme-"] .analysis-accordion-header:hover {
@@ -1132,7 +1133,7 @@
   padding: 1.5rem;
   background: transparent;
   border-radius: 12px;
-  border: 1px solid rgba(0,0,0,0.05);
+  border: none;
   width: 100%;
   max-width: 400px;
 }
@@ -1147,7 +1148,7 @@
 }
 
 .level-label {
-  font-size: 0.75rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #64748b;
   letter-spacing: 0.1em;
@@ -1156,26 +1157,29 @@
 }
 
 .level-value {
-  font-size: 1.5rem;
+  font-size: 3.5rem;
   font-weight: 800;
   color: #1e293b;
   line-height: 1;
-  padding: 0.5rem 1rem;
-  border-radius: 12px;
+  padding: 0.75rem 1.5rem;
+  border-radius: 16px;
   background: #f8fafc;
-  min-width: 80px;
+  min-width: 100px;
   text-align: center;
 }
 
 .from-level .level-value {
-  color: #0f766e; /* Teal-800 */
-  background: #f0fdfa; /* Teal-50 */
+  color: #115e59; /* Teal-900 */
+  background: transparent;
+  border: none;
+  box-shadow: none;
 }
 
 .to-level .level-value {
-  color: #0d9488; /* Teal-700 */
-  background: #ccfbf1; /* Teal-100 */
-  box-shadow: 0 4px 6px -1px rgba(20, 184, 166, 0.1);
+  color: #115e59; /* Teal-900 */
+  background: transparent;
+  box-shadow: none;
+  border: none;
 }
 
 .level-arrow {

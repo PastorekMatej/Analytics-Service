@@ -1,0 +1,159 @@
+ÉVOLUTION_GLOBALE:
+- évolution de niveau: "A2 → B1+"
+- évaluations numériques par texte:
+  - 2024-01-12 (lecon_1): 23/100 (A2)
+  - 2024-02-05 (lecon_2): 24/100 (A2)
+  - 2024-03-19 (lecon_4): 25/100 (A2)
+  - 2024-04-27 (lecon_5_2): 27/100 (A2+)
+  - 2024-05-08 (lecon_5): 28/100 (A2+)
+  - 2024-06-20 (lecon_6_1): 30/100 (A2+)
+  - 2024-07-20 (lecon_6_2): 32/100 (A2+)
+  - 2024-08-20 (lecon_7_1): 33/100 (A2+)
+  - 2024-09-20 (lecon_7_2): 35/100 (B1)
+  - 2024-10-20 (lecon_9_1): 38/100 (B1)
+  - 2024-11-20 (lecon_9_2): 39/100 (B1)
+  - 2024-11-20 (lecon_10): 41/100 (B1)
+  - 2024-12-20 (lecon_12): 42/100 (B1)
+  - 2024-12-20 (lecon_13): 44/100 (B1+)
+  - 2025-01-20 (lecon_15): 45/100 (B1+)
+  - 2025-02-20 (lecon_15_2): 46/100 (B1+)
+- progression globale: +23 points
+- résumé:
+  Maîtrise croissante des structures complexes (connecteurs, argumentation, lettres formelles). Les erreurs lourdes de passé composé (auxiliaire/accord) disparaissent après le printemps. Les articles/déterminants, certaines prépositions et des collocations non naturelles restent le principal frein à la fluidité. Le registre s’affermit; la cohérence progresse nettement.
+
+TENDANCES D’ÉVOLUTION:
+- G01 (passé composé: accord avec avoir / auxiliaire): ≈6 occ. dans textes 1–4 → 0 dès lecon_5.
+- G03 (négation: ne … pas / placement des clitiques): 2–3 occ. jusqu’à lecon_7 → 1 seule occurrence isolée dans les textes récents.
+- G05 (accords/conjugaisons de base: sujet-verbe, genre, adjectifs): ≈12 occ. jusqu’à lecon_10 → ≈3 occ. dans les 3 derniers textes.
+- G06 (prépositions / constructions à l’infinitif): ≈12 occ. sur l’ensemble → baisse légère mais encore ≈4–5 occ. dans les 3 derniers textes.
+- G07 (articles/déterminants, partitif/de vs des): ≈15+ occ. de manière continue → persiste (≈6–7 occ. dans les 3 derniers textes).
+- G08 (ordre des mots, placement des pronoms): 3–4 occ. au début → 1 occ. résiduelle récemment.
+- V01 (faux amis / anglicismes / calques): 1–2 occ. au début → 3–4 occ. dans les 2 derniers textes (“slang”, “gargon”, “détroits”).
+- V04 (collocations non naturelles): récurrentes (≈6–7 occ.) et encore présentes en fin de parcours.
+- S05 (formulations lourdes/maladresses): net recul (≈8 → ≈3), mais encore visibles dans les derniers textes.
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE:
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (genre, contraction, partitif/de)
+  occurrences: ≈16
+  exemples:
+    - "la langue français" → "la langue française / le français" (lecon_1)
+    - "quelque chose nouvelle" → "quelque chose de nouveau" (lecon_2)
+    - "ce gens" → "ces gens" (lecon_2)
+    - "des bons professeurs" → "de bons professeurs" (lecon_6_1)
+    - "la départ de Baptiste" → "le départ" (lecon_9_2)
+    - "le langue du pays" → "la langue" (lecon_13)
+    - "A école" → "À l’école" ; "des cours de langue anglais" → "des cours d’anglais" (lecon_15)
+    - "cet expérience … de les gens francais" → "cette expérience … des Français" (lecon_15_2)
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / construction à l’infinitif
+  occurrences: ≈12
+  exemples:
+    - "j’ai commencé apprendre" → "j’ai commencé à apprendre" (lecon_1)
+    - "j’ai d’amenagé dans une colocation" → "j’ai emménagé en colocation" (lecon_2)
+    - "en nuit" → "la nuit" ; "à la Václavské place" → "à la place Venceslas" (lecon_4)
+    - "recommencent être ouvertes" → "recommencent à être ouvertes" (lecon_6_2)
+    - "t’aider avec chercher" → "t’aider à chercher" ; "attends pour recevoir" → "attends de recevoir" (lecon_7_1)
+    - "un cours d’apprendre utiliser" → "un cours pour apprendre à utiliser" (lecon_10)
+    - "rencontrer avec la vie" → "faire l’expérience de la vie / se confronter à la vie" (lecon_13 ; lecon_15_2)
+
+- type: G05
+  pattern: Conjugaison/accords de base (sujet-verbe, genre, adjectifs, superlatif)
+  occurrences: ≈14
+  exemples:
+    - "le première fois" → "la première fois" (lecon_2)
+    - "La lendemain" → "Le lendemain" (lecon_4)
+    - "les horaires sont varieux" → "les horaires sont variés" (lecon_6_2)
+    - "tu envoie" → "tu envoies" (lecon_7_1)
+    - "les enfants voudrions / devrient" → "voudraient / devraient" (lecon_10)
+    - "très encourageant et rassurant" → "très encourageants et rassurants" (lecon_13)
+
+- type: G01
+  pattern: Passé composé: accord fautif avec avoir / auxiliaire erroné
+  occurrences: ≈6
+  exemples:
+    - "j’ai passée la nuit" → "j’ai passé la nuit" (lecon_4)
+    - "j’ai vue (le Musée/la ville)" → "j’ai vu" (lecon_4)
+    - "j’ai visitée" → "j’ai visité" (lecon_4)
+    - "J’ai arrivée" → "Je suis arrivée" (lecon_4)
+
+- type: G03
+  pattern: Erreur de négation (ne…pas, placement des pronoms)
+  occurrences: 3
+  exemples:
+    - "qui je n’ai connu pas" → "que je ne connaissais pas" (lecon_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas / vous n’allez pas me croire" (lecon_13)
+
+- type: G08
+  pattern: Ordre des mots (placement des adverbes/pronoms, ordre Dét. + adj.)
+  occurrences: 4
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment" (lecon_4)
+    - "Je vous souhaite avoir des bonnes deux semaines" → "Je vous souhaite deux bonnes semaines" (lecon_5_2)
+    - "vous n’avez me pas croire" → "vous ne me croirez pas" (lecon_13)
+
+VOCABULAIRE:
+- type: V01
+  pattern: Faux amis / anglicismes / calques lexicaux
+  occurrences: 6
+  exemples:
+    - "défises" → "défis" (lecon_2)
+    - "avanture d’adrénaline" → "aventure pleine d’adrénaline" (lecon_2)
+    - "détroits historiques" → "sites/lieux historiques" (lecon_13)
+    - "slang / gargon / dialec" → "argot / jargon / dialecte" (lecon_15_2)
+
+- type: V04
+  pattern: Collocation non naturelle
+  occurrences: 7
+  exemples:
+    - "album photos" → "album photo / album de photos" (lecon_9_2)
+    - "des entrées de quelques attractions" → "des billets pour des attractions" (lecon_9_2)
+    - "rencontrer avec la vie" → "faire l’expérience de la vie" (lecon_13 ; lecon_15_2)
+    - "en langue que je voulais apprendre" → "dans la langue que je voulais apprendre" (lecon_15)
+
+- type: V05
+  pattern: Interférence linguistique (calques de la L1 / ordre figé)
+  occurrences: 4
+  exemples:
+    - "moi et ma famille" → "ma famille et moi" (lecon_12 ; lecon_13)
+    - "tout le meilleur à la maison le meilleur" → "rien ne vaut la maison" (lecon_4)
+
+STYLE:
+- type: S05
+  pattern: Formulation maladroite / lourde
+  occurrences: ≈9
+  exemples:
+    - "C’est trouver au coin de la rue" → "Il est situé au coin de la rue" (lecon_5_2)
+    - "Pourquoi la Slovaquie? … pour moi aussi" → reformuler plus fluide (lecon_7_1)
+    - "Mais le moment parfait … est quand ?" → "Quel est le meilleur moment pour commencer… ?" (lecon_15)
+
+ERREURS_PERSISTANTES (dans les 3 derniers textes: lecon_13, lecon_15, lecon_15_2):
+- G07 (articles/déterminants)
+  - "le langue du pays" → "la langue" (lecon_13)
+  - "A école" → "À l’école" ; "des cours de langue anglais" → "des cours d’anglais" (lecon_15)
+  - "cet expérience … de les gens francais" → "cette expérience … des Français" (lecon_15_2)
+
+- G06 (prépositions / infinitif)
+  - "en langue que je voulais apprendre" → "dans la langue…" (lecon_15)
+  - "rencontrer avec la vie" → "faire l’expérience de la vie" (lecon_15_2)
+
+- G05 (accords de base)
+  - "très encourageant et rassurant" → "encourageants et rassurants" (lecon_13)
+
+- G03 / G08 (négation et ordre des clitiques)
+  - "vous n’avez me pas croire" → "vous ne me croirez pas / vous n’allez pas me croire" (lecon_13)
+
+- V01 (faux amis / anglicismes)
+  - "détroits historiques" (lecon_13)
+  - "slang / gargon / dialec" → "argot / jargon / dialecte" (lecon_15_2)
+
+- V04 (collocations non naturelles)
+  - "rencontrer avec la vie" (lecon_15_2)
+  - "en langue que je voulais apprendre" (lecon_15)
+
+Synthèse finale:
+- Progrès marqués en narration/argumentation, maîtrise des temps du passé (disparition des accords fautifs au passé composé), et en structuration textuelle.
+- Stabilité/persistance: articles/déterminants (G07), prépositions/constructions à l’infinitif (G06), quelques accords de base (G05), collocations (V04) et quelques calques/anglicismes (V01).
+- Niveau global: passage de A2 (premier texte) à B1+ (moyenne des deux derniers textes), avec une marge de progression principalement sur la micro-grammaire (G07/G06) et l’idiomaticité lexicale (V04/V01).
