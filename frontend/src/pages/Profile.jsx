@@ -1,6 +1,25 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { User, Mail, ShieldCheck, GraduationCap, Star, ChevronRight, Settings, Bell, Search, BookOpen, FileText, Mic, BarChart3, CheckCircle2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import authService from '../services/authService';
-import './Profile.css';
+
+// --- Types & Constants ---
+
+const ProfileBadge = ({
+  children,
+  color = 'blue'
+}) => {
+  const colors = {
+    blue: 'bg-blue-50 text-blue-600 border-blue-100',
+    green: 'bg-emerald-50 text-emerald-600 border-emerald-100',
+    amber: 'bg-amber-50 text-amber-600 border-amber-100'
+  };
+  return (
+    <span className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${colors[color]}`}>
+      {children}
+    </span>
+  );
+};
 
 const Profile = ({ userEmail, userRole }) => {
   const [teachers, setTeachers] = useState([]);
@@ -9,6 +28,7 @@ const Profile = ({ userEmail, userRole }) => {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState('');
+  const [notifications, setNotifications] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
@@ -58,228 +78,252 @@ const Profile = ({ userEmail, userRole }) => {
 
   if (userRole !== 'student') {
     return (
-      <div className="profile-page">
-        <div className="page-background">
-          <div className="page-gradient"></div>
-          <div className="page-pattern"></div>
-        </div>
-        
-        <div className="page-container">
-          <div className="page-header">
-            <div className="page-badge">
-              <div className="badge-icon">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                  <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"/>
-                </svg>
-              </div>
-              <span>Restricted access</span>
+      <div className="flex min-h-screen bg-slate-50 font-sans text-slate-900">
+        <main className="flex-1 overflow-y-auto">
+          <div className="p-8">
+            <div className="mb-8">
+              <h1 className="text-3xl font-bold text-slate-900 mb-2">My Profile</h1>
+              <p className="text-sm text-slate-500">Restricted access</p>
             </div>
-            
-            <h1 className="page-title">
-              My <span className="gradient-text">Profile</span>
-            </h1>
-          </div>
-          
-          <div className="profile-card">
-            <div className="card-header">
-              <div className="card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
+            <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
+                    <ShieldCheck size={24} />
+                  </div>
+                  <div>
+                    <h2 className="text-lg font-bold text-slate-800">Restricted Access</h2>
+                    <p className="text-sm text-slate-500">Teachers do not have access to this profile page.</p>
+                  </div>
+                </div>
               </div>
-              <h2 className="card-title">Restricted access</h2>
-            </div>
-            <div className="card-body">
-              <p>Teachers do not have access to this profile page.</p>
             </div>
           </div>
-        </div>
+        </main>
       </div>
     );
   }
 
   return (
-    <div className="profile-page">
-      <div className="page-background">
-        <div className="page-gradient"></div>
-        <div className="page-pattern"></div>
-      </div>
-      
-      <div className="page-container">
-        <div className="page-header">
-          <div className="page-badge">
-            <div className="badge-icon">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
-                <path d="M8 0L10.5 5.5L16 8L10.5 10.5L8 16L5.5 10.5L0 8L5.5 5.5L8 0Z"/>
-              </svg>
-            </div>
-            <span>Account management</span>
+    <div className="flex min-h-screen bg-slate-50 font-sans text-slate-900">
+      {/* Main Content */}
+      <main className="flex-1 overflow-y-auto">
+        {/* Header Section */}
+        <header className="bg-white border-b border-slate-200 px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div className="relative max-w-md w-full">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" />
+            <input 
+              type="text" 
+              placeholder="Search settings..." 
+              className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all hover:bg-white" 
+            />
           </div>
-          
-          <h1 className="page-title">
-            My <span className="gradient-text">Profile</span>
-          </h1>
-          
-          <p className="page-description">
-            Manage your personal information and learning preferences
-          </p>
-        </div>
+          <div className="flex items-center gap-4">
+            <div className="text-right hidden sm:block">
+              <p className="text-xs text-slate-500 font-medium">Last Updated</p>
+              <p className="text-sm font-semibold text-slate-800">{new Date().toLocaleDateString('en-US', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+            </div>
+            <button className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-2xl text-sm font-bold shadow-lg transition-all active:scale-95">
+              Edit Profile
+            </button>
+          </div>
+        </header>
 
-        <div className="profile-container">
-          {/* Account Information */}
-          <div className="profile-card">
-            <div className="card-header">
-              <div className="card-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                </svg>
-              </div>
-              <h2 className="card-title">Account information</h2>
-              <p className="card-subtitle">Your personal data and preferences</p>
-            </div>
-            <div className="card-body">
-              <div className="info-grid">
-                <div className="info-item">
-                  <div className="info-content">
-                    <div className="info-label">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"/>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"/>
-                      </svg>
-                      Email
-                    </div>
-                    <div className="info-value">{userEmail}</div>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <div className="info-content">
-                    <div className="info-label">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"/>
-                      </svg>
-                      Role
-                    </div>
-                    <div className="info-value">
-                      <span className="badge badge-primary">Student</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="info-item">
-                  <div className="info-content">
-                    <div className="info-label">
-                      <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                      </svg>
-                      Account type
-                    </div>
-                    <div className="info-value">
-                      <span className="badge badge-success">Free</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+        {/* Main Content Area */}
+        <div className="p-8">
+          {/* Page Header */}
+          <div className="mb-8">
+            <h1 className="text-3xl font-bold text-slate-900 mb-2">My Profile</h1>
+            <p className="text-sm text-slate-500">Manage your personal information, security settings, and learning preferences</p>
           </div>
 
-          {/* Teacher Assignment */}
-          {/* Teacher Assignment */}
-          <div className="teacher-assignment">
-            <div className="teacher-header">
-              <div className="teacher-icon">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-              <div>
-                <h2 className="teacher-title">My Teacher</h2>
-                <p className="teacher-subtitle">Choose your teacher for personalized tracking</p>
-              </div>
-            </div>
-            <div className="teacher-body">
-              {currentTeacher ? (
-                <div className="current-teacher-card">
-                  <div className="status-badge active">
-                    <span className="status-dot"></span>
-                    Assigned
-                  </div>
-                  <div className="teacher-profile">
-                    <div className="teacher-avatar-large">
-                      {getTeacherName(currentTeacher).charAt(0).toUpperCase()}
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            
+            {/* Account Information Card */}
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }} 
+              animate={{ opacity: 1, x: 0 }} 
+              transition={{ delay: 0.1 }} 
+              className="lg:col-span-7"
+            >
+              <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden h-full">
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
+                      <User size={24} />
                     </div>
-                    <div className="teacher-details-large">
-                      <div className="teacher-name-large">{getTeacherName(currentTeacher)}</div>
-                      <div className="teacher-email-large">{currentTeacher}</div>
+                    <div>
+                      <h2 className="text-lg font-bold text-slate-800">Account Information</h2>
+                      <p className="text-sm text-slate-500">Your private data and identity details</p>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <div className="no-teacher-state">
-                  <div className="state-icon-wrapper">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
+
+                  <div className="space-y-6">
+                    <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100 group transition-all hover:border-indigo-200">
+                      <div className="flex items-center gap-3 mb-2 text-slate-400">
+                        <Mail size={16} />
+                        <span className="text-xs font-bold uppercase tracking-widest">Email Address</span>
+                      </div>
+                      <div className="flex justify-between items-center">
+                        <span className="text-slate-700 font-medium text-lg">{userEmail}</span>
+                        <button className="text-indigo-600 text-sm font-semibold hover:underline">Change</button>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div className="flex items-center gap-3 mb-3 text-slate-400">
+                          <ShieldCheck size={16} />
+                          <span className="text-xs font-bold uppercase tracking-widest">Role</span>
+                        </div>
+                        <ProfileBadge color="blue">Student</ProfileBadge>
+                      </div>
+
+                      <div className="p-5 bg-slate-50 rounded-2xl border border-slate-100">
+                        <div className="flex items-center gap-3 mb-3 text-slate-400">
+                          <Star size={16} />
+                          <span className="text-xs font-bold uppercase tracking-widest">Plan</span>
+                        </div>
+                        <ProfileBadge color="green">Free Account</ProfileBadge>
+                      </div>
+                    </div>
+
+                    <div className="pt-4 flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-500">
+                          <Bell size={20} />
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-slate-700">Email Notifications</p>
+                          <p className="text-xs text-slate-400">Weekly progress reports</p>
+                        </div>
+                      </div>
+                      <button 
+                        onClick={() => setNotifications(!notifications)} 
+                        className={`w-12 h-6 rounded-full p-1 transition-colors duration-200 ease-in-out ${notifications ? 'bg-emerald-500' : 'bg-slate-300'}`}
+                      >
+                        <div className={`w-4 h-4 bg-white rounded-full transition-transform duration-200 ease-in-out transform ${notifications ? 'translate-x-6' : 'translate-x-0'}`} />
+                      </button>
+                    </div>
                   </div>
-                  <div className="state-content">
-                    <h3>No teacher assigned</h3>
-                    <p>Select a teacher to share your progress and get feedback</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Teacher Selection Card */}
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }} 
+              animate={{ opacity: 1, x: 0 }} 
+              transition={{ delay: 0.2 }} 
+              className="lg:col-span-5"
+            >
+              <div className="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden h-full">
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
+                      <GraduationCap size={24} />
+                    </div>
+                    <div>
+                      <h2 className="text-lg font-bold text-slate-800">My Teacher</h2>
+                      <p className="text-sm text-slate-500">Personalized tracking and feedback</p>
+                    </div>
                   </div>
-                </div>
-              )}
 
-              {error && (
-                <div className="alert alert-danger">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd"/>
-                  </svg>
-                  {error}
-                </div>
-              )}
+                  {error && (
+                    <div className="mb-4 p-4 bg-red-50 border border-red-200 rounded-2xl text-red-700 text-sm">
+                      {error}
+                    </div>
+                  )}
 
-              {success && (
-                <div className="alert alert-success">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd"/>
-                  </svg>
-                  Changes saved successfully!
-                </div>
-              )}
+                  {success && (
+                    <div className="mb-4 p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-emerald-700 text-sm flex items-center gap-2">
+                      <CheckCircle2 size={16} />
+                      Changes saved successfully!
+                    </div>
+                  )}
 
-              <div className="teacher-selection-section">
-                <label htmlFor="teacher" className="form-label">
-                  {currentTeacher ? 'Change teacher' : 'Select a teacher'}
-                </label>
-                <div className="select-with-button">
-                  <div className="select-wrapper">
-                    <select
-                      id="teacher"
-                      className="form-control teacher-select"
-                      value={selectedTeacher}
-                      onChange={(e) => setSelectedTeacher(e.target.value)}
+                  <AnimatePresence mode="wait">
+                    {!currentTeacher ? (
+                      <motion.div 
+                        key="empty" 
+                        initial={{ opacity: 0 }} 
+                        animate={{ opacity: 1 }} 
+                        exit={{ opacity: 0 }} 
+                        className="text-center py-10 px-6 bg-slate-50 rounded-3xl border-2 border-dashed border-slate-200 mb-8"
+                      >
+                        <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-4 text-slate-300">
+                          <Search size={32} />
+                        </div>
+                        <h3 className="font-bold text-slate-700 text-lg mb-2">No Teacher Assigned</h3>
+                        <p className="text-slate-400 text-sm leading-relaxed">
+                          Select a mentor from the list below to share your progress and receive expert guidance.
+                        </p>
+                      </motion.div>
+                    ) : (
+                      <motion.div 
+                        key="assigned" 
+                        initial={{ opacity: 0, scale: 0.95 }} 
+                        animate={{ opacity: 1, scale: 1 }}
+                        className="p-6 bg-emerald-50 rounded-3xl border border-emerald-100 mb-8 flex items-center gap-4"
+                      >
+                        <div className="w-14 h-14 rounded-full bg-emerald-200 flex items-center justify-center text-emerald-700 text-xl font-bold">
+                          {getTeacherName(currentTeacher).charAt(0).toUpperCase()}
+                        </div>
+                        <div className="flex-1">
+                          <p className="text-emerald-800 font-bold text-lg">{getTeacherName(currentTeacher)}</p>
+                          <p className="text-emerald-600 text-sm flex items-center gap-1">
+                            <CheckCircle2 size={14} /> Active Connection
+                          </p>
+                        </div>
+                        <button 
+                          onClick={() => {
+                            setSelectedTeacher('');
+                            setCurrentTeacher(null);
+                          }} 
+                          className="p-2 text-emerald-400 hover:text-emerald-600 transition-colors"
+                        >
+                          <Settings size={20} />
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+
+                  <div className="space-y-4">
+                    <label className="block text-xs font-bold text-slate-500 uppercase tracking-widest">Select Teacher</label>
+                    <div className="relative group">
+                      <select 
+                        className="w-full h-14 pl-5 pr-12 rounded-2xl bg-slate-50 border border-slate-200 appearance-none focus:outline-none focus:ring-2 focus:ring-indigo-500/20 transition-all text-slate-700 font-medium cursor-pointer group-hover:bg-white" 
+                        value={selectedTeacher} 
+                        onChange={e => setSelectedTeacher(e.target.value)}
+                      >
+                        <option value="">Choose from list...</option>
+                        {teachers.map((teacher) => (
+                          <option key={teacher.email} value={teacher.email}>
+                            {teacher.name}
+                          </option>
+                        ))}
+                      </select>
+                      <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                        <ChevronRight size={20} className="rotate-90" />
+                      </div>
+                    </div>
+                    <button 
+                      className="w-full h-14 bg-slate-900 hover:bg-slate-800 text-white font-bold rounded-2xl shadow-lg transition-all active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed" 
+                      disabled={!selectedTeacher || loading || selectedTeacher === currentTeacher} 
+                      onClick={handleSave}
                     >
-                      <option value="">Choose from list...</option>
-                      {teachers.map((teacher) => (
-                        <option key={teacher.email} value={teacher.email}>
-                          {teacher.name}
-                        </option>
-                      ))}
-                    </select>
+                      {loading ? 'Saving...' : 'Confirm Assignment'}
+                    </button>
                   </div>
-                  <button
-                    className="btn btn-primary btn-save-teacher"
-                    onClick={handleSave}
-                    disabled={loading || selectedTeacher === currentTeacher}
-                  >
-                    {loading ? 'Saving...' : 'Save'}
-                  </button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 };
 
 export default Profile;
-
