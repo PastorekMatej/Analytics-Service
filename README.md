@@ -588,6 +588,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `781ea31` **fix:** extract all individual evaluation points from analysis results for progress chart - Fixed progress chart to display all 18 individual evaluation points from the "évaluations numériques par texte" section instead of showing only one point per analysis. Added extractIndividualEvaluations function to parse individual evaluations with dates, scores, levels, and improvement descriptions.
 - `6f7bc1c` **feat:** harmonize analysis dashboard design with color themes and symmetry - Introduced color themes (green, blue, pink, orange, purple, teal, indigo) for each analysis section, improving visual hierarchy and symmetry
 - `7c2060e` **fix:** relax regex for detecting error blocks to handle bullet points - Fixed issue where error cards were not rendering correctly because the parser didn't account for bullet points or indentation in the raw text
 - `e317ebe` **feat:** improve graphical presentation of analysis error cards - Redesigned error cards with structured layout, better typography, and distinct sections for pattern, occurrences, examples, and explanation
@@ -605,6 +606,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 - ✅ **File Upload Feature**: Added document upload (PDF, DOCX, TXT) with automatic transcription to plain text. Files are transcribed without correction and the text is automatically populated in the analysis form. Supports files up to 25MB.
 - ✅ **Interface Redesign**: Complete overhaul of the "My Teacher" section in the Profile page with a modern, card-based layout.
 - ✅ **Analysis Report Redesign**: Improved the visual presentation of analysis reports in the dashboard. Added structured cards for error types, modern tab styling, and enhanced typography for better readability. Fixed conclusion section to correctly display résumé content from analysis reports.
+- ✅ **Progress Chart Fix**: Fixed progress chart to correctly display all individual evaluation points (18 points) from analysis results instead of showing only one point per analysis. The chart now extracts and displays each evaluation with its date, score, level, and improvement description from the "évaluations numériques par texte" section.
 - ✅ **Progress Indicators**: Added "In Progress" banners and badges for the "My Voice" feature to clearly communicate development status.
 - ✅ **Typography**: Refactored global typography with a harmonized 'Inter' font stack, improved heading hierarchy, and refined color palette.
 - ✅ **Iconography**: Updated navigation icons (text analysis) and section icons for better visual semantics.
