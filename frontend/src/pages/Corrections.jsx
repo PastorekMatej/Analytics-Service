@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChevronDown, ChevronUp, Filter, Calendar, Award, 
   CheckCircle2, AlertCircle, FileText, Mic, UserCircle, 
-  Search, TrendingDown 
+  Search, TrendingDown, TrendingUp, Loader2 
 } from 'lucide-react';
 import { cn } from '../lib/utils';
+import correctionsService from '../services/correctionsService';
+import studentService from '../services/studentService';
 
 /**
  * @typedef {Object} Correction
@@ -27,81 +29,6 @@ import { cn } from '../lib/utils';
  * @property {number} totalCorrections - Total number of corrections
  * @property {Correction[]} corrections - Array of corrections
  */
-
-// Sample correction data
-const SAMPLE_SUBMISSIONS = [{
-  id: '1',
-  date: '2024-10-20',
-  title: 'Lettre formelle - Candidature',
-  type: 'written',
-  score: 45,
-  totalCorrections: 12,
-  corrections: [{
-    id: 'c1',
-    original: "J'ai travaillé dans cette société pendant trois ans",
-    corrected: "J'ai travaillé dans cette entreprise pendant trois ans",
-    errorType: 'V01 - Lexique',
-    teacherComment: "\"Société\" est correct mais \"entreprise\" est plus idiomatique dans ce contexte professionnel.",
-    severity: 'low'
-  }, {
-    id: 'c2',
-    original: "Je suis très intéressé pour ce poste",
-    corrected: "Je suis très intéressé par ce poste",
-    errorType: 'G06 - Préposition',
-    teacherComment: "Avec \"intéressé\", on utilise la préposition \"par\" et non \"pour\".",
-    severity: 'high'
-  }, {
-    id: 'c3',
-    original: "Les responsabilités que vous m'avez proposés",
-    corrected: "Les responsabilités que vous m'avez proposées",
-    errorType: 'G05 - Accord',
-    teacherComment: "Accord du participe passé avec le COD \"responsabilités\" (féminin pluriel) placé avant.",
-    severity: 'medium'
-  }, {
-    id: 'c4',
-    original: "Je peux commencer le travail immédiatement",
-    corrected: "Je peux commencer à travailler immédiatement",
-    errorType: 'G06 - Construction infinitive',
-    teacherComment: "\"Commencer\" est suivi de \"à\" + infinitif. Éviter \"commencer le travail\".",
-    severity: 'medium'
-  }, {
-    id: 'c5',
-    original: "J'attends avec impatience votre réponse",
-    corrected: "J'attends avec impatience votre réponse",
-    errorType: 'S03 - Genre discursif',
-    teacherComment: "Parfait ! Formule de clôture appropriée pour une lettre formelle.",
-    severity: 'low'
-  }]
-}, {
-  id: '2',
-  date: '2024-10-13',
-  title: 'Récit de voyage - Mon séjour à Paris',
-  type: 'written',
-  score: 41,
-  totalCorrections: 15,
-  corrections: [{
-    id: 'c6',
-    original: "Je suis allé à Paris le mois dernier",
-    corrected: "Je suis allée à Paris le mois dernier",
-    errorType: 'G05 - Accord participe',
-    teacherComment: "En tant que locutrice féminine, le participe passé doit s'accorder: \"allée\".",
-    severity: 'high'
-  }, {
-    id: 'c7',
-    original: "Les monuments étaient très impressionnant",
-    corrected: "Les monuments étaient très impressionnants",
-    errorType: 'G05 - Accord adjectif',
-    teacherComment: "L'adjectif doit s'accorder en nombre avec \"monuments\" (pluriel).",
-    severity: 'high'
-  }, {
-    id: 'c8',
-    original: "J'ai visité le musée du Louvre et j'ai beaucoup aimé",
-    corrected: "J'ai visité le musée du Louvre et je l'ai beaucoup aimé",
-    errorType: 'G08 - Pronom COD',
-    teacherComment: "Il faut reprendre \"le musée\" avec le pronom COD \"l'\" devant le verbe.",
-    severity: 'medium'
-  }]
-}];
 
 const ERROR_CATEGORIES = [{
   id: 'all',
@@ -126,10 +53,91 @@ const ERROR_CATEGORIES = [{
 }];
 
 const Corrections = ({ userEmail, userRole }) => {
-  const [selectedSubmission, setSelectedSubmission] = useState(SAMPLE_SUBMISSIONS[0]);
-  const [expandedCorrections, setExpandedCorrections] = useState(new Set(['c1']));
+  const [submissions, setSubmissions] = useState([]);
+  const [selectedSubmission, setSelectedSubmission] = useState(null);
+  const [expandedCorrections, setExpandedCorrections] = useState(new Set());
   const [activeFilter, setActiveFilter] = useState('all');
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedStudentEmail, setSelectedStudentEmail] = useState(null);
+  const [availableStudents, setAvailableStudents] = useState([]);
+  const [progressData, setProgressData] = useState([]);
+  
+  const loadProgressData = async () => {
+    const emailToUse = selectedStudentEmail || userEmail;
+    if (!emailToUse) return;
+    
+    try {
+      const response = await studentService.getProgress(emailToUse);
+      if (response.success && response.data && response.data.progress_data) {
+        setProgressData(response.data.progress_data);
+      }
+    } catch (err) {
+      console.error('Error loading progress data:', err);
+      setProgressData([]);
+    }
+  };
+  
+  const loadCorrections = async () => {
+    if (!userEmail) return;
+    
+    setLoading(true);
+    setError(null);
+    
+    try {
+      let response;
+      if (userRole === 'student') {
+        response = await correctionsService.getStudentCorrections(userEmail);
+      } else {
+        // Teacher/Admin view
+        response = await correctionsService.getTeacherCorrections(userEmail, selectedStudentEmail);
+        
+        // Load available students for teacher
+        if (!selectedStudentEmail && userRole === 'teacher') {
+          try {
+            const studentsResponse = await fetch(`http://127.0.0.1:8000/api/teacher/${userEmail}/students`);
+            if (studentsResponse.ok) {
+              const studentsData = await studentsResponse.json();
+              setAvailableStudents(studentsData.students || []);
+            }
+          } catch (err) {
+            console.error('Error loading students:', err);
+          }
+        }
+      }
+      
+      if (response.success && response.submissions) {
+        setSubmissions(response.submissions);
+        if (response.submissions.length > 0 && !selectedSubmission) {
+          setSelectedSubmission(response.submissions[0]);
+          // Expand first correction by default
+          if (response.submissions[0].corrections.length > 0) {
+            setExpandedCorrections(new Set([response.submissions[0].corrections[0].id]));
+          }
+        }
+      } else {
+        setError(response.message || 'No corrections found');
+        setSubmissions([]);
+      }
+    } catch (err) {
+      console.error('Error loading corrections:', err);
+      setError('Error loading corrections. Please try again.');
+      setSubmissions([]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // Load corrections data and progress data on mount
+  useEffect(() => {
+    if (userEmail) {
+      loadCorrections();
+      loadProgressData();
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userEmail, userRole, selectedStudentEmail]);
+  
   const toggleCorrection = (id) => {
     const newExpanded = new Set(expandedCorrections);
     if (newExpanded.has(id)) {
@@ -140,16 +148,119 @@ const Corrections = ({ userEmail, userRole }) => {
     setExpandedCorrections(newExpanded);
   };
 
-  const filteredCorrections = selectedSubmission.corrections.filter(correction => {
+  const filteredCorrections = selectedSubmission?.corrections?.filter(correction => {
     if (activeFilter === 'all') return true;
-    return correction.errorType.startsWith(activeFilter);
-  });
+    if (activeFilter === 'grammar') return correction.errorType.toLowerCase().includes('grammar') || correction.errorType.startsWith('G');
+    if (activeFilter === 'vocabulary') return correction.errorType.toLowerCase().includes('vocabulary') || correction.errorType.startsWith('V');
+    if (activeFilter === 'style') return correction.errorType.toLowerCase().includes('style') || correction.errorType.startsWith('S');
+    if (activeFilter === 'persistent') return correction.severity === 'high';
+    return true;
+  }) || [];
 
-  const errorStats = selectedSubmission.corrections.reduce((acc, correction) => {
+  const errorStats = selectedSubmission?.corrections?.reduce((acc, correction) => {
     const type = correction.errorType.split(' - ')[0];
     acc[type] = (acc[type] || 0) + 1;
     return acc;
-  }, {});
+  }, {}) || {};
+  
+  // Calculate current score and CECRL level - use same logic as Progress page
+  // Use progress data if available (same source as Progress page), otherwise fallback to submissions
+  const dataToUse = Array.isArray(progressData) && progressData.length > 0 ? progressData : [];
+  const latestData = dataToUse.length > 0 && dataToUse[dataToUse.length - 1] ? dataToUse[dataToUse.length - 1] : null;
+  const previousData = dataToUse.length > 1 && dataToUse[dataToUse.length - 2] ? dataToUse[dataToUse.length - 2] : null;
+  
+  // Get score and level from progress data (same as Progress page)
+  const getCECRLLevel = (score) => {
+    if (!score && score !== 0) return 'A1';
+    if (score >= 93) return 'C2+';
+    if (score >= 84) return 'C2';
+    if (score >= 76) return 'C1+';
+    if (score >= 68) return 'C1';
+    if (score >= 59) return 'B2+';
+    if (score >= 51) return 'B2';
+    if (score >= 43) return 'B1+';
+    if (score >= 34) return 'B1';
+    if (score >= 26) return 'A2+';
+    if (score >= 17) return 'A2';
+    if (score >= 9) return 'A1+';
+    return 'A1';
+  };
+  
+  // Get score from progress data first, then fallback to submissions
+  let currentScore = 0;
+  try {
+    if (latestData && typeof latestData.score === 'number' && !isNaN(latestData.score)) {
+      currentScore = Math.max(0, Math.min(100, latestData.score)); // Ensure score is between 0-100
+    } else if (Array.isArray(submissions) && submissions.length > 0) {
+      const validScores = submissions.filter(sub => sub && typeof sub.score === 'number' && !isNaN(sub.score) && sub.score >= 0);
+      if (validScores.length > 0) {
+        const avgScore = validScores.reduce((sum, sub) => sum + sub.score, 0) / validScores.length;
+        currentScore = Math.max(0, Math.min(100, Math.round(avgScore)));
+      }
+    }
+  } catch (err) {
+    console.error('Error calculating currentScore:', err);
+    currentScore = 0;
+  }
+  
+  // Use level from progress data if available, otherwise calculate from score
+  let cecrlLevel = 'A1';
+  try {
+    if (latestData && latestData.level && typeof latestData.level === 'string') {
+      cecrlLevel = latestData.level;
+    } else if (Array.isArray(submissions) && submissions.length > 0 && submissions[0]?.cecrlLevel) {
+      cecrlLevel = submissions[0].cecrlLevel;
+    } else {
+      cecrlLevel = getCECRLLevel(currentScore);
+    }
+  } catch (err) {
+    console.error('Error calculating cecrlLevel:', err);
+    cecrlLevel = 'A1';
+  }
+  
+  // Calculate score change (for consistency with Progress page)
+  let scoreChange = 0;
+  try {
+    if (latestData && previousData && 
+        typeof latestData.score === 'number' && typeof previousData.score === 'number' &&
+        !isNaN(latestData.score) && !isNaN(previousData.score)) {
+      scoreChange = latestData.score - previousData.score;
+    }
+  } catch (err) {
+    console.error('Error calculating scoreChange:', err);
+    scoreChange = 0;
+  }
+  
+  // Filter submissions by search query
+  const filteredSubmissions = Array.isArray(submissions) ? submissions.filter(sub => {
+    if (!sub) return false;
+    if (!searchQuery) return true;
+    const query = searchQuery.toLowerCase();
+    return (
+      (sub.title && sub.title.toLowerCase().includes(query)) ||
+      (sub.date && sub.date.includes(query)) ||
+      (sub.studentEmail && sub.studentEmail.toLowerCase().includes(query)) ||
+      (sub.studentName && sub.studentName.toLowerCase().includes(query))
+    );
+  }) : [];
+  
+  // Update selected submission when filtered submissions change
+  useEffect(() => {
+    if (filteredSubmissions.length > 0) {
+      // If current selection is not in filtered list, select first one
+      const currentSelectedId = selectedSubmission?.id;
+      if (!currentSelectedId || !filteredSubmissions.find(s => s.id === currentSelectedId)) {
+        setSelectedSubmission(filteredSubmissions[0]);
+        if (filteredSubmissions[0].corrections.length > 0) {
+          setExpandedCorrections(new Set([filteredSubmissions[0].corrections[0].id]));
+        }
+      }
+    } else if (filteredSubmissions.length === 0 && submissions.length > 0) {
+      // Search filtered everything out, but we have submissions
+      setSelectedSubmission(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [filteredSubmissions.length, submissions.length, searchQuery]);
 
   const getSeverityColor = (severity) => {
     switch (severity) {
@@ -164,6 +275,50 @@ const Corrections = ({ userEmail, userRole }) => {
     }
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin text-indigo-600 mx-auto mb-4" />
+          <p className="text-slate-600">Loading corrections...</p>
+        </div>
+      </div>
+    );
+  }
+  
+  if (error && submissions.length === 0) {
+    return (
+      <div className="p-8">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-6 text-center">
+          <AlertCircle className="w-8 h-8 text-red-600 mx-auto mb-2" />
+          <p className="text-red-800 font-semibold">{error}</p>
+          <button 
+            onClick={loadCorrections}
+            className="mt-4 bg-red-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-red-700 transition-colors"
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+  
+  if (submissions.length === 0) {
+    return (
+      <div className="p-8">
+        <div className="bg-slate-50 border border-slate-200 rounded-lg p-6 text-center">
+          <FileText className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+          <p className="text-slate-600 font-semibold">No corrections available</p>
+          <p className="text-sm text-slate-500 mt-2">
+            {userRole === 'student' 
+              ? 'Submit some texts for analysis to see corrections here.'
+              : 'No student corrections found.'}
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       {/* Header */}
@@ -171,19 +326,45 @@ const Corrections = ({ userEmail, userRole }) => {
         <div className="relative max-w-md w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" aria-hidden="true" />
           <input 
-            placeholder="Rechercher un étudiant..." 
+            placeholder={userRole === 'student' ? "Rechercher dans les corrections..." : "Rechercher un étudiant..."} 
             className="w-full pl-10 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20" 
-            type="text" 
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
-        <div className="flex items-center gap-4">
-          <div className="text-right hidden sm:block">
-            <p className="text-xs text-slate-500 font-medium">Dernière mise à jour</p>
-            <p className="text-sm font-semibold text-slate-800">20 Octobre 2024</p>
+        {userRole === 'teacher' && availableStudents.length > 0 && (
+          <div className="flex items-center gap-2">
+            <select
+              value={selectedStudentEmail || ''}
+              onChange={(e) => {
+                setSelectedStudentEmail(e.target.value || null);
+                setSelectedSubmission(null);
+              }}
+              className="px-4 py-2 bg-white border border-slate-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500/20"
+            >
+              <option value="">All Students</option>
+              {availableStudents.map((student) => (
+                <option key={student.email || student} value={student.email || student}>
+                  {student.name || student.email || student}
+                </option>
+              ))}
+            </select>
           </div>
-          <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">
-            Ajouter une évaluation
-          </button>
+        )}
+        <div className="flex items-center gap-4">
+          {submissions.length > 0 && (
+            <div className="text-right hidden sm:block">
+              <p className="text-xs text-slate-500 font-medium">Dernière mise à jour</p>
+              <p className="text-sm font-semibold text-slate-800">
+                {new Date(submissions[0].date).toLocaleDateString('fr-FR', { 
+                  day: 'numeric', 
+                  month: 'long', 
+                  year: 'numeric' 
+                })}
+              </p>
+            </div>
+          )}
         </div>
       </header>
 
@@ -191,49 +372,66 @@ const Corrections = ({ userEmail, userRole }) => {
         {/* Student Header Section */}
         <div className="mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4" style={{ width: '100%' }}>
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">Suivi de Progression</h1>
+            <h1 className="text-3xl font-bold text-slate-900 mb-2">Corrections</h1>
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-user w-4 h-4 text-slate-400" aria-hidden="true">
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
-                <span className="text-sm font-medium text-slate-700">Jean-Pierre Dupont</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar w-4 h-4 text-slate-400" aria-hidden="true">
-                  <path d="M8 2v4"></path>
-                  <path d="M16 2v4"></path>
-                  <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-                  <path d="M3 10h18"></path>
-                </svg>
-                <span className="text-sm font-medium text-slate-700">Sept 2024 - Oct 2024</span>
-              </div>
+              {/* Display student name */}
+              {(selectedStudentEmail || userEmail) && (
+                <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                  <UserCircle className="w-4 h-4 text-slate-400" />
+                  <span className="text-sm font-medium text-slate-700">
+                    {submissions[0]?.studentName || 
+                     (selectedStudentEmail ? selectedStudentEmail.split('@')[0] : userEmail?.split('@')[0] || 'Student')}
+                  </span>
+                </div>
+              )}
+              {/* Display date range from progress data */}
+              {progressData.length > 0 && (
+                <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                  <Calendar className="w-4 h-4 text-slate-400" />
+                  <span className="text-sm font-medium text-slate-700">
+                    {(() => {
+                      const dates = progressData.map(d => d.date).filter(Boolean).sort();
+                      if (dates.length === 0) return '';
+                      const firstDate = new Date(dates[0]);
+                      const lastDate = new Date(dates[dates.length - 1]);
+                      const formatDate = (date) => {
+                        return date.toLocaleDateString('fr-FR', { month: 'short', year: 'numeric' });
+                      };
+                      return `${formatDate(firstDate)} - ${formatDate(lastDate)}`;
+                    })()}
+                  </span>
+                </div>
+              )}
+              {/* Fallback: show submission count if no progress data */}
+              {progressData.length === 0 && submissions.length > 0 && (
+                <div className="flex items-center gap-2 bg-white px-3 py-1 rounded-full border border-slate-200 shadow-sm">
+                  <Calendar className="w-4 h-4 text-slate-400" />
+                  <span className="text-sm font-medium text-slate-700">
+                    {submissions.length} {submissions.length === 1 ? 'submission' : 'submissions'}
+                  </span>
+                </div>
+              )}
             </div>
           </div>
           <div className="flex gap-4">
             <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm min-w-[140px]">
               <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Score Actuel</p>
               <div className="flex items-end gap-2">
-                <span className="text-2xl font-bold text-slate-900">45</span>
+                <span className="text-2xl font-bold text-slate-900">{currentScore}</span>
                 <span className="text-sm text-slate-400 mb-1">/100</span>
-                <span className="flex items-center text-xs font-bold mb-1 ml-1 text-green-600">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-trending-up w-3 h-3 mr-1" aria-hidden="true">
-                    <path d="M16 7h6v6"></path>
-                    <path d="m22 7-8.5 8.5-5-5L2 17"></path>
-                  </svg>
-                  4
-                </span>
+                {scoreChange !== 0 && (
+                  <span className={`flex items-center text-xs font-bold mb-1 ml-1 ${scoreChange >= 0 ? 'text-green-600' : 'text-red-600'}`}>
+                    {scoreChange >= 0 ? <TrendingUp className="w-3 h-3 mr-1" /> : <TrendingDown className="w-3 h-3 mr-1" />}
+                    {Math.abs(scoreChange)}
+                  </span>
+                )}
               </div>
             </div>
             <div className="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm min-w-[140px]">
               <p className="text-xs text-slate-500 font-bold uppercase tracking-wider mb-1">Niveau CECRL</p>
               <div className="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-award w-5 h-5 text-amber-500" aria-hidden="true">
-                  <path d="m15.477 12.89 1.515 8.526a.5.5 0 0 1-.81.47l-3.58-2.687a1 1 0 0 0-1.197 0l-3.586 2.686a.5.5 0 0 1-.81-.469l1.514-8.526"></path>
-                  <circle cx="12" cy="8" r="6"></circle>
-                </svg>
-                <span className="text-2xl font-bold text-slate-900">B1+</span>
+                <Award className="w-5 h-5 text-amber-500" />
+                <span className="text-2xl font-bold text-slate-900">{cecrlLevel}</span>
               </div>
             </div>
           </div>
@@ -242,27 +440,50 @@ const Corrections = ({ userEmail, userRole }) => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Corrections List */}
           <div className="lg:col-span-3 space-y-6">
-            {/* Submission Tabs */}
-            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex gap-2 overflow-x-auto" style={{display: "none"}}>
-              {SAMPLE_SUBMISSIONS.map(submission => 
-                <button 
-                  key={submission.id} 
-                  onClick={() => setSelectedSubmission(submission)} 
-                  className={cn(
-                    "flex-1 px-4 py-3 rounded-xl text-sm font-semibold whitespace-nowrap transition-all",
-                    selectedSubmission.id === submission.id 
-                      ? 'bg-indigo-600 text-white shadow-md' 
-                      : 'bg-white text-slate-600 hover:bg-slate-50'
-                  )}
+            {/* Show message if search filtered everything */}
+            {searchQuery && filteredSubmissions.length === 0 && submissions.length > 0 && (
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center">
+                <Search className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+                <p className="text-slate-600 font-semibold">No submissions match your search</p>
+                <p className="text-sm text-slate-500 mt-2">Try a different search term</p>
+                <button
+                  onClick={() => setSearchQuery('')}
+                  className="mt-4 text-indigo-600 hover:text-indigo-700 text-sm font-semibold"
                 >
-                  <div className="flex items-center justify-center gap-2">
-                    {submission.type === 'written' ? <FileText className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
-                    <span className="hidden sm:inline">{submission.title}</span>
-                    <span className="sm:hidden">{submission.date}</span>
-                  </div>
+                  Clear search
                 </button>
-              )}
-            </div>
+              </div>
+            )}
+            
+            {/* Submission Tabs */}
+            {filteredSubmissions.length > 1 && (
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-2 flex gap-2 overflow-x-auto">
+                {filteredSubmissions.map(submission => 
+                  <button 
+                    key={submission.id} 
+                    onClick={() => {
+                      setSelectedSubmission(submission);
+                      // Expand first correction
+                      if (submission.corrections.length > 0) {
+                        setExpandedCorrections(new Set([submission.corrections[0].id]));
+                      }
+                    }} 
+                    className={cn(
+                      "flex-1 px-4 py-3 rounded-xl text-sm font-semibold whitespace-nowrap transition-all",
+                      selectedSubmission?.id === submission.id 
+                        ? 'bg-indigo-600 text-white shadow-md' 
+                        : 'bg-white text-slate-600 hover:bg-slate-50'
+                    )}
+                  >
+                    <div className="flex items-center justify-center gap-2">
+                      {submission.type === 'written' ? <FileText className="w-4 h-4" /> : <Mic className="w-4 h-4" />}
+                      <span className="hidden sm:inline">{submission.title}</span>
+                      <span className="sm:hidden">{submission.date}</span>
+                    </div>
+                  </button>
+                )}
+              </div>
+            )}
 
             {/* Filter Buttons */}
             <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-4">
@@ -283,18 +504,37 @@ const Corrections = ({ userEmail, userRole }) => {
                     )}
                   >
                     {category.label}
-                    {category.id !== 'all' && errorStats[category.id] && 
-                      <span className="ml-1.5 opacity-70">({errorStats[category.id]})</span>
-                    }
+                    {category.id !== 'all' && (
+                      <span className="ml-1.5 opacity-70">
+                        ({filteredCorrections.filter(c => {
+                          if (category.id === 'grammar') return c.errorType.toLowerCase().includes('grammar') || c.errorType.startsWith('G');
+                          if (category.id === 'vocabulary') return c.errorType.toLowerCase().includes('vocabulary') || c.errorType.startsWith('V');
+                          if (category.id === 'style') return c.errorType.toLowerCase().includes('style') || c.errorType.startsWith('S');
+                          if (category.id === 'persistent') return c.severity === 'high';
+                          return false;
+                        }).length})
+                      </span>
+                    )}
                   </button>
                 )}
               </div>
             </div>
 
             {/* Corrections List */}
-            <div className="space-y-4">
-              <AnimatePresence>
-                {filteredCorrections.map((correction, index) => 
+            {!selectedSubmission ? (
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center">
+                <FileText className="w-8 h-8 text-slate-400 mx-auto mb-2" />
+                <p className="text-slate-600">Select a submission to view corrections</p>
+              </div>
+            ) : filteredCorrections.length === 0 ? (
+              <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-8 text-center">
+                <CheckCircle2 className="w-8 h-8 text-green-500 mx-auto mb-2" />
+                <p className="text-slate-600">No corrections match the selected filter</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <AnimatePresence>
+                  {filteredCorrections.map((correction, index) => 
                   <motion.div 
                     key={correction.id}
                     initial={{ opacity: 0, y: 20 }}
@@ -371,9 +611,10 @@ const Corrections = ({ userEmail, userRole }) => {
                       }
                     </AnimatePresence>
                   </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                  )}
+                </AnimatePresence>
+              </div>
+            )}
           </div>
 
           {/* Statistics Panel */}

@@ -398,41 +398,62 @@ async def submit_text_for_analysis(
                 print(f"[Analysis] OpenAI API call completed, result length: {result_length}")
             except UnicodeEncodeError:
                 print("[Analysis] OpenAI API call completed")
-        except UnicodeEncodeError as unicode_error:
-            error_msg = f"Unicode encoding error: {str(unicode_error)}"
-            print(f"[Analysis] Unicode error: {error_msg}")
-            raise HTTPException(
-                status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Erreur d'encodage Unicode lors de l'analyse. Veuillez reessayer."
-            )
         except UnicodeEncodeError as unicode_err:
             # Handle Unicode encoding errors specifically
-            error_msg = "Unicode encoding error occurred during analysis"
-            print(f"[Analysis] Unicode encoding error: {unicode_err}")
+            error_msg = f"Unicode encoding error: {str(unicode_err)}"
+            try:
+                print(f"[Analysis] Unicode encoding error: {error_msg}")
+            except UnicodeEncodeError:
+                print("[Analysis] Unicode encoding error occurred")
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                 detail="Erreur d'encodage Unicode lors de l'analyse. Veuillez reessayer."
             )
         except Exception as api_error:
+            # Detect specific OpenAI error types
+            error_type = type(api_error).__name__
+            error_msg = str(api_error)
+            
+            # Check for quota/rate limit errors
+            is_quota_error = (
+                "RateLimitError" in error_type or
+                "quota" in error_msg.lower() or
+                "insufficient" in error_msg.lower() or
+                "429" in error_msg
+            )
+            
+            # Check for authentication errors
+            is_auth_error = (
+                "AuthenticationError" in error_type or
+                "InvalidAuthenticationError" in error_type or
+                "authentication" in error_msg.lower() or
+                "api key" in error_msg.lower() or
+                "401" in error_msg
+            )
+            
             # Safely convert error to string, handling Unicode issues
             try:
-                error_msg = str(api_error)
-                # Try to encode to ensure it's UTF-8 safe
                 error_msg.encode('utf-8')
             except (UnicodeEncodeError, UnicodeDecodeError):
-                # If encoding fails, create a safe ASCII message
                 error_msg = "An error occurred during analysis. Please try again."
             
             # Log the error safely
             try:
-                print(f"[Analysis] OpenAI API error: {error_msg}")
+                print(f"[Analysis] OpenAI API error ({error_type}): {error_msg[:200]}")
             except UnicodeEncodeError:
-                print("[Analysis] OpenAI API error occurred (encoding issue)")
+                print(f"[Analysis] OpenAI API error: {error_type}")
             
-            # Return safe error message
+            # Return specific error message based on error type
+            if is_quota_error:
+                detail_msg = "Quota OpenAI dépassé. Veuillez vérifier votre plan et vos détails de facturation, ou réessayer plus tard."
+            elif is_auth_error:
+                detail_msg = "Erreur d'authentification OpenAI. Veuillez vérifier votre clé API."
+            else:
+                detail_msg = f"Erreur lors de l'appel à l'API OpenAI ({error_type}). Veuillez réessayer."
+            
             raise HTTPException(
                 status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-                detail="Erreur lors de l'appel à l'API OpenAI. Veuillez reessayer."
+                detail=detail_msg
             )
         
         # Find the most recent text without analysis or update the most recent one

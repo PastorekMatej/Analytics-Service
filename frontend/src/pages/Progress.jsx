@@ -315,10 +315,8 @@ const Progress = ({ userEmail: propUserEmail, userRole: propUserRole }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8FAFC]">
-       {/* Main Content */}
-       <main className="flex-1 overflow-y-auto">
-        {loading ? (
+    <>
+      {loading ? (
           <div className="flex items-center justify-center h-screen">
             <div className="text-center">
               <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-600"></div>
@@ -572,23 +570,11 @@ const Progress = ({ userEmail: propUserEmail, userRole: propUserRole }) => {
             {/* Timeline / Recent Activity Section */}
             <div className="lg:col-span-1">
               <div className="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm h-full">
-                {/* #region agent log */}
-                {(() => {
-                  fetch('http://127.0.0.1:7242/ingest/e0acad44-2af7-4e4a-a6e3-006719c96978',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'Progress.jsx:574',message:'History section rendering',data:{showAllHistory,dataToUseLength:dataToUse.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'C'})}).catch(()=>{});
-                  return null;
-                })()}
-                {/* #endregion */}
                 <div className="flex items-center justify-between mb-6">
                   <h3 className="text-lg font-bold text-slate-800">Historique Précis</h3>
                   <button 
                     onClick={() => {
-                      // #region agent log
-                      fetch('http://127.0.0.1:7242/ingest/e0acad44-2af7-4e4a-a6e3-006719c96978',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'Progress.jsx:576',message:'Button clicked',data:{showAllHistory,dataToUseLength:dataToUse.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-                      // #endregion
                       setShowAllHistory(!showAllHistory);
-                      // #region agent log
-                      fetch('http://127.0.0.1:7242/ingest/e0acad44-2af7-4e4a-a6e3-006719c96978',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'Progress.jsx:580',message:'State updated',data:{newShowAllHistory:!showAllHistory},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'A'})}).catch(()=>{});
-                      // #endregion
                     }}
                     className="text-indigo-600 text-xs font-bold hover:underline"
                   >
@@ -602,11 +588,8 @@ const Progress = ({ userEmail: propUserEmail, userRole: propUserRole }) => {
                    <div className="space-y-8 relative">
                      {dataToUse.length > 0 ? (
                        (() => {
-                         // #region agent log
                          const reversedData = dataToUse.slice().reverse();
                          const displayData = showAllHistory ? reversedData : reversedData.slice(0, 3);
-                         fetch('http://127.0.0.1:7242/ingest/e0acad44-2af7-4e4a-a6e3-006719c96978',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({location:'Progress.jsx:597',message:'Rendering history items',data:{showAllHistory,totalItems:reversedData.length,displayItems:displayData.length},timestamp:Date.now(),sessionId:'debug-session',runId:'run1',hypothesisId:'B'})}).catch(()=>{});
-                         // #endregion
                          return displayData.map((item, idx) => {
                            const isRegression = item.improvement.toLowerCase().includes('régression');
                            const originalIndex = dataToUse.length - 1 - idx;
@@ -690,9 +673,8 @@ const Progress = ({ userEmail: propUserEmail, userRole: propUserRole }) => {
            </div>
          </div>
          </>
-        )}
-       </main>
-     </div>
+      )}
+    </>
   );
 };
 
