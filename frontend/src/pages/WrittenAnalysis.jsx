@@ -270,36 +270,33 @@ const WrittenAnalysis = ({ userEmail }) => {
   };
 
   return (
-    <div className="flex min-h-screen bg-slate-50 font-sans text-slate-900">
-      {/* Main Content */}
-      <main className="flex-1 overflow-y-auto">
-        <div className="p-8">
-          {/* Page Header */}
-          <div className="mb-8">
-            <h1 className="text-3xl font-bold text-slate-900 mb-2">Written Text Analysis</h1>
-            <p className="text-sm text-slate-500">
-              Submit your written French texts for comprehensive AI analysis and expert feedback
-            </p>
+    <div className="p-8 bg-slate-50 font-sans text-slate-900 min-h-full">
+      {/* Page Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-slate-900 mb-2">Written Text Analysis</h1>
+        <p className="text-sm text-slate-500">
+          Submit your written French texts for comprehensive AI analysis and expert feedback
+        </p>
+      </div>
+
+      {/* New Text Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden mb-8"
+      >
+        <div className="flex items-center gap-4 px-8 py-6 border-b border-slate-100">
+          <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
+            <FileText size={24} />
           </div>
+          <div className="flex-1">
+            <h2 className="text-lg font-bold text-slate-800">New Text</h2>
+            <p className="text-sm text-slate-500">Write your French text for analysis</p>
+          </div>
+        </div>
 
-          {/* New Text Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden mb-8"
-          >
-            <div className="flex items-center gap-4 px-8 py-6 border-b border-slate-100">
-              <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
-                <FileText size={24} />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-bold text-slate-800">New Text</h2>
-                <p className="text-sm text-slate-500">Write your French text for analysis</p>
-              </div>
-            </div>
-
-            <div className="p-8">
+        <div className="p-8">
               {/* Alert Messages */}
               {error && (
                 <div className="mb-6 flex items-center gap-3 px-4 py-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm">
@@ -405,31 +402,31 @@ const WrittenAnalysis = ({ userEmail }) => {
                   )}
                 </button>
               </form>
-            </div>
-          </motion.div>
+        </div>
+      </motion.div>
 
-          {/* Saved Texts Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden"
-          >
-            <div className="flex items-center gap-4 px-8 py-6 border-b border-slate-100">
-              <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
-                <FileText size={24} />
-              </div>
-              <div className="flex-1">
-                <h2 className="text-lg font-bold text-slate-800">My Saved Texts</h2>
-                <p className="text-sm text-slate-500">View and manage your saved texts</p>
-              </div>
-              <div className="text-right">
-                <p className="text-2xl font-bold text-slate-900">{texts.length}</p>
-                <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Texts</p>
-              </div>
-            </div>
+      {/* Saved Texts Card */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className="bg-white rounded-3xl border border-slate-200 shadow-sm overflow-hidden"
+      >
+        <div className="flex items-center gap-4 px-8 py-6 border-b border-slate-100">
+          <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600 shrink-0">
+            <FileText size={24} />
+          </div>
+          <div className="flex-1">
+            <h2 className="text-lg font-bold text-slate-800">My Saved Texts</h2>
+            <p className="text-sm text-slate-500">View and manage your saved texts</p>
+          </div>
+          <div className="text-right">
+            <p className="text-2xl font-bold text-slate-900">{texts.length}</p>
+            <p className="text-xs text-slate-500 font-medium uppercase tracking-wider">Total Texts</p>
+          </div>
+        </div>
 
-            <div className="p-8">
+        <div className="p-8">
               {textsLoading ? (
                 <div className="flex flex-col items-center justify-center py-12">
                   <Loader2 size={32} className="animate-spin text-indigo-600 mb-4" />
@@ -455,10 +452,8 @@ const WrittenAnalysis = ({ userEmail }) => {
                   ))}
                 </div>
               )}
-            </div>
-          </motion.div>
         </div>
-      </main>
+      </motion.div>
     </div>
   );
 };

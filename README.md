@@ -588,6 +588,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### Recent Commits
 
+- `[commit-hash]` **feat:** update landing page UI with ProfElite branding and improved navigation - Updated landing page branding from Maister to ProfElite, added "For Students" section, created "How It Works" section, removed Pricing and About menus, cleaned up feature descriptions (removed Real-Time, Pronunciation, Curriculum planning references), and updated all Featured Product section buttons to link to registration page
 - `781ea31` **fix:** extract all individual evaluation points from analysis results for progress chart - Fixed progress chart to display all 18 individual evaluation points from the "évaluations numériques par texte" section instead of showing only one point per analysis. Added extractIndividualEvaluations function to parse individual evaluations with dates, scores, levels, and improvement descriptions.
 - `6f7bc1c` **feat:** harmonize analysis dashboard design with color themes and symmetry - Introduced color themes (green, blue, pink, orange, purple, teal, indigo) for each analysis section, improving visual hierarchy and symmetry
 - `7c2060e` **fix:** relax regex for detecting error blocks to handle bullet points - Fixed issue where error cards were not rendering correctly because the parser didn't account for bullet points or indentation in the raw text
@@ -602,6 +603,7 @@ docs/prompt_evals/reasoning-sweep/prompt_v1/
 
 ### January 2025 Updates
 
+- ✅ **Landing Page Updates**: Updated landing page with ProfElite branding throughout, added comprehensive "For Students" section with feature highlights, created "How It Works" section explaining the three-step process, streamlined navigation menu (removed Pricing and About), and improved call-to-action buttons linking to registration
 - ✅ **Saved Texts List**: Added a new "My Saved Texts" section in the My Writings page that displays all saved texts below the submission form. Users can view text previews (truncated to 100 characters), creation dates, analysis status badges (Analyzed/Pending), and delete texts with confirmation. The list automatically refreshes after saving or deleting texts.
 - ✅ **File Upload Feature**: Added document upload (PDF, DOCX, TXT) with automatic transcription to plain text. Files are transcribed without correction and the text is automatically populated in the analysis form. Supports files up to 25MB.
 - ✅ **Interface Redesign**: Complete overhaul of the "My Teacher" section in the Profile page with a modern, card-based layout.

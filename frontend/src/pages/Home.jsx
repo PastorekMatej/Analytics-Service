@@ -12,14 +12,11 @@ const NAV_LINKS = [{
   label: 'How It Works',
   href: '#how-it-works'
 }, {
+  label: 'For Students',
+  href: '#students'
+}, {
   label: 'For Teachers',
   href: '#teachers'
-}, {
-  label: 'Pricing',
-  href: '#pricing'
-}, {
-  label: 'About',
-  href: '#about'
 }];
 
 const FOOTER_LINKS = {
@@ -62,12 +59,10 @@ const Home = () => {
       <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-5'}`}>
         <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
           <div className="flex items-center gap-12">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
-                <BookOpen className="text-white w-6 h-6" />
-              </div>
+            <Link to="/" className="flex items-center gap-3">
+              <img src="/logo.svg" alt="ProfElite" className="w-10 h-10 rounded-lg" />
               <span className="font-bold text-xl text-slate-800 tracking-tight">ProfElite</span>
-            </div>
+            </Link>
             <div className="hidden lg:flex items-center gap-8">
               {NAV_LINKS.map(link => <NavItem key={link.label} link={link} />)}
             </div>
@@ -304,6 +299,49 @@ const Home = () => {
           </div>
         </section>
 
+        {/* How It Works Section */}
+        <section id="how-it-works" className="py-24 px-6 bg-white">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                How It Works
+              </h3>
+              <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                Get started with ProfElite in three simple steps
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-12">
+              <div className="text-center">
+                <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-indigo-600">1</span>
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-3">Submit Your Text</h4>
+                <p className="text-slate-600 leading-relaxed">
+                  Write or upload your French text. You can save it for later or analyze it immediately.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-indigo-600">2</span>
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-3">AI Analysis</h4>
+                <p className="text-slate-600 leading-relaxed">
+                  Our AI analyzes your text for grammar, vocabulary, and style errors, providing comprehensive feedback.
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="w-16 h-16 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <span className="text-2xl font-bold text-indigo-600">3</span>
+                </div>
+                <h4 className="text-xl font-bold text-slate-900 mb-3">Track Progress</h4>
+                <p className="text-slate-600 leading-relaxed">
+                  View detailed reports, track your improvement over time, and get personalized recommendations.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Featured Product Section */}
         <section className="py-24 px-6">
           <div className="max-w-7xl mx-auto">
@@ -321,21 +359,21 @@ const Home = () => {
                   AI-Powered Analysis
                 </h3>
                 <p className="text-xl text-slate-600 leading-relaxed mb-10 max-w-md">
-                  Real-time linguistic analysis that adapts to your learning style, identifies patterns, and provides personalized feedback.
+                  Advanced linguistic analysis that adapts to your learning style, identifies patterns, and provides personalized feedback.
                 </p>
-                <button className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center gap-2">
+                <Link to="/signup" className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition-colors flex items-center gap-2 inline-block">
                   Learn More
                   <ArrowRight size={18} />
-                </button>
+                </Link>
               </div>
 
               <div className="flex-1 flex flex-col justify-center gap-6">
                 <div className="text-sm font-bold text-slate-500 tracking-wider uppercase mb-2">Key Features</div>
-                {["Personalized Learning Paths", "Real-Time Pronunciation Feedback", "Grammar & Vocabulary Mastery"].map((item, i) => (
-                  <div key={i} className="group cursor-pointer flex items-center justify-between py-6 border-t border-slate-100 hover:text-indigo-600 transition-colors">
+                {["Personalized Learning Paths", "Grammar & Vocabulary Mastery", "Progress Tracking"].map((item, i) => (
+                  <Link key={i} to="/signup" className="group cursor-pointer flex items-center justify-between py-6 border-t border-slate-100 hover:text-indigo-600 transition-colors">
                     <span className="text-xl font-medium">{item}</span>
                     <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                  </div>
+                  </Link>
                 ))}
               </div>
             </motion.div>
@@ -379,6 +417,62 @@ const Home = () => {
           </div>
         </section>
 
+        {/* For Students Section */}
+        <section id="students" className="py-24 px-6 bg-white">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-100 text-indigo-700 rounded-full font-semibold text-sm mb-6">
+                <BookOpen className="w-4 h-4" />
+                For Learners
+              </div>
+              <h3 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                Master French with AI-Powered Learning
+              </h3>
+              <p className="text-xl text-slate-600 leading-relaxed mb-8">
+                ProfElite helps students improve their French writing skills through comprehensive AI analysis, personalized feedback, and detailed progress tracking.
+              </p>
+              <ul className="space-y-4 mb-10">
+                {["Comprehensive text analysis with error categorization", "Save texts for later analysis", "Track improvement over time with visual dashboards", "Upload PDF/Word/TXT files for automatic transcription"].map((feature, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <Sparkles className="text-indigo-600 w-5 h-5 mt-1 flex-shrink-0" />
+                    <span className="text-lg text-slate-700">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link to="/signup" className="px-8 py-4 bg-indigo-600 text-white rounded-lg text-lg font-semibold hover:bg-indigo-700 transition-colors shadow-lg shadow-indigo-200 inline-block">
+                Start Learning Free
+              </Link>
+            </div>
+            <div className="bg-gradient-to-br from-indigo-50 to-slate-50 rounded-3xl p-12 border border-slate-200">
+              <div className="bg-white rounded-2xl p-8 shadow-xl">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
+                    <Target className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <div className="font-bold text-slate-800">Your Progress</div>
+                    <div className="text-sm text-indigo-600">Student Dashboard</div>
+                  </div>
+                </div>
+                <div className="space-y-4">
+                  <div className="flex justify-between items-center py-3 border-b border-slate-100">
+                    <span className="text-slate-700">Texts Analyzed</span>
+                    <span className="font-bold text-indigo-600">12</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3 border-b border-slate-100">
+                    <span className="text-slate-700">Improvement Rate</span>
+                    <span className="font-bold text-indigo-600">+28%</span>
+                  </div>
+                  <div className="flex justify-between items-center py-3">
+                    <span className="text-slate-700">Grammar Score</span>
+                    <span className="font-bold text-indigo-600">85/100</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* For Teachers Section */}
         <section id="teachers" className="py-24 px-6">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -394,7 +488,7 @@ const Home = () => {
                 ProfElite helps teachers track student progress, identify learning gaps, and provide personalized feedback at scale.
               </p>
               <ul className="space-y-4 mb-10">
-                {["Real-time student progress analytics", "Automated assignment grading", "Personalized feedback generation", "Curriculum planning tools"].map((feature, i) => (
+                {["Student progress analytics", "Automated assignment grading", "Personalized feedback generation"].map((feature, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <Sparkles className="text-indigo-600 w-5 h-5 mt-1 flex-shrink-0" />
                     <span className="text-lg text-slate-700">{feature}</span>
@@ -449,7 +543,7 @@ const Home = () => {
                 Start Free Trial
               </Link>
               <Link to="/login" className="px-10 py-4 bg-white border-2 border-slate-200 text-slate-700 rounded-lg text-lg font-semibold hover:bg-slate-50 transition-all active:scale-95">
-                View Pricing
+                Sign In
               </Link>
             </div>
           </div>
@@ -461,12 +555,10 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-20">
             <div className="col-span-2 lg:col-span-1">
-              <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center">
-                  <BookOpen className="text-white w-6 h-6" />
-                </div>
+              <Link to="/" className="flex items-center gap-3 mb-2">
+                <img src="/logo.svg" alt="ProfElite" className="w-10 h-10 rounded-lg" />
                 <span className="font-bold text-xl text-white tracking-tight">ProfElite</span>
-              </div>
+              </Link>
               <p className="text-slate-400 text-sm mb-6">Learn French with AI</p>
               <div className="flex gap-4">
                 <Twitter className="w-5 h-5 text-slate-400 hover:text-white cursor-pointer transition-colors" />
@@ -499,7 +591,7 @@ const Home = () => {
             <div className="flex gap-8">
               <a href="#" className="hover:text-white">Privacy Policy</a>
               <a href="#" className="hover:text-white">Terms of Service</a>
-              <span>© 2024 ProfElite</span>
+              <span>© 2025 ProfElite</span>
             </div>
           </div>
         </div>
