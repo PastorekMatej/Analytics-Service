@@ -10,7 +10,7 @@ class Analyser:
     """
     Analyzes student writing samples for errors and learning progression.
     
-    This class loads student conversation data, sends it to OpenAI's GPT-4 for analysis,
+    This class loads student conversation data, sends it to OpenAI's GPT-5 for analysis,
     and stores the results in structured JSON files for tracking student progress.
     """
     def __init__ (self, student_id:str):
@@ -41,23 +41,83 @@ class Analyser:
     def error_analyse(self,text):
         """ Here we analyse grammar and style errors
         Args:
-            text(dict): text 
+            text(str): text to analyze
         Return:
-            analyse_resultat(dict): Analyse des erreurs faites par LLM
+            analyse_resultat(str): Analyse des erreurs faites par LLM
         """
         # Load system prompt from external file
-        with open("backend/system_prompt/prompt_v5.md", "r", encoding="utf-8") as f:
-            system_prompt_template = f.read()
+        try:
+            with open("backend/system_prompt/prompt_v7.md", "r", encoding="utf-8") as f:
+                system_prompt_template = f.read()
+        except FileNotFoundError:
+            raise FileNotFoundError("System prompt file not found: backend/system_prompt/prompt_v7.md")
+        except Exception as e:
+            raise Exception(f"Error loading system prompt: {str(e)}")
         
         # Format the prompt with the text parameter
-        system_prompt = system_prompt_template.format(text=text)
+        try:
+            system_prompt = system_prompt_template.replace("{text}", text)
+        except Exception as e:
+            raise Exception(f"Error formatting prompt: {str(e)}")
 
         print("Launching error analyse")
-        messages= [{"role":"system","content":system_prompt}]
-        response = self.client.chat.completions.create(model=self.model, messages=messages)
-        analyse_resultat=response.choices[0].message.content
-        print("Resultat de l'analyse:",analyse_resultat)
-        return analyse_resultat
+        messages = [{"role":"system","content":system_prompt}]
+        
+        try:
+            response = self.client.chat.completions.create(model=self.model, messages=messages)
+        except Exception as e:
+            # If context length exceeded, try with a model that supports larger context
+            if "context_length" in str(e).lower() or "8192" in str(e):
+                # Try alternative GPT-5 models with larger context windows
+                alternative_models = ["gpt-5-chat-latest", "gpt-5.2-chat-latest", "gpt-5.2-pro", "gpt-5-pro"]
+                for alt_model in alternative_models:
+                    if alt_model != self.model:
+                        try:
+                            response = self.client.chat.completions.create(model=alt_model, messages=messages)
+                            # Success with alternative model
+                            break
+                        except Exception as alt_e:
+                            # Continue to next alternative
+                            continue
+                else:
+                    # All alternatives failed, re-raise original error
+                    print(f"Error calling OpenAI API: {type(e).__name__}: {str(e)}")
+                    raise
+            else:
+                # Not a context length error, re-raise
+                print(f"Error calling OpenAI API: {type(e).__name__}: {str(e)}")
+                raise
+        
+        # Safely extract the response content
+        try:
+            if not response or not hasattr(response, 'choices'):
+                raise ValueError("Invalid response structure: missing 'choices'")
+            
+            if not response.choices or len(response.choices) == 0:
+                raise ValueError("Invalid response structure: empty 'choices' array")
+            
+            choice = response.choices[0]
+            if not hasattr(choice, 'message') or not choice.message:
+                raise ValueError("Invalid response structure: missing 'message' in choice")
+            
+            if not hasattr(choice.message, 'content') or choice.message.content is None:
+                raise ValueError("Invalid response structure: missing 'content' in message")
+            
+            analyse_resultat = choice.message.content
+            print(f"Resultat de l'analyse: {len(analyse_resultat) if analyse_resultat else 0} characters")
+            return analyse_resultat
+        except (KeyError, AttributeError, IndexError) as e:
+            error_msg = f"Error parsing OpenAI response: {type(e).__name__}: {str(e)}"
+            print(error_msg)
+            # Try to get more info about the response structure
+            try:
+                print(f"Response type: {type(response)}")
+                print(f"Response attributes: {dir(response)}")
+                if hasattr(response, 'choices'):
+                    print(f"Choices length: {len(response.choices) if response.choices else 0}")
+            except:
+                pass
+            raise ValueError(error_msg)
                    
     def store_data(self, analyse_resultat):
         """ Sauvegarder les résultats de l'analyse dans un fichier

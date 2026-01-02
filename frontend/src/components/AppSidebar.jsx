@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BookOpen, User, FileText, Mic, BarChart3, LayoutDashboard, GraduationCap, LogOut, CheckCircle } from 'lucide-react';
+import { BookOpen, User, FileText, Mic, BarChart3, LayoutDashboard, GraduationCap, LogOut, CheckCircle, Activity } from 'lucide-react';
 import authService from '../services/authService';
 
 const AppSidebar = ({ userEmail, userRole, onLogout }) => {
@@ -11,6 +11,7 @@ const AppSidebar = ({ userEmail, userRole, onLogout }) => {
     { id: 'written-analysis', label: 'My Writing', icon: FileText, path: '/written-analysis' },
     { id: 'oral-analysis', label: 'My Voice', icon: Mic, path: '/oral-analysis' },
     { id: 'progress', label: 'My Progress', icon: BarChart3, path: '/progress' },
+    { id: 'analytics', label: 'Analytics', icon: Activity, path: '/analytics' },
     { id: 'corrections', label: 'Corrections', icon: CheckCircle, path: '/corrections' },
     { id: 'profile', label: 'My Profile', icon: User, path: '/profile' }
   ];
@@ -18,6 +19,7 @@ const AppSidebar = ({ userEmail, userRole, onLogout }) => {
   const teacherAdminNavItems = [
     { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, path: '/dashboard' },
     { id: 'progress', label: 'Student Progress', icon: GraduationCap, path: '/progress' },
+    { id: 'analytics', label: 'Analytics', icon: Activity, path: '/analytics' },
     { id: 'corrections', label: 'Corrections', icon: CheckCircle, path: '/corrections' },
     { id: 'profile', label: 'My Profile', icon: User, path: '/profile' }
   ];

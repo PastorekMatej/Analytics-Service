@@ -155,6 +155,7 @@ const Progress = ({ userEmail: propUserEmail, userRole: propUserRole }) => {
   const [analysisError, setAnalysisError] = useState(null);
   const [analysisSuccess, setAnalysisSuccess] = useState(false);
   const [showAllHistory, setShowAllHistory] = useState(false);
+  const [lastReportDate, setLastReportDate] = useState(null);
   
   // Handle "Ajouter une évaluation" button click - Launch analysis
   const handleAddEvaluation = async () => {
@@ -279,6 +280,54 @@ const Progress = ({ userEmail: propUserEmail, userRole: propUserRole }) => {
       } else {
         setError(response.message || 'Error loading progress');
       }
+      
+      // Load analyses to get the last report generation date
+      try {
+        const analysesResponse = await analysisService.getStudentAnalyses(studentEmail, 100, 0);
+        if (analysesResponse.success && analysesResponse.analyses) {
+          const analyses = analysesResponse.analyses.sort((a, b) => {
+            const dateA = new Date(a.created_at || 0);
+            const dateB = new Date(b.created_at || 0);
+            return dateB - dateA; // Most recent first
+          });
+          
+          // Find the most recent report with analysis_result (generated report)
+          // Filter analyses that have a generated report (analysis_result exists and is not empty)
+          const generatedReports = analyses.filter(a => {
+            if (!a.analysis_result) return false;
+            if (typeof a.analysis_result === 'string') {
+              return a.analysis_result.trim().length > 0;
+            }
+            return true; // Object or other non-empty value
+          });
+          
+          // Sort generated reports by report_generated_at (if available) or created_at, most recent first
+          generatedReports.sort((a, b) => {
+            const dateA = a.report_generated_at || a.created_at || '';
+            const dateB = b.report_generated_at || b.created_at || '';
+            return dateB.localeCompare(dateA); // Most recent first (ISO strings compare correctly)
+          });
+          
+          // Get the most recent one (first in sorted array)
+          if (generatedReports.length > 0) {
+            // Prefer report_generated_at, fallback to created_at
+            const reportDate = generatedReports[0].report_generated_at || generatedReports[0].created_at;
+            if (reportDate) {
+              console.log('[Progress] Last report date (raw):', reportDate);
+              console.log('[Progress] Last report date (parsed):', new Date(reportDate));
+              console.log('[Progress] Using report_generated_at:', !!generatedReports[0].report_generated_at);
+              setLastReportDate(reportDate);
+            } else {
+              setLastReportDate(null);
+            }
+          } else {
+            setLastReportDate(null);
+          }
+        }
+      } catch (err) {
+        console.error('Error loading analyses for report date:', err);
+        setLastReportDate(null);
+      }
     } catch (err) {
       console.error('Error loading progress:', err);
       setError('Error loading progress - using demo data');
@@ -353,7 +402,32 @@ const Progress = ({ userEmail: propUserEmail, userRole: propUserRole }) => {
           <div className="flex items-center gap-4">
             <div className="text-right hidden sm:block">
               <p className="text-xs text-slate-500 font-medium">Dernière mise à jour</p>
-              <p className="text-sm font-semibold text-slate-800">20 Octobre 2024</p>
+              <p className="text-sm font-semibold text-slate-800">
+                {lastReportDate
+                  ? (() => {
+                      try {
+                        // Parse the date and ensure we use local timezone
+                        const date = new Date(lastReportDate);
+                        // Check if date is valid
+                        if (isNaN(date.getTime())) {
+                          console.error('[Progress] Invalid date:', lastReportDate);
+                          return 'Date invalide';
+                        }
+                        // Format using local date (not UTC)
+                        return date.toLocaleDateString('fr-FR', { 
+                          day: 'numeric', 
+                          month: 'long', 
+                          year: 'numeric',
+                          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                        });
+                      } catch (err) {
+                        console.error('[Progress] Error formatting date:', err, lastReportDate);
+                        return 'Date invalide';
+                      }
+                    })()
+                  : 'Aucun rapport généré'
+                }
+              </p>
             </div>
             <div className="flex flex-col items-end gap-2">
               <button 

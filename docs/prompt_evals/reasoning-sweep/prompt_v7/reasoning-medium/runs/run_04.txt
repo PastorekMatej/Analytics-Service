@@ -1,0 +1,782 @@
+{
+  "evolution_globale": {
+    "evolution_de_niveau": "A2 → B1",
+    "evaluations_numeriques": [
+      {
+        "date": "2024-01-12",
+        "score": 22,
+        "niveau": "A2",
+        "type_evolution": "Point de départ",
+        "description": "Expression simple; nombreuses erreurs d’articles, prépositions et ordre des mots.",
+        "score_richesse_lexicale": 24,
+        "score_precision_lexicale": 20,
+        "score_grammaire": 18,
+        "score_syntaxe": 19,
+        "score_organisation_texte": 22
+      },
+      {
+        "date": "2024-02-05",
+        "score": 24,
+        "niveau": "A2",
+        "type_evolution": "Amélioration mineure",
+        "description": "Narration plus développée; négation et relatifs encore instables.",
+        "score_richesse_lexicale": 26,
+        "score_precision_lexicale": 22,
+        "score_grammaire": 19,
+        "score_syntaxe": 20,
+        "score_organisation_texte": 23
+      },
+      {
+        "date": "2024-03-19",
+        "score": 26,
+        "niveau": "A2+",
+        "type_evolution": "Amélioration majeure",
+        "description": "Récit détaillé au passé; nombreux participes passés fautifs et auxiliaires.",
+        "score_richesse_lexicale": 28,
+        "score_precision_lexicale": 24,
+        "score_grammaire": 20,
+        "score_syntaxe": 22,
+        "score_organisation_texte": 26
+      },
+      {
+        "date": "2024-04-27",
+        "score": 27,
+        "niveau": "A2+",
+        "type_evolution": "Stabilité",
+        "description": "Texte informatif clair; erreurs de prépositions et de relatifs (dont/que).",
+        "score_richesse_lexicale": 28,
+        "score_precision_lexicale": 25,
+        "score_grammaire": 21,
+        "score_syntaxe": 22,
+        "score_organisation_texte": 27
+      },
+      {
+        "date": "2024-05-08",
+        "score": 28,
+        "niveau": "A2+",
+        "type_evolution": "Amélioration mineure",
+        "description": "Organisation chronologique; quelques confusions de temps composés.",
+        "score_richesse_lexicale": 29,
+        "score_precision_lexicale": 26,
+        "score_grammaire": 22,
+        "score_syntaxe": 23,
+        "score_organisation_texte": 28
+      },
+      {
+        "date": "2024-06-20",
+        "score": 30,
+        "niveau": "A2+",
+        "type_evolution": "Amélioration mineure",
+        "description": "Argumentation simple; accords adjectivaux encore instables.",
+        "score_richesse_lexicale": 31,
+        "score_precision_lexicale": 28,
+        "score_grammaire": 24,
+        "score_syntaxe": 25,
+        "score_organisation_texte": 30
+      },
+      {
+        "date": "2024-07-20",
+        "score": 31,
+        "niveau": "A2+",
+        "type_evolution": "Stabilité",
+        "description": "Consignes compréhensibles; constructions à l’infinitif encore fautives.",
+        "score_richesse_lexicale": 31,
+        "score_precision_lexicale": 29,
+        "score_grammaire": 24,
+        "score_syntaxe": 26,
+        "score_organisation_texte": 32
+      },
+      {
+        "date": "2024-08-20",
+        "score": 32,
+        "niveau": "A2+",
+        "type_evolution": "Amélioration mineure",
+        "description": "Conseils concrets; prépositions et conjugaisons à consolider.",
+        "score_richesse_lexicale": 33,
+        "score_precision_lexicale": 30,
+        "score_grammaire": 25,
+        "score_syntaxe": 26,
+        "score_organisation_texte": 32
+      },
+      {
+        "date": "2024-09-20",
+        "score": 33,
+        "niveau": "A2+",
+        "type_evolution": "Stabilité",
+        "description": "Argumentation cohérente; collocations parfois non naturelles.",
+        "score_richesse_lexicale": 34,
+        "score_precision_lexicale": 31,
+        "score_grammaire": 26,
+        "score_syntaxe": 27,
+        "score_organisation_texte": 33
+      },
+      {
+        "date": "2024-10-20",
+        "score": 35,
+        "niveau": "B1",
+        "type_evolution": "Amélioration majeure",
+        "description": "Prise de position structurée; hypothèse conditionnelle correcte.",
+        "score_richesse_lexicale": 36,
+        "score_precision_lexicale": 34,
+        "score_grammaire": 29,
+        "score_syntaxe": 30,
+        "score_organisation_texte": 36
+      },
+      {
+        "date": "2024-11-20",
+        "score": 36,
+        "niveau": "B1",
+        "type_evolution": "Amélioration mineure",
+        "description": "Contre-proposition pertinente; lexique à affiner.",
+        "score_richesse_lexicale": 36,
+        "score_precision_lexicale": 35,
+        "score_grammaire": 30,
+        "score_syntaxe": 31,
+        "score_organisation_texte": 36
+      },
+      {
+        "date": "2024-11-20",
+        "score": 37,
+        "niveau": "B1",
+        "type_evolution": "Amélioration mineure",
+        "description": "Questions pertinentes; accords et conditionnel à stabiliser.",
+        "score_richesse_lexicale": 37,
+        "score_precision_lexicale": 35,
+        "score_grammaire": 31,
+        "score_syntaxe": 32,
+        "score_organisation_texte": 38
+      },
+      {
+        "date": "2024-12-20",
+        "score": 39,
+        "niveau": "B1",
+        "type_evolution": "Amélioration mineure",
+        "description": "Lettre citoyenne claire; référents parfois flous.",
+        "score_richesse_lexicale": 39,
+        "score_precision_lexicale": 37,
+        "score_grammaire": 33,
+        "score_syntaxe": 34,
+        "score_organisation_texte": 40
+      },
+      {
+        "date": "2024-12-20",
+        "score": 40,
+        "niveau": "B1",
+        "type_evolution": "Amélioration mineure",
+        "description": "Récit d’échange riche; négation/pronoms encore instables.",
+        "score_richesse_lexicale": 40,
+        "score_precision_lexicale": 38,
+        "score_grammaire": 34,
+        "score_syntaxe": 35,
+        "score_organisation_texte": 41
+      },
+      {
+        "date": "2025-01-20",
+        "score": 41,
+        "niveau": "B1",
+        "type_evolution": "Stabilité",
+        "description": "Réflexion structurée; articles et genres à consolider.",
+        "score_richesse_lexicale": 41,
+        "score_precision_lexicale": 39,
+        "score_grammaire": 34,
+        "score_syntaxe": 36,
+        "score_organisation_texte": 41
+      },
+      {
+        "date": "2025-02-20",
+        "score": 40,
+        "niveau": "B1",
+        "type_evolution": "Régression mineure",
+        "description": "Hésitations (PC/imparfait) et collocations à corriger.",
+        "score_richesse_lexicale": 41,
+        "score_precision_lexicale": 38,
+        "score_grammaire": 33,
+        "score_syntaxe": 35,
+        "score_organisation_texte": 40
+      },
+      {
+        "date": "2025-04-12",
+        "score": 39,
+        "niveau": "B1",
+        "type_evolution": "Régression mineure",
+        "description": "Lettre professionnelle longue; prépositions et ordre des mots pénalisants.",
+        "score_richesse_lexicale": 40,
+        "score_precision_lexicale": 37,
+        "score_grammaire": 32,
+        "score_syntaxe": 34,
+        "score_organisation_texte": 39
+      },
+      {
+        "date": "2025-04-12",
+        "score": 42,
+        "niveau": "B1",
+        "type_evolution": "Amélioration majeure",
+        "description": "Demande argumentée; meilleure cohérence malgré collocations maladroites.",
+        "score_richesse_lexicale": 42,
+        "score_precision_lexicale": 40,
+        "score_grammaire": 35,
+        "score_syntaxe": 36,
+        "score_organisation_texte": 42
+      }
+    ],
+    "progression_globale": 20,
+    "resume": "Passage de A2 à B1: idées plus structurées, argumentation plus claire et meilleure gestion des temps de base. Persistance d’erreurs de prépositions/infinitifs (G06), d’articles (G07), d’accords (G05) et d’ordre des mots (G08). Forte diminution des erreurs de participes passés (G01) et des auxiliaires (G09)."
+  },
+  "tendances_evolution": [
+    {
+      "code": "G01",
+      "description": "accord du participe passé avec avoir",
+      "occurrences": 6,
+      "periode_debut": "2024-03-19",
+      "periode_fin": "2024-03-19",
+      "evolution": "disparaît dès 2024-05-08"
+    },
+    {
+      "code": "G03",
+      "description": "erreur de négation",
+      "occurrences": 2,
+      "periode_debut": "2024-02-05",
+      "periode_fin": "2024-12-20",
+      "evolution": "0 occurrence à partir du 2025-01-20"
+    },
+    {
+      "code": "G09",
+      "description": "auxiliaire/temps composés",
+      "occurrences": 2,
+      "periode_debut": "2024-03-19",
+      "periode_fin": "2024-05-08",
+      "evolution": "non observé ensuite"
+    },
+    {
+      "code": "S02",
+      "description": "phrases longues/ponctuation",
+      "occurrences": 6,
+      "periode_debut": "2024-02-05",
+      "periode_fin": "2025-04-12",
+      "evolution": "segmentation un peu meilleure après 2024-10-20, mais rechute le 2025-04-12"
+    },
+    {
+      "code": "G06",
+      "description": "prépositions et constructions à l’infinitif",
+      "occurrences": 12,
+      "periode_debut": "2024-01-12",
+      "periode_fin": "2025-04-12",
+      "evolution": "persiste jusqu’aux derniers textes"
+    },
+    {
+      "code": "G07",
+      "description": "articles/déterminants (genre, nombre, de/des)",
+      "occurrences": 12,
+      "periode_debut": "2024-01-12",
+      "periode_fin": "2025-04-12",
+      "evolution": "lente baisse qualitative mais toujours présent en 2025-04-12"
+    },
+    {
+      "code": "G08",
+      "description": "ordre des mots (pronoms/adverbes/relatifs)",
+      "occurrences": 10,
+      "periode_debut": "2024-02-05",
+      "periode_fin": "2025-04-12",
+      "evolution": "fréquence réduite mais erreurs saillantes encore en 2025-04-12"
+    },
+    {
+      "code": "V01",
+      "description": "faux amis/calques",
+      "occurrences": 7,
+      "periode_debut": "2024-01-12",
+      "periode_fin": "2025-04-12",
+      "evolution": "réapparaît dans les derniers textes (bénévole, slang)"
+    },
+    {
+      "code": "V04",
+      "description": "collocations non naturelles",
+      "occurrences": 10,
+      "periode_debut": "2024-02-05",
+      "periode_fin": "2025-04-12",
+      "evolution": "amélioration partielle; persiste sur le lexique professionnel"
+    }
+  ],
+  "erreurs_recurrentes": {
+    "grammaire": [
+      {
+        "type": "G01",
+        "pattern": "Accord du participe passé avec avoir",
+        "occurrences": 6,
+        "exemples": [
+          {
+            "erreur": "j´ai passée la nuit",
+            "correction": "j’ai passé la nuit",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "j´ai vue le Musée national",
+            "correction": "j’ai vu le Musée national",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "j´ai visitée Le château de Prague",
+            "correction": "j’ai visité le château de Prague",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "j´ai vue beaucoup d´autres choses",
+            "correction": "j’ai vu beaucoup d’autres choses",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "j´ai voyagée en Pologne",
+            "correction": "j’ai voyagé en Pologne",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "J´ai visitée le Château de Bojnice",
+            "correction": "J’ai visité le château de Bojnice",
+            "date": "2024-03-19"
+          }
+        ]
+      },
+      {
+        "type": "G03",
+        "pattern": "Erreur de négation (placement de ne/pas et des pronoms)",
+        "occurrences": 2,
+        "exemples": [
+          {
+            "erreur": "des gens qui je n'ai connu pas",
+            "correction": "des gens que je ne connaissais pas",
+            "date": "2024-02-05"
+          },
+          {
+            "erreur": "vous n'avez me pas croire",
+            "correction": "vous n’allez pas me croire",
+            "date": "2024-12-20"
+          }
+        ]
+      },
+      {
+        "type": "G04",
+        "pattern": "Confusion passé composé / imparfait",
+        "occurrences": 2,
+        "exemples": [
+          {
+            "erreur": "qui je n'ai connu pas",
+            "correction": "que je ne connaissais pas",
+            "date": "2024-02-05"
+          },
+          {
+            "erreur": "J'ai parlé avec des gens de tout!",
+            "correction": "Je parlais avec des gens de tout",
+            "date": "2025-02-20"
+          }
+        ]
+      },
+      {
+        "type": "G05",
+        "pattern": "Accords/conjugaisons de base (genre, nombre, sujet-verbe)",
+        "occurrences": 15,
+        "exemples": [
+          {
+            "erreur": "c'est le première fois",
+            "correction": "c’est la première fois",
+            "date": "2024-02-05"
+          },
+          {
+            "erreur": "j'adore ce gens",
+            "correction": "j’adore ces gens",
+            "date": "2024-02-05"
+          },
+          {
+            "erreur": "j'étais plus heureux",
+            "correction": "j’étais plus heureuse",
+            "date": "2024-05-08"
+          },
+          {
+            "erreur": "mon école est très réussi",
+            "correction": "mon école est très réussie",
+            "date": "2024-06-20"
+          },
+          {
+            "erreur": "Je suis satisfée",
+            "correction": "Je suis satisfaite",
+            "date": "2024-06-20"
+          },
+          {
+            "erreur": "des douleurs oculaires qui provoque",
+            "correction": "des douleurs oculaires qui provoquent",
+            "date": "2025-04-12"
+          }
+        ]
+      },
+      {
+        "type": "G06",
+        "pattern": "Utilisation incorrecte des prépositions / construction à l’infinitif",
+        "occurrences": 12,
+        "exemples": [
+          {
+            "erreur": "j’ai commencé apprendre cette langue",
+            "correction": "j’ai commencé à apprendre cette langue",
+            "date": "2024-01-12"
+          },
+          {
+            "erreur": "recommencent être ouvertes",
+            "correction": "recommencent à être ouvertes",
+            "date": "2024-07-20"
+          },
+          {
+            "erreur": "je peux t'aider avec chercher ton premier emploi",
+            "correction": "je peux t’aider à chercher ton premier emploi",
+            "date": "2024-08-20"
+          },
+          {
+            "erreur": "c’est de moi venir travailler les samedis",
+            "correction": "vous me demandez de venir travailler les samedis / que je vienne travailler",
+            "date": "2025-04-12"
+          },
+          {
+            "erreur": "rencontrer avec la vie",
+            "correction": "découvrir la vie quotidienne / rencontrer la réalité quotidienne",
+            "date": "2025-02-20"
+          }
+        ]
+      },
+      {
+        "type": "G07",
+        "pattern": "Mauvais emploi des articles/déterminants (genre, nombre, de/des)",
+        "occurrences": 12,
+        "exemples": [
+          {
+            "erreur": "la langue français",
+            "correction": "la langue française / le français",
+            "date": "2024-01-12"
+          },
+          {
+            "erreur": "l'association des vos élèves",
+            "correction": "l’association de vos élèves",
+            "date": "2024-04-27"
+          },
+          {
+            "erreur": "la départ de Baptiste",
+            "correction": "le départ de Baptiste",
+            "date": "2024-11-20"
+          },
+          {
+            "erreur": "le langue… une apprentissage",
+            "correction": "la langue… un apprentissage",
+            "date": "2025-01-20"
+          },
+          {
+            "erreur": "le santé",
+            "correction": "la santé",
+            "date": "2025-04-12"
+          }
+        ]
+      },
+      {
+        "type": "G08",
+        "pattern": "Ordre incorrect des mots (pronoms/adverbes/relatifs)",
+        "occurrences": 10,
+        "exemples": [
+          {
+            "erreur": "des gens qui je n'ai connu pas",
+            "correction": "des gens que je ne connaissais pas",
+            "date": "2024-02-05"
+          },
+          {
+            "erreur": "Tu me vraiment manques",
+            "correction": "Tu me manques vraiment",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "Celui que je parle",
+            "correction": "Celui dont je parle",
+            "date": "2024-04-27"
+          },
+          {
+            "erreur": "vous vous pouvez garer",
+            "correction": "vous pouvez vous garer",
+            "date": "2024-04-27"
+          },
+          {
+            "erreur": "c’est pour ça j’étais triste",
+            "correction": "c’est pour ça que j’étais triste",
+            "date": "2024-05-08"
+          },
+          {
+            "erreur": "je voudrais pratiquer les en faisant un stage",
+            "correction": "je voudrais les pratiquer en faisant un stage",
+            "date": "2025-04-12"
+          }
+        ]
+      },
+      {
+        "type": "G09",
+        "pattern": "Confusion des temps composés (auxiliaires/temps)",
+        "occurrences": 2,
+        "exemples": [
+          {
+            "erreur": "J’ai arrivée en nuit",
+            "correction": "Je suis arrivée la nuit",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "pendant que je travaillais, j’eu un cappuccino",
+            "correction": "pendant que je travaillais, j’ai eu un cappuccino",
+            "date": "2024-05-08"
+          }
+        ]
+      }
+    ],
+    "vocabulaire": [
+      {
+        "type": "V01",
+        "pattern": "Faux amis / calques",
+        "occurrences": 7,
+        "exemples": [
+          {
+            "erreur": "fluente",
+            "correction": "courante",
+            "date": "2024-01-12"
+          },
+          {
+            "erreur": "en Slovaque",
+            "correction": "en Slovaquie",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "sacs de siège",
+            "correction": "poufs / sacs de billes",
+            "date": "2024-06-20"
+          },
+          {
+            "erreur": "détroits historiques",
+            "correction": "sites/lieux historiques",
+            "date": "2024-12-20"
+          },
+          {
+            "erreur": "bénévole (pour avantage)",
+            "correction": "bénéfique",
+            "date": "2025-04-12"
+          }
+        ]
+      },
+      {
+        "type": "V04",
+        "pattern": "Collocation non naturelle",
+        "occurrences": 10,
+        "exemples": [
+          {
+            "erreur": "une avanture d’adrénaline",
+            "correction": "une aventure pleine d’adrénaline",
+            "date": "2024-02-05"
+          },
+          {
+            "erreur": "acheter des entrées de quelques attractions",
+            "correction": "acheter des billets pour des attractions",
+            "date": "2024-11-20"
+          },
+          {
+            "erreur": "la rue et le parking sont cassés",
+            "correction": "la rue et le parking sont en mauvais état",
+            "date": "2024-09-20"
+          },
+          {
+            "erreur": "organiser une courte teambuilding",
+            "correction": "organiser un court team building / un séminaire de cohésion",
+            "date": "2025-04-12"
+          },
+          {
+            "erreur": "apprentissage de travail dans l'équipe",
+            "correction": "apprentissage du travail en équipe",
+            "date": "2025-04-12"
+          }
+        ]
+      },
+      {
+        "type": "V05",
+        "pattern": "Interférence linguistique (structure calquée)",
+        "occurrences": 8,
+        "exemples": [
+          {
+            "erreur": "Ce la est la raison pourquoi…",
+            "correction": "C’est la raison pour laquelle…",
+            "date": "2024-01-12"
+          },
+          {
+            "erreur": "C'est trouver au coin de la rue…",
+            "correction": "Ça se trouve au coin de la rue…",
+            "date": "2024-04-27"
+          },
+          {
+            "erreur": "C'est quelque chose qui prend du temps et dans je suis vraiment stressée.",
+            "correction": "Cela prend du temps et ce qui me stresse vraiment, c’est que…",
+            "date": "2024-12-20"
+          }
+        ]
+      }
+    ],
+    "style": [
+      {
+        "type": "S01",
+        "pattern": "Coordination excessive",
+        "occurrences": 4,
+        "exemples": [
+          {
+            "erreur": "j´ai vue beaucoup d´autres choses et visitée d´autres places…",
+            "correction": "J’ai vu beaucoup d’autres choses. J’ai aussi visité d’autres lieux…",
+            "date": "2024-03-19"
+          },
+          {
+            "erreur": "Premièrement… Deuxièmement… Et finalement… (listes très longues)",
+            "correction": "Condensez et variez les enchaînements.",
+            "date": "2025-04-12"
+          }
+        ]
+      },
+      {
+        "type": "S02",
+        "pattern": "Phrases trop longues / mal ponctuées",
+        "occurrences": 6,
+        "exemples": [
+          {
+            "erreur": "C'est une nouvelle expérience, une avanture d'adrénaline (…), mais tu sais quoi? J'ai hâte!",
+            "correction": "C’est une nouvelle expérience, pleine d’adrénaline. Tu sais quoi ? J’ai hâte !",
+            "date": "2024-02-05"
+          },
+          {
+            "erreur": "Ce qui result de ces complications c'est le travail insatisfaisant, contreproductif et insuffisant.",
+            "correction": "Ces complications ont pour résultat un travail insatisfaisant, contre-productif et insuffisant.",
+            "date": "2025-04-12"
+          }
+        ]
+      },
+      {
+        "type": "S05",
+        "pattern": "Formulation maladroite / lourde",
+        "occurrences": 12,
+        "exemples": [
+          {
+            "erreur": "cette langue est tellement magnifique belle",
+            "correction": "cette langue est si belle / tellement magnifique",
+            "date": "2024-01-12"
+          },
+          {
+            "erreur": "Celui que je parle, c'est situé…",
+            "correction": "Celui dont je parle est situé…",
+            "date": "2024-04-27"
+          },
+          {
+            "erreur": "je propose quelques points et raisons pourquoi est ce stage tellement important",
+            "correction": "je propose quelques raisons qui expliquent l’importance de ce stage",
+            "date": "2025-04-12"
+          }
+        ]
+      }
+    ]
+  },
+  "erreurs_persistantes": [
+    {
+      "type": "G06",
+      "pattern": "Prépositions / infinitif",
+      "exemple": {
+        "erreur": "c’est de moi venir travailler les samedis",
+        "correction": "vous me demandez de venir travailler les samedis / que je vienne travailler"
+      },
+      "dates": [
+        "2025-02-20",
+        "2025-04-12",
+        "2025-04-12"
+      ]
+    },
+    {
+      "type": "G07",
+      "pattern": "Articles/déterminants (genre, nombre)",
+      "exemple": {
+        "erreur": "le santé",
+        "correction": "la santé"
+      },
+      "dates": [
+        "2025-02-20",
+        "2025-04-12"
+      ]
+    },
+    {
+      "type": "G05",
+      "pattern": "Accords et conjugaisons de base",
+      "exemple": {
+        "erreur": "des douleurs oculaires qui provoque",
+        "correction": "des douleurs oculaires qui provoquent"
+      },
+      "dates": [
+        "2025-04-12"
+      ]
+    },
+    {
+      "type": "G08",
+      "pattern": "Ordre des mots (pronoms/adverbes/relatifs)",
+      "exemple": {
+        "erreur": "je voudrais pratiquer les en faisant un stage",
+        "correction": "je voudrais les pratiquer en faisant un stage"
+      },
+      "dates": [
+        "2025-04-12"
+      ]
+    },
+    {
+      "type": "G04",
+      "pattern": "Passé composé vs imparfait",
+      "exemple": {
+        "erreur": "J'ai parlé avec des gens de tout!",
+        "correction": "Je parlais avec des gens de tout"
+      },
+      "dates": [
+        "2025-02-20"
+      ]
+    },
+    {
+      "type": "V01",
+      "pattern": "Faux amis / calques",
+      "exemple": {
+        "erreur": "bénévole (pour avantage)",
+        "correction": "bénéfique"
+      },
+      "dates": [
+        "2025-02-20",
+        "2025-04-12"
+      ]
+    },
+    {
+      "type": "V04",
+      "pattern": "Collocations non naturelles",
+      "exemple": {
+        "erreur": "apprentissage de travail dans l'équipe",
+        "correction": "apprentissage du travail en équipe"
+      },
+      "dates": [
+        "2025-02-20",
+        "2025-04-12"
+      ]
+    },
+    {
+      "type": "S02",
+      "pattern": "Phrases longues / ponctuation",
+      "exemple": {
+        "erreur": "Ce qui result de ces complications c'est le travail insatisfaisant…",
+        "correction": "Ces complications ont pour résultat un travail insatisfaisant…"
+      },
+      "dates": [
+        "2025-04-12",
+        "2025-04-12"
+      ]
+    },
+    {
+      "type": "S05",
+      "pattern": "Formulation maladroite",
+      "exemple": {
+        "erreur": "je propose quelques points et raisons pourquoi est ce stage tellement important",
+        "correction": "je propose quelques raisons qui expliquent l’importance de ce stage"
+      },
+      "dates": [
+        "2025-04-12"
+      ]
+    }
+  ]
+}

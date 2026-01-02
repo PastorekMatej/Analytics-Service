@@ -1,0 +1,27 @@
+{
+  "config": "reasoning-low",
+  "agreements": {
+    "niveau_evolution": 3,
+    "grammaire": 3,
+    "vocabulaire": 3,
+    "style": 3,
+    "persistantes": 3,
+    "total_runs": 3
+  },
+  "similarities": {
+    "synthese_mean_similarity": null
+  },
+  "usage_totals": {
+    "prompt_tokens": 14584,
+    "completion_tokens": 30224,
+    "total_tokens": 44808
+  },
+  "usage_means": {
+    "prompt_tokens": 4861.333333333333,
+    "completion_tokens": 10074.666666666666,
+    "total_tokens": 14936.0
+  },
+  "notes": [
+    "Run 3 failed: Request timed out."
+  ]
+}

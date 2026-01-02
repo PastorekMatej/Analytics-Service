@@ -1,0 +1,25 @@
+{
+  "config": "reasoning-medium",
+  "agreements": {
+    "niveau_evolution": 2,
+    "grammaire": 2,
+    "vocabulaire": 2,
+    "style": 2,
+    "persistantes": 1,
+    "total_runs": 2
+  },
+  "similarities": {
+    "synthese_mean_similarity": 66.76557863501483
+  },
+  "usage_totals": {
+    "prompt_tokens": 30270,
+    "completion_tokens": 28236,
+    "total_tokens": 58506
+  },
+  "usage_means": {
+    "prompt_tokens": 15135.0,
+    "completion_tokens": 14118.0,
+    "total_tokens": 29253.0
+  },
+  "notes": []
+}

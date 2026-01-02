@@ -1,0 +1,25 @@
+{
+  "config": "reasoning-high",
+  "agreements": {
+    "niveau_evolution": 5,
+    "grammaire": 5,
+    "vocabulaire": 5,
+    "style": 5,
+    "persistantes": 5,
+    "total_runs": 5
+  },
+  "similarities": {
+    "synthese_mean_similarity": null
+  },
+  "usage_totals": {
+    "prompt_tokens": 34845,
+    "completion_tokens": 76297,
+    "total_tokens": 111142
+  },
+  "usage_means": {
+    "prompt_tokens": 6969.0,
+    "completion_tokens": 15259.4,
+    "total_tokens": 22228.4
+  },
+  "notes": []
+}

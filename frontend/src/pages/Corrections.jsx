@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   ChevronDown, ChevronUp, Filter, Calendar, Award, 
@@ -8,6 +9,7 @@ import {
 import { cn } from '../lib/utils';
 import correctionsService from '../services/correctionsService';
 import studentService from '../services/studentService';
+import analysisService from '../services/analysisService';
 
 /**
  * @typedef {Object} Correction
@@ -53,6 +55,7 @@ const ERROR_CATEGORIES = [{
 }];
 
 const Corrections = ({ userEmail, userRole }) => {
+  const navigate = useNavigate();
   const [submissions, setSubmissions] = useState([]);
   const [selectedSubmission, setSelectedSubmission] = useState(null);
   const [expandedCorrections, setExpandedCorrections] = useState(new Set());
@@ -64,6 +67,12 @@ const Corrections = ({ userEmail, userRole }) => {
   const [availableStudents, setAvailableStudents] = useState([]);
   const [progressData, setProgressData] = useState([]);
   
+  // Analysis states
+  const [analyzing, setAnalyzing] = useState(false);
+  const [analysisError, setAnalysisError] = useState(null);
+  const [analysisSuccess, setAnalysisSuccess] = useState(false);
+  const [lastReportDate, setLastReportDate] = useState(null);
+  
   const loadProgressData = async () => {
     const emailToUse = selectedStudentEmail || userEmail;
     if (!emailToUse) return;
@@ -72,6 +81,54 @@ const Corrections = ({ userEmail, userRole }) => {
       const response = await studentService.getProgress(emailToUse);
       if (response.success && response.data && response.data.progress_data) {
         setProgressData(response.data.progress_data);
+      }
+      
+      // Load analyses to get the last report generation date
+      try {
+        const analysesResponse = await analysisService.getStudentAnalyses(emailToUse, 100, 0);
+        if (analysesResponse.success && analysesResponse.analyses) {
+          const analyses = analysesResponse.analyses.sort((a, b) => {
+            const dateA = new Date(a.created_at || 0);
+            const dateB = new Date(b.created_at || 0);
+            return dateB - dateA; // Most recent first
+          });
+          
+          // Find the most recent report with analysis_result (generated report)
+          // Filter analyses that have a generated report (analysis_result exists and is not empty)
+          const generatedReports = analyses.filter(a => {
+            if (!a.analysis_result) return false;
+            if (typeof a.analysis_result === 'string') {
+              return a.analysis_result.trim().length > 0;
+            }
+            return true; // Object or other non-empty value
+          });
+          
+          // Sort generated reports by report_generated_at (if available) or created_at, most recent first
+          generatedReports.sort((a, b) => {
+            const dateA = a.report_generated_at || a.created_at || '';
+            const dateB = b.report_generated_at || b.created_at || '';
+            return dateB.localeCompare(dateA); // Most recent first (ISO strings compare correctly)
+          });
+          
+          // Get the most recent one (first in sorted array)
+          if (generatedReports.length > 0) {
+            // Prefer report_generated_at, fallback to created_at
+            const reportDate = generatedReports[0].report_generated_at || generatedReports[0].created_at;
+            if (reportDate) {
+              console.log('[Corrections] Last report date (raw):', reportDate);
+              console.log('[Corrections] Last report date (parsed):', new Date(reportDate));
+              console.log('[Corrections] Using report_generated_at:', !!generatedReports[0].report_generated_at);
+              setLastReportDate(reportDate);
+            } else {
+              setLastReportDate(null);
+            }
+          } else {
+            setLastReportDate(null);
+          }
+        }
+      } catch (err) {
+        console.error('Error loading analyses for report date:', err);
+        setLastReportDate(null);
       }
     } catch (err) {
       console.error('Error loading progress data:', err);
@@ -275,6 +332,64 @@ const Corrections = ({ userEmail, userRole }) => {
     }
   };
 
+  const handleAddEvaluation = async () => {
+    // Determine which student email to use
+    const studentEmailToAnalyze = userRole === 'student' 
+      ? userEmail 
+      : selectedStudentEmail;
+    
+    if (!studentEmailToAnalyze) {
+      if (userRole === 'teacher' || userRole === 'admin') {
+        setAnalysisError('Veuillez sélectionner un étudiant d\'abord');
+        return;
+      } else {
+        setAnalysisError('Vous devez être connecté pour lancer une analyse');
+        return;
+      }
+    }
+    
+    // Check if user is a student (backend requires student role)
+    if (userRole !== 'student' && !selectedStudentEmail) {
+      setAnalysisError('Veuillez sélectionner un étudiant pour lancer une analyse');
+      return;
+    }
+    
+    setAnalyzing(true);
+    setAnalysisError(null);
+    setAnalysisSuccess(false);
+    
+    try {
+      // Submit for analysis - backend will analyze all saved texts for this student
+      const response = await analysisService.submitTextForAnalysis(
+        studentEmailToAnalyze,
+        null, // No specific text content - analyze all saved texts
+        'written'
+      );
+      
+      if (response.success) {
+        setAnalysisSuccess(true);
+        // Reload corrections data to show the new analysis
+        await loadCorrections();
+        await loadProgressData();
+        // Clear success message after 3 seconds
+        setTimeout(() => setAnalysisSuccess(false), 3000);
+      } else {
+        setAnalysisError(response.message || 'Erreur lors du lancement de l\'analyse');
+      }
+    } catch (err) {
+      console.error('Error launching analysis:', err);
+      // If error is about no texts available, redirect to written-analysis page
+      if (err.message && err.message.includes('Aucun texte disponible')) {
+        setAnalysisError('Aucun texte disponible. Redirection vers la page d\'analyse...');
+        setTimeout(() => navigate('/written-analysis'), 2000);
+      } else {
+        setAnalysisError(err.message || 'Erreur lors du lancement de l\'analyse. Veuillez réessayer.');
+      }
+    } finally {
+      setAnalyzing(false);
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
@@ -322,7 +437,7 @@ const Corrections = ({ userEmail, userRole }) => {
   return (
     <>
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4" style={{ width: '100%' }}>
+      <header className="bg-white border-b border-slate-200 px-8 py-4 flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="relative max-w-md w-full">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-4 h-4" aria-hidden="true" />
           <input 
@@ -353,18 +468,54 @@ const Corrections = ({ userEmail, userRole }) => {
           </div>
         )}
         <div className="flex items-center gap-4">
-          {submissions.length > 0 && (
-            <div className="text-right hidden sm:block">
-              <p className="text-xs text-slate-500 font-medium">Dernière mise à jour</p>
-              <p className="text-sm font-semibold text-slate-800">
-                {new Date(submissions[0].date).toLocaleDateString('fr-FR', { 
-                  day: 'numeric', 
-                  month: 'long', 
-                  year: 'numeric' 
-                })}
-              </p>
-            </div>
-          )}
+          <div className="text-right hidden sm:block">
+            <p className="text-xs text-slate-500 font-medium">Dernière mise à jour</p>
+            <p className="text-sm font-semibold text-slate-800">
+              {lastReportDate
+                ? (() => {
+                    try {
+                      // Parse the date and ensure we use local timezone
+                      const date = new Date(lastReportDate);
+                      // Check if date is valid
+                      if (isNaN(date.getTime())) {
+                        console.error('[Corrections] Invalid date:', lastReportDate);
+                        return 'Date invalide';
+                      }
+                      // Format using local date (not UTC)
+                      return date.toLocaleDateString('fr-FR', { 
+                        day: 'numeric', 
+                        month: 'long', 
+                        year: 'numeric',
+                        timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone
+                      });
+                    } catch (err) {
+                      console.error('[Corrections] Error formatting date:', err, lastReportDate);
+                      return 'Date invalide';
+                    }
+                  })()
+                : 'Aucun rapport généré'
+              }
+            </p>
+          </div>
+          <div className="flex flex-col items-end gap-2">
+            <button 
+              onClick={handleAddEvaluation}
+              disabled={analyzing}
+              className={`px-4 py-2 rounded-lg text-sm font-semibold transition-colors ${
+                analyzing 
+                  ? 'bg-indigo-400 text-white cursor-not-allowed' 
+                  : 'bg-indigo-600 text-white hover:bg-indigo-700'
+              }`}
+            >
+              {analyzing ? 'Analyse en cours...' : 'Ajouter une évaluation'}
+            </button>
+            {analysisError && (
+              <p className="text-xs text-red-600 max-w-xs text-right">{analysisError}</p>
+            )}
+            {analysisSuccess && (
+              <p className="text-xs text-green-600 max-w-xs text-right">Analyse lancée avec succès!</p>
+            )}
+          </div>
         </div>
       </header>
 

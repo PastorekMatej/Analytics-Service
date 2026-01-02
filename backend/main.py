@@ -3,9 +3,18 @@ Main FastAPI application for Matej Language Lab backend
 """
 import sys
 import os
+from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import logging
+from dotenv import load_dotenv
+
+# Get the project root directory (parent of backend directory)
+project_root = Path(__file__).parent.parent
+env_path = project_root / ".env"
+
+# Load environment variables from .env file with explicit path
+load_dotenv(dotenv_path=env_path, override=True)
 
 # Set UTF-8 encoding for the entire application (Windows compatibility)
 if sys.platform == 'win32':
@@ -48,6 +57,31 @@ app.include_router(auth_router)
 app.include_router(student_router)
 app.include_router(teacher_router)
 app.include_router(analysis_router)
+
+
+@app.on_event("startup")
+async def startup_event():
+    """Verify configuration on startup"""
+    # Reload environment variables to ensure they're loaded
+    load_dotenv(dotenv_path=env_path, override=True)
+    
+    # Verify OpenAI API key is loaded
+    api_key = os.getenv("OPENAI_API_KEY")
+    if not api_key:
+        logger.error("OPENAI_API_KEY not found in environment variables!")
+        logger.error(f"Checked .env file at: {env_path}")
+        logger.error("Please ensure OPENAI_API_KEY is set in .env file")
+    else:
+        logger.info(f"OpenAI API key loaded successfully (length: {len(api_key)})")
+    
+    # Verify config module has the key
+    try:
+        if not config.OPENAI_API_KEY:
+            logger.error("OPENAI_API_KEY not found in config module!")
+        else:
+            logger.info("Configuration verified successfully")
+    except Exception as e:
+        logger.error(f"Error verifying configuration: {e}")
 
 
 @app.get("/")

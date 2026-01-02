@@ -1,0 +1,193 @@
+RAPPORT D'ANALYSE LINGUISTIQUE - DOMINIKA123
+==============================================
+Étudiant : dominika123@example.com
+Date de génération : 12 avril 2025
+Période d'analyse : 18 textes (janvier 2024 - avril 2025)
+
+ÉVOLUTION_GLOBALE:
+  évolution de niveau: "A2 → B1"
+  évaluations numériques par texte (dates non fournies dans le corpus: indexation T01→T18):
+  - T01: 22/100 (A2)
+  - T02: 28/100 (A2+)
+  - T03: 30/100 (A2+)
+  - T04: 29/100 (A2+)
+  - T05: 30/100 (A2+)
+  - T06: 31/100 (A2+)
+  - T07: 32/100 (A2+)
+  - T08: 33/100 (A2+)
+  - T09: 34/100 (B1)
+  - T10: 36/100 (B1)
+  - T11: 38/100 (B1)
+  - T12: 37/100 (B1)
+  - T13: 39/100 (B1)
+  - T14: 38/100 (B1)
+  - T15: 40/100 (B1)
+  - T16: 41/100 (B1)
+  - T17: 39/100 (B1)
+  - T18: 41/100 (B1)
+  progression globale: +19 points
+  résumé:
+  - Départ (T01): A2 avec beaucoup d'erreurs grammaticales de base et de nombreuses interférences.
+  - Actuel (moyenne des 2 derniers textes T17–T18): B1. Production plus structurée, registre mieux adapté, davantage de lexique professionnel, mais persistance d'erreurs de prépositions, d'articles et de tournures maladroites.
+
+TENDANCES D'ÉVOLUTION:
+- G01 (accord du participe passé avec avoir): ≈10 occurrences concentrées T03–T05 → 0 dans les 2 derniers textes. Amélioration nette dans les narrations au passé.
+- G03 (négation): 3 occurrences T02–T04 ("qui je n'ai connu pas", "vous n'avez me pas croire") → 0 à partir de T10. Stabilisé.
+- G04 (passé composé vs imparfait/temps du passé): ≈5 occurrences T03–T06 ("pendant que je travaillais, j'eu…", alternance PC/imparfait) → 1 occurrence sporadique après T12. Régression ponctuelle, tendance globale à la baisse.
+- G06 (prépositions et construction à l'infinitif): ≈12 occurrences T01–T10 ("commencé apprendre", "recommencent être ouvertes", "aider avec chercher") → encore 4–5 occurrences dans T16–T18. Erreur tenace.
+- G07 (articles/déterminants): ≈15 occurrences T01–T10 ("la langue français", "la départ", "le santé") → toujours 3–4 occurrences T17; 1–2 T18. Amélioration lente mais incomplète.
+- G08 (ordre des mots/placement des pronoms): ≈8 occurrences T02–T09 ("Tu me vraiment manques", "c'est de moi venir") → encore 2–3 occurrences T17–T18. Persiste.
+- G10 (subjonctif/conditionnel): 2–3 occurrences T02–T08 ("Bien que ma vie a changé", "Je pouvais" pour "je pourrais") → 1–2 occurrences T16–T18. Persiste à bas bruit.
+- V01 (faux amis/calques): 6–7 occurrences T02–T12 ("défises", "avanture", "bénévole" pour "bénéfique", "teambuilding") → encore 2 occurrences T16–T17. Persiste.
+- V04 (collocations non naturelles): ≈8 occurrences sur tout le corpus ("dormir toute la route", "faire des connections", "rencontrer avec la vie") → encore 2–3 occurrences T16–T18. Persiste.
+- V05 (interférences structurelles): ≈10 occurrences T01–T12 ("tout le meilleur…", "je vous souhaite avoir…", "moi et ma famille") → 2 occurrences T17–T18. En baisse mais présente.
+- S01 (coordination excessive): fréquente T01–T10 ("D'abord / Ensuite / Puis / Et…") → mieux maîtrisée, mais encore visible T17. Légère amélioration.
+- S02 (phrases longues/mal ponctuées): régulière T01–T09 → réapparaît T17 (lettre longue, phrases chargées). À surveiller.
+- S05 (formulations maladroites): récurrent sur tout le corpus ("C'est la raison pourquoi…", "c'est de moi venir…"). Toujours présent T16–T18.
+
+ERREURS_RÉCURRENTES:
+GRAMMAIRE
+- type: G01
+  pattern: Accord du participe passé avec avoir
+  occurrences: ≈10
+  exemples:
+    - "J'ai passée la nuit" → "J'ai passé la nuit"
+    - "J'ai visitée le Château…" → "J'ai visité le château…"
+
+- type: G03
+  pattern: Erreur de négation (position du ne/pas/pronom)
+  occurrences: 3
+  exemples:
+    - "qui je n'ai connu pas" → "que je n'ai pas connus"
+    - "vous n'avez me pas croire" → "vous ne me croirez pas"
+
+- type: G04
+  pattern: Confusion passé composé / imparfait (et emploi fautif d'un temps du passé)
+  occurrences: ≈5
+  exemples:
+    - "pendant que je travaillais, j'eu un cappuccino" → "pendant que je travaillais, j'ai eu…"
+    - "Enfin, j'ai tout compris" (récit en cours) → mieux: "je comprenais tout"
+
+- type: G06
+  pattern: Utilisation incorrecte des prépositions / construction à l'infinitif
+  occurrences: ≈12
+  exemples:
+    - "commencé apprendre" → "commencé à apprendre"
+    - "recommencent être ouvertes" → "recommencent à être ouvertes"
+    - "t'aider avec chercher" → "t'aider à chercher"
+
+- type: G07
+  pattern: Mauvais emploi des articles/déterminants (genre/absence/partitif)
+  occurrences: ≈15
+  exemples:
+    - "la langue français" → "la langue française"
+    - "la départ de Baptiste" → "le départ de Baptiste"
+    - "le santé" → "la santé"
+
+- type: G08
+  pattern: Ordre des mots (pronoms/adverbes/subordonnées)
+  occurrences: ≈8
+  exemples:
+    - "Tu me vraiment manques" → "Tu me manques vraiment"
+    - "c'est de moi venir" → "c'est que je vienne / c'est à moi de venir"
+
+- type: G10
+  pattern: Usage fautif du subjonctif/conditionnel
+  occurrences: 3–4
+  exemples:
+    - "Bien que ma vie a changé" → "Bien que ma vie ait changé"
+    - "Je pouvais…" (pour un projet) → "Je pourrais…"
+
+VOCABULAIRE
+- type: V01
+  pattern: Faux amis / calques
+  occurrences: 6–7
+  exemples:
+    - "avanture / défises" → "aventure / défis"
+    - "bénévole" (pour un avantage) → "bénéfique"
+    - "teambuilding" → "séminaire de cohésion / activité d'équipe"
+
+- type: V04
+  pattern: Collocations non naturelles
+  occurrences: ≈8
+  exemples:
+    - "dormir toute la route" → "dormir pendant tout le trajet"
+    - "faire des connections" → "tisser des liens / établir des connexions"
+    - "rencontrer avec la vie" → "se confronter à la vie réelle"
+
+- type: V05
+  pattern: Interférence linguistique (structure calquée)
+  occurrences: ≈10
+  exemples:
+    - "Je vous souhaite avoir des bonnes deux semaines" → "Je vous souhaite de passer deux bonnes semaines"
+    - "moi et ma famille" → "ma famille et moi"
+    - "tout le meilleur à la maison le meilleur" → "rien ne vaut la maison"
+
+STYLE
+- type: S01
+  pattern: Coordination excessive (enchaînements et/mais/puis)
+  occurrences: fréquentes
+  exemples:
+    - Suites de "D'abord/Ensuite/Puis/Et…" sans hiérarchisation
+    - Phrases en série avec "et" au lieu de subordination
+
+- type: S02
+  pattern: Phrases trop longues / mal ponctuées
+  occurrences: récurrentes
+  exemples:
+    - Phrases à parenthèses multiples, virgules absentes ou mal placées
+    - Accumulations d'arguments dans une seule phrase en lettre formelle
+
+- type: S05
+  pattern: Formulations maladroites / lourdes
+  occurrences: très récurrentes
+  exemples:
+    - "C'est la raison pourquoi…" → "C'est la raison pour laquelle…"
+    - "Ce que ma hiérarchie demande, c'est de moi venir…" → "Ma hiérarchie me demande de venir…"
+
+ERREURS_PERSISTANTES (observées dans les 3 derniers textes: T16–T18):
+- G06 (prépositions/infinitif): "pratiquer les en faisant un stage" → "les pratiquer en faisant un stage"; "dans le futur des opportunités…" → "à l'avenir, des opportunités…"
+- G07 (articles/déterminants): "je suis l'employé" → "je suis une employée"; "le recherche" → "la recherche"
+- G08 (ordre des mots): "c'est de moi venir travailler" → "ma hiérarchie me demande de venir travailler"
+- G10 (conditionnel/subjonctif): "je pouvais" (intention/projet) → "je pourrais"
+- V01 (faux amis/calques): "bénévole" pour "bénéfique"; "teambuilding" non francisé
+- V04 (collocations non naturelles): "organiser une courte teambuilding", "développement des capacités… dans le futur"
+- S02 (phrases longues/mal ponctuées): lettres longues avec enchaînements d'arguments sans segmentation claire
+- S05 (formulations maladroites): tournures lourdes en contexte formel ("ce que… c'est…", répétitions)
+
+CONCLUSION SYNTHÉTIQUE:
+- L'étudiante a nettement élargi sa capacité à produire des textes variés (récits, lettres formelles, exposés d'opinion) et à structurer ses idées: passage de A2 à B1.
+- Les erreurs sur le passé composé (accords avec avoir) se raréfient fortement; la négation est stabilisée.
+- Les zones encore fragiles et persistantes au niveau B1 sont: prépositions et constructions à l'infinitif (G06), articles/déterminants (G07), ordre des mots (G08), emploi fin du conditionnel/subjonctif (G10), calques lexicaux/collocations (V01/V04), ainsi que la fluidité stylistique (S05) et la segmentation (S02).
+- Pistes-clés pour atteindre B1+/B2: entraînement ciblé sur les constructions verbe + préposition, révision systématique des articles avec les noms fréquents, automatisation du placement des pronoms/adverbes, et reformulation stylistique (phrases plus courtes, connecteurs variés, collocations natives).
+
+===================================
+INFORMATIONS SUPPLÉMENTAIRES
+===================================
+
+DERNIER TEXTE SOUMIS (non encore analysé):
+Date: 12 avril 2025
+Sujet: Demande de stage en entreprise (lettre formelle)
+Statut: En attente d'analyse
+
+RECOMMANDATIONS PÉDAGOGIQUES:
+1. Travail prioritaire sur les prépositions (G06)
+2. Révision systématique des articles/déterminants (G07) 
+3. Exercices d'ordre des mots et placement des pronoms (G08)
+4. Enrichissement lexical avec collocations natives (V04)
+5. Amélioration de la fluidité stylistique (S05, S02)
+
+ÉVOLUTION GÉNÉRALE: Progression constante et encourageante de A2 vers B1.
+Le niveau B1+ semble atteignable avec un travail ciblé sur les points persistants.
+
+
+
+
+
+
+
+
+
+
+
+

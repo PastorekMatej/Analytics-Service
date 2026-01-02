@@ -471,9 +471,14 @@ async def submit_text_for_analysis(
                     most_recent_index = i
         
         # Update or create analysis entry
+        current_time = datetime.now().isoformat()
         if most_recent_analysis and most_recent_index >= 0:
             # Update existing analysis with global result
             student_data["analyses"][most_recent_index]["analysis_result"] = analysis_result
+            # Update created_at to reflect when the report was generated
+            student_data["analyses"][most_recent_index]["created_at"] = current_time
+            # Add report_generated_at field to track when report was actually generated
+            student_data["analyses"][most_recent_index]["report_generated_at"] = current_time
             analysis_id = student_data["analyses"][most_recent_index]["id"]
             analysis_data = student_data["analyses"][most_recent_index]
         else:
@@ -485,7 +490,8 @@ async def submit_text_for_analysis(
                 "text_content": text_content if text_content else combined_text[:500] + "...",  # Store excerpt
                 "text_type": text_type,
                 "analysis_result": analysis_result,
-                "created_at": datetime.now().isoformat()
+                "created_at": current_time,
+                "report_generated_at": current_time
             }
             student_data["analyses"].append(analysis_data)
         

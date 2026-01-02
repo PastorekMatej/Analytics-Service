@@ -10,6 +10,7 @@ import Progress from './pages/Progress';
 import Dashboard from './pages/Dashboard';
 import Profile from './pages/Profile';
 import Corrections from './pages/Corrections';
+import Analytics from './pages/Analytics';
 import './styles/App.css';
 
 const App = () => {
@@ -101,6 +102,14 @@ const App = () => {
               element={
                 <AppLayout userEmail={userEmail} userRole={userRole} onLogout={handleLogout}>
                   <Corrections userEmail={userEmail} userRole={userRole} />
+                </AppLayout>
+              }
+            />
+            <Route
+              path="/analytics"
+              element={
+                <AppLayout userEmail={userEmail} userRole={userRole} onLogout={handleLogout}>
+                  <Analytics userEmail={userEmail} userRole={userRole} />
                 </AppLayout>
               }
             />
