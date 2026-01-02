@@ -1,0 +1,33 @@
+services:
+  # Backend Web Service
+  - type: web
+    name: maister-backend
+    runtime: python
+    plan: starter  # $7/month
+    buildCommand: chmod +x build.sh && ./build.sh
+    startCommand: uvicorn backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.13.0
+      - key: DATA_DIR
+        value: /data
+      - key: PROVIDER
+        value: openai
+      - key: LOG_LEVEL
+        value: INFO
+    healthCheckPath: /api/health
+    disk:
+      name: maister-data
+      mountPath: /data
+      sizeGB: 2
+
+  # Frontend Static Site
+  - type: web
+    name: maister-frontend
+    runtime: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: frontend/dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false  # Set manually after backend is deployed
+

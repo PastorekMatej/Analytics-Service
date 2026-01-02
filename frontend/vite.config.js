@@ -17,7 +17,8 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true,
+    sourcemap: false, // Disable sourcemaps in production for smaller builds
+    minify: 'terser', // Use terser for better minification
     rollupOptions: {
       output: {
         manualChunks: {
@@ -25,7 +26,9 @@ export default defineConfig({
           axios: ['axios']
         }
       }
-    }
+    },
+    // Optimize chunk size
+    chunkSizeWarningLimit: 1000
   }
 });
 

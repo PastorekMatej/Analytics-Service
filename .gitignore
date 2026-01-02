@@ -1,9 +1,47 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-*.json
+# Environment files
 .env
-__pycache__
-conf.py
-clients.py
-__pycache__
+.env.local
+.env.*.local
+frontend/.env.production
+
+# Python
 __pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+.venv
+
+# JSON data files (keep structure, ignore data)
+secure_data/**/*.json
+backend/teacher_student_relations.json
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+backend.log
+frontend.log
+
+# Build outputs
+dist/
+build/
+
+# Test files
+.pytest_cache/
+.coverage
+htmlcov/

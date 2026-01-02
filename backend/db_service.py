@@ -7,21 +7,24 @@ import os
 from typing import List, Optional, Dict
 from pathlib import Path
 from datetime import datetime
+from . import config
 
 
 class JSONDatabase:
     """JSON file-based database manager"""
     
-    def __init__(self, base_path: str = "secure_data"):
+    def __init__(self, base_path: str = None):
+        # Use config.DATA_DIR if base_path not provided
+        if base_path is None:
+            base_path = config.DATA_DIR
         self.base_path = Path(base_path)
         self.users_file = self.base_path / "users_database.json"
-        self.relations_file = Path("backend") / "teacher_student_relations.json"
+        self.relations_file = self.base_path / "teacher_student_relations.json"
         self.student_db_path = self.base_path / "student_DB"
         
         # Ensure directories exist
-        self.base_path.mkdir(exist_ok=True)
-        self.student_db_path.mkdir(exist_ok=True)
-        Path("backend").mkdir(exist_ok=True)
+        self.base_path.mkdir(exist_ok=True, parents=True)
+        self.student_db_path.mkdir(exist_ok=True, parents=True)
         
         # Initialize files if they don't exist
         self._initialize_files()

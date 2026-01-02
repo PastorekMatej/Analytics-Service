@@ -3,7 +3,10 @@
  * Handles user authentication, login, signup, and session management
  */
 
-const API_BASE_URL = 'http://127.0.0.1:8000/api';
+// Use environment variable for API URL, fallback to localhost for development
+const API_BASE_URL = import.meta.env.VITE_API_URL 
+  ? `${import.meta.env.VITE_API_URL}/api`
+  : 'http://127.0.0.1:8000/api';
 
 const authService = {
   /**

@@ -17,6 +17,7 @@ if sys.platform == 'win32':
     os.environ['PYTHONIOENCODING'] = 'utf-8'
 
 from .routes import auth_router, student_router, teacher_router, analysis_router
+from . import config
 
 
 # Configure logging
@@ -33,23 +34,10 @@ app = FastAPI(
     version="1.0.0"
 )
 
-# Configure CORS
+# Configure CORS - use configurable origins from config.py
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:5173",  # Vite dev server
-        "http://localhost:5174",  # Vite dev server (alternative port)
-        "http://localhost:5175",  # Vite dev server (alternative port)
-        "http://localhost:5176",  # Vite dev server (alternative port)
-        "http://localhost:5177",  # Vite dev server (alternative port)
-        "http://localhost:3000",  # Alternative port
-        "http://127.0.0.1:5173",
-        "http://127.0.0.1:5174",
-        "http://127.0.0.1:5175",
-        "http://127.0.0.1:5176",
-        "http://127.0.0.1:5177",
-        "http://127.0.0.1:3000"
-    ],
+    allow_origins=config.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
