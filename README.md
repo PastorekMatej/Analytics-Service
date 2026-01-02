@@ -45,7 +45,7 @@ The application is configured for deployment on [Render](https://render.com) wit
    OPENAI_API_KEY=your_openai_key_here
    PROVIDER=openai
    DATA_DIR=/data
-   PYTHON_VERSION=3.13.0
+   PYTHON_VERSION=3.13.1
    LOG_LEVEL=INFO
    ```
 
@@ -90,7 +90,7 @@ FRONTEND_URL=https://your-frontend-service.onrender.com
 - `PROVIDER` - Provider name, defaults to "openai"
 - `DATA_DIR` - Data directory path, set to `/data` for production
 - `FRONTEND_URL` - Frontend URL for CORS (set after frontend deployment)
-- `PYTHON_VERSION` - Python version (3.13.0)
+- `PYTHON_VERSION` - Python version (3.13.1)
 - `LOG_LEVEL` - Logging level (INFO)
 
 **Frontend:**
