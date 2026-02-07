@@ -6,6 +6,9 @@
 
 ## 📋 Table of Contents
 
+- [Current Status](#-current-status)
+- [Feature Implementation Phases](#-feature-implementation-phases)
+- [Development Phases Progress](#-development-phases-progress)
 - [Overview](#-overview)
 - [Features](#-features)
 - [Quick Start](#-quick-start)
@@ -16,6 +19,34 @@
 - [Development](#-development)
 - [Roadmap](#-roadmap)
 - [Prompt Evaluation](#-prompt-evaluation-gpt-5)
+
+---
+
+## ✅ Current Status
+
+- 🚧 **Jitsi Meet embed reliability**: normalize the Jitsi domain, align External API script with `meet.jit.si`, allow custom domain via `VITE_JITSI_DOMAIN`, improve auth error handling, show active domain, and fallback to `meet.jit.si` after guarded members-only retries. **Commit:** pending
+- 🚧 **JaaS (Jitsi as a Service) JWT integration**: add backend JWT generation endpoint and frontend token usage for dedicated JaaS domains. **Commit:** pending
+- 🚧 **Backend env consolidation**: load a single backend `.env` file (removed `.env.local`). **Commit:** pending
+
+---
+
+## 🧩 Feature Implementation Phases
+
+- 🚧 **Jitsi Meet integration hardening**: normalized External API domain, added configurable domain, improved auth errors, surfaced active domain, and prioritized permission errors with fallback to `meet.jit.si` when members-only persists. **Commit:** pending
+- 🚧 **JaaS (Jitsi as a Service) token flow**: backend token endpoint, frontend token retrieval, and JaaS domain configuration via environment variables. **Commit:** pending
+- 🚧 **Backend environment refactor**: consolidated backend env loading to `.env` only. **Commit:** pending
+
+---
+
+## 📈 Development Phases Progress
+
+- ✅ **Phase 1**: COMPLETE
+- 🔜 **Phase 2**: PLANNED
+- 🔜 **Phase 3**: PLANNED
+- 🔜 **Phase 4**: PLANNED
+- 🔜 **Phase 5**: PLANNED
+- 🔜 **Phase 6**: PLANNED
+- 🔜 **Phase 7**: PLANNED
 
 ---
 
@@ -187,6 +218,11 @@ The application is configured for deployment on [Render](https://render.com) wit
    OPENAI_API_KEY=your_openai_key_here
    PROVIDER=openai
    DATA_DIR=/data
+   JAAS_APP_ID=vpaas-magic-cookie-your_app_id
+   JAAS_API_KEY_ID=vpaas-magic-cookie-your_app_id/your_key_id
+   JAAS_PRIVATE_KEY_PATH=/data/jaas_private.key
+   JAAS_DOMAIN=your-app.8x8.vc
+   JAAS_TOKEN_TTL_MINUTES=120
    PYTHON_VERSION=3.13.0
    LOG_LEVEL=INFO
    ```
@@ -232,11 +268,18 @@ FRONTEND_URL=https://your-frontend-service.onrender.com
 - `PROVIDER` - Provider name, defaults to "openai"
 - `DATA_DIR` - Data directory path, set to `/data` for production
 - `FRONTEND_URL` - Frontend URL for CORS (set after frontend deployment)
+- `JAAS_APP_ID` - JaaS App ID (`vpaas-magic-cookie-...`)
+- `JAAS_API_KEY_ID` - JaaS API key ID (kid)
+- `JAAS_PRIVATE_KEY_PATH` - Path to RSA private key file
+- `JAAS_DOMAIN` - JaaS meeting domain (`your-app.8x8.vc`)
+- `JAAS_TOKEN_TTL_MINUTES` - Token expiration window (default: 120)
 - `PYTHON_VERSION` - Python version (3.13.0)
 - `LOG_LEVEL` - Logging level (INFO)
 
 **Frontend:**
 - `VITE_API_URL` - Backend API URL (required)
+- `VITE_JITSI_DOMAIN` - Jitsi domain for video calls (optional, defaults to `meet.jit.si`)
+- `VITE_USE_JAAS` - Enable JaaS token flow (`true`/`false`)
 
 ### Troubleshooting
 
@@ -258,6 +301,10 @@ FRONTEND_URL=https://your-frontend-service.onrender.com
 - Verify `VITE_API_URL` is set correctly in frontend environment variables
 - Check backend health endpoint is accessible
 - Ensure backend CORS allows frontend origin
+
+**Jitsi authentication errors:**
+- Set `VITE_JITSI_DOMAIN=meet.jit.si` for public rooms
+- If using a private Jitsi domain, ensure the server allows your domain or provides JWTs
 
 ### Cost Optimization
 
@@ -318,6 +365,12 @@ The platform offers two distinct account types:
 | `POST` | `/api/auth/signup` | User registration with role selection |
 | `GET` | `/api/auth/teachers` | Get list of all teachers (for student profile dropdown) |
 
+### Jitsi (JaaS) Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/api/jitsi/token` | Generate a JaaS JWT token for a room |
+
 ### Student Endpoints
 
 | Method | Endpoint | Description |
@@ -362,6 +415,7 @@ The frontend uses service files located in `frontend/src/services/`:
 - `studentService.js` - Student data management
 - `analysisService.js` - Analysis operations
 - `ttsService.js` - TTS integration (planned)
+- `jitsiService.js` - JaaS JWT token retrieval
 
 ---
 
