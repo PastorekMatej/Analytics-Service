@@ -5,6 +5,8 @@
 .env.local
 .env.*.local
 frontend/.env.production
+jaas_private.key
+jaas_private.pem
 
 # Python
 __pycache__/

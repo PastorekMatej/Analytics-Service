@@ -25,7 +25,14 @@ if sys.platform == 'win32':
     # Set environment variable for subprocesses
     os.environ['PYTHONIOENCODING'] = 'utf-8'
 
-from .routes import auth_router, student_router, teacher_router, analysis_router
+from .routes import (
+    auth_router,
+    student_router,
+    teacher_router,
+    analysis_router,
+    audio_router,
+    jitsi_router
+)
 from . import config
 
 
@@ -57,6 +64,8 @@ app.include_router(auth_router)
 app.include_router(student_router)
 app.include_router(teacher_router)
 app.include_router(analysis_router)
+app.include_router(audio_router)
+app.include_router(jitsi_router)
 
 
 @app.on_event("startup")

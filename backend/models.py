@@ -94,3 +94,17 @@ class DashboardStats(BaseModel):
     average_texts_per_student: float
     active_students: int
 
+
+class AudioSession(BaseModel):
+    """Audio session model for video call recordings"""
+    id: str
+    user_email: EmailStr
+    session_id: str
+    file_path: str
+    file_name: str
+    file_size: int  # Size in bytes
+    duration: int  # Duration in seconds
+    mime_type: str
+    created_at: Optional[datetime] = Field(default_factory=datetime.now)
+    analyzed: bool = False
+    analysis_id: Optional[str] = None
