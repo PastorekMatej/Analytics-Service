@@ -27,6 +27,7 @@
 - 🚧 **Jitsi Meet embed reliability**: normalize the Jitsi domain, align External API script with `meet.jit.si`, allow custom domain via `VITE_JITSI_DOMAIN`, improve auth error handling, show active domain, and fallback to `meet.jit.si` after guarded members-only retries. **Commit:** pending
 - 🚧 **JaaS (Jitsi as a Service) JWT integration**: add backend JWT generation endpoint and frontend token usage for dedicated JaaS domains. **Commit:** pending
 - 🚧 **Backend env consolidation**: load a single backend `.env` file (removed `.env.local`). **Commit:** pending
+- ✅ **Config example + local config ignore**: add `backend/config.example.py` and ignore `conf.py` to prevent accidental secret commits. **Commit:** 189292d
 
 ---
 
@@ -35,6 +36,7 @@
 - 🚧 **Jitsi Meet integration hardening**: normalized External API domain, added configurable domain, improved auth errors, surfaced active domain, and prioritized permission errors with fallback to `meet.jit.si` when members-only persists. **Commit:** pending
 - 🚧 **JaaS (Jitsi as a Service) token flow**: backend token endpoint, frontend token retrieval, and JaaS domain configuration via environment variables. **Commit:** pending
 - 🚧 **Backend environment refactor**: consolidated backend env loading to `.env` only. **Commit:** pending
+- ✅ **Config example + local config ignore**: add `backend/config.example.py` and ignore `conf.py` to prevent accidental secret commits. **Commit:** 189292d
 
 ---
 
