@@ -7,6 +7,7 @@
 frontend/.env.production
 jaas_private.key
 jaas_private.pem
+conf.py
 
 # Python
 __pycache__/
